@@ -1,0 +1,156 @@
+@extends('admin_student.master')
+@section('title')
+Student || Course
+@endsection
+@section('content')
+<section class="col-lg-12">
+    <br><br>
+    <!-- <div class="row col-lg-12">
+        <div class="table-responsive col-md-12 col-sm-12 col-xs-12">
+            <table id="datatable-students" class="table table-striped table-bordered">
+                <thead>
+                    <th>S/N</th>
+                    <th>Course Code</th>
+                    <th>Course Title</th>
+                    <th>Unit</th>
+                </thead>
+                <tbody>
+                    @foreach($reg_courses as $course)
+                    <th>{{$course->id}}</th>
+                    <th>{{$course->course_name}}</th>
+                    <th>{{$course->course_title}}</th>
+                    <th>{{$course->unit}}</th>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div> -->
+    
+    <div class="card">
+        <div class="col-lg-12">@include('homepage.flash_message')</div>
+        <h3 class="text-center col-md-12"><br> Courses registered <br></h3>
+         <p class="text-center"><small>These are your registered semester courses</small></p> 
+        <div class="table-responsive col-md-12 col-sm-12 col-xs-12">
+            @if(count($reg_courses)>0)
+            <table id="datatable-buttons" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Course Code</th>
+                        <th>Course Title</th>
+                        <th>Unit</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="">
+                    @if(count($reg_courses)>0)
+                    @php $sn = 1; $count = 0; @endphp
+                    @foreach($reg_courses as $course)
+                    @php $count = $course->unit + $count; @endphp 
+                    <tr>
+                        <td>{{$sn++}}</td>
+                        <td>{{$course->course_code}}</td>
+                        <td>{{$course->course_name}}</td>
+                        <td>{{$course->unit}}</td>
+                        <td>
+                            @if($curr_semester == $session && $semester. ' Semester' == Helper::get_sem())
+                            <a href="/remove-course/{{$course->cid}}" class="btn btn-primary">Remove</a>
+                            @endif
+                        </td>
+                    </tr>
+                    @endforeach
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="text-right text-success">Total Unit:</td>
+                        <td class="text-success" style="font-weight:1000;">{{$count}}</td>
+                        <td></td>
+                    </tr>
+                    @endif
+                </tbody>
+            </table>
+            @else
+                <div class="alert alert-primary text-center">You have not registered any courses yet!</div>
+            @endif
+        </div>
+    </div>
+</section>
+<br><br>
+<section class="col-lg-12">
+    <div class="card">
+        <div class="col-md-12">
+            @include('homepage.flash_message')
+        </div>
+        <h3 class="text-center col-md-12"><br> Available Courses</h3>
+        <p class="text-center"><small>Select your preferred semester courses from the list below and submit to include them among your registered courses.</small></p> 
+        <form method="post" class="col-md-12">
+            @csrf
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary" id="checkall">Select all</button>
+                    <button type="button" class="btn btn-primary" id="uncheckall">Unselect all</button>
+                    <button type="submit" class="btn btn-primary" id="approve_selected" disabled>Submit Selected</button>
+                    <input type="hidden" name="level" value="{{$level}}">
+                    <input type="hidden" name="semester" value="{{$semester}}">
+                    <input type="hidden" name="reg" value="register">
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="table-responsive col-md-12 col-sm-12 col-xs-12">
+                    <table id="datatable-buttons" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Course Code</th>
+                                <th>Course Title</th>
+                                <th>Unit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="course_container">
+                            @if(count($courses)>0)
+                            @foreach($courses as $course)
+                            @if(!in_array($course->id, $reg_arr))
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="stds" name="course_id[]" value="{{$course->id}}">
+                                </td>
+                                <td>{{$course->course_code}}</td>
+                                <td>{{$course->course_name}}</td>
+                                <td>
+                                    {{$course->unit}}
+                                    <input type="hidden" name="course_unit[]" value="{{$course->unit}}">
+                                </td>
+                            </tr>
+                            @endif
+                            @endforeach
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<script>
+    $('.stds').change(function() {
+        let total = $(".stds:checkbox:checked").length
+        console.log(total)
+        if (total > 0) {
+            $('#approve_selected').prop('disabled', false)
+        } else {
+            $('#approve_selected').prop('disabled', true)
+        }
+    })
+
+    $('#checkall').on('click', function() {
+        $('#course_container').children().find('input[type="checkbox"]').prop('checked', true);
+        $('#approve_selected').prop('disabled', false)
+    });
+    $('#uncheckall').on('click', function() {
+        $('#course_container').children().find('input[type="checkbox"]').prop('checked', false);
+        $('#approve_selected').prop('disabled', true)
+    });
+</script>
+@endsection

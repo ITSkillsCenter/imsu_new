@@ -1,0 +1,864 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+        body,
+        html {
+            margin: 0px;
+            padding: 0px;
+            -webkit-font-smoothing: antialiased;
+            text-size-adjust: none;
+            width: 100% !important;
+        }
+
+        #outlook a {
+            padding: 0px;
+        }
+
+        .ExternalClass,
+        .ExternalClass p,
+        .ExternalClass span,
+        .ExternalClass font,
+        .ExternalClass td,
+        .ExternalClass div {
+            line-height: 100%;
+        }
+
+        .ExternalClass {
+            width: 100%;
+        }
+
+        @media only screen and (max-width: 480px) {
+            table tr td table.edsocialfollowcontainer {
+                width: auto !important;
+            }
+
+            table,
+            table tr td,
+            table td {
+                width: 100% !important;
+            }
+
+            img {
+                width: inherit;
+            }
+
+            .layer_2 {
+                max-width: 100% !important;
+            }
+
+            .edsocialfollowcontainer table {
+                max-width: 25% !important;
+            }
+
+            .edsocialfollowcontainer table td {
+                padding: 10px !important;
+            }
+        }
+    </style>
+
+    @if($ticket_style == 1)
+    <style>
+        .cardWrap {
+            width: 27em;
+            margin: 2em auto;
+            color: #fff;
+            font-family: sans-serif;
+        }
+
+        .card {
+            background: linear-gradient(to bottom, #e84c3d 0%, #e84c3d 26%, #ecedef 26%, #ecedef 100%);
+            height: 13em;
+            float: left;
+            position: relative;
+            padding: 1em;
+            margin-top: 100px;
+        }
+
+        .cardLeft {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+            width: 16em;
+            background-color: white;
+        }
+
+        .cardRight {
+            width: 6.5em;
+            border-left: 0.18em dashed #fff;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+            background-color: white;
+        }
+
+        .cardRight:before,
+        .cardRight:after {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 0.9em;
+            height: 0.9em;
+            background: #fff;
+            border-radius: 50%;
+            left: -0.5em;
+        }
+
+        .cardRight:before {
+            top: -0.4em;
+        }
+
+        .cardRight:after {
+            bottom: -0.4em;
+        }
+
+        h1 {
+            font-size: 1.1em;
+            margin-top: 0;
+        }
+
+        h1 span {
+            font-weight: normal;
+        }
+
+        .title,
+        .name,
+        .seat,
+        .time {
+            text-transform: uppercase;
+            font-weight: normal;
+        }
+
+        .title h2,
+        .name h2,
+        .seat h2,
+        .time h2 {
+            font-size: 0.9em;
+            color: #525252;
+            margin: 0;
+        }
+
+        .title span,
+        .name span,
+        .seat span,
+        .time span {
+            font-size: 0.7em;
+            color: #a2aeae;
+        }
+
+        .title {
+            margin: 2em 0 0 0;
+        }
+
+        .name,
+        .seat {
+            margin: 0.7em 0 0 0;
+        }
+
+        .time {
+            margin: 0.7em 0 0 1em;
+        }
+
+        .seat,
+        .time {
+            float: left;
+        }
+
+        .eye {
+            position: relative;
+            width: 2em;
+            height: 1.5em;
+            background: #fff;
+            margin: 0 auto;
+            border-radius: 1em/0.6em;
+            z-index: 1;
+        }
+
+        .eye:before,
+        .eye:after {
+            content: "";
+            display: block;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .eye:before {
+            width: 1em;
+            height: 1em;
+            background: #e84c3d;
+            z-index: 2;
+            left: 8px;
+            top: 4px;
+        }
+
+        .eye:after {
+            width: 0.5em;
+            height: 0.5em;
+            background: #fff;
+            z-index: 3;
+            left: 12px;
+            top: 8px;
+        }
+
+        .number {
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .number h5 {
+            color: #e84c3d;
+            margin: 0.9em 0 0 0;
+            font-size: 1.5em;
+        }
+
+        .number span {
+            display: block;
+            color: #a2aeae;
+        }
+
+        .barcode {
+            height: 3em;
+            width: 100%;
+            margin-left: 0px;
+            margin-top: 10px;
+        }
+
+        .credentials {
+            display: block;
+            width: 100%;
+            margin-top: 300px;
+            text-align: center;
+        }
+    </style>
+    @endif
+
+    @if($ticket_style == 2)
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Oswald');
+
+        .fl-left {
+            float: left
+        }
+
+        .fl-right {
+            float: right
+        }
+
+        .container {
+            width: 90%;
+            margin: 50px auto;
+            padding: 10px;
+            background-color: #dadde6;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-weight: 900;
+            border-left: 10px solid #fec500;
+            padding-left: 10px;
+            margin-bottom: 30px
+        }
+
+        .card {
+            display: table-row;
+            width: 50%;
+            background-color: #fff;
+            color: #989898;
+            margin-bottom: 10px;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            border-radius: 4px;
+            position: relative
+        }
+
+        .card+.card {
+            margin-left: 2%
+        }
+
+        .date {
+            display: table-cell;
+            width: 25%;
+            position: relative;
+            text-align: center;
+            border-right: 2px dashed #dadde6
+        }
+
+        .date:before,
+        .date:after {
+            content: "";
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-color: #DADDE6;
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            z-index: 1;
+            border-radius: 50%
+        }
+
+        .date:after {
+            top: auto;
+            bottom: -15px
+        }
+
+        .date time {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%)
+        }
+
+        .date time span {
+            display: block
+        }
+
+        .date time span:first-child {
+            color: #2b2b2b;
+            font-weight: 600;
+            font-size: 250%
+        }
+
+        .date time span:last-child {
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-top: -10px
+        }
+
+        .card-cont {
+            display: table-cell;
+            width: 50%;
+            font-size: 85%;
+            padding: 10px 10px 30px 50px
+        }
+
+        .card-cont h3 {
+            color: #3C3C3C;
+            font-size: 130%
+        }
+
+
+        .card-cont>div {
+            display: table-row
+        }
+
+        .card-cont .even-date i,
+        .card-cont .even-info i,
+        .card-cont .even-date time,
+        .card-cont .even-info p {
+            display: table-cell
+        }
+
+        .card-cont .even-date i,
+        .card-cont .even-info i {
+            padding: 5% 5% 0 0
+        }
+
+        .card-cont .even-info p {
+            padding: 30px 50px 0 0
+        }
+
+        .card-cont .even-date time span {
+            display: block
+        }
+
+        .card-cont a {
+            display: block;
+            text-decoration: none;
+            width: 80px;
+            height: 30px;
+            background-color: #D8DDE0;
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 2px;
+            position: absolute;
+            right: 10px;
+            bottom: 10px
+        }
+
+        .row:last-child .card:first-child .card-cont a {
+            background-color: #037FDD
+        }
+
+        .row:last-child .card:last-child .card-cont a {
+            background-color: #F8504C
+        }
+
+        @media screen and (max-width: 860px) {
+            .card {
+                display: block;
+                float: none;
+                width: 100%;
+                margin-bottom: 10px
+            }
+
+            .card+.card {
+                margin-left: 0
+            }
+
+            .card-cont .even-date,
+            .card-cont .even-info {
+                font-size: 75%
+            }
+        }
+
+        .credentials {
+            display: block;
+            width: 100%;
+            margin-top: 300px;
+            text-align: center;
+        }
+    </style>
+    @endif
+    @if($ticket_style == 3)
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Arvo);
+
+        .box {
+            margin: 0px auto;
+            margin-top: 80px;
+            background: #FFF9EE url(https://subtlepatterns.com/patterns/lightpaperfibers.png);
+            color: #333;
+            text-transform: uppercase;
+            padding: 8px;
+            width: 300px;
+            font-weight: bold;
+            text-shadow: 0px 1px 0px #fff;
+            font-family: "arvo";
+            font-size: 11px;
+            border: 1px solid black;
+            border-left: 1px dashed rgba(51, 51, 51, 0.5);
+            -webkit-filter: drop-shadow(0 5px 18px #000);
+        }
+
+        .inner {
+            border: 2px dashed rgba(51, 51, 51, 0.5);
+            min-height: 100px;
+            padding: 8px;
+
+        }
+
+        .inner h1 {
+            padding: 5px 0px;
+            margin: 0px;
+            font-size: 18px;
+            border-bottom: 1px solid rgba(51, 51, 51, 0.3);
+            text-align: center;
+        }
+
+        .info {
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        .info .wp {
+            float: left;
+            padding: 5px;
+            width: 83px;
+            text-align: center;
+        }
+
+        .info .wp h2 {
+            margin: 8px;
+        }
+
+        .total {
+            border-top: 1px solid rgba(51, 51, 51, 0.3);
+        }
+
+        .clearfix:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .total h2 {
+            padding-left: 115px;
+            margin: 10px 0px;
+            font-size: 15px;
+        }
+
+        .total p {
+            float: right;
+            margin: 0px;
+            margin-right: 15px;
+        }
+
+        a.buy {
+            color: #fff;
+            text-align: center;
+            font-size: 25px;
+            text-decoration: none;
+            display: block;
+            width: 200px;
+            margin: 0px auto;
+            margin-top: 50px;
+            padding: 5px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .credentials {
+            display: block;
+            width: 100%;
+            margin-top: 300px;
+            text-align: center;
+        }
+    </style>
+    @endif
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
+</head>
+
+<body style="padding:0; margin: 0;background: #2b2b2b">
+    <table style="height: 100%; width: 100%; background-color: #2b2b2b;" align="center">
+        <tbody>
+            <tr>
+                <td valign="top" id="dbody" data-version="2.31" style="width: 100%; height: 100%; padding-top: 30px; padding-bottom: 30px; background-color: #2b2b2b;">
+                    <!--[if (gte mso 9)|(IE)]><table align="center" style="max-width:600px" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td valign="top"><![endif]-->
+                    <table class="layer_1" align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 600px; box-sizing: border-box; width: 100%; margin: 0px auto;">
+                        <tbody>
+                            <tr>
+                                <td class="drow" valign="top" align="center" style="background-color: #2b2b2b; box-sizing: border-box; font-size: 0px; text-align: center;">
+                                    <!--[if (gte mso 9)|(IE)]><table width="100%" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td valign="top"><![endif]-->
+                                    <div class="layer_2" style="max-width: 600px; display: inline-block; vertical-align: top; width: 100%;">
+                                        <table border="0" cellspacing="0" cellpadding="0" class="edcontent" style="border-collapse: collapse;width:100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td valign="top" class="edimg" style="padding: 10px; box-sizing: border-box; text-align: center;">
+                                                        @if($event_logo !== null)
+                                                        <img src="{{env('MY_HOST_SERVER').env('STORAGE_PATH')}}event_logos/{{$event_logo}}" alt="Image" width="149" style="border-width: 0px; border-style: none; max-width: 149px; width: 100%;">
+                                                        @else
+                                                        <img src="{{env('MY_HOST_SERVER').env('STORAGE_PATH')}}assets/image/app_logo_coloured.png'" alt="Image" width="149" style="border-width: 0px; border-style: none; max-width: 149px; width: 100%;">
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <br>
+                            </tr>
+                            
+                            <tr>
+                                <td class="drow" valign="top" align="center" style="background-color: #2b2b2b; box-sizing: border-box; font-size: 0px; text-align: center;">
+                                    <!--[if (gte mso 9)|(IE)]><table width="100%" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td valign="top"><![endif]-->
+                                    <div class="layer_2" style="max-width: 600px; display: inline-block; vertical-align: top; width: 100%;">
+                                        <table border="0" cellspacing="0" class="edcontent" style="border-collapse: collapse;width:100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td valign="top" class="edtext" style="padding: 20px; text-align: left; color: white; font-size: 14px; font-family: Helvetica, Arial, sans-serif; word-break: break-word; direction: ltr; box-sizing: border-box;">
+                                                        <br>
+                                                        @if($ticket_email !== null)
+                                                        <div style="margin: 0px; padding: 0px;">{!! $ticket_email !!}</div>
+                                                        @else
+                                                        <br>
+                                                        <p style="margin: 0px; padding: 0px;">Hi,</p>
+                                                        <br>
+                                                        <p style="margin: 0px; padding: 0px;">You have booked one ticket for {{$event_name}}.</p>
+                                                        <!-- <p style="margin: 0px; padding: 0px;">{{$event_description}}.</p> -->
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+                                </td>
+                            </tr>
+                           
+                            
+                            <tr>
+                                <td class="drow" valign="top" align="center" style="background-color: #2b2b2b; box-sizing: border-box; font-size: 0px; text-align: center;">
+                                    <!--[if (gte mso 9)|(IE)]><table width="100%" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td valign="top"><![endif]-->
+                                    <div class="layer_2" style="max-width: 600px; display: inline-block; vertical-align: top; width: 100%;">
+                                        <table border="0" cellspacing="0" cellpadding="0" class="edcontent" style="border-collapse: collapse;width:100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td valign="top" class="emptycell" style="padding: 20px;">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+                                </td>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td class="drow" valign="top" align="center" style="background-color: #2b2b2b; box-sizing: border-box; font-size: 0px; text-align: center;">
+                                    <!--[if (gte mso 9)|(IE)]><table width="100%" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td valign="top"><![endif]-->
+                                    @if($platform == null)
+                                    <div class="layer_2" style="max-width: 300px; display: inline-block; vertical-align: top; width: 100%;">
+                                        <table border="0" cellspacing="0" class="edcontent" style="border-collapse: collapse;width:100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td valign="top" class="edimg" style="padding: 20px; box-sizing: border-box; text-align: center;">
+                                                        <img src="{{env('MY_HOST_SERVER').env('STORAGE_PATH')}}qrcodes/{{$qrcode}}" alt="Image" width="160" style="border: 1px solid white; max-width: 160px; width: 100%;">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    @endif
+                                    <!--[if (gte mso 9)|(IE)]></td><td valign="top"><![endif]-->
+                                    <div class="layer_2" style="max-width: 300px; display: inline-block; vertical-align: top; width: 100%;">
+                                        <table border="0" cellspacing="0" class="edcontent" style="border-collapse: collapse;width:100%">
+                                            <tbody>
+                                                <tr>
+                                                    @php
+                                                        $date=date_create($event_startdate);
+                                                    @endphp
+                                                    <td valign="top" class="edtext" style="padding: 20px; text-align: left; color: white; font-size: 14px; font-family: Helvetica, Arial, sans-serif; word-break: break-word; direction: ltr; box-sizing: border-box;">
+                                                        <p style="margin: 0px; padding: 0px;">Event Name: {{$event_name}}.&nbsp;
+                                                        </p>
+                                                        <p style="margin: 0px; padding: 0px;">
+                                                            <br>
+                                                        </p>
+                                                        <p style="margin: 0px; padding: 0px;">Date & Time: {{date_format($date,"jS F, Y")}} &nbsp; {{$timezone !== null? $timezone : ''}}
+                                                        </p>
+                                                        <p style="margin: 0px; padding: 0px;">
+                                                            <br>
+                                                        </p>
+                                                        @if($ticket_free !== 'Free')
+                                                        <p style="margin: 0px; padding: 0px;">Price: ₦ {{($ticket_free == 'no')? number_format($ticket_amount, 2) : 'Free'}} &nbsp;
+                                                        </p>
+                                                        @endif
+                                                        <p style="margin: 0px; padding: 0px;">
+                                                            <br>
+                                                        </p>
+                                                        <p style="margin: 0px; padding: 0px;">Attendee ID: {{$attendee_id}} &nbsp;
+                                                        </p>
+                                                        @if($platform == 'teps')
+                                                        <p style="margin: 0px; padding: 0px;">
+                                                            <br>
+                                                        </p>
+                                                        <p style="margin: 0px; padding: 0px;">Virtual ID: {{$virtual_id}}</p>
+                                                        <p style="margin: 0px; padding: 0px;">
+                                                            <br>
+                                                        </p>
+                                                        <p style="margin: 0px; padding: 0px;">Password: {{$password}}</p>
+                                                        <p style="margin: 0px; padding: 0px;">
+                                                            <br>
+                                                        </p>
+                                                        <p style="margin: 0px; padding: 0px;">Link: {{env('HOST_SERVERSS')}}/virtual_event/{{base64_encode($event_id)}}/{{base64_encode($virtual_id)}}/?id={{$attendee_id}}</p>
+                                                       
+                                                        @endif
+                                                        @if($platform == 'zoom' || $platform == 'external')
+                                                        <!-- <p style="margin: 0px; padding: 0px;">Attendee ID: {{$attendee_id}}</p> -->
+                                                        <p style="margin: 0px; padding: 0px;">Link: <a style="color: #b3c8f1;" href="{{$external_link}}">Click here to attend event</a></p>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td class="drow" valign="top" align="center" style="background-color: #2b2b2b; box-sizing: border-box; font-size: 0px; text-align: center;">
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr>
+                               <br>
+                            </tr>
+                            @if($ticket_style == 1)
+                            <tr>
+                                <td class="drow" valign="top" align="center" style="background-color: #2b2b2b; box-sizing: border-box; font-size: 0px; text-align: center;">
+                                    <div class="layer_2" style="max-width: 600px; display: inline-block; vertical-align: top; width: 100%;">
+                                        <table border="0" cellspacing="0" class="edcontent" style="border-collapse: collapse;width:100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td valign="top" class="edtext" style="padding: 20px; text-align: left; color: white; font-size: 14px; font-family: Helvetica, Arial, sans-serif; word-break: break-word; direction: ltr; box-sizing: border-box;">
+                                                        <div class="layer_2" style="max-width: 600px; display: inline-block; vertical-align: top; width: 100%;">
+                                                            <div class="cardWrap">
+                                                                <div class="card cardLeft">
+                                                                    <h1>TEPS</h1>
+                                                                    <div class="title">
+                                                                        <h2>Event Name</h2>
+                                                                        <span>{{$event_name}}</span>
+                                                                    </div>
+                                                                    <div class="name">
+                                                                        <h2>1</h2>
+                                                                        <span>ticket</span>
+                                                                    </div>
+                                                                    @php
+                                                                    $date=date_create($event_startdate);
+                                                                    @endphp
+                                                                    <div class="name">
+                                                                        <h2>{{date_format($date,"jS F, Y")}}</h2>
+                                                                        <span>date</span>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="card cardRight">
+                                                                    <div class="eye"></div>
+                                                                    <div class="number">
+                                                                        <h5>₦ {{$ticket_amount}}</h5>
+                                                                        <span>price</span>
+                                                                    </div>
+                                                                    <div class="barcode">
+                                                                        <img src="{{env('STORAGE_PATH')}}qrcodes/{{$qrcode}}.png" alt="" height="80" width="100">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endif
+                            @if($ticket_style == 2)
+                            <tr>
+                                <td class="drow" valign="top" align="center" style="background-color: #2b2b2b; box-sizing: border-box; font-size: 0px; text-align: center;">
+                                    <div class="layer_2" style="max-width: 600px; display: inline-block; vertical-align: top; width: 100%;">
+                                        <table border="0" cellspacing="0" class="edcontent" style="border-collapse: collapse;width:100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td valign="top" class="edtext" style="padding: 20px; text-align: left; color: white; font-size: 14px; font-family: Helvetica, Arial, sans-serif; word-break: break-word; direction: ltr; box-sizing: border-box;">
+                                                        <section class="body">
+                                                            <div class="container">
+                                                                <h1>Events</h1>
+                                                                <div class="row" style="display: flex;">
+                                                                    <article class="card fl-left">
+                                                                        <section class="date">
+                                                                            <time datetime="23th feb">
+                                                                                @php
+                                                                                $date=date_create($event_startdate);
+                                                                                @endphp
+                                                                                <span>{{date_format($date,"d")}}</span><span>{{date_format($date,"M")}}</span>
+                                                                            </time>
+                                                                        </section>
+                                                                        <!-- <div style="display: flex;"> -->
+                                                                        <section class="card-cont">
+                                                                            <!-- <small>dj khaled</small> -->
+                                                                            <h3>{{$event_name}}</h3>
+                                                                            <div class="even-date">
+                                                                                <i class="fa fa-calendar"></i>
+                                                                                <time>
+                                                                                    <span>{{date_format($date,"jS F, Y")}}</span>
+                                                                                    <!-- <span>08:55pm to 12:00 am</span> -->
+                                                                                </time>
+                                                                            </div>
+                                                                            <p>{{$event_location}}
+                                                                            <div class="even-info">
+                                                                                <i class="fa fa-map-marker"></i>
+                                                                            </div>
+                                                                            <div class="even-info">
+                                                                                <i class="fa fa-money"></i>
+                                                                                <p>
+                                                                                    ₦ {{($ticket_free == 'no')? number_format($ticket_amount, 2) : 'Free'}}
+                                                                                </p>
+                                                                            </div>
+                                                                            <!-- <a>Ticket</a> -->
+                                                                        </section>
+                                                                        <!-- </div> -->
+
+                                                                    </article>
+                                                                    <section class="card fl-right">
+                                                                        <br>
+                                                                        <img src="{{env('MY_HOST_SERVER').env('STORAGE_PATH')}}qrcodes/{{$qrcode}}" alt="" height="100" width="250">
+                                                                    </section>
+                                                                </div>
+                                                            </div>
+
+                                                        </section>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endif
+
+                            @if($ticket_style == 3)
+                            <tr>
+                                <td class="drow" valign="top" align="center" style="background-color: #2b2b2b; box-sizing: border-box; font-size: 0px; text-align: center;">
+                                    <div class="layer_2" style="max-width: 600px; display: inline-block; vertical-align: top; width: 100%;">
+                                        <table border="0" cellspacing="0" class="edcontent" style="border-collapse: collapse;width:100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td valign="top" class="edtext" style="padding: 20px; text-align: left; color: white; font-size: 14px; font-family: Helvetica, Arial, sans-serif; word-break: break-word; direction: ltr; box-sizing: border-box;">
+                                                        <div class="box">
+                                                            <div class='inner'>
+                                                                <h1>{{$event_name}}</h1>
+                                                                <div class='info clearfix'>
+                                                                    <div class='wp'>Tickets<h2>1</h2>
+                                                                    </div>
+                                                                    <div class='wp'>
+                                                                        <h2></h2>
+                                                                    </div>
+                                                                    <div class='wp'>Type<h5>{{$ticket_name}}</h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="info clearfix" style="display: flex;">
+                                                                    <img src="{{env('MY_HOST_SERVER').env('STORAGE_PATH')}}qrcodes/{{$qrcode}}" alt="" height="100" width="100" style="margin-left: -38px;">
+                                                                    <div>
+                                                                        <p>Location: {{$event_location}}</p>
+                                                                        @php
+                                                                        $date=date_create($event_startdate);
+                                                                        @endphp
+                                                                        <p>Date: {{date_format($date,"jS F, Y")}}</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class='total clearfix'>
+                                                                    <h2>Total : <p>₦ {{($ticket_free == 'no')? number_format($ticket_amount, 2) : 'Free'}}</p>
+                                                                    </h2>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endif
+                            <!-- <tr>
+                                <td class="drow" valign="top" align="center" style="background-color: #2b2b2b; box-sizing: border-box; font-size: 0px; text-align: center;">
+                                    <div class="layer_2" style="max-width: 600px; display: inline-block; vertical-align: top; width: 100%;">
+                                        <table border="0" cellspacing="0" class="edcontent" style="border-collapse: collapse;width:100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td valign="top" class="edtext" style="padding: 20px; text-align: left; color: white; font-size: 14px; font-family: Helvetica, Arial, sans-serif; word-break: break-word; direction: ltr; box-sizing: border-box;">
+                                                        <p style="text-align: center; font-size: 10px; margin: 0px; padding: 0px;">If you no longer wish to receive mail from us, you can
+                                                            <a href="{unsubscribe}" style="background-color: initial; font-size: 10px; color: rgb(255, 255, 255); font-family: Helvetica, Arial, sans-serif; text-decoration: none;">Unsubscribe</a>
+                                                            <br>{accountaddress}
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
