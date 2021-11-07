@@ -177,7 +177,7 @@ return [
         Shipu\MuthoFun\MuthoFunServiceProvider::class,
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
         OwenIt\Auditing\AuditingServiceProvider::class,
-        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+        // SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
         // Barryvdh\Debugbar\ServiceProvider::class,
         // Ichtrojan\Otp\OtpServiceProvider::class,
@@ -252,7 +252,7 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
         'MUTHOFUN'   =>  Shipu\MuthoFun\Facades\MuthoFun::class,
-        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        // 'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Helper' => App\Helper\Helper::class,
         // 'Otp' => Ichtrojan\Otp\Otp::class
