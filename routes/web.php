@@ -485,6 +485,7 @@ Route::group(['namespace' => 'student', 'middleware' => 'student'], function () 
   Route::post('/update_payment_details', 'PaymentController@update_payment_details');
   Route::post('/save_payment_details', 'PaymentController@save_payment_details');
   Route::post('/generate-invoice', 'PaymentController@generate_invoice');
+  Route::get('/cancel-invoice/{inv}', 'PaymentController@cancel_invoice');
 
 
   Route::get('/payment-total', 'PaymentController@totalPaid');

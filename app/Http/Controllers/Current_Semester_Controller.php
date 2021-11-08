@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Current_Semester_Running;
+use App\Semester;
 
 class Current_Semester_Controller extends Controller
 {
@@ -14,9 +15,10 @@ class Current_Semester_Controller extends Controller
      */
     public function index()
     {
-        $semesters = Current_Semester_Running::latest()->get();
+        $sessions = Current_Semester_Running::latest()->get();
+        $semesters = Semester::all();
         // return $semesters;
-        return view('current_semester_running.index', compact('semesters'));
+        return view('current_semester_running.index', compact('semesters', 'sessions'));
     }
 
     /**

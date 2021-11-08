@@ -21,6 +21,9 @@
                 </a>
                 <button id="check_pay_status" class="btn btn-info">Check Payment Status</button>
                 @endif
+                @if($fee->reason == 'generated')
+                <a href="/cancel-invoice/{{base64_encode($fee->id)}}" class="btn btn-danger">Cancel</a>
+                @endif
             </div>
         </div>
         <div class="page-divider"></div>

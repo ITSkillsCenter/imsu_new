@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-md-5">
                             <div class="form-group">
-                                <label>{{ __('Revenue Heads') }}</label>
+                                <label>{{ __('Fees') }}</label>
                                 <select class="form-control" name="revenue_heads" required>
                                     <option value="">{{ __('Select one') }}</option>
                                     @if(count($fee_lists) > 0)
@@ -38,14 +38,24 @@
                             </div>
                         </div>
 
-                        <div div class="col-md-3">
+                        <div class="col-md-3">
                             <div class="form-group">
-                                <label style="width: 100%;">{{ __('.') }}</label>
-                                <br>
-                                <button type="submit" class="btn btn-md btn-primary" onclick="return confirm('You are about to generate an invoice, are you sure? This action is irreversible')"><i class="fa fa-check"></i> Generate Invoice </button>
+                                <label>{{ __('Semester') }}</label>
+                                <select class="form-control" name="semester" required>
+                                    <option>{{ __('Select one') }}</option>
+                                    @if(count($semesters) > 0)
+                                    @foreach($semesters as $f)
+                                    <option value="{{$f->id}}">{{$f->name}}</option>
+                                    @endforeach
+                                    @endif
+                                </select>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        
+                        <div div class="col-md-3">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-md btn-primary"><i class="fa fa-check"></i> Generate Invoice </button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -71,7 +81,7 @@
                                 <th>Session</th>
                                 <th>Fee Name</th>
                                 <th>Amount</th>
-                                <th>Discount (reason)</th>
+                                <th>Discount (Comment)</th>
                                 <th>Status</th>
                                 <th>Due</th>
                                 <th>Pay</th>
@@ -84,7 +94,7 @@
                                 <td>{{ $item->title }}</td>
                                 <td>{{ $item->fee_name }}</td>
                                 <td>₦{{ number_format($item->amount) }}</td>
-                                <td> {{ $item->discount ?? 'None' }} {{ $item->discount? '%' : '' }} <small>{{$item->reason ? ucwords($item->reason) : ''}}</small> </td>
+                                <td> {{ $item->discount ?? 'None' }} {{ $item->discount? '%' : '' }} <br> <small>{{$item->reason ? ucwords($item->reason) : ''}}</small> </td>
                                 <td>
                                     {{ $item->status }}
                                     {{ $item->receipt !== null && $item-> status == 'unpaid' ? '(Awaiting Approval)' : ''}}

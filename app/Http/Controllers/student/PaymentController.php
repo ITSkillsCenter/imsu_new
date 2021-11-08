@@ -14,6 +14,7 @@ use App\Helper\Helper;
 use App\IctFee;
 use App\Mail\InvoiceMail;
 use App\PaymentNotification;
+use App\Semester;
 use App\StudentInfo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -54,9 +55,10 @@ class PaymentController extends Controller
             ->where(['student_id' => $std_id->id])->get();
         $sid = Session::get('student_id');
         $sessions = Current_Semester_Running::all();
+        $semesters = Semester::all();
         $fee_lists = FeeList::all();
         //   dd($sessions);
-        return view('admin_student.payment.index', compact('sessions', 'fees', 'fee_lists'));
+        return view('admin_student.payment.index', compact('sessions', 'fees', 'fee_lists', 'semesters'));
     }
 
     public function payment_notification(Request $request){
@@ -72,17 +74,24 @@ class PaymentController extends Controller
         $data['fee_id'] = $fee->id;
         $data['student_id'] = $student_data->id;
         $data['session_id'] = $session->id;
+        $data['semester'] = $request->semester;
         $data['amount'] = $fee->amount;
         $data['is_applicable_discount'] = 'no';
         $data['department_id'] = $student_data->dept_id;
         $data['status'] = 'unpaid';
+        $data['reason'] = 'generated';
 
         $create_inv = FeeHistory::create($data);
         if($create_inv){
-            return redirect('/student-payment/pay/'.base64_encode($create_inv->id));
+            return redirect('/student-payment/view/'.base64_encode($create_inv->id));
         }
+    }
 
-        
+    public function cancel_invoice(Request $request, $inv){
+        $invoice = FeeHistory::find(base64_decode($inv))->delete();
+        if($invoice){
+            return redirect('/student-payment');
+        }
     }
 
     public function save_payment_page(Request $request, $invoice_id){
@@ -211,6 +220,7 @@ class PaymentController extends Controller
         $details['pms_id'] = $request->invoice_no;
         $details['status'] = $request->status;
         $details['item'] = $fee->fee_name;
+        $details['payment_channel'] = 'remita';
         // dd($request->all(), $details);
 
         $cr = ApplicationFee::create($details);
@@ -226,12 +236,70 @@ class PaymentController extends Controller
         
     }
 
+    public function save_application_fee_interswitch(Request $request){
+        $std = Applicant::where(['application_number' => $request->matric_no])->first();
+        $fee = FeeList::where(['fee_name' => 'PUTME Fee'])->first();
+        $details['amount'] = $fee->amount;
+        $details['name'] = $std->full_name;
+        $details['email'] = $std->email;
+        $details['application_number'] = $request->matric_no;
+        $details['phone'] = $std->phone_number;
+        $details['reference_id'] = $request->reference;
+        $details['pms_id'] = $request->invoice_no;
+        $details['status'] = $request->status;
+        $details['item'] = $fee->fee_name;
+        $details['payment_channel'] = 'interswitch';
+        // dd($request->all(), $details);
+
+        $cr = ApplicationFee::create($details);
+        // dd($details, $cr);
+        if($cr){
+            $std->status = 'paid';
+            $std->save();
+        }
+       
+        Mail::to(urldecode($std->email))->send(new InvoiceMail($details));
+        Session::put('jamb_reg', $request->matric_no);
+        return redirect('/application-step3/'.$request->matric_no);
+    }
+
+
+
+    // public function save_application_fee_interswitch(Request $request)
+    // {
+    //     // dd($request->all());
+    //     $std = Applicant::where(['application_number' => $request->datastring['user_id']])->first();
+    //     $fee = FeeList::where(['fee_name' => 'PUTME Fee'])->first();
+    //     $details['amount'] = $fee->amount;
+    //     $details['name'] = $std->full_name;
+    //     $details['email'] = $std->email;
+    //     $details['application_number'] = $request->datastring['user_id'];
+    //     $details['phone'] = $std->phone_number;
+    //     $details['reference_id'] = $request->datastring['reference_id'];
+    //     $details['pms_id'] = 11;
+    //     $details['status'] = 1;
+    //     $details['item'] = $fee->fee_name;
+    //     $details['payment_channel'] = 'interswitch';
+
+    //     $cr = ApplicationFee::create($details);
+    //     if($cr){
+    //         $std->status = 'paid';
+    //         $std->save();
+    //     }
+    //     Mail::to(urldecode($std->email))->send(new InvoiceMail($details));
+    //     $resp['body'] = 'success';
+    //     $resp['status'] = true;
+    //     return $resp;
+        
+    // }
+
     public function save_acceptance_fee(Request $request)
     {
         $data['reference_id'] = $request->reference;
         $data['student_id'] = $request->matric_no;
         $data['amount'] = $request->amount;
         $data['session_id'] = Helper::current_semester();
+        $data['paid_via'] = 'remita';
         $data['status'] = 'paid';
         IctFee::create($data);
 
@@ -250,36 +318,37 @@ class PaymentController extends Controller
         
     }
 
-    public function save_application_fee_interswitch(Request $request)
+    public function save_acceptance_fee_interswitch(Request $request)
     {
-        // dd($request->all());
-        $std = Applicant::where(['application_number' => $request->datastring['user_id']])->first();
-        $fee = FeeList::where(['fee_name' => 'PUTME Fee'])->first();
-        $details['amount'] = $fee->amount;
-        $details['name'] = $std->full_name;
-        $details['email'] = $std->email;
-        $details['application_number'] = $request->datastring['user_id'];
-        $details['phone'] = $std->phone_number;
-        $details['reference_id'] = $request->datastring['reference_id'];
-        $details['pms_id'] = 11;
-        $details['status'] = 1;
-        $details['item'] = $fee->fee_name;
-        $cr = ApplicationFee::create($details);
-        if($cr){
-            $std->status = 'paid';
-            $std->save();
-        }
-        Mail::to(urldecode($std->email))->send(new InvoiceMail($details));
-        $resp['body'] = 'success';
-        $resp['status'] = true;
-        return $resp;
+        $data['reference_id'] = $request->reference;
+        $data['student_id'] = $request->matric_no;
+        $data['amount'] = $request->amount;
+        $data['session_id'] = Helper::current_semester();
+        $data['paid_via'] = 'interswitch';
+        $data['status'] = 'paid';
+        IctFee::create($data);
+
+        $std = StudentInfo::where(['registration_number' => $request->matric_no])->first();
+        $details['amount'] = $request->amount;
+        $details['name'] = $std->first_name . ' ' . $std->last_name;
+        $details['email'] = $std->Email_Address;
+        $details['matric'] = $std->matric_number;
+        $details['phone'] = $std->Student_Mobile_Number;
+        $details['reference_id'] = $request->reference;
+        $details['item'] = 'Acceptance Fee';
+        $std->Payment_status = 'paid';
+        $std->save();
+        Mail::to(urldecode($std->Email_Address))->send(new InvoiceMail($details));
+        return redirect('/registration-steps');
         
     }
+
+    
 
     public function view_invoice(Request $request, $invoice_id)
     {
         $invoice_id = base64_decode($invoice_id);
-        $fee = FeeHistory::select('title', 'fee_id', 'fee_name', 'fee_histories.amount', 'fee_histories.id', 'fee_histories.reference_id', 'student_id', 'session_id', 'is_applicable_discount', 'discount', 'fee_histories.status', 'due_date', 'fee_histories.created_at')
+        $fee = FeeHistory::select('title', 'fee_id', 'fee_name', 'fee_histories.amount','fee_histories.reason' , 'fee_histories.id', 'fee_histories.reference_id', 'student_id', 'session_id', 'is_applicable_discount', 'discount', 'fee_histories.status', 'due_date', 'fee_histories.created_at')
             ->join('fee_lists', 'fee_id', '=', 'fee_lists.id')
             ->join('current__semester__runnings', 'session_id', '=', 'current__semester__runnings.id')
             ->where(['fee_histories.id' => $invoice_id])->first();

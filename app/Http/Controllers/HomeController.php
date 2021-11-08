@@ -262,6 +262,10 @@ class HomeController extends Controller
 			}
 
 			// dd($acceptance_fees, $transactions_overview);
+			$remita1 = FeeHistory::where(['status' => 'paid', 'payment_channel' => 'remita'])->get()->sum('amount');
+			$remita2 = FeeHistory::where(['status' => 'paid', 'payment_channel' => Null])->get()->sum('amount');
+			$remita = $remita1 + $remita2;
+			$interswitch = FeeHistory::where(['status' => 'paid', 'payment_channel' => 'interswitch'])->get()->sum('amount');
 
 			$departments = Department::count();
 			$faculties = DB::table('faculties')->select('id')->distinct()->count();
@@ -305,7 +309,7 @@ class HomeController extends Controller
 			$lecturer_course_count = $lecturer_course->count();
 			return view('dashboard-lecturer', compact('putme','revenue', 'expected', 'deficit', 'faculties', 'departments', 's', 'r', 'rib', 'g', 'male', 'female', 'acceptance_total', 'programs', 'db_students', 'student_count', 'created_students', 'registered_students', 'paid_students', 'transactions_overview', 'showing', 'acceptance_fees', 'lecturer_course_count'));
 		} else {
-			return view('dashboard', compact('putme','revenue', 'expected', 'deficit', 'faculties', 'departments', 's', 'r', 'rib', 'g', 'male', 'female', 'acceptance_total', 'programs', 'db_students', 'created_students', 'registered_students', 'paid_students', 'transactions_overview', 'showing', 'acceptance_fees'));
+			return view('dashboard', compact('interswitch' ,'remita','putme','revenue', 'expected', 'deficit', 'faculties', 'departments', 's', 'r', 'rib', 'g', 'male', 'female', 'acceptance_total', 'programs', 'db_students', 'created_students', 'registered_students', 'paid_students', 'transactions_overview', 'showing', 'acceptance_fees'));
 		}
 		//dd($revenue, $expected, abs($deficit));
 
@@ -1040,7 +1044,8 @@ class HomeController extends Controller
 				// 	$userFound = true;
 				// 	break;  //exit the loop
 				// }
-				if ($request->matric_number ==  $oldUser[6] || $request->matric_number == $oldUser[7]) {
+				// if ($request->matric_number ==  $oldUser[6] || $request->matric_number == $oldUser[7]) {
+				if ($request->matric_number ==  $oldUser[6]) {
 					$userFound = true;
 					break;  //exit the loop
 				}
@@ -1084,7 +1089,7 @@ class HomeController extends Controller
 				return back()->with('error', 'Please contact technical support using the Chatbox or Visit the FAQ page');
 			}
 		} else {
-			return back()->with('error', 'Invalid Registration or Matric Number');
+			return back()->with('error', 'Invalid Registration Number');
 		}
 	}
 

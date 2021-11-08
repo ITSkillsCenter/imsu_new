@@ -67,6 +67,7 @@
 		<!-- End Sidebar -->
         <div class="main-panel">
             <div class="container">
+				@yield('crumbmenu')
                 <div class="page-inner">
                     @yield('content')
                 </div>

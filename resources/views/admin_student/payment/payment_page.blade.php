@@ -95,13 +95,14 @@
                                 <input type="hidden" name="client_ref" id="client_ref" value="{{$invoice_id}}">
                                 <br>
                                 <div class="col-md-12">
-                                    <button id="shr" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Remita</i></button>
-                                    <button id="interswitch" type="button" style="display: none;" class="btn btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button>
+                                    <button id="send" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Remita </i></button>
+                                    <!-- <button id="shr" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Remita</i></button> -->
+                                    <button id="interswitch" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button>
                                 </div>
-                                <div class="col-md-12 col-md-offset-3" id="remita" style="display: none;">
+                                <!-- <div class="col-md-12 col-md-offset-3" id="remita" style="display: none;">
                                     <button id="send" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Remita (Card)</i></button>
                                     <button id="bank" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Remita (Bank)</i></button>
-                                </div>
+                                </div> -->
                             </div>
                             </div>
                             
@@ -213,7 +214,7 @@
     });
 
     $('#interswitch').click(function(){
-        $('#shr').attr('disabled', 'true');
+        $('#send').attr('disabled', 'true');
         $(this).html('Loading...')
         $.ajaxSetup({
             headers: {

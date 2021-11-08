@@ -1,4 +1,7 @@
 @extends('admin_student.layout')
+@section('crumbmenu')
+@include('layouts.includes.masterBreadCrumb')
+@endsection
 @section('content')
 
 <div class="row">

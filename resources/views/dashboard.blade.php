@@ -7,11 +7,6 @@
 @section('content')
 <div class="p-5">
     <div class="row">
-
-
-
-
-
         <!-- <div class="col-12 col-sm-6 col-md-6">
                 <div class="card">
                     <div class="card-body">
@@ -428,6 +423,35 @@
                                 <td colspan="3" align="center">No Results Found!</td>
                             </tr>
                             @endif
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12">
+            <div class="card card-stats card-round">
+                <div class="card-body">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Payment Channel</th>
+                                <th>Total Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php $ct = 1; @endphp
+                            <tr>
+                                <td>{{$ct++}}</td>
+                                <td>Remita</td>
+                                <td>&#x20A6;{{number_format($remita,2)}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{$ct++}}</td>
+                                <td>Interswitch</td>
+                                <td>&#x20A6;{{number_format($interswitch,2)}}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

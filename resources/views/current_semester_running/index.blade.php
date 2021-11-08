@@ -9,13 +9,10 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h4 class="card-title">Semester List</h4>
+              <h4 class="card-title">Session List</h4>
             </div>
             <div class="card-header">
               <div class="d-flex align-items-center">
-                {{-- <h4 class="card-title">Create User</h4> --}}
-             
-
                 @permission('semester-create')
                     <button type="button" class="btn btn-primary ml-auto btn-sm" data-toggle="modal" data-target=".create-semester-modal">+ Add New</button>
                     @endpermission
@@ -40,12 +37,80 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach ($sessions as $session)
+                    <tr>
+                      <td>{{ $session->id }}</td>
+                      <td>{{ $session->title }}</td>
+                      <td>{{ $session->from }}</td>
+                      <td>{{ $session->to }}</td>
+                      <td>
+                        @if ($session->status == 'active')
+                            <span class="text-success">active</span>
+                        @else
+                            <span class="text-danger">inactive</span>
+                        @endif
+                      </td>
+                      <td>
+                       <div class="btn-group">
+                        @permission('events-read')
+                        <a href="{{ route('semester-event.index', $session->id) }}" class="btn btn-info btn-sm"><i class="fa fa-cog"></i> manage-events</a>
+                        @endpermission
+
+                        @permission('semester-edit')
+                        <a href="{{ route('current-semester-running.edit', $session->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> edit</a>
+                        @endpermission
+
+                        @permission('semester-delete')
+                        <a href="{{ route('current-semester-running.destroy', $session->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> delete</a>
+                        @endpermission
+                       </div>
+                      </td>
+                    </tr>
+                @endforeach
+              </tbody>
+            </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">Semester List</h4>
+            </div>
+            <div class="card-header">
+              <div class="d-flex align-items-center">
+                {{-- <h4 class="card-title">Create User</h4> --}}
+             
+
+                @permission('semester-create')
+                    <button type="button" class="btn btn-primary ml-auto btn-sm" data-toggle="modal" data-target=".create-semester-modal">+ Add New</button>
+                    @endpermission
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                @if (Session::has('msg'))
+                <div class="alert alert-success">
+                    {!! \Session::get('msg') !!}
+                </div>
+            @endif
+            <table id="datatable-semester" class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>Database ID</th>
+                  <th>Semester Title</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
                 @foreach ($semesters as $semester)
                     <tr>
                       <td>{{ $semester->id }}</td>
-                      <td>{{ $semester->title }}</td>
-                      <td>{{ $semester->from }}</td>
-                      <td>{{ $semester->to }}</td>
+                      <td>{{ $semester->name }}</td>
                       <td>
                         @if ($semester->status == 'active')
                             <span class="text-success">active</span>
@@ -53,7 +118,7 @@
                             <span class="text-danger">inactive</span>
                         @endif
                       </td>
-                      <td>
+                      <!-- <td>
                        <div class="btn-group">
                         @permission('events-read')
                         <a href="{{ route('semester-event.index', $semester->id) }}" class="btn btn-info btn-sm"><i class="fa fa-cog"></i> manage-events</a>
@@ -67,7 +132,7 @@
                         <a href="{{ route('current-semester-running.destroy', $semester->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> delete</a>
                         @endpermission
                        </div>
-                      </td>
+                      </td> -->
                     </tr>
                 @endforeach
               </tbody>

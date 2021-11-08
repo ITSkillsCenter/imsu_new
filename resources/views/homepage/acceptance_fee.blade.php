@@ -84,39 +84,9 @@
                                         <div class="" id="vn-info">
                                             <div class="row">
                                                 <div class="col-md-12 col-xs-12 text-center payment_btn" style="align-content: center;justify-content: center;" id="for_card">
-                                                    <!-- <input type="hidden" name="cust_id" value="{{session()->get('student_id')}}" id="cust_id">
-                                                    <input type="hidden" name='currency' value="566" />
-                                                    <input type="hidden" name='invoice_id' id="invoice_id" value="ICT-{{session()->get('student_id')}}" />
-                                                    <input type="hidden" name='txn_ref' id="tranRef" />
-                                                    <input type="hidden" name='merchant_code' />
-                                                    <input type="hidden" name='pay_item_id' />
-                                                    <input type="hidden" name='site_redirect_url' />
-                                                    <input type="hidden" name='display_mode' value='PAGE' />
-                                                    <button class="submit-button" type="button" style="border: 1px solid rgb(206, 206, 206);
-                                                        height: 40px;
-                                                        margin: 0;
-                                                        box-shadow: rgb(226, 224, 224) 0px 1px 3px;
-                                                        padding: 0 2em 0 0.8em;
-                                                        font-weight: 700;
-                                                        border-radius: 4px;
-                                                        color: rgb(0, 66, 95);
-                                                        font-size: 13px;
-                                                        text-transform: uppercase;
-                                                        background-color: #FFF;
-                                                        background-image: url(https://paymentgateway.interswitchgroup.com/paymentgateway/public/images/isw_paynow_btnbg.png);
-                                                        width: 260px;
-                                                        display: inline-block;
-                                                        box-sizing: border-box;
-                                                        cursor: pointer;
-                                                        font-family: 'proxima-nova', sans-serif, 'Helvetica';" onclick="checkout()">
-                                                        <img style="float:left;" class="isw-pay-logo" src="https://paymentgateway.interswitchgroup.com/paymentgateway/public/images/isw_paynow_btn.png" />
-                                                        <span style="margin-top: 10px;display: inline-block;margin-left: 8px;">
-                                                            Pay with Interswitch
-                                                        </span>
-                                                    </button> -->
-
-                                                    <div class="col-lg-4">
+                                                    <div class="col-lg-12">
                                                         <input type="hidden" name="callback_url" id="callback_url" value="https://imsu.edu.ng/api/save_acceptance_fee/{{base64_encode($fee->id)}}">
+                                                        <input type="hidden" name="callback_url" id="callback_url_interswitch" value="https://imsu.edu.ng/api/save_acceptance_fee_interswitch/{{base64_encode($fee->id)}}">
                                                         <input type="hidden" name="email" id="email" value="{{$std->Email_Address}}">
                                                         <input type="hidden" name="phone" id="phone" value="{{$std->phone_number}}">
                                                         <input type="hidden" name="first_name" id="first_name" value="{{$std->first_name}}">
@@ -126,9 +96,11 @@
                                                         <input type="hidden" name="channel" id="channel" value="card">
                                                         <input type="hidden" name="item_code" id="item_code" value="{{$fee->pms_id}}">
                                                         <input type="hidden" name="remita_service_id" id="remita_service_id" value="{{$fee->remita_service_id}}">
+                                                        <input type="hidden" name="interswitch_item_code" id="interswitch_item_code" value="{{$fee->interswitch_item_code}}">
                                                         <input type="hidden" name="client_ref" id="client_ref" value="{{$std->registration_number}}">
-                                                        <div class="col-md-6 col-md-offset-3">
+                                                        <div class="col-md-12">
                                                             <button id="send" type="button" class="btn btn-lg btn-success"><i class="fa fa-money"> Pay with remita</i></button>
+                                                            <button id="interswitch" type="button" class="btn btn-lg btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -201,6 +173,49 @@
             let status = resp.data.status
             let client_ref = resp.data.client_ref
 
+            window.location.href = resp.data.authorization_url
+
+        });
+    });
+
+    $('#interswitch').click(function(){
+        $('#send').attr('disabled', 'true');
+        $(this).html('Loading...')
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        var settings = {
+            "url": "https://imorms.ng/api/v1/college/cie/27?token=1GnUy2F50dCtcJsRcGccx5E6KrSp4fyQ9nhDoIC5UqRA898FHFBHF21213HFHRH2HHD8F&userId=1",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json",
+                "Cookie": "ci_session=9pmf6h66uun6pnuqqiinrtccq3q1jku9"
+            },
+            "data": JSON.stringify({
+                "first_name": $('#first_name').val(),
+                "last_name": $('#last_name').val(),
+                "email": $('#email').val(),
+                "phone": $('#phone').val(),
+                "matric_no": $('#matric_no').val(),
+                "amount": $('#amount').val(),
+                "channel": "card",
+                "callback_url": $('#callback_url_interswitch').val(),
+                "item_code": $('#interswitch_item_code').val(),
+                "remita_service_id": '',
+                "client_ref": $('#client_ref').val(),
+            }),
+        };
+
+        $.ajax(settings).done(function(response) {
+            console.log(JSON.parse(response));
+            let resp = JSON.parse(response)
+            let invoice_no = resp.data.invoice_no
+            let status = resp.data.status
+            let client_ref = resp.data.client_ref
             window.location.href = resp.data.authorization_url
 
         });

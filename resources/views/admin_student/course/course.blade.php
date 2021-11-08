@@ -102,8 +102,9 @@ Student || Course
             </select>
           </div>
         </div>
-        <div class="col-md-5"></div>
-        <div class="col-md-4">
+        <!-- <div class="col-md-5"></div> -->
+        <div class="col-md-12">
+          <div class="form-group text-center">
             <br>
             @if($pending_payments > 0 && $check_for_payment_history > 0)
               <p>You have pending payment(s)!</p>
@@ -112,8 +113,10 @@ Student || Course
             @else
               <button class="btn btn-success" type="submit">Proceed</button>
             @endif
+          </div>
+            
         </div>
-        <div class="col-md-4"></div>
+        <!-- <div class="col-md-4"></div> -->
         <br>
       </div>
       
