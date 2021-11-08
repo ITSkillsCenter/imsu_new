@@ -114,7 +114,7 @@
                                         </div>
                                         <div class="col-md-12 text-center">
                                             <button id="send" type="button" class="btn btn-lg btn-success"><i class="fa fa-money"> Pay with remita</i></button>
-                                            <button id="interswitch" style="display: none;"  type="button" class="btn btn-lg btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button>
+                                            <button id="interswitch" type="button" class="btn btn-lg btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button>
                                         </div>
                                     </form>
 
