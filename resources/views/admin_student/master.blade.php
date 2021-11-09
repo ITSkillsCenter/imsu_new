@@ -60,8 +60,9 @@
         <!-- End Sidebar -->
 
         <div class="main-panel">
+            
             <div class="container">
-
+                
                 @yield('content')
 
             </div>

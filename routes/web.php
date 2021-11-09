@@ -273,6 +273,14 @@ Route::group(['prefix' => '/admin', 'middleware' => ['2fa', 'auth']], function (
   Route::get('subject/{deparment}/{semester}', ['as' => 'subject.DeptAndSem', 'uses' => 'CourseController@subjetsByDptSem']);
   Route::get('subject/{deparment}', ['as' => 'subject.DeptAndSem', 'uses' => 'CourseController@subjetsByDpt']);
 
+  Route::post('/course/carry-over', 'CourseController@carryover')->name('course.carryover');
+  Route::get('/course/carry-over', 'CourseController@carryover')->name('course.carryover');
+
+  Route::get('course/view-carry-over/{matric}', 'CourseController@view_student_carryover');
+
+  Route::get('/approve-carryover-course/{cid}', 'CourseController@approve_student_carryover');
+  Route::get('/reject-carryover-course/{cid}', 'CourseController@reject_student_carryover');
+
   /** Online class routes **/
   Route::get('online-class-delete/{class_id}', 'Online_Class_Controller@destroy')->name('online-class.destroy');
   Route::resource('online-class', 'Online_Class_Controller')->except('destroy');
@@ -451,6 +459,17 @@ Route::group(['namespace' => 'student', 'middleware' => 'student'], function () 
   Route::post('/show-reg/{session}/{semester}/{level}', 'StudentCourseController@view_reg');
   Route::get('/show-reg/{session}/{semester}/{level}', 'StudentCourseController@view_reg');
   // Route::get('/show-reg', 'StudentCourseController@view_reg');
+  Route::get('/select-registration', 'StudentCourseController@select_course_reg');
+  Route::post('/select-registration', 'StudentCourseController@select_course_reg');
+
+  Route::get('/show-selected-reg/{session}/{semester}/{level}', 'StudentCourseController@view_selected_reg');
+  Route::post('/show-selected-reg/{session}/{semester}/{level}', 'StudentCourseController@view_selected_reg');
+
+  Route::get('/apply-for-carry-over', 'StudentCourseController@apply_carry_over');
+  Route::get('/add-carryover-course/{cid}', 'StudentCourseController@apply_carry_over_course');
+  Route::get('/remove-carryover-course/{cid}', 'StudentCourseController@remove_carry_over_course');
+
+
   Route::post('/reg-course', 'StudentCourseController@reg_course');
 
   Route::get('/student-attendance', 'StudentAttendanceController@index');

@@ -4,6 +4,7 @@ namespace App\Helper;
 
 use App\Applicant;
 use App\ApplicationFee;
+use App\Course;
 use App\Current_Semester_Running;
 use App\Department;
 use App\StudentInfo;
@@ -15,9 +16,28 @@ use Illuminate\Support\Facades\Session;
 
 class Helper
 {
+    public static function get_student($mat){
+        $std = StudentInfo::where(['matric_number' => $mat])->first();
+        return $std;
+    }
+    public static function get_course($cid){
+        $course = Course::find($cid);
+        return $course;
+    }
+
     public static function current_semester(){
         $current_semester = Current_Semester_Running::where('status','active')->first();
         return $current_semester->id;
+    }
+
+    public static function current_session_details(){
+        $current_semester = Current_Semester_Running::where('status','active')->first();
+        return $current_semester;
+    }
+
+    public static function current_semester_details(){
+        $current_semester = Semester::where('status', 'active')->first();
+        return $current_semester;
     }
 
     public static function get_current_semester(){

@@ -396,8 +396,7 @@
 
                 {{-- Course Module --}}
                 @permission('course_module-read')
-                <li {{-- class="nav-item {{ request()->is(['user','admin/role','admin/permission']) ? 'active' : '' }}"> --}}
-                    class="nav-item {{ request()->is(['admin/syllabus', 'admin/course/create', 'admin/course']) ? 'active' : '' }}">
+                <li class="nav-item {{ request()->is(['admin/syllabus', 'admin/course/create', 'admin/course', 'admin/course/carry-over']) ? 'active' : '' }}">
                     <a data-toggle="collapse" href="#course">
                         <i class="fas fa-book"></i>
                         <p>Manage Courses</p>
@@ -425,6 +424,11 @@
                             <li>
                                 <a href="{{ route('course.index') }}">
                                     <span class="sub-item">View All Courses</span></a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('course.carryover') }}">
+                                    <span class="sub-item">Manage Carry over</span></a>
                             </li>
                             @endpermission
                         </ul>

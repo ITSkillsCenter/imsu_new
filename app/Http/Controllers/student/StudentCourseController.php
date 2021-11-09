@@ -45,17 +45,13 @@ class StudentCourseController extends Controller
     public function course_reg(Request $request){
         $student = Helper::student_info();
         $curr_semester = Helper::current_semester();
+        $current_session = Helper::current_session_details();
+        $current_semester = Helper::current_semester_details();
         $dept_id = $student->dept_id;
         $department = Department::find($dept_id);
         $session = Current_Semester_Running::where('id', $curr_semester)->first();
         $semesters = Semester::all();
-        // return $dept_id.'-'.$semester_id;
-        // $syllabus_courses = Syllabus::with('course:id,course_code,credit,course_name')->where('department_id',$dept_id)
-        //                             ->where('session_id',$semester_id)
-        //                             ->get();
-        // return $syllabus_courses;
         $check_for_payment_history = FeeHistory::where(['session_id' => $session->id, 'student_id' => $student->id])->count();
-        // dd($pp);
         $pending_payments = FeeHistory::where(['student_id' => $student->id, 'status' => 'unpaid'])->count();
         $all_sessions = Current_Semester_Running::all();
         
@@ -64,14 +60,42 @@ class StudentCourseController extends Controller
             $semester = base64_encode($request->semester);
             $level = base64_encode($request->level);
             $session = base64_encode($request->session_id);
-            
+
             return redirect('/show-reg/'.$session.'/'.$semester.'/'.$level);
             
         }
 
         $levels = [100, 200, 300, 400, 500, 600];
 
-        return  view('admin_student.course.course',compact('syllabus_courses','student','session','semesters','department','all_sessions','pending_payments', 'check_for_payment_history','levels'));
+        return  view('admin_student.course.course',compact('current_session','current_semester', 'syllabus_courses','student','session','semesters','department','all_sessions','pending_payments', 'check_for_payment_history','levels'));
+    }
+
+    public function select_course_reg(Request $request){
+        $student = Helper::student_info();
+        $curr_semester = Helper::current_semester();
+        $current_session = Helper::current_session_details();
+        $current_semester = Helper::current_semester_details();
+        $dept_id = $student->dept_id;
+        $department = Department::find($dept_id);
+        $session = Current_Semester_Running::where('id', $curr_semester)->first();
+        $semesters = Semester::all();
+        $check_for_payment_history = FeeHistory::where(['session_id' => $session->id, 'student_id' => $student->id])->count();
+        $pending_payments = FeeHistory::where(['student_id' => $student->id, 'status' => 'unpaid'])->count();
+        $all_sessions = Current_Semester_Running::all();
+        
+
+        if($request->isMethod('post')){
+            $semester = base64_encode($request->semester);
+            $level = base64_encode($request->level);
+            $session = base64_encode($request->session_id);
+
+            return redirect('/show-selected-reg/'.$session.'/'.$semester.'/'.$level);
+            
+        }
+
+        $levels = [100, 200, 300, 400, 500, 600];
+
+        return  view('admin_student.course.select_registration',compact('current_session','current_semester', 'syllabus_courses','student','session','semesters','department','all_sessions','pending_payments', 'check_for_payment_history','levels'));
     }
 
     public function view_reg(Request $request, $session, $semester, $level){
@@ -83,6 +107,7 @@ class StudentCourseController extends Controller
         $curr_semester = Helper::current_semester();
         $dept_id = $student->dept_id;
         $semester = base64_decode($semester);
+        $semester = $semester == 1 ? '1st' : '2nd';
         $session = base64_decode($session);
         $level = base64_decode($level);
 
@@ -96,10 +121,12 @@ class StudentCourseController extends Controller
 
 
         $department = Department::find($dept_id);
-        // $courses = Course::where(['dept_id' => $dept_id, 'level' => $level, 'semester' => $semester])->get();
-        $courses = Course::whereIn('level', $queryLevelArray)->where(['dept_id' => $dept_id, 'semester' => $semester])->get();
-        
-        $reg_courses = Course_Student::select('courses.*', 'courses_student.id as cid')->join('courses', 'course_id', '=', 'courses.id')
+
+        $courses = Course::where(['dept_id' => $dept_id, 'level' => $level, 'semester' => $semester])->get();
+        $compulsory_courses = Course::where(['dept_id' => $dept_id, 'semester' => $semester, 'level' => $level, 'type' => 'compulsory'])->get();
+        $elective_courses = Course::where(['dept_id' => $dept_id, 'semester' => $semester, 'level' => $level])->where('type', '!=', 'compulsory')->get();
+        $manageCourseCreditUnit = ManageCourseCreditUnit::where('department_id', $dept_id)->where('level', $level)->first();
+        $reg_courses = Course_Student::select('courses.*', 'courses_student.id as cid', 'course_status')->join('courses', 'course_id', '=', 'courses.id')
                     ->where(['session_id' => $session, 'courses_student.semester' => $semester, 'courses_student.level' => $level])->get();
         $reg_arr = [];
         foreach($reg_courses as $single){
@@ -153,8 +180,99 @@ class StudentCourseController extends Controller
             }
         }
 
-        return view('admin_student.course.view_reg',compact('student','curr_semester','semester','department','level', 'courses','reg_courses', 'reg_arr', 'session'));
+        return view('admin_student.course.view_reg',compact('manageCourseCreditUnit','compulsory_courses','elective_courses','student','curr_semester','semester','department','level', 'courses','reg_courses', 'reg_arr', 'session'));
 
+    }
+
+    public function view_selected_reg(Request $request, $session, $semester, $level)
+    {
+        $levels = [100, 200, 300, 400, 500, 600];
+        $queryLevelArray = array();
+
+        $student = Helper::student_info();
+        $curr_semester = Helper::current_semester();
+        $dept_id = $student->dept_id;
+        $semester = base64_decode($semester);
+        $semester = $semester == 1 ? '1st' : '2nd';
+        $session = base64_decode($session);
+        $level = base64_decode($level);
+
+        foreach($levels as $lev){
+            $level  = (int) $level;
+            if($level >= $lev){
+                $queryLevelArray[] = $lev;
+            }
+        }
+
+        $department = Department::find($dept_id);
+        $courses = Course::where(['dept_id' => $dept_id, 'level' => $level, 'semester' => $semester])->get();
+        $compulsory_courses = Course::where(['dept_id' => $dept_id, 'semester' => $semester, 'level' => $level, 'type' => 'compulsory'])->get();
+        $elective_courses = Course::where(['dept_id' => $dept_id, 'semester' => $semester, 'level' => $level])->where('type', '!=', 'compulsory')->get();
+        $manageCourseCreditUnit = ManageCourseCreditUnit::where('department_id', $dept_id)->where('level', $level)->first();
+        $reg_courses = Course_Student::select('courses.*', 'courses_student.id as cid')->join('courses', 'course_id', '=', 'courses.id')
+                    ->where(['session_id' => $session, 'courses_student.semester' => $semester, 'courses_student.level' => $level])->get();
+        $reg_arr = [];
+        foreach($reg_courses as $single){
+            $reg_arr[] = $single->id;
+        }
+
+        return view('admin_student.course.view_selected_reg',compact('manageCourseCreditUnit','compulsory_courses','elective_courses','student','curr_semester','semester','department','level', 'courses','reg_courses', 'reg_arr', 'session'));
+
+    }
+
+    public function apply_carry_over(Request $request){
+        $student = Helper::student_info();
+        $matric_number = $student->matric_number;
+        $session = Helper::current_session_details()->id;
+        $semester = Helper::current_semester_details();
+        $semester = $semester->id == '1' ? '1st' : '2nd';
+
+        $previous = Course_Student::where(['student_id' => $matric_number])->where('session_id', '!=', $session)->where('semester', '!=', $semester)->get(); 
+        $previousPending = Course_Student::where(['student_id' => $matric_number, 'course_status' => 'pending', 'reg_type' => 'carry over'])->get();
+        return  view('admin_student.course.apply_for_carry_over',compact('previous', 'previousPending'));
+
+    }
+
+    public function remove_carry_over_course(Request $request, $cid){
+        $remove = Course_Student::find($cid)->delete();
+        if($remove){
+            return back()->with('success', 'Carry over removed successfully');
+        }else{
+            return back()->with('error', 'An error occured');
+        }
+    }
+
+    public function apply_carry_over_course(Request $request, $cid){
+        $student = Helper::student_info();
+        $matric_number = $student->matric_number;
+        $session = Helper::current_session_details()->id;
+        $semester = Helper::current_semester_details();
+        $semester = $semester->id == '1' ? '1st' : '2nd';
+
+        $data['session_id'] = $session;
+        $data['semester'] = $semester;
+        $data['level'] = $student->level;
+        $data['student_id'] = $student->matric_number;
+        $data['course_id'] = $cid;
+        $data['department'] = $student->dept_id;
+        $data['reg_type'] = 'carry over';
+        $data['course_status'] = 'pending';
+
+        $save = Course_Student::updateOrCreate(
+            [
+                'student_id' => $student->matric_number,
+                'course_id' => $cid,
+                'reg_type' => 'carry over',
+                'course_status' => 'pending'
+            ],
+            $data
+        );
+
+        if($save){
+            return back()->with('success', 'Application successfull, await approval');
+        }else{
+            return back()->with('error', 'An error occured');
+        }
     }
 
     public function reg_course(Request $request){

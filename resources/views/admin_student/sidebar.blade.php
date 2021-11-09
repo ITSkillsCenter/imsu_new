@@ -49,6 +49,7 @@
                         <p>Student Dashboard</p>
                     </a>
                 </li>
+
                 
                 <!-- <li class="nav-item">
                     <a data-toggle="collapse" href="#base">
@@ -194,13 +195,41 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item {{ request()->is(['course-registration', 'select-registration']) ? 'active' : '' }}">
+                    <a data-toggle="collapse" href="#coursereg" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-home"></i>
+                        <p>Course Registration</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="coursereg">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="/course-registration">
+                                    <span class="sub-item">Course Registration</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/select-registration">
+                                    <span class="sub-item">View Registration</span>
+                                </a>
+                            </li>
+                            <!-- <li>
+                                <a href="/admin/home">
+                                    <span class="sub-item">Dashboard</span>
+                                </a>
+                            </li> -->
+
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- <li class="nav-item">
                     <a href="/course-registration">
                         <i class="fas fa-pen-square"></i>
                         <p>Course Registration</p>
                     </a>
                     
-                </li>
+                </li> -->
 
                 @php 
                     $ct = Helper::check_payment(Session::get('student_id'));

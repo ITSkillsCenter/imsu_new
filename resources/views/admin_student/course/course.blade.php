@@ -59,46 +59,35 @@ Student || Course
     <form method="post" class="card">
       @csrf
       <div class="card-header">
-        Select Level, Sememster and Session to Start Course Registration
+        Course Registration for current session, semester and level
       </div>
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <label class="control-label" for="confirmpassword">Level<span class="required">*</span>
+            <label class="control-label" for="confirmpassword">Session<span class="required">*</span>
             </label>
-            {{-- {{$student->level}} --}}
-            <select name="level" class="form-control" required>
-              <option value="">Select Level</option>
-              @foreach ($levels as $level)
-                @if ($student->level >= $level)
-                  <option value="{{$level}}">{{$level}} Level</option>
-                @endif
-              @endforeach
+            <select name="session_id" class="form-control" required readonly>
+              <option value="{{$current_session->id}}">{{$current_session->title}}</option>
             </select>
           </div>
         </div>
+
         <div class="col-md-4">
           <div class="form-group">
             <label class="control-label" for="confirmpassword">Semester<span class="required">*</span>
             </label>
-            <select name="semester" class="form-control" required>
-              <option value="">Select Semester</option>
-              @foreach($semesters as $semester)
-              @php $sm = explode(' ',$semester->name);@endphp
-              <option value="{{$sm[0]}}">{{$semester->name}}</option>
-              @endforeach
+            <select name="semester" class="form-control" readonly required>
+              <option value="{{$current_semester->id}}">{{$current_semester->name}}</option>
             </select>
           </div>
         </div>
+        
         <div class="col-md-4">
           <div class="form-group">
-            <label class="control-label" for="confirmpassword">Session<span class="required">*</span>
+            <label class="control-label" for="confirmpassword">Level<span class="required">*</span>
             </label>
-            <select name="session_id" class="form-control" required>
-              <option value="">Select Session</option>
-              @foreach($all_sessions as $sess)
-                <option value="{{$sess->id}}">{{$sess->title}}</option>
-              @endforeach
+            <select name="level" class="form-control" required readonly>
+              <option value="{{$student->level}}">{{$student->level}} Level</option>
             </select>
           </div>
         </div>

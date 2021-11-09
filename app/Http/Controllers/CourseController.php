@@ -307,5 +307,48 @@ class CourseController extends Controller
 
         return response()->json($courses);
     }
+
+    public function carryover(Request $request, $id=null){
+        if($request->isMethod('post')){
+            $dept = $request->dept;
+        }elseif($id){
+            $dept = base64_decode($id);
+        }
+
+        if(Auth::user()->dept_id !== null){
+            $departments = Department::where(['id' => Auth::user()->dept_id])->get();
+        }else{
+            $departments = Department::all();
+        }
+
+        if($dept){
+            $department = Department::find($dept);
+            $students = Course_Student::distinct()->where('course_status','=', 'pending')->get(['student_id']);
+        }
+
+        return view('course.carryover',compact('dept','students','departments','department'));
+    }
+
+    public function view_student_carryover(Request $request, $matric){
+        $previousPending = Course_Student::where(['student_id' => base64_decode($matric), 'course_status' => 'pending', 'reg_type' => 'carry over'])->get();
+        return view('course.view_student_carryover',compact('previousPending', 'matric'));
+    
+    }
+
+    public function approve_student_carryover(Request $request, $cid){
+        $upd = Course_Student::find($cid);
+        $upd->course_status = 'approved';
+        $upd->save();
+        return back()->with('success', 'Carry over approved successfully');
+
+    }
+
+    public function reject_student_carryover(Request $request, $cid){
+        $upd = Course_Student::find($cid);
+        $upd->course_status = 'rejected';
+        $upd->save();
+        return back()->with('success', 'Carry over rejected successfully');
+
+    }
     
 }
