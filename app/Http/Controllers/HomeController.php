@@ -579,16 +579,16 @@ class HomeController extends Controller
                     $data['sex'] = 'N/A';
                     $data['state'] = 'N/A';
                     $data['lga'] = 'N/A';
-                    $data['jamb_score'] = 'N/A';
+                    $data['jamb_score'] = 0;
                     $data['course'] = 'N/A';
                     $data['jamb_subject1'] = 'N/A';
-                    $data['score1'] = 'N/A';
+                    $data['score1'] = 0;
                     $data['jamb_subject2'] = 'N/A';
-                    $data['score2'] = 'N/A';
+                    $data['score2'] = 0;
                     $data['jamb_subject3'] = 'N/A';
-                    $data['score3'] = 'N/A';
+                    $data['score3'] = 0;
                     $data['jamb_subject4'] = 'N/A';
-                    $data['score4'] = 'N/A';
+                    $data['score4'] = 0;
                     $data['year'] = 'N/A';
                     $data['type'] = 'N/A';
 
