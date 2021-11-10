@@ -565,9 +565,9 @@ class HomeController extends Controller
 					return back()->with('success', 'Congratulations! ' . $std->full_name . ' , you have successfully sign up to the Imo State University Post- UTME application portal . Kindly visit your email account to verify your email to continue');
 
 				} else {
-					$check_email = Applicant::where(['application_number' => $request->application_number])->count();
+					$check_email = Applicant::where(['email' => $request->email])->count();
 					if ($check_email > 0) {
-						return back()->with('error', 'This Registration number has already registered');
+						return back()->with('error', 'Email Already Taken');
 					}
 					$data['email'] = $request->email;
 					$data['password'] = Hash::make($request->password);
