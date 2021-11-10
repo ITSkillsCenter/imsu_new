@@ -575,22 +575,8 @@ class HomeController extends Controller
 					$data['mode_of_admission'] = $request->mode_of_admission;
 					$data['jamb_year'] = 2021;
 					$data['application_number'] = $request->jamb_reg;
-                    $data['full_name'] = 'N/A';
-                    $data['sex'] = 'N/A';
-                    $data['state'] = 'N/A';
-                    $data['lga'] = 'N/A';
-                    $data['jamb_score'] = 0;
-                    $data['course'] = 'N/A';
-                    $data['jamb_subject1'] = 'N/A';
-                    $data['score1'] = 0;
-                    $data['jamb_subject2'] = 'N/A';
-                    $data['score2'] = 0;
-                    $data['jamb_subject3'] = 'N/A';
-                    $data['score3'] = 0;
-                    $data['jamb_subject4'] = 'N/A';
-                    $data['score4'] = 0;
-                    $data['year'] = 'N/A';
-                    $data['type'] = 'N/A';
+                    $data['type'] = $request->type == 'jamb' ? 'jamb' : 'DE';
+                    
 
 					$create = Applicant::create($data);
 					if($create){
@@ -666,8 +652,10 @@ class HomeController extends Controller
 			return redirect('/application-step2')->with('error', 'Pay application fee');
 		}
 		$std = Applicant::where(['application_number' => $jamb_reg])->first();
+		$departments = Department::all();
+		$states = State::all();
 
-		return view('homepage.profile', compact('std', 'check'));
+		return view('homepage.profile', compact('std', 'check', 'departments', 'states'));
 	}
 
 	public function application_step4(Request $request)

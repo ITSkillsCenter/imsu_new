@@ -20,7 +20,7 @@
 
                                                 </div>
                                                 @if($error == null)
-                                                <span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 19px ;font-style: normal ;">Congratulations! your email verification is successful .</span>
+                                                <span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 19px ;font-style: normal ;">Congratulations! <b>{{$email->full_name}}</b>, your email verification is successful .</span>
                                                 <br>
                                                 <div>
                                                     <a class="gdlr-core-button gdlr-core-button-solid gdlr-core-button-no-border" href="/application-step2">Click here to continue with your application</a>

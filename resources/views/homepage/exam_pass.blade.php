@@ -174,7 +174,8 @@
                                                             <div class="gdlr-core-course-column gdlr-core-column-20">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                     <label for="">Country: </label>
-                                                                    <p>{{ucwords($std->country)}}</p>
+                                                                    <!-- <p>{{ucwords($std->country)}}</p> -->
+                                                                    <p>Nigeria</p>
                                                                 </div>
                                                             </div>
 
@@ -209,7 +210,7 @@
                                                             <div class="gdlr-core-course-column gdlr-core-column-20">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                     <label for="">Program</label>
-                                                                    <p>{{$std->program}}</p>
+                                                                    <p>Undergraduate</p>
                                                                 </div>
                                                             </div>
 

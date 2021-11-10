@@ -5,27 +5,6 @@
         color: #3b4b6b;
     }
 </style>
-@php
-$subjects = [
-'ARABIC','AGRICULTURAL SCIENCE','AUTO PARTS MERCHANDISING','AUTO MECHANICS','AUTO MECHANICAL WORK','AUTO ELECTRICAL WORK',
-'AUTO BODY REPAIRS AND SPRAY PAINTING','APPLIED ELECTRICITY OR BASIC ELECTRICITY','ANIMAL HUSBANDRY','BUSINESS MANAGEMENT',
-'BUILDING CONSTRUCTION','BOOK KEEPING','BLOCKLAYING, BRICKLAYING AND CONCRETING','BIOLOGY','BASKETRY','CROP HUSBANDRY AND HORTICULTURE',
-'COSMETOLOGY','COMPUTER STUDIES','COMMERCE','CLOTHING AND TEXTILES','CLERICAL OFFICE DUTIES','CIVIC EDUCATION',
-'CHRISTIAN RELIGIOUS STUDIES','CHEMISTRY','CERAMICS','CATERING CRAFT PRACTICE','CAPENTRY AND JOINERY','DYEING & BLEACHING',
-'DATA PROCESSING','ENGLISH LANGUAGE','ELECTRONICS OR BASIC ELECTRONICS','ELECTRICAL INSTALLATION AND MAINTENANCE','EFIK',
-'EDO','ECONOMICS','FURTHER MATHEMATICS','FURNITURE MAKING','FRENCH','FORESTRY','FOODS AND NUTRITION','FISHERIES',
-'FINANCIAL ACCOUNTING','TYPEWRITING','TOURISM','TEXTILES','TECHNICAL DRAWING','STORE MANAGEMENT','STORE KEEPING WAEC',
-'SOCIAL STUDIES','SHORTHAND','SCULPTURE','SALESMANSHIP','REFRIGERATION AND AIR CONDITIONING','RADIO,TELEVISION AND ELECTRONICS WORKS',
-'PRINTING CRAFT PRACTICE','PRINCIPLES OF COST ACCOUNTING','PLUMBING AND PIPE FITTING','PICTURE MAKING','PHYSICS','PHYSICAL EDUCATION',
-'PHOTOGRAPHY','PAINTING AND DECORATING','OFFICE PRACTICE','MUSIC','MINING','METALWORK','MARKETING','MACHINE WOODWORKING',
-'LITERATURE IN ENGLISH','LEATHERWORK','LEATHER GOODS','JEWELLERY','ISLAMIC RELIGIOUS STUDIES','INTEGRATED SCIENCE','INSURANCE',
-'INFORMATION AND COMMUNICATION TECHNOLOGY','IGBO','IBIBIO','HOME MANAGEMENT','HISTORY','HEALTH EDUCATION OR HEALTH SCIENCE','HAUSA',
-'GSM PHONES MAINTENANCE AND REPAIRS','GRAPHIC DESIGN','GOVERNMENT','GHANAIAN LANGUAGES','GEOGRAPHY','GENERAL MATHEMATICS OR MATHEMATICS',
-'GENERAL KNOWLEDGE IN ART','GENERAL AGRICULTURE','GARMENT MAKING','VISUAL ART','UPHOLSTERY','WOODWORK','WEST AFRICAN TRADITIONAL RELIGION',
-'WELDING AND FABRICATION ENGINEERING CRAFT PRACTICE','YORUBA'
-];
-
-@endphp
 <div class="gdlr-core-page-builder-body">
 
     <div class="gdlr-core-pbf-wrapper" id="div_1dd7_105">
@@ -128,15 +107,15 @@ $subjects = [
 
                                                 <div class="gdlr-core-accordion-item-icon gdlr-core-js gdlr-core-skin-icon "></div>
                                                 <div class="gdlr-core-accordion-item-content-wrapper">
-                                                    <h4 class="gdlr-core-accordion-item-title gdlr-core-js  gdlr-core-skin-e-background gdlr-core-skin-e-content">Basic Information (Some Fields Are Not Editable)</h4>
+                                                    <h4 class="gdlr-core-accordion-item-title gdlr-core-js  gdlr-core-skin-e-background gdlr-core-skin-e-content">Basic Information (Not Editable)</h4>
                                                     <div class="gdlr-core-accordion-item-content">
                                                         <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
 
                                                             <div class="gdlr-core-course-column gdlr-core-column-20">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                     <label for="">Full Name</label>
-                                                                    <!-- <p>{{$std->full_name}}</p> -->
-                                                                    <input type="text" class="my_input" placeholder="Full name" name="full_name" value="{{$std->fullname}}" required/>
+                                                                    <p>{{$std->full_name}}</p>
+                                                                    <!-- <input type="text" class="my_input" placeholder="Full name" name="full_name" value="{{$student->fullname}}" hidden /> -->
                                                                 </div>
                                                             </div>
 
@@ -144,15 +123,15 @@ $subjects = [
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                     <label for="">Email Address</label>
                                                                     <p>{{$std->email}}</p>
-                                                                    <!-- <input type="text" class="my_input" placeholder="" name="email_address" value="{{$std->email}}"/> -->
+                                                                    <!-- <input type="text" class="my_input" placeholder="" name="email_address" value="{{$student->Email_Address}}" hidden /> -->
                                                                 </div>
                                                             </div>
 
                                                             <div class="gdlr-core-course-column gdlr-core-column-20">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                     <label for="">Phone Number</label>
-                                                                    <!-- <p>{{$std->phone_number}}</p> -->
-                                                                    <input type="tel" class="my_input" name="phone_number" value="{{$std->phone_number}}" required/>
+                                                                    <p>{{$std->phone_number}}</p>
+                                                                    <!-- <input type="tel" class="my_input" name="phone_number" value="{{$student->phone_number}}" hidden /> -->
                                                                 </div>
                                                             </div>
 
@@ -169,102 +148,45 @@ $subjects = [
                                                             <div class="gdlr-core-course-column gdlr-core-column-20">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                     <label for="">UTME Score</label>
-                                                                    <!-- <p>{{$std->jamb_score}}</p> -->
-                                                                    <input type="text" class="my_input" placeholder="UTME score" name="jamb_score" value="{{$std->jamb_score}}" required/>
+                                                                    <p>{{$std->jamb_score}}</p>
+                                                                    <!-- <input type="text" class="my_input" placeholder="UTME score" name="jamb_reg" value="{{Session::get('jamb_reg')}}" hidden /> -->
                                                                 </div>
                                                             </div>
 
                                                             <div class="gdlr-core-course-column gdlr-core-column-20">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                     <label for="">Program Applied for</label>
-                                                                    <div class="gdlr-core-course-form-combobox">
-                                                                        <select class="gdlr-core-skin-e-content my_input2" name="course" id="course" required>
-                                                                            <option value="">Select program</option>
-                                                                            @foreach($departments as $department)
-                                                                            <option value="{{$department->name}}">{{$department->name}}</option>
-                                                                            @endforeach
-                                                                        </select>
-                                                                    </div>
+                                                                    <p>
+                                                                        {{$std->course}}
+                                                                    </p>
                                                                 </div>
                                                             </div>
 
-                                                            <div class="gdlr-core-course-column gdlr-core-column-full">
-                                                                <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                    <label for="">UTME Subject and Score</label>
-                                                                    <!-- <p>
-                                                                        {{$std->jamb_subject1}} ({{$std->score1}}), {{$std->jamb_subject2}} ({{$std->score2}}),
-                                                                        {{$std->jamb_subject3}} ({{$std->score3}}), {{$std->jamb_subject4}} ({{$std->score4}})
-                                                                    </p> -->
-                                                                </div>
-                                                            </div>
-                                                            @for($i = 1; $i<=4; $i++)
                                                             <div class="gdlr-core-course-column gdlr-core-column-20">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                    <label for="">Subject {{$i}}</label>
-                                                                    <div class="gdlr-core-course-form-combobox">
-                                                                        <select class="gdlr-core-skin-e-content my_input2" name="jamb_subject{{$i}}" required>
-                                                                            <option value="">Select Subject</option>
-                                                                            @foreach($subjects as $subject)
-                                                                            <option value="{{$subject}}">{{$subject}}</option>
-                                                                            @endforeach
-                                                                        </select>
-                                                                    </div>
+                                                                    <label for="">UTME Subject and score</label>
+                                                                    <p>
+                                                                        {{$std->jamb_subject1}} ({{$std->score1}}), {{$std->jamb_subject2}} ({{$std->score2}}),
+                                                                        {{$std->jamb_subject3}} ({{$std->score3}}), {{$std->jamb_subject4}} ({{$std->score4}})
+                                                                    </p>
                                                                 </div>
                                                             </div>
-
-                                                            <div class="gdlr-core-course-column gdlr-core-column-10">
-                                                                <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                    <label for="">Score {{$i}}</label>
-                                                                    <input type="text" class="my_input" placeholder="0" name="score{{$i}}" value="" />
-                                                                </div>
-                                                            </div>
-                                                            @endfor
 
                                                             
 
                                                             <div class="gdlr-core-course-column gdlr-core-column-20">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                     <label for="">State of Origin</label>
-                                                                    <div class="gdlr-core-course-form-combobox gdlr-core-skin-e-background">
-                                                                        <select class="gdlr-core-skin-e-content my_input2" name="state" id="state_of_origin" required>
-                                                                            <option value="">Select State</option>
-                                                                            @foreach($states as $state)
-                                                                            <option value="{{$state->name}}" data-id="{{$state->id}}">{{$state->name}}</option>
-                                                                            @endforeach
-                                                                        </select>
-                                                                    </div>
-                                                                    <!-- <input type="text" class="my_input" placeholder="state" name="state" value="{{$std->state}}" /> -->
+                                                                    <p>{{$std->state}}</p>
+                                                                    <!-- <input type="text" class="my_input" placeholder="state" name="jamb_reg" value="{{Session::get('jamb_reg')}}" hidden /> -->
                                                                 </div>
                                                             </div>
 
                                                             <div class="gdlr-core-course-column gdlr-core-column-20">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                     <label for="">LGA</label>
-                                                                    <div class="gdlr-core-course-form-combobox gdlr-core-skin-e-background">
-                                                                        <select class="gdlr-core-skin-e-content my_input2" name="lga" id="lga" required>
-                                                                            <option value="">LGA</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="gdlr-core-course-column gdlr-core-column-20">
-                                                                <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                    <label for="">Home Town</label>
-                                                                    <input type="text" class="my_input" placeholder="" name="home_town" value="{{$std->home_town}}" />
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="gdlr-core-course-column gdlr-core-column-20">
-                                                                <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                    <label for="">Gender</label>
-                                                                    <div class="gdlr-core-course-form-combobox gdlr-core-skin-e-background">
-                                                                        <select class="gdlr-core-skin-e-content my_input2" name="sex" required>
-                                                                            <option value="">Select one</option>
-                                                                            <option value="M">Male</option>
-                                                                            <option value="F">Female</option>
-                                                                        </select>
-                                                                    </div>
+                                                                    <p>{{$std->lga}}</p>
+                                                                    <!-- <input type="text" class="my_input" placeholder="lga" name="jamb_reg" value="{{Session::get('jamb_reg')}}" hidden /> -->
                                                                 </div>
                                                             </div>
 
@@ -372,22 +294,6 @@ $subjects = [
             html2canvas:  { scale: 2 },
         };
         html2pdf(element, opt)
-    })
-
-    $('#state_of_origin').change(function(){
-        let state_id = $(this).find(":selected").data('id')
-        $('#lga')
-            .find('option')
-            .remove()
-            .end()
-            .append('<option value="">Select LGA</option>')
-            .val('')
-        ;
-        $.post('/get_lgas',{state_id}).done(function(response){
-            response.body.map((item)=>{
-                $('#lga').append(`<option value='${item.name}'>${item.name}</option>`)
-            })
-        });
     })
 </script>
 
