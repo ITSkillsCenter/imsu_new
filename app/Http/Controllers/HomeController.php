@@ -564,15 +564,19 @@ class HomeController extends Controller
 					Mail::to(strtolower($request->email))->send(new VerifyAdmissionEmail($new_data));
 					return back()->with('success', 'Congratulations! ' . $std->full_name . ' , you have successfully sign up to the Imo State University Post- UTME application portal . Kindly visit your email account to verify your email to continue');
 
-					// Session::put('jamb_reg', $request->jamb_reg);
-					// if($std->status == 'completed'){
-					// 	return redirect('/exam-pass');
-					// }
-					// if($std->status == 'paid'){
-					// 	return redirect('/application-step3/'.$request->jamb_reg);
-					// }
-					// return redirect('/application-step1');
 				} else {
+					$data['email'] = $request->email;
+					$data['password'] = Hash::make($request->password);
+					$data['phone_number'] = $request->phone_number;
+					$data['mode_of_admission'] = $request->mode_of_admission;
+					$data['jamb_year'] = 2021;
+					$data['application_number'] = $request->jamb_reg;
+
+					$create = Applicant::create($data);
+					if($create){
+						Mail::to(strtolower($request->email))->send(new VerifyAdmissionEmail($data));
+						return back()->with('success', 'Congratulations! you have successfully sign up to the Imo State University Post- UTME application portal . Kindly visit your email account to verify your email to continue');
+					}
 					return back()->with('error', 'Invalid Jamb No');
 				}
 			} elseif ($request->type == 'icep') {
