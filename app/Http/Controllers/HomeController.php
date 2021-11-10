@@ -578,7 +578,7 @@ class HomeController extends Controller
 					$data['password'] = Hash::make($request->password);
 					$data['phone_number'] = $request->phone_number;
 					$data['mode_of_admission'] = $request->mode_of_admission;
-					$data['jamb_year'] = 2021;
+					$data['year'] = 2021;
 					$data['application_number'] = $request->jamb_reg;
                     $data['type'] = $request->type == 'jamb' ? 'jamb' : 'DE';
                     
