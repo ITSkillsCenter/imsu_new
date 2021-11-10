@@ -575,6 +575,22 @@ class HomeController extends Controller
 					$data['mode_of_admission'] = $request->mode_of_admission;
 					$data['jamb_year'] = 2021;
 					$data['application_number'] = $request->jamb_reg;
+                    $data['full_name'] = 'N/A';
+                    $data['sex'] = 'N/A';
+                    $data['state'] = 'N/A';
+                    $data['lga'] = 'N/A';
+                    $data['jamb_score'] = 'N/A';
+                    $data['course'] = 'N/A';
+                    $data['jamb_subject1'] = 'N/A';
+                    $data['score1'] = 'N/A';
+                    $data['jamb_subject2'] = 'N/A';
+                    $data['score2'] = 'N/A';
+                    $data['jamb_subject3'] = 'N/A';
+                    $data['score3'] = 'N/A';
+                    $data['jamb_subject4'] = 'N/A';
+                    $data['score4'] = 'N/A';
+                    $data['year'] = 'N/A';
+                    $data['type'] = 'N/A';
 
 					$create = Applicant::create($data);
 					if($create){
