@@ -560,12 +560,16 @@ class HomeController extends Controller
 					$std->mode_of_admission = $request->mode_of_admission;
 					$std->save();
 
-
 					$new_data['email'] = $request->email;
 					Mail::to(strtolower($request->email))->send(new VerifyAdmissionEmail($new_data));
 					return back()->with('success', 'Congratulations! ' . $std->full_name . ' , you have successfully sign up to the Imo State University Post- UTME application portal . Kindly visit your email account to verify your email to continue');
 
 				} else {
+
+					$check_reg = Applicant::where(['application_number' => $request->jamb_reg])->count();
+					if ($check_reg > 0) {
+						return back()->with('error', 'Already Registered');
+					}
 					$check_email = Applicant::where(['email' => $request->email])->count();
 					if ($check_email > 0) {
 						return back()->with('error', 'Email Already Taken');

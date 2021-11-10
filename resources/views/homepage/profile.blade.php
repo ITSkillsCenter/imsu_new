@@ -215,7 +215,7 @@ $subjects = [
                                                             <div class="gdlr-core-course-column gdlr-core-column-10">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                     <label for="">Score {{$i}}</label>
-                                                                    <input type="text" class="my_input" placeholder="0" name="score{{$i}}" value="" />
+                                                                    <input type="text" class="my_input" placeholder="0" name="score{{$i}}" value="" required/>
                                                                 </div>
                                                             </div>
                                                             @endfor
@@ -249,7 +249,7 @@ $subjects = [
                                                             </div>
 
                                                             <div class="gdlr-core-course-column gdlr-core-column-20">
-                                                                <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id" required>
                                                                     <label for="">Home Town</label>
                                                                     <input type="text" class="my_input" placeholder="" name="home_town" value="{{$std->home_town}}" />
                                                                 </div>
