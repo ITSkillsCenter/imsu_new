@@ -136,7 +136,7 @@ $subjects = [
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                     <label for="">Full Name</label>
                                                                     <!-- <p>{{$std->full_name}}</p> -->
-                                                                    <input type="text" class="my_input" placeholder="Full name" name="full_name" value="{{$std->fullname}}" required/>
+                                                                    <input type="text" class="my_input" placeholder="Full name" name="full_name" value="{{$std->full_name}}" required/>
                                                                 </div>
                                                             </div>
 

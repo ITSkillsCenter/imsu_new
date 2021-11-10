@@ -554,6 +554,7 @@ class HomeController extends Controller
 						return back()->with('error', 'Email Already Taken');
 					}
 					$std->email = $request->email;
+					$std->full_name = $request->full_name;
 					$std->password = Hash::make($request->password);
 					$std->phone_number = $request->phone_number;
 					$std->mode_of_admission = $request->mode_of_admission;

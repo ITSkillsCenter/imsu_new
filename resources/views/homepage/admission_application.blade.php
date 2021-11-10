@@ -78,6 +78,15 @@
                                                                                     </div>
 
                                                                                     <div class="quform-element">
+                                                                                        <p>Full Name
+                                                                                            <br>
+                                                                                            <span class="wpcf7-form-control-wrap your-name">
+                                                                                                <input id="jamb_reg" style="background-color: #efefef ;" type="text" name="full_name" class="input1" aria-required="true" required>
+                                                                                            </span>
+                                                                                        </p>
+                                                                                    </div>
+
+                                                                                    <div class="quform-element">
                                                                                         <p>Email
                                                                                             <br>
                                                                                             <span class="wpcf7-form-control-wrap your-name">
