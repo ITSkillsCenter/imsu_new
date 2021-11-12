@@ -226,10 +226,15 @@ class StudentCourseController extends Controller
         $session = Helper::current_session_details()->id;
         $semester = Helper::current_semester_details();
         $semester = $semester->id == '1' ? '1st' : '2nd';
+        $previous = Course_Student::where(['student_id' => $matric_number])->where('session_id', '!=', $session)->where('semester', '!=', $semester)->get();
+        if($request->isMethod('post')){
+            $previous = Course::where(['semester' => $request->semester, 'dept_id' => $student->dept_id, 'level' =>$request->level])->get();
+        }
 
-        $previous = Course_Student::where(['student_id' => $matric_number])->where('session_id', '!=', $session)->where('semester', '!=', $semester)->get(); 
+        
+
         $previousPending = Course_Student::where(['student_id' => $matric_number, 'course_status' => 'pending', 'reg_type' => 'carry over'])->get();
-        return  view('admin_student.course.apply_for_carry_over',compact('previous', 'previousPending'));
+        return  view('admin_student.course.apply_for_carry_over',compact('previous', 'previousPending', 'student'));
 
     }
 

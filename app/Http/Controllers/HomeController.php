@@ -1318,7 +1318,18 @@ class HomeController extends Controller
 			try {
 				$std = StudentInfo::where(['Email_Address' => $request->email])->first();
 				if (!$std) {
-					return back()->with('error', 'This email is not tied to an account');
+					$std = Applicant::where(['email' => $request->email])->first();
+					if(!$std){
+						return back()->with('error', 'This email is not tied to an account');
+					}else{
+						$otp = substr(uniqid(), -5);
+						$std->otp = $otp;
+						$std->save();
+						Mail::to(urldecode($request->email))->send(new PasswordReset($otp));
+						Session::put('email', $request->email);
+						return redirect('/verify-otp')->with(['success' => 'An OTP has been sent to your email. Enter the OTP below to continue']);
+					}
+					
 				} else {
 					$otp = substr(uniqid(), -5);
 					$std->otp = $otp;
@@ -1339,6 +1350,8 @@ class HomeController extends Controller
 		if ($request->isMethod('post')) {
 			$std = StudentInfo::where(['Email_Address' => $request->email, 'otp' => $request->otp])->first();
 			if (!$std) {
+				$std = Applicant::where(['email' => $request->email, 'otp' => $request->otp])->first();
+
 				return back()->with('error', 'Invalid OTP');
 			} else {
 				return redirect('/reset-password');

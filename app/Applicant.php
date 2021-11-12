@@ -17,7 +17,8 @@ class Applicant extends Model implements Auditable
         'middle_name', 'sex', 'state', 'lga', 'course', 'year',
         'date_of_birth', 'phone_number_alt', 'email_alt', 'next_of_kin', 'next_of_kin_phone',
         'address', 'exam_1', 'olevel_1', 'exam_2', 'olevel_2', 'status', 'password',
-        'higher_institution_attended', 'programme_studied', 'certificate_obtained', 'grade_achieved', 'attached_certificate_path', 'jamb_year', 'mode_of_admission'
+        'higher_institution_attended', 'programme_studied', 'certificate_obtained', 'grade_achieved', 'attached_certificate_path', 'jamb_year', 'mode_of_admission',
+        'otp'
     ];
     
 }

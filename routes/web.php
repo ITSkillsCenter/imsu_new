@@ -466,6 +466,7 @@ Route::group(['namespace' => 'student', 'middleware' => 'student'], function () 
   Route::post('/show-selected-reg/{session}/{semester}/{level}', 'StudentCourseController@view_selected_reg');
 
   Route::get('/apply-for-carry-over', 'StudentCourseController@apply_carry_over');
+  Route::post('/apply-for-carry-over', 'StudentCourseController@apply_carry_over');
   Route::get('/add-carryover-course/{cid}', 'StudentCourseController@apply_carry_over_course');
   Route::get('/remove-carryover-course/{cid}', 'StudentCourseController@remove_carry_over_course');
 
