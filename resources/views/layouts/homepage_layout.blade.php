@@ -376,7 +376,7 @@
                                                             <a href="#">Medicine</a>
                                                         </li>
                                                         <li class="menu-item">
-                                                            <a href="#">School of Postgraduate</a>
+                                                            <a href="/post-graduate">School of Postgraduate</a>
                                                         </li>
                                                         <li class="menu-item">
                                                             <a href="#">Environmental Science</a>

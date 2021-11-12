@@ -164,7 +164,7 @@
         background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(61, 177, 102, 0.5));
     }
 
-    .crd{
+    .crd {
         box-shadow: 0px 0px 12px 3px rgb(0 0 0 / 13%);
 
     }
@@ -187,7 +187,106 @@
         background-color: #ffffff;
         border-radius: 3px;
         border: 3px #3db166 solid;
-        transition: color 0.2s linear,background 0.2s linear,border-color 0.2s linear, text-shadow 0.2s linear;
+        transition: color 0.2s linear, background 0.2s linear, border-color 0.2s linear, text-shadow 0.2s linear;
+    }
+
+    .right.programmes .widget .faculties {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: #ffffff;
+        margin-bottom: 1vw;
+        transition: color 0.2s linear, background 0.2s linear, border-color 0.2s linear, text-shadow 0.2s linear;
+        color: #3db166;
+    }
+
+    .right.programmes div.widget div:hover {
+        color: #ffffff;
+        background-color: #3db166;
+    }
+
+    .right.programmes .widget .faculties a {
+        color: #3db166;
+        padding: 10px 14px;
+        font-size: 13px;
+        font-weight: 600;
+        width: 100%;
+        text-decoration: none;
+        display: inline-flex;
+        justify-content: space-between;
+        transition: color 0.2s linear, background 0.2s linear, border-color 0.2s linear, text-shadow 0.2s linear;
+    }
+
+    .right.programmes .widget .faculties a:hover {
+        color: #ffffff;
+    }
+
+    .clsss {
+        padding: 7px 14px;
+        background-color: #3db166;
+        border-radius: 3px;
+        width: 100%;
+        color: white !important;
+        text-align: center;
+    }
+
+    .clsss a {
+        color: white !important;
+    }
+
+    .inner {
+        padding: 20px 30px;
+    }
+
+    .maincontainer {
+        background-image: radial-gradient(rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4)),url(homepage/images/bg.jpg);
+        padding: 5vw 1vw;
+        background-position: center bottom;
+        background-size: cover;
+    }
+
+    .inner .row .left.call .widget h1 {
+        color: #ffffff;
+        font-size: 25px;
+        background-color: #192f59;
+        padding: 1vw 3vw 1vw 1vw;
+        border-top-right-radius: 10000px;
+        border-bottom-right-radius: 10000px;
+    }
+
+    .right.enquire {
+        background-color: #ffffff;
+        border-radius: 20px;
+        padding: 2vw;
+        margin-top: 20px;
+    }
+
+    .right.enquire h5 {
+        color: #192f59;
+        padding-bottom: 1vw;
+        border-bottom: 2px
+        #192f59 solid;
+    }
+
+    .right.enquire .widget.link222 {
+        padding: 1vw 0vw;
+        text-align: center;
+        background-color: #192f59;
+        border-radius: 5px;
+        width: 95%;
+    }
+
+    .widget.link222 a{
+        color: white !important;
+    }
+
+    .widget.link10 a {
+        padding: 14px 14px;
+        background-color: #ffffff;
+        color: #2d2d2d;
+        text-decoration: none;
+        font-weight: 700;
+        border-left: 5px #3db166 solid;
     }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -205,166 +304,45 @@
 */
 @endphp
 <div class="gdlr-core-page-builder-body">
-    <div class="gdlr-core-pbf-wrapper" style="padding: 0px 0px 0px 0px;">
-        <div class="gdlr-core-pbf-background-wrap" style="background-color: #192f59"></div>
-        <div class="gdlr-core-pbf-wrapper-content gdlr-core-js">
-            <div class="
-            gdlr-core-pbf-wrapper-container
-            clearfix
-            gdlr-core-pbf-wrapper-full-no-space
-            ">
-                <div class="gdlr-core-pbf-element">
-                    <div class="
-                  gdlr-core-revolution-slider-item
-                  gdlr-core-item-pdlr
-                  gdlr-core-item-pdb
-                  " style="padding-bottom: 0px">
-                        <div id="rev_slider_1_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-source="gallery" style="
-                     margin: 0px auto; 
-                     background: transparent;
-                     padding: 0px;
-                     margin-top: 0px;
-                     margin-bottom: 0px;
-                     ">
-                            <div id="rev_slider_1_1" class="rev_slider fullwidthabanner" style="display: none" data-version="5.4.8">
-                                <ul>
-                                    <li data-index="rs-3" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="homepage/upload/slider-1-2-100x50.jpg" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                                        <img src="homepage/upload/slide_one1.jpg" alt="" title="slider-1-2" width="1800" height="1119" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina />
-                                        <div class="tp-caption tp-resizeme" id="slide-3-layer-1" data-x="38" data-y="center" data-voffset="-146" data-width="['auto']" data-height="['auto']" data-type="text" data-responsive_offset="on" data-frames='[{"delay":10,"speed":300,"frame":"0","from":"x:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="
-                                 z-index: 5;
-                                 white-space: nowrap;
-                                 font-size: 27px;
-                                 line-height: 27px;
-                                 font-weight: 300;
-                                 color: #8ef5a5;
-                                 letter-spacing: 0px;
-                                 font-family: Poppins;
-                                 ">
-                                            Discover the Passion and the Possibilities of
-                                        </div>
-                                        <div class="
-                                 tp-caption
-                                 tp-shape
-                                 tp-shapewrapper
-                                 tp-resizeme
-                                 " id="slide-3-layer-4" data-x="33" data-y="center" data-voffset="-44" data-width="['740']" data-height="['100']" data-type="shape" data-responsive_offset="on" data-frames='[{"delay":330,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="
-                                 z-index: 6;
-                                 background-color: rgba(24, 36, 59, 0.9);
-                                 border-radius: 3px 3px 3px 3px;
-                                 margin: -30px 0 0 -60px;
-                                 border-radius: 0 90px 90px 0 !important;
-                                 "></div>
-                                        <div class="tp-caption tp-resizeme" id="slide-3-layer-2" data-x="55" data-y="center" data-voffset="-52" data-width="['auto']" data-height="['auto']" data-type="text" data-responsive_offset="on" data-frames='[{"delay":360,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[10,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[20,0,0,0]" style="
-                                 z-index: 7;
-                                 white-space: nowrap;
-                                 font-size: 43px;
-                                 line-height: 83px;
-                                 font-weight: 600;
-                                 color: #ffffff;
-                                 letter-spacing: 0px;
-                                 font-family: Poppins;
-                                 margin: -30px 0 0 -40px;
-                                 border-radius: 0 90px 90px 0 !important;
-                                 ">
-                                            Imo State University, Owerri.
-                                        </div>
-                                        <div class="tp-caption rev-btn rev-hiddenicon" id="slide-3-layer-6" data-x="34" data-y="center" data-voffset="80" data-width="['auto']" data-height="['auto']" data-type="button" data-responsive_offset="on" data-frames='[{"delay":660,"speed":300,"frame":"0","from":"x:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgb(1,61,135);bg:rgba(255,255,255,1);bw:0 0 0 5px;"}]' data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[19,19,19,19]" data-paddingright="[21,21,21,21]" data-paddingbottom="[19,19,19,19]" data-paddingleft="[21,21,21,21]" style="
-                                 z-index: 9;
-                                 white-space: nowrap;
-                                 font-size: 17px;
-                                 line-height: 16px;
-                                 font-weight: 600;
-                                 color: #2d2d2d;
-                                 letter-spacing: 0px;
-                                 font-family: Poppins;
-                                 background-color: rgb(255, 255, 255);
-                                 border-color: rgb(61, 177, 102);
-                                 border-style: solid;
-                                 border-width: 0px 0px 0px 5px;
-                                 outline: none;
-                                 box-shadow: none;
-                                 box-sizing: border-box;
-                                 -moz-box-sizing: border-box;
-                                 -webkit-box-sizing: border-box;
-                                 cursor: pointer;
-                                 margin: -50px 0 0 0px;
-                                 ">
-                                            Learn More
-                                        </div>
-                                    </li>
-                                    <li data-index="rs-1" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="300" data-thumb="homepage/upload/slider-2-100x50.jpg" data-rotate="0" data-saveperformance="off" data-title="Slide" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                                        <img src="homepage/upload/slide_two.jpg" alt="" title="slider-2" width="1800" height="1119" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina />
-                                        <div class="tp-caption tp-resizeme" id="slide-1-layer-1" data-x="36" data-y="center" data-voffset="-145" data-width="['auto']" data-height="['auto']" data-type="text" data-responsive_offset="on" data-frames='[{"delay":10,"speed":300,"frame":"0","from":"x:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="
-                                 z-index: 5;
-                                 white-space: nowrap;
-                                 font-size: 27px;
-                                 line-height: 27px;
-                                 font-weight: 300;
-                                 color: #8ef5a5;
-                                 letter-spacing: 0px;
-                                 font-family: Poppins;
-                                 ">
-                                            Discover the Passion and the Possibilities of
-                                        </div>
-                                        <div class="
-                                 tp-caption
-                                 tp-shape
-                                 tp-shapewrapper
-                                 tp-resizeme
-                                 " id="slide-3-layer-4" data-x="33" data-y="center" data-voffset="-44" data-width="['740']" data-height="['100']" data-type="shape" data-responsive_offset="on" data-frames='[{"delay":330,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="
-                                 z-index: 6;
-                                 background-color: rgba(24, 36, 59, 0.9);
-                                 border-radius: 3px 3px 3px 3px;
-                                 margin: -30px 0 0 -60px;
-                                 border-radius: 0 90px 90px 0 !important;
-                                 "></div>
-                                        <div class="tp-caption tp-resizeme" id="slide-1-layer-2" data-x="33" data-y="center" data-voffset="-41" data-width="['740']" data-height="['90']" data-type="text" data-responsive_offset="on" data-frames='[{"delay":370,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]' data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[40,0,0,0]" style="
-                                 z-index: 6;
-                                 white-space: nowrap;
-                                 font-size: 43px;
-                                 line-height: 83px;
-                                 font-weight: 600;
-                                 color: #ffffff;
-                                 letter-spacing: 0px;
-                                 font-family: Poppins;
-                                 margin: -30px 0 0 -40px;
-                                 border-radius: 0 90px 90px 0 !important;
-                                 ">
-                                            Imo State University, Owerri.
-                                        </div>
-                                        <div class="tp-caption rev-btn rev-hiddenicon" id="slide-1-layer-6" data-x="34" data-y="center" data-voffset="80" data-width="['auto']" data-height="['auto']" data-type="button" data-responsive_offset="on" data-frames='[{"delay":740,"speed":300,"frame":"0","from":"x:-50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgb(0,64,132);bg:rgba(255,255,255,1);bw:0 0 0 5px;"}]' data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[19,19,19,19]" data-paddingright="[21,21,21,21]" data-paddingbottom="[19,19,19,19]" data-paddingleft="[21,21,21,21]" style="
-                                 z-index: 7;
-                                 white-space: nowrap;
-                                 font-size: 17px;
-                                 line-height: 16px;
-                                 font-weight: 600;
-                                 color: #2d2d2d;
-                                 letter-spacing: 0px;
-                                 font-family: Poppins;
-                                 background-color: rgb(255, 255, 255);
-                                 border-color: rgb(61, 177, 102);
-                                 border-style: solid;
-                                 border-width: 0px 0px 0px 5px;
-                                 outline: none;
-                                 box-shadow: none;
-                                 box-sizing: border-box;
-                                 -moz-box-sizing: border-box;
-                                 -webkit-box-sizing: border-box;
-                                 cursor: pointer;
-                                 margin: -50px 0 0 0px;
-                                 ">
-                                            Learn More
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important"></div>
-                            </div>
-                        </div>
+    <div class="maincontainer">
+        <div class="inner">
+            <div class="row">
+                <div class="col-md-12 col-lg-8 left call">
+                    <div class="widget">
+                        <br><br><br>
+                        <h4 style="color: #3db166;">Move Foward !</h4>
+                    </div>
+                    <div class="widget">
+                        <h1>Imo State University Post Graduate Studies</h1>
+                    </div>
+                    <div class="widget link10">
+                        <a href="#">Discover More</a>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4  right enquire">
+                    <div class="widget underline">
+                        <h5>Enquire For Post Graduate</h5>
+                    </div>
+                    <div class="widget">
+                        <p><strong>Email:</strong> info@imsu.edu.ng</p>
+                    </div>
+                    <div class="widget">
+                        <p><strong>Phone:</strong> +234 816 550 2620</p>
+                    </div>
+                    <div class="widget">
+                        <p><strong>Address:</strong> PMB 2000, Owerri, Imo State, Nigeria</p>
+                    </div>
+                    <div class="widget space"></div>
+                    <div class="widget link222">
+                        <a href="#">Enquire Now</a>
                     </div>
                 </div>
             </div>
+            
+            
         </div>
     </div>
+    
     <br><br>
     <div class="gdlr-core-pbf-wrapper " style="padding: 60px 0px 60px 0px;">
         <div class="gdlr-core-pbf-background-wrap"></div>
@@ -433,12 +411,12 @@
         </div>
     </section>
 
-    <section class="gdlr-core-pbf-wrapper " style="padding: 60px 30px;">
-        
+    <section class="gdlr-core-pbf-wrapper " style="padding: 60px 30px; background: #50545c0e">
+
         <div class="row">
             <div class="col-md-6">
                 <div class="row">
-                    <div class="col-md-12 crd" style="padding: 0;">
+                    <div class="col-md-12 crd" style="padding: 0; margin-bottom: 30px">
                         <div class="card">
                             <div class="card-body">
                                 <div class="col-md-6" style="padding: 0;">
@@ -447,7 +425,7 @@
                                 <div class="col-md-6 card-text">
                                     <div class="text">
                                         <div class="widget date">
-                                            <p><i class="fas fa-calendar-alt" aria-hidden="true"></i>  &nbsp;&nbsp;&nbsp; 27th September 2021</p>
+                                            <p><i class="fas fa-calendar-alt" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp; 27th September 2021</p>
                                         </div>
                                         <div class="widget">
                                             <p class="ttl">
@@ -467,24 +445,21 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-md-12">
+                    <div class="col-md-12 crd" style="padding: 0; margin-bottom: 30px">
                         <div class="card">
-                            
                             <div class="card-body">
-                                <div class="col-md-6">
-                                    <img src="homepage/images/girl.jpg" class="img-fluid" alt="...">
+                                <div class="col-md-6" style="padding: 0;">
+                                    <img src="homepage/images/2.png" class="img-fluid" alt="...">
                                 </div>
-                                
-                                <p class="card-text">
+                                <div class="col-md-6 card-text">
                                     <div class="text">
                                         <div class="widget date">
-                                            <i class="far fa-calendar-alt" aria-hidden="true"></i>
-                                            <p>27th September 2021</p>
+                                            <p><i class="fas fa-calendar-alt" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp; 27th September 2021</p>
                                         </div>
                                         <div class="widget">
-                                            <h3>
+                                            <p class="ttl">
                                                 Admissions Into The Imo State University Post Graduate Studies
-                                            </h3>
+                                            </p>
                                         </div>
                                         <div class="widget">
                                             <p>
@@ -495,28 +470,25 @@
                                             <a href="#">Read More</a>
                                         </div>
                                     </div>
-                                </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 crd" style="padding: 0; margin-bottom: 30px">
                         <div class="card">
-                            
                             <div class="card-body">
-                                <div class="col-md-6">
-                                    <img src="homepage/images/girl.jpg" class="img-fluid" alt="...">
+                                <div class="col-md-6" style="padding: 0;">
+                                    <img src="homepage/images/2.png" class="img-fluid" alt="...">
                                 </div>
-                                
-                                <p class="card-text">
+                                <div class="col-md-6 card-text">
                                     <div class="text">
                                         <div class="widget date">
-                                            <i class="far fa-calendar-alt" aria-hidden="true"></i>
-                                            <p>27th September 2021</p>
+                                            <p><i class="fas fa-calendar-alt" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp; 27th September 2021</p>
                                         </div>
                                         <div class="widget">
-                                            <h3>
+                                            <p class="ttl">
                                                 Admissions Into The Imo State University Post Graduate Studies
-                                            </h3>
+                                            </p>
                                         </div>
                                         <div class="widget">
                                             <p>
@@ -527,42 +499,70 @@
                                             <a href="#">Read More</a>
                                         </div>
                                     </div>
-                                </p>
+                                </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="clsss">
+                            <a href="#">View More</a>
+                        </div>
+                    </div>
+
+
                 </div>
-                
+
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <div class="right programmes">
+                    <div class="widget">
+                        <h4 style="color: #3db166;">Our Programmes and Courses</h4>
+                    </div>
+                    <div class="widget">
+                        <div class="faculties"><a href="#">Faculty of Physical Sciences <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
+                        <div class="faculties"><a href="#">Faculty of Biological Sciences <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
+                        <div class="faculties"><a href="#">Faculty of Health Sciences <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
+                        <div class="faculties"><a href="#">Faculty of Law <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
+                        <div class="faculties"><a href="#">Faculty of Engineering <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
+                        <div class="faculties"><a href="#">Faculty of Education <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
+                        <div class="faculties"><a href="#">Faculty of Humanities <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
+                        <div class="faculties"><a href="#">Faculty of Social Sciences <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
+                        <div class="faculties"><a href="#">Faculty of Enviromental Sciences <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
+                        <div class="faculties"><a href="#">Faculty of Basic Medical Sciences <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
+                        <div class="faculties"><a href="#">Faculty of Basic Clinical <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
+                        <div class="faculties"><a href="#">Faculty of Agricultural Science &amp; Veterinary <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
+                        <div class="faculties"><a href="#">Faculty of Business Administration (Management Sciences) <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
+                        <div class="faculties"><a href="#">Faculty of Clinical Medicine <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <section class="newsletter">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <p style="color: rgba(61, 177, 102, 0.76); font-family: Poppins;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 25px;">Subscribe to Newsletter</p>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="content">
-                            <div class="input-group">
-                                <input style="border:none; border-bottom: 1px solid #2E4579; border-top: 1px solid #2E4579; border-left: 1px solid #2E4579;" type="email" class="form-control" placeholder="Enter your email">
-                                <span class="input-group-btn">
-                                    <button class="btn" type="submit">Subscribe Now</button>
-                                </span>
-                            </div>
+
+
+
+    </section>
+    <section class="newsletter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p style="color: #192f59;font-size: 25px;">Subscribe to Newsletter</p>
+                </div>
+                <div class="col-sm-12">
+                    <div class="content">
+                        <div class="input-group">
+                            <input style="border:none; border-bottom: 2px solid #2E4579; border-top: 1px solid #2E4579; border-left: 2px solid #2E4579; border-radius:5px" type="email" class="form-control" placeholder="Enter your email">
+                            <span class="input-group-btn">
+                                <button class="btn" type="submit">Subscribe Now</button>
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
 
-
-
-        </section>
 
 
     </section>
