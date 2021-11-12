@@ -165,7 +165,7 @@ $subjects = [
                                                             </div>
 
 
-
+                                                            @if($std->mode_of_admission == 'UTME')
                                                             <div class="gdlr-core-course-column gdlr-core-column-20">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                     <label for="">UTME Score</label>
@@ -173,6 +173,7 @@ $subjects = [
                                                                     <input type="text" class="my_input" placeholder="UTME score" name="jamb_score" value="{{$std->jamb_score}}" required/>
                                                                 </div>
                                                             </div>
+                                                            @endif
 
                                                             <div class="gdlr-core-course-column gdlr-core-column-20">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
@@ -187,6 +188,8 @@ $subjects = [
                                                                     </div>
                                                                 </div>
                                                             </div>
+
+                                                            @if($std->mode_of_admission == 'UTME')
 
                                                             <div class="gdlr-core-course-column gdlr-core-column-full">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
@@ -219,6 +222,7 @@ $subjects = [
                                                                 </div>
                                                             </div>
                                                             @endfor
+                                                            @endif
 
                                                             
 

@@ -345,6 +345,29 @@ class HomeController extends Controller
 		return view('homepage.home', compact('articles', 'events', 'faculties', 'announcement', 'articles_latest'));
 	}
 
+	public function pghome()
+	{
+
+		$faculties = Faculty::all();
+		$articles = Article::where(['type' => 'article'])->orwhere(['type' => 'event'])->orwhere(['type' => 'announcement'])->published()
+			->latest()
+			->notDeleted()
+			->orderby('articles.id', 'DESC')->paginate(6);
+
+		$articles_latest = Article::where(['type' => 'article'])->published()->latest()->first();
+
+		$events = Article::where(['type' => 'event'])->notDeleted()->orderby('id', 'DESC')->take(6)->get();
+
+
+		$announcement = Article::where(['type' => 'announcement'])->published()
+			->latest()
+			->notDeleted()
+			->orderby('articles.id', 'DESC')->take(1)->get();
+		//dd($announcement);
+
+		return view('homepage.pghome', compact('articles', 'events', 'faculties', 'announcement', 'articles_latest'));
+	}
+
 	public function findStudentAdmission($request)
 	{
 

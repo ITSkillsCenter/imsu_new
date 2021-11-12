@@ -564,6 +564,7 @@ Route::group(['namespace' => 'student'], function () {
 
 
 Route::get('/', 'HomeController@homepage');
+Route::get('/post-graduate', 'HomeController@pghome');
 Route::get('/scholarship-application', 'HomeController@scholarship_application');
 Route::post('/scholarship-application', 'HomeController@scholarship_application');
 Route::get('/scholarship', 'HomeController@scholarships');

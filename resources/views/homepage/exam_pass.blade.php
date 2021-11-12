@@ -235,7 +235,7 @@
                                                                     <p>{{ucwords($std->jamb_score)}}</p>
                                                                 </div>
                                                             </div>
-
+                                                            @if($std->mode_of_admission == 'UTME')
                                                             <div class="gdlr-core-course-column gdlr-core-column-30">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                     <label for="">Jamb Score: </label>
@@ -245,6 +245,7 @@
                                                                     </p>
                                                                 </div>
                                                             </div>
+                                                            @endif
 
                                                             @php
                                                             $exam1 = json_decode($std->exam_1);
