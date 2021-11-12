@@ -84,6 +84,9 @@ class HomeController extends Controller
 			$registered_students = StudentInfo::where('status', '!=', Null)->count();
 			$paid_students =  DB::table('fee_histories')
 				->where('fee_histories.status', '=', 'paid')->count();
+			
+			$paid_applicants =  DB::table('application_payments')
+				->where('application_payments.status', '=', 'paid')->count();
 
 			$revenue =  DB::table('fee_histories')
 				->where(['department_id' => Auth::user()->dept_id])
@@ -279,6 +282,9 @@ class HomeController extends Controller
 			$registered_students = StudentInfo::where('status', '!=', Null)->count();
 			$paid_students =  DB::table('fee_histories')
 				->where('fee_histories.status', '=', 'paid')->count();
+			
+			$paid_applicants =  DB::table('application_payments')
+				->where('application_payments.status', '=', 'paid')->count();
 
 
 			$revenue =  DB::table('fee_histories')
@@ -309,7 +315,7 @@ class HomeController extends Controller
 			$lecturer_course_count = $lecturer_course->count();
 			return view('dashboard-lecturer', compact('putme','revenue', 'expected', 'deficit', 'faculties', 'departments', 's', 'r', 'rib', 'g', 'male', 'female', 'acceptance_total', 'programs', 'db_students', 'student_count', 'created_students', 'registered_students', 'paid_students', 'transactions_overview', 'showing', 'acceptance_fees', 'lecturer_course_count'));
 		} else {
-			return view('dashboard', compact('interswitch' ,'remita','putme','revenue', 'expected', 'deficit', 'faculties', 'departments', 's', 'r', 'rib', 'g', 'male', 'female', 'acceptance_total', 'programs', 'db_students', 'created_students', 'registered_students', 'paid_students', 'transactions_overview', 'showing', 'acceptance_fees'));
+			return view('dashboard', compact('paid_applicants','interswitch' ,'remita','putme','revenue', 'expected', 'deficit', 'faculties', 'departments', 's', 'r', 'rib', 'g', 'male', 'female', 'acceptance_total', 'programs', 'db_students', 'created_students', 'registered_students', 'paid_students', 'transactions_overview', 'showing', 'acceptance_fees'));
 		}
 		//dd($revenue, $expected, abs($deficit));
 

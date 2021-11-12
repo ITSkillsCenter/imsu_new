@@ -47,10 +47,18 @@
         color: #505050;
     }
 
+    @media (max-width: 760px) {
+        ul.navi {
+            margin: 2px;
+            padding: 5px;
+        }
+    }
+
     @media (min-width: 450px) {
         h1.heading {
             font-size: 3.55em;
         }
+
     }
 
     @media (min-width: 760px) {
@@ -118,6 +126,47 @@
             opacity: 1;
             transform: translateY(0px);
         }
+    }
+
+    .rm {
+        background-color: #192f59;
+        border-radius: 10px;
+        width: 45%;
+        color: white !important;
+        padding: 10px;
+    }
+
+    .rm:hover {
+        background-color: #192f59 !important;
+        color: white !important;
+    }
+
+    ul.navi {
+        list-style: none;
+        border: 1px solid #3db166;
+        /* height: 300px; */
+    }
+
+    ul.navi li {
+        padding: 10px;
+        border-bottom: 1px solid #3db166;
+        width: 100%;
+    }
+
+    .ttl {
+        font-size: 18px;
+        color: #4f6081;
+        font-weight: 500;
+    }
+
+    .gr-s {
+        padding: 10px;
+        background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(61, 177, 102, 0.5));
+    }
+
+    .card{
+        box-shadow: 0px 0px 12px 3px rgb(0 0 0 / 13%);
+
     }
 </style>
 @php
@@ -295,7 +344,7 @@
         </div>
     </div>
     <br><br>
-    <div class="gdlr-core-pbf-wrapper " style="padding: 90px 0px 60px 0px;">
+    <div class="gdlr-core-pbf-wrapper " style="padding: 60px 0px 60px 0px;">
         <div class="gdlr-core-pbf-background-wrap"></div>
         <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
             <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container" style="max-width: 900px;">
@@ -306,469 +355,107 @@
 
                             </div>
                             <div class="gdlr-core-tab-item-content-wrap clearfix">
-                                @foreach($announcement as $k=>$annc)
-                                <div class="gdlr-core-tab-item-content  {{$k==0 ? 'gdlr-core-active' : ''}}" data-tab-id="{{$k}}">
-                                    <div style="padding-bottom: 10px;" class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-left-align gdlr-core-title-item-caption-top">
+                                <div class="gdlr-core-tab-item-content gdlr-core-active text-center">
+                                    <div style="padding-bottom: 10px;" class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-title-item-caption-top">
                                         <div class="gdlr-core-title-item-title-wrap ">
-                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 22px ;font-weight: 700 ;text-transform: none ;color: #314e85 ;">
-                                                {{$annc->heading}}<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
+                                            <h3 class="gdlr-core-title-item-title" style="font-size: 22px; text-align:center; font-weight: 700 ;text-transform: none ;color: #314e85 ;">
+                                                <br>
+                                                Admissions Is In Progress!
+                                                <span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>
                                             </h3>
                                         </div>
                                     </div>
-                                    <div>{!!substr($annc->content,0,300)!!}... <br /><br><a href='/article/{{$annc->id}}/{{str_slug($annc->heading, '-')}}' class='btn btn-primary btn-xs' style="color:white">Read More</a>
+                                    <div>
+                                        Admissions into the Imo State University Post Graduate Studies for 2021/2022 academic session is in progress
+                                        <br><br> <a href='' class='btn btn-primary btn-xs rm'>Read More</a> <br><br>
                                     </div>
                                 </div>
-                                @endforeach
+
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <div class="gdlr-core-pbf-wrapper mt-xs-40" id="div_1dd7_30" data-skin="Column Service">
-        <div class="gdlr-core-pbf-background-wrap" id="div_1dd7_31"></div>
-        <div class="gdlr-core-pbf-wrapper-content gdlr-core-js">
-            <div class="
-            gdlr-core-pbf-wrapper-container
-            clearfix
-            gdlr-core-container
-            ">
-                <h3 class="discover">Discover IMSU</h3>
-                <div class="
-               gdlr-core-pbf-column
-               gdlr-core-column-15
-               gdlr-core-column-first
-               ">
-                    <div class="gdlr-core-pbf-column-content-margin gdlr-core-js">
-                        <div class="
-                     gdlr-core-pbf-column-content
-                     clearfix
-                     gdlr-core-js
-                     ">
-                            <div class="gdlr-core-pbf-element">
-                                <div class="
-                           gdlr-core-column-service-item
-                           gdlr-core-item-pdb
-                           gdlr-core-left-align
-                           gdlr-core-column-service-icon-top
-                           gdlr-core-no-caption
-                           gdlr-core-item-pdlr
-                           " id="div_1dd7_32">
-                                    <div class="
-                              gdlr-core-column-service-media
-                              gdlr-core-media-image text-center
-                              " id="div_1dd7_33">
-                                        <img src="homepage/upload/col-icon-1.png" alt="" width="41" height="41" title="col-icon-1" />
-                                    </div>
-                                    <div class="gdlr-core-column-service-content-wrapper">
-                                        <div class="gdlr-core-column-service-title-wrap">
-                                            <h3 class="
-                                    gdlr-core-column-service-title
-                                    gdlr-core-skin-title text-center
-                                    " id="h3_1dd7_6">
-                                                Scholarship & Financial Aids
-                                            </h3>
-                                        </div>
-                                        <div class="gdlr-core-column-service-content text-center" id="div_1dd7_34">
-                                            <p>
-                                                Imo State University offers limited need and
-                                                merit based scholarship and financial aids.
-                                                Find out more..
-                                            </p>
-                                            <a class="
-                                    gdlr-core-column-service-read-more
-                                    gdlr-core-info-font
-                                    " href="/scholarship" id="a_1dd7_1">Learn More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gdlr-core-pbf-column gdlr-core-column-15" id="gdlr-core-column-5">
-                    <div class="gdlr-core-pbf-column-content-margin gdlr-core-js">
-                        <div class="
-                     gdlr-core-pbf-column-content
-                     clearfix
-                     gdlr-core-js
-                     ">
-                            <div class="gdlr-core-pbf-element">
-                                <div class="
-                           gdlr-core-column-service-item
-                           gdlr-core-item-pdb
-                           gdlr-core-left-align
-                           gdlr-core-column-service-icon-top
-                           gdlr-core-no-caption
-                           gdlr-core-item-pdlr
-                           " id="div_1dd7_35">
-                                    <div class="
-                              gdlr-core-column-service-media
-                              gdlr-core-media-image text-center
-                              " id="div_1dd7_36">
-                                        <img src="homepage/upload/col-icon-2.png" alt="" width="43" height="45" title="col-icon-2" />
-                                    </div>
-                                    <div class="gdlr-core-column-service-content-wrapper">
-                                        <div class="gdlr-core-column-service-title-wrap">
-                                            <h3 class="
-                                    gdlr-core-column-service-title
-                                    gdlr-core-skin-title text-center
-                                    " id="h3_1dd7_7">
-                                                Campus<br>Life
-                                            </h3>
-                                        </div>
-                                        <div class="gdlr-core-column-service-content text-center" id="div_1dd7_37">
-                                            <p>
-                                                IMSU Campus Life is the official Imo State
-                                                University, Owerri welfare and entertainment
-                                                unit created to ...
-                                            </p>
-                                            <a class="
-                                    gdlr-core-column-service-read-more
-                                    gdlr-core-info-font
-                                    " href="#" id="a_1dd7_2">Learn More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gdlr-core-pbf-column gdlr-core-column-15" id="gdlr-core-column-6">
-                    <div class="gdlr-core-pbf-column-content-margin gdlr-core-js">
-                        <div class="
-                     gdlr-core-pbf-column-content
-                     clearfix
-                     gdlr-core-js
-                     ">
-                            <div class="gdlr-core-pbf-element">
-                                <div class="
-                           gdlr-core-column-service-item
-                           gdlr-core-item-pdb
-                           gdlr-core-left-align
-                           gdlr-core-column-service-icon-top
-                           gdlr-core-no-caption
-                           gdlr-core-item-pdlr
-                           " id="div_1dd7_38">
-                                    <div class="
-                              gdlr-core-column-service-media
-                              gdlr-core-media-image text-center
-                              " id="div_1dd7_39">
-                                        <img src="homepage/upload/col-icon-3.png" alt="" width="40" height="43" title="col-icon-3" />
-                                    </div>
-                                    <div class="gdlr-core-column-service-content-wrapper">
-                                        <div class="gdlr-core-column-service-title-wrap">
-                                            <h3 class="
-                                    gdlr-core-column-service-title
-                                    gdlr-core-skin-title text-center
-                                    " id="h3_1dd7_8">
-                                                Research and <br>Innovation
-                                            </h3>
-                                        </div>
-                                        <div class="gdlr-core-column-service-content text-center" id="div_1dd7_40">
-                                            <p>
-                                                Through research and innovation, IMSU aims to
-                                                become one of the most world-class ...
-                                            </p>
-                                            <a class="
-                                    gdlr-core-column-service-read-more
-                                    gdlr-core-info-font
-                                    " href="#" id="a_1dd7_3">Learn More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gdlr-core-pbf-column gdlr-core-column-15" id="gdlr-core-column-7">
-                    <div class="gdlr-core-pbf-column-content-margin gdlr-core-js">
-                        <div class="
-                     gdlr-core-pbf-column-content
-                     clearfix
-                     gdlr-core-js
-                     ">
-                            <div class="gdlr-core-pbf-element">
-                                <div class="
-                           gdlr-core-column-service-item
-                           gdlr-core-item-pdb
-                           gdlr-core-left-align
-                           gdlr-core-column-service-icon-top
-                           gdlr-core-no-caption
-                           gdlr-core-item-pdlr
-                           " id="div_1dd7_41">
-                                    <div class="
-                              gdlr-core-column-service-media
-                              gdlr-core-media-image text-center
-                              " id="div_1dd7_42">
-                                        <img src="homepage/upload/col-icon-4.png" alt="" width="47" height="47" title="col-icon-4" />
-                                    </div>
-                                    <div class="gdlr-core-column-service-content-wrapper">
-                                        <div class="gdlr-core-column-service-title-wrap">
-                                            <h3 class="
-                                    gdlr-core-column-service-title
-                                    gdlr-core-skin-title text-center
-                                    " id="h3_1dd7_9">
-                                                School<br>Alumni
-                                            </h3>
-                                        </div>
-                                        <div class="gdlr-core-column-service-content text-center" id="div_1dd7_43">
-                                            <p>
-                                                Request for your transcript. Login to view
-                                                shipment progress. Receive update emails on
-                                                shipment...
-                                            </p>
-                                            <a class="
-                                    gdlr-core-column-service-read-more
-                                    gdlr-core-info-font
-                                    " href="#" id="a_1dd7_4">Learn More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+    <section class="gr-s">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="left menu">
+                    <ul class="navi">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Admissions</a></li>
+                        <li><a href="#">Research</a></li>
+                        <li><a href="#">Online studies</a></li>
+                        <li><a href="#">Work-study Programme</a></li>
+                        <li><a href="#">Scholarship and financial aid</a></li>
+                    </ul>
                 </div>
             </div>
+            <div class="col-md-3">
+                <img src="homepage/images/girl.jpg" style="border: 4px solid green;" class="card-img-top img-fluid" alt="...">
+            </div>
+            <div class="col-md-6" style="padding:10px 20px">
+                <p class="ttl">Welcome to</p>
+                <h4 style="color: #3db166;">Imo State University Post Graduate Studies</h4>
+                <p>
+                    It is with great pleasure that I welcome you to Imo State University (IMSU).
+                    IMSU was established in 1981 through law No. 4 passed by the Imo State House of Assembly.
+                    Established with the vision of pursuing the advancement of learning and academic excellence,
+                    the university has been unrelenting in the pursuit of its mission of becoming a citadel of learning,
+                    a community with the trademark of excellence in teaching, research and service to humanity, a catalyst as well as an agent for development.
+                </p>
+            </div>
         </div>
-    </div>
+    </section>
 
     <section style="background-color:#f7fcf9; width: 100%; margin:auto; padding-top:5%;">
-        <div class="" style="margin-left:3%; margin-right:3%;">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="row" style="margin:0px;">
-                        <h4 style="color: #3db166;">Our Faculties</h4>
-                        <div class=" col-md-12" style="background-color: #3c5143; padding:4%; border-radius: 5px 5px 5px 5px; font-size:13px;">
-                            @foreach($faculties as $faculty)
-                            <p style="">
-                                <a href="/faculty/{{$faculty->slug}}" style="color: white;" target="_self">{{$faculty->name}}</a>
-                            </p>
-                            @endforeach
-                        </div>
-                    </div>
-
-                    <div class="row" style="margin-right:0px; margin-left:0px; margin-top:25px;;">
-                        <div class="card" style="margin-bottom:10%; padding-bottom:18px; background-color:#F7FCF9; box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25)">
-                            <img src="homepage/upload/hp-donation-400x212.jpg" class="card-img-top img-fluid" alt="...">
-                            <div class="card-body">
-                                <div class="card-text">
-                                    <h4 style="color: #349857;">IMSU ALUMNI</h4>
-
-                                </div>
-                                <p class="card-text">
-                                    <strong>IMSU Alumni</strong> Platform is specially designed to bring all
-                                    ex-students of Imo State University together (irrespective of where they live in the
-                                    world)
-                                    as one big caring family; dedicated to the wellbeing of one another, the university
-                                    and the world at large
-
-                                </p>
-
-                                <p class="card-text">
-                                    <button type="button" class="btn--outline--success">Click here to know more</button>
-
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-md-6">
-                    <div class="row" style="margin:0px;">
-                        <div class="col-md-12">
-                            <h4 style="color: #3db166; ">Latest News and Updates</h4>
-                        </div>
-                        <div class="col-md-12">
-
-
-                            @forelse ( $articles as $article )
-                            <div class="my-card">
-                                <div style="display: flex; justify-content:space-between; width:75%">
-                                    <div class="card-date">
-                                        <i class="fa fa-calendar" aria-hidden="true"></i> &nbsp; {{date("F j, Y", strtotime($article->published_at))}}
-                                    </div>
-                                    <div>{{$article->category->name}}</div>
-                                </div>
-
-                                <div class="card-title"> <a href="/article/{{$article->id}}/{{str_slug($article->heading, '-')}}">{{$article->heading}} </a> </div>
-                                <div class="card-text">
-
-                                    {{trimString($article->content, 300)}}
-
-
-                                    <a style="color: green;" href="/article/{{$article->id}}/{{str_slug($article->heading, '-')}}">
-                                        Continue reading
-                                    </a>
-
-
-                                </div>
-                                <div class="hr"></div>
-
-                            </div>
-                            @empty
-
-                            @endforelse
-                            <br><br>
-                            <div><a style="color: green; text-decoration:underline" href="/article">View All</a></div>
-
-
-                        </div>
-                    </div>
-
-
-                </div>
-
-                <div class="col-md-3 ">
-                    <div class="row" style="margin:0px;">
-                        <div class="col-md-12">
-                            <h4 style="color: #3db166;">Upcoming Events </h4>
-                            @if(count($events) > 0)
-                            @foreach($events as $event)
-                            <div class="card" style="margin-bottom:10%; background-color:#f7f7f7;">
-                                <img src="homepage/images/Rectangle49.png" class="card-img-top img-fluid" alt="...">
-                                <div class="card-body">
-                                    <!-- <p class="card-text"></p> -->
-                                </div>
-                                <div class="card-footer" style="padding:10px;">
-                                    <div>
-                                        <h6>
-                                            {{$event->heading}} <span class="pull-right btn btn-success"><a href="/article/{{$event->id}}/{{str_slug($event->heading, '-')}}">Read more </a></span>
-                                        </h6>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                            @else
-                            <h6>No upcoming events</h6>
-                            @endif
-                        </div>
-
-
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
-
-
+        
         <div class="row">
-            <div class="gdlr-core-pbf-element">
-                <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 40px ;">
-                    <div class="gdlr-core-title-item-title-wrap clearfix" style="width: 100%; text-align:center">
-                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 22px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;color: #223d71 ;margin-right: 30px ; float:inherit">
-                            Downloads
-                        </h3>
-                        <!-- <div class="gdlr-core-title-item-divider gdlr-core-right gdlr-core-skin-divider" style="font-size: 22px ;border-bottom-width: 3px ;"></div> -->
-                    </div>
-                </div>
-            </div>
-            <div class="gdlr-core-pbf-column gdlr-core-column-15 gdlr-core-column-first ">
-                <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " style="margin: 0px -7px 0px 0px;">
-                    <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
-                        <div class="gdlr-core-pbf-element">
-                            <div class="gdlr-core-feature-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align ">
-                                <div class="gdlr-core-feature-box gdlr-core-js gdlr-core-feature-box-type-outer min_h card-info" style="background-color: #3db166 ;border-width: 0px 0px 0px 0px;border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;">
-                                    <div class="gdlr-core-feature-box-background" style="background-image: url(upload/shutterstock_209187682.jpg) ;opacity: 0.14 ;"></div>
-                                    <div class="gdlr-core-feature-box-content gdlr-core-sync-height-content">
-                                        <h3 class="gdlr-core-feature-box-item-title" style="font-size: 14px ;font-weight: 600 ;">
-                                            2020/2021 Academic Calendar <br><br>
-                                        </h3>
-                                    </div>
-                                    <a class="gdlr-core-feature-box-link" href="/docs/IMSU_ACADEMIC_CALENDAR.docx" target="_self" download></a>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="col-md-6">
+                                    <img src="homepage/images/girl.jpg" class="img-fluid" alt="...">
                                 </div>
+                                
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            
+                            <div class="card-body">
+                                <div class="col-md-6">
+                                    <img src="homepage/images/girl.jpg" class="img-fluid" alt="...">
+                                </div>
+                                
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            
+                            <div class="card-body">
+                                <div class="col-md-6">
+                                    <img src="homepage/images/girl.jpg" class="img-fluid" alt="...">
+                                </div>
+                                
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             </div>
                         </div>
                     </div>
                 </div>
+                
             </div>
-            <div class="gdlr-core-pbf-column gdlr-core-column-10">
-                <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " style="margin: 0px -3px 0px -3px;">
-                    <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
-                        <div class="gdlr-core-pbf-element">
-                            <div class="gdlr-core-feature-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align">
-                                <div class="gdlr-core-feature-box gdlr-core-js gdlr-core-feature-box-type-outer min_h card-info" style="background-color: #3db166 ;border-width: 0px 0px 0px 0px;border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;">
-                                    <div class="gdlr-core-feature-box-background" style="background-image: url(upload/major-bg-2.jpg) ;opacity: 0.14 ;"></div>
-                                    <div class="gdlr-core-feature-box-content gdlr-core-sync-height-content">
-                                        <h3 class="gdlr-core-feature-box-item-title" style="font-size: 14px ;font-weight: 600 ;">
-                                            List of Faculties and Departments
-                                        </h3>
-                                    </div>
-                                    <a class="gdlr-core-feature-box-link" href="/docs/IMSU_Faculties_and_Departments.docx" target="_self" download></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="gdlr-core-pbf-column gdlr-core-column-10">
-                <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " style="margin: 0px 0px 0px -7px;padding: 0px 0px 45px 0px;">
-                    <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
-                        <div class="gdlr-core-pbf-element">
-                            <div class="gdlr-core-feature-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align">
-                                <div class="gdlr-core-feature-box gdlr-core-js gdlr-core-feature-box-type-outer min_h card-info" style="background-color: #3db166 ;border-width: 0px 0px 0px 0px;border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;">
-                                    <div class="gdlr-core-feature-box-background" style="background-image: url(upload/support-image-3.jpg) ;opacity: 0.14 ;"></div>
-                                    <div class="gdlr-core-feature-box-content gdlr-core-sync-height-content">
-                                        <h3 class="gdlr-core-feature-box-item-title" style="font-size: 14px ;font-weight: 600 ;">
-                                            Student Handbook <br><br>
-                                        </h3>
-                                    </div>
-                                    <a class="gdlr-core-feature-box-link" href="#" target="_self"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="gdlr-core-pbf-column gdlr-core-column-10">
-                <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " style="margin: 0px 0px 0px -7px;padding: 0px 0px 45px 0px;">
-                    <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
-                        <div class="gdlr-core-pbf-element">
-                            <div class="gdlr-core-feature-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align">
-                                <div class="gdlr-core-feature-box gdlr-core-js gdlr-core-feature-box-type-outer min_h card-info" style="background-color: #3db166 ;border-width: 0px 0px 0px 0px;border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;">
-                                    <div class="gdlr-core-feature-box-background" style="background-image: url(upload/support-image-3.jpg) ;opacity: 0.14 ;"></div>
-                                    <div class="gdlr-core-feature-box-content gdlr-core-sync-height-content">
-                                        <h3 class="gdlr-core-feature-box-item-title" style="font-size: 14px ;font-weight: 600 ;">
-                                            IMSU Anthem <br><br>
-                                        </h3>
-                                    </div>
-                                    <a class="gdlr-core-feature-box-link" href="#" target="_self"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="gdlr-core-pbf-column gdlr-core-column-15">
-                <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " style="margin: 0px 0px 0px -7px;padding: 0px 0px 45px 0px;">
-                    <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
-                        <div class="gdlr-core-pbf-element">
-                            <div class="gdlr-core-feature-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align">
-                                <div class="gdlr-core-feature-box gdlr-core-js gdlr-core-feature-box-type-outer min_h card-info" style="background-color: #3db166 ;border-width: 0px 0px 0px 0px;border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;">
-                                    <div class="gdlr-core-feature-box-background" style="background-image: url(upload/support-image-3.jpg) ;opacity: 0.14 ;"></div>
-                                    <div class="gdlr-core-feature-box-content gdlr-core-sync-height-content">
-                                        <h3 class="gdlr-core-feature-box-item-title" style="font-size: 14px ;font-weight: 600 ;">
-                                            2020/2021 Supplementary Admission List
-                                        </h3>
-                                    </div>
-                                    <a class="gdlr-core-feature-box-link" href="#" target="_self"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="col-md-6"></div>
         </div>
-
-
 
         <section class="newsletter">
             <div class="container">
@@ -798,37 +485,11 @@
         </section>
 
 
-        <!-- </div> -->
+    </section>
 </div>
 </div>
 </div>
-<div class="" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; top: 5%; position: absolute; margin: 0 auto;">
-    <div class="modal-dialog" style="border: 0;" role="document">
-        <div class="modal-content" style="border: 0;">
-            <div class="modal-header text-white" style="display:flex; justify-content:space-between; background: linear-gradient(90deg,rgb(17, 182, 122) 0%, rgb(0, 148, 68) 100%);">
-                <p style="font-weight:bold; color:white">News Update!</p>
-                <button type="button" id="closeit" class="close" data-dismiss="modal" style="opacity: 1; color:white" aria-label="Close">
-                    <span aria-hidden="true" class="white-text">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="text-center">
-                    <a href="/article/26/20212022-post-utme-and-direct-entry-screening-exercise">
-                        <img src="homepage/upload/special_annoucement.jpg" class="img-responsive" alt="">
-                    </a>
-                    <!-- <p>Registration of students on the portal has commenced Click here to register
-                  </p> -->
-                    <div class="row">
-                        <a href="/article/26/20212022-post-utme-and-direct-entry-screening-exercise"><span class="btn btn-primary">Read More</span></a>
-                        <a href="/admission-portal"><span class="btn btn-primary">Register</span></a>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="overlay"></div>
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
 <script>
     $(document).ready(function() {

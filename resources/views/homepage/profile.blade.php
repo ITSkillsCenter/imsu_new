@@ -272,6 +272,13 @@ $subjects = [
                                                                 </div>
                                                             </div>
 
+                                                            <div class="gdlr-core-course-column gdlr-core-column-20">
+                                                                <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                    <label for="">Applicant Date of Birth</label>
+                                                                    <input type="date" class="my_input" placeholder="Date of Birth" name="date_of_birth" value="{{$std->date_of_birth}}" required />
+                                                                </div>
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -318,12 +325,7 @@ $subjects = [
                                                             </div>
                                                         </div>
 
-                                                        <div class="gdlr-core-course-column gdlr-core-column-20">
-                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                <label for="">Applicant Date of Birth</label>
-                                                                <input type="date" class="my_input" placeholder="Date of Birth" name="date_of_birth" value="{{$std->date_of_birth}}" required />
-                                                            </div>
-                                                        </div>
+                                                       
 
                                                     </div>
                                                 </div>

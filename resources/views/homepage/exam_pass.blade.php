@@ -228,14 +228,14 @@
                                                             </div>
 
                                                             <h5 class="gdlr-core-course-column gdlr-core-column-full" style="border-bottom: 3px solid black;">Result</h5>
-
+                                                            @if($std->mode_of_admission == 'UTME')
                                                             <div class="gdlr-core-course-column gdlr-core-column-30">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
                                                                     <label for="">Jamb Score: </label>
                                                                     <p>{{ucwords($std->jamb_score)}}</p>
                                                                 </div>
                                                             </div>
-                                                            @if($std->mode_of_admission == 'UTME')
+                                                            
                                                             <div class="gdlr-core-course-column gdlr-core-column-30">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                     <label for="">Jamb Score: </label>
