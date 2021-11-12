@@ -85,8 +85,9 @@ class HomeController extends Controller
 			$paid_students =  DB::table('fee_histories')
 				->where('fee_histories.status', '=', 'paid')->count();
 			
-			$paid_applicants =  DB::table('application_payments')
-				->where('application_payments.status', '=', 'paid')->count();
+			$paid_applicants = ApplicationFee::where(['status' => 'PAID'])
+        ->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'pms_id', 'status', 'created_at', 'updated_at')
+        ->get()->keyBy('application_number')->count();
 
 			$revenue =  DB::table('fee_histories')
 				->where(['department_id' => Auth::user()->dept_id])
@@ -283,8 +284,9 @@ class HomeController extends Controller
 			$paid_students =  DB::table('fee_histories')
 				->where('fee_histories.status', '=', 'paid')->count();
 			
-			$paid_applicants =  DB::table('application_payments')
-				->where('application_payments.status', '=', 'paid')->count();
+			$paid_applicants = ApplicationFee::where(['status' => 'PAID'])
+			->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'pms_id', 'status', 'created_at', 'updated_at')
+			->get()->keyBy('application_number')->count();
 
 
 			$revenue =  DB::table('fee_histories')

@@ -164,11 +164,33 @@
         background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(61, 177, 102, 0.5));
     }
 
-    .card{
+    .crd{
         box-shadow: 0px 0px 12px 3px rgb(0 0 0 / 13%);
 
     }
+
+    .widget {
+        color: #4e4e4e;
+        padding: 0.5vw 1vw;
+    }
+
+    .widget.link {
+        background-color: #ffffff;
+        border: none;
+        width: fit-content;
+    }
+
+    .widget.link a {
+        padding: 7px 14px;
+        color: #3db166;
+        width: fit-content;
+        background-color: #ffffff;
+        border-radius: 3px;
+        border: 3px #3db166 solid;
+        transition: color 0.2s linear,background 0.2s linear,border-color 0.2s linear, text-shadow 0.2s linear;
+    }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @php
 /*
 @if(count($announcement) > 0)
@@ -411,19 +433,69 @@
         </div>
     </section>
 
-    <section style="background-color:#f7fcf9; width: 100%; margin:auto; padding-top:5%;">
+    <section class="gdlr-core-pbf-wrapper " style="padding: 60px 30px;">
         
         <div class="row">
             <div class="col-md-6">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 crd" style="padding: 0;">
                         <div class="card">
+                            <div class="card-body">
+                                <div class="col-md-6" style="padding: 0;">
+                                    <img src="homepage/images/2.png" class="img-fluid" alt="...">
+                                </div>
+                                <div class="col-md-6 card-text">
+                                    <div class="text">
+                                        <div class="widget date">
+                                            <p><i class="fas fa-calendar-alt" aria-hidden="true"></i>  &nbsp;&nbsp;&nbsp; 27th September 2021</p>
+                                        </div>
+                                        <div class="widget">
+                                            <p class="ttl">
+                                                Admissions Into The Imo State University Post Graduate Studies
+                                            </p>
+                                        </div>
+                                        <div class="widget">
+                                            <p>
+                                                The management of the Imo State University wishes to announce the on-going post graduate studies admissions for 2021/2022.....
+                                            </p>
+                                        </div>
+                                        <div class="widget link">
+                                            <a href="#">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-12">
+                        <div class="card">
+                            
                             <div class="card-body">
                                 <div class="col-md-6">
                                     <img src="homepage/images/girl.jpg" class="img-fluid" alt="...">
                                 </div>
                                 
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <p class="card-text">
+                                    <div class="text">
+                                        <div class="widget date">
+                                            <i class="far fa-calendar-alt" aria-hidden="true"></i>
+                                            <p>27th September 2021</p>
+                                        </div>
+                                        <div class="widget">
+                                            <h3>
+                                                Admissions Into The Imo State University Post Graduate Studies
+                                            </h3>
+                                        </div>
+                                        <div class="widget">
+                                            <p>
+                                                The management of the Imo State University wishes to announce the on-going post graduate studies admissions for 2021/2022.....
+                                            </p>
+                                        </div>
+                                        <div class="widget link">
+                                            <a href="#">Read More</a>
+                                        </div>
+                                    </div>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -435,22 +507,30 @@
                                     <img src="homepage/images/girl.jpg" class="img-fluid" alt="...">
                                 </div>
                                 
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <p class="card-text">
+                                    <div class="text">
+                                        <div class="widget date">
+                                            <i class="far fa-calendar-alt" aria-hidden="true"></i>
+                                            <p>27th September 2021</p>
+                                        </div>
+                                        <div class="widget">
+                                            <h3>
+                                                Admissions Into The Imo State University Post Graduate Studies
+                                            </h3>
+                                        </div>
+                                        <div class="widget">
+                                            <p>
+                                                The management of the Imo State University wishes to announce the on-going post graduate studies admissions for 2021/2022.....
+                                            </p>
+                                        </div>
+                                        <div class="widget link">
+                                            <a href="#">Read More</a>
+                                        </div>
+                                    </div>
+                                </p>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="card">
-                            
-                            <div class="card-body">
-                                <div class="col-md-6">
-                                    <img src="homepage/images/girl.jpg" class="img-fluid" alt="...">
-                                </div>
-                                
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
                 </div>
                 
             </div>
