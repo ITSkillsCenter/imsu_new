@@ -202,11 +202,11 @@
 
     .right.programmes div.widget div:hover {
         color: #ffffff;
-        background-color: #3db166;
+        background-color: #192F59;
     }
 
     .right.programmes .widget .faculties a {
-        color: #3db166;
+        color: #192F59;
         padding: 10px 14px;
         font-size: 13px;
         font-weight: 600;
@@ -414,15 +414,18 @@
     <section class="gdlr-core-pbf-wrapper " style="padding: 60px 30px; background: #50545c0e">
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="row">
+                    <div class="widget">
+                        <h4 style="color: #3db166;">Post Graduate News & Updates</h4>
+                    </div>
                     <div class="col-md-12 crd" style="padding: 0; margin-bottom: 30px">
                         <div class="card">
                             <div class="card-body">
-                                <div class="col-md-6" style="padding: 0;">
-                                    <img src="homepage/images/2.png" class="img-fluid" alt="...">
+                                <div class="col-md-12" style="padding: 0;">
+                                    <img src="homepage/images/Rectangle.png" style="width: 100%;" class="img-fluid" alt="...">
                                 </div>
-                                <div class="col-md-6 card-text">
+                                <div class="col-md-12 card-text">
                                     <div class="text">
                                         <div class="widget date">
                                             <p><i class="fas fa-calendar-alt" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp; 27th September 2021</p>
@@ -448,10 +451,10 @@
                     <div class="col-md-12 crd" style="padding: 0; margin-bottom: 30px">
                         <div class="card">
                             <div class="card-body">
-                                <div class="col-md-6" style="padding: 0;">
-                                    <img src="homepage/images/2.png" class="img-fluid" alt="...">
+                                <div class="col-md-12" style="padding: 0;">
+                                    <img src="homepage/images/Rectangle.png" style="width: 100%;" class="img-fluid" alt="...">
                                 </div>
-                                <div class="col-md-6 card-text">
+                                <div class="col-md-12 card-text">
                                     <div class="text">
                                         <div class="widget date">
                                             <p><i class="fas fa-calendar-alt" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp; 27th September 2021</p>
@@ -477,10 +480,10 @@
                     <div class="col-md-12 crd" style="padding: 0; margin-bottom: 30px">
                         <div class="card">
                             <div class="card-body">
-                                <div class="col-md-6" style="padding: 0;">
-                                    <img src="homepage/images/2.png" class="img-fluid" alt="...">
+                                <div class="col-md-12" style="padding: 0;">
+                                    <img src="homepage/images/Rectangle.png" style="width: 100%;" class="img-fluid" alt="...">
                                 </div>
-                                <div class="col-md-6 card-text">
+                                <div class="col-md-12 card-text">
                                     <div class="text">
                                         <div class="widget date">
                                             <p><i class="fas fa-calendar-alt" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp; 27th September 2021</p>
@@ -514,10 +517,10 @@
                 </div>
 
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="right programmes">
                     <div class="widget">
-                        <h4 style="color: #3db166;">Our Programmes and Courses</h4>
+                        <h4 style="color: #192F59;">Our Programmes and Courses</h4>
                     </div>
                     <div class="widget">
                         <div class="faculties"><a href="#">Faculty of Physical Sciences <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
