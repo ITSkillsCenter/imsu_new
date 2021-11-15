@@ -259,6 +259,8 @@
 
     $('#bank').click(function(){
         $(this).html('Loading...')
+        $('#send').attr('disabled', true)
+        $('#interswitch').attr('disabled', true)
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
