@@ -156,8 +156,8 @@ class PaymentController extends Controller
 
     public function update_payment_details(Request $request){
         // dd($request->all(), $request->response);
-        if($request->response['data']['status'] == 'Paid'){
-            $update_history = FeeHistory::where(['reference_id' => $request->response['data']['rrr']])
+        if($request->response['data']['status'] == 'PAID'){
+            $update_history = FeeHistory::where(['reference_id' => $request->response['data']['tranx_ref']])
             ->update(['status' => 'paid']);
             // dd($update_history, $request->response['data']['rrr']);
             if($update_history){

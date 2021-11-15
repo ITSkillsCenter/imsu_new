@@ -376,6 +376,71 @@ class HomeController extends Controller
 		return view('homepage.pghome', compact('articles', 'events', 'faculties', 'announcement', 'articles_latest'));
 	}
 
+	public function pg_application(Request $request){
+		if ($request->isMethod('post')) {
+
+			try {
+
+				$id = trim($request->matric_number);
+				$password = $request->password;
+				if ($password !== $request->cnf_password) {
+					return back()->with('error', 'Password mismatch!');
+				}
+				//check if student already register with email, then login
+				$check = StudentInfo::where('Email_Address', $request->email)->first();
+				if ($check) {
+					$new_dataA['email'] = $request->email;
+					Mail::to(strtolower($request->email))->send(new VerifyEmail($new_dataA));
+					return back()->with('error', 'Email is already Registered, another verification link has been sent, kindly check your email');
+				}
+				
+				$count = StudentInfo::where('registration_number', $id)->count();
+				
+			
+				$data = StudentInfo::where('registration_number', $id)->first();
+				
+				if (!$data) {
+					return back()->with('error', "Something went wrong, please contact technical support using the ChatBox or Visit the FAQ page");
+				}
+
+				$data->Email_Address = strtolower($request->email);
+				$data->Student_Mobile_Number = $request->phone;
+				$data->student_group = $request->type;
+				$data->password = Hash::make($request->password);
+
+				//to be removed later
+				// $data->status ='verified';
+				//generate matric number automatically
+				// if (strlen($data->matric_number) < 2) {
+				// 	$data->matric_number = $this->generateMatric($request->year);
+				// }
+				$data->save();
+
+				$curr_session = Helper::current_semester();
+				$student_id = $data->matric_number;
+
+				$check = IctFee::where(['student_id' => $student_id, 'session_id' => $curr_session])->count();
+				Session::put('student', $data);
+				Session::put('student_id', $student_id);
+
+				// if($check < 1){
+				// 	return redirect()->route('student.ict');
+				// }
+				$new_data['email'] = $request->email;
+				Mail::to(strtolower($request->email))->send(new VerifyEmail($new_data));
+				return back()->with('success', 'An email verification link has been sent to your email, please click the link to verify your email before continuing on this portal. If you don\'t see the verification mail in your inbox, check your spam mail / promotions folder and mark it as "Not Spam" before clicking to verify');
+				// return back()->with('success', 'Registration successful, Kindly login to continue!');
+				// return redirect('registration-steps');
+
+			} catch (\Exception $e) {
+				return back()->with('error', 'An error occured, contact support');
+			}
+		}
+		// $faculties = Faculty::all();
+		// $states = State::all();
+		return view('homepage.pg_registration');
+	}
+
 	public function findStudentAdmission($request)
 	{
 
