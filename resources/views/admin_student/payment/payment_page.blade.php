@@ -96,13 +96,14 @@
                                 <br>
                                 <div class="col-md-12">
                                     <button id="send" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Remita </i></button>
-                                    <!-- <button id="shr" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Remita</i></button> -->
-                                    <button id="interswitch" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button>
+                                    <button id="shr" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button>
+                                    <!-- <button id="interswitch" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button> -->
                                 </div>
-                                <!-- <div class="col-md-12 col-md-offset-3" id="remita" style="display: none;">
-                                    <button id="send" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Remita (Card)</i></button>
-                                    <button id="bank" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Remita (Bank)</i></button>
-                                </div> -->
+                                <div class="col-md-12 col-md-offset-3" id="remita" style="display: none;">
+                                    <button id="interswitch" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button>
+                                    <!-- <button id="send" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Interswitch (Card)</i></button> -->
+                                    <button id="bank" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Interswitch (Bank)</i></button>
+                                </div>
                             </div>
                             </div>
                             
@@ -280,9 +281,9 @@
                 "matric_no": $('#matric_no').val(),
                 "amount": $('#amount').val(),
                 "channel": "bank",
-                "callback_url": $('#callback_url').val(),
-                "item_code": $('#item_code').val(),
-                "remita_service_id": $('#remita_service_id').val(),
+                "callback_url": $('#callback_url_interswitch').val(),
+                "item_code": $('#interswitch_item_code').val(),
+                "remita_service_id": '',
                 "client_ref": $('#client_ref').val(),
             }),
         };
@@ -294,13 +295,11 @@
             let status = resp.status
             let client_ref = resp.data.client_ref
             let rrr = resp.data.tranx_ref
-            let payment_channel = 'remita'
+            let payment_channel = 'interswitch'
             $.post('/api/save_bank_ref', {rrr, client_ref, payment_channel}).done(function(response){
                 $('#rrr').val(rrr)
                 $('#clickme').click()
             })
-            
-           
 
         });
     });

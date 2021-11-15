@@ -288,6 +288,7 @@
         font-weight: 700;
         border-left: 5px #3db166 solid;
     }
+    
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @php
@@ -523,7 +524,10 @@
                         <h4 style="color: #192F59;">Our Programmes and Courses</h4>
                     </div>
                     <div class="widget">
-                        <div class="faculties"><a href="#">Faculty of Physical Sciences <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
+                        <div class="faculties">
+                            <a href="#">Faculty of Physical Sciences <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                           
+                        </div>
                         <div class="faculties"><a href="#">Faculty of Biological Sciences <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
                         <div class="faculties"><a href="#">Faculty of Health Sciences <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
                         <div class="faculties"><a href="#">Faculty of Law <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
@@ -539,6 +543,8 @@
                         <div class="faculties"><a href="#">Faculty of Clinical Medicine <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
                     </div>
                 </div>
+
+                
             </div>
         </div>
 
@@ -584,6 +590,25 @@
         $('#centralModal').css('display', 'none');
         $('#overlay').css('display', 'none');
     });
+
+    var acc = document.getElementsByClassName("faculties");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            /* Toggle between adding and removing the "active" class,
+            to highlight the button that controls the panel */
+            this.classList.toggle("active");
+
+            /* Toggle between hiding and showing the active panel */
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+            panel.style.display = "none";
+            } else {
+            panel.style.display = "block";
+            }
+        });
+    }
 </script>
 
 
