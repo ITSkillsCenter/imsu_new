@@ -19,7 +19,7 @@
                                                     @if ($message = Session::get('success'))
                                                     <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 39px ;">THANK YOU FOR SIGNING UP</h3>
                                                     @else
-                                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 39px ;">Student Registration</h3>
+                                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 30px ;">PG Student Registration</h3>
                                                     @endif
                                                 <!-- </div><span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 19px ;font-style: normal ;text-transform: uppercase ;"></span> -->
                                             </div>

@@ -368,7 +368,7 @@
                                     </div>
                                     <div>
                                         Admissions into the Imo State University Post Graduate Studies for 2021/2022 academic session is in progress
-                                        <br><br> <a href='' class='btn btn-primary btn-xs rm'>Read More</a> <br><br>
+                                        <br><br> <a href="/post-graduate-application" class="btn btn-primary btn-xs rm">Apply Now</a> <br><br>
                                     </div>
                                 </div>
 

@@ -104,9 +104,10 @@
                                     <!-- <button id="interswitch" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button> -->
                                 </div>
                                 <div class="col-md-12 col-md-offset-3" id="remita" style="display: none;">
-                                    <button id="interswitch" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button>
+                                    <br>
+                                    <button id="interswitch" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Card</i></button>
                                     <!-- <button id="send" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Interswitch (Card)</i></button> -->
-                                    <button id="bank" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Interswitch (Bank)</i></button>
+                                    <button id="bank" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with (Bank)</i></button>
                                 </div>
                             </div>
                     </div>
