@@ -1,7 +1,11 @@
 @extends('admin_student.layout')
 @section('content')
 <div class="row">
+
     <div class="col-md-12">
+
+        <a href="/student-payment" class="btn btn-primary">Back</a>
+        <br>
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Payment page</h4>
@@ -42,7 +46,7 @@
                                 </div>
                             </div>
 
-                            
+
 
                             @if($fee->status == 'unpaid')
                             <!-- <div class="form-group">
@@ -105,72 +109,73 @@
                                     <button id="bank" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Interswitch (Bank)</i></button>
                                 </div>
                             </div>
-                            </div>
-                            
-                            @endif
-                        </form>
-                        @if($fee->status == 'unpaid')
-                        
-                        @endif
-                    </div>
-                    <a style="display: none;" id="clickme" href="#myModal" class="trigger-btn" data-toggle="modal" data-backdrop="static">Click to Open Success Modal</a>
-                    <a style="display: none;" id="clickme2" href="#myModal2" class="trigger-btn" data-toggle="modal" data-backdrop="static">Click to Open Success Modal</a>
-                    <div id="myModal" class="modal fade">
-                        <div class="modal-dialog modal-confirm">
-                            <div class="modal-content">
-                                <div class="modal-header justify-content-center">
-                                    <div class="icon-box">
-                                        <i class="material-icons">&#xE876;</i>
-                                    </div>
-                                </div>
-                                <div class="modal-body text-center">
-                                    <h4>Kindly copy the RRR number below.</h4>
-                                    <input class="form-control" type="text" id="rrr" readonly>
-                                    <br>
-                                    <button class="btn" data-clipboard-target="#rrr">
-                                       Copy <i class="fa fa-copy"></i>
-                                    </button> &nbsp;&nbsp;&nbsp;
-                                    <a class="btn btn-success" href="/student-payment">Close</a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
-                    <div id="myModal2" class="modal fade">
-                        <div class="modal-dialog modal-confirm">
-                            <div class="modal-content">
-                                <div class="modal-header justify-content-center">
-                                    <div class="icon-box">
-                                        <i class="material-icons">&#xE876;</i>
-                                    </div>
-                                </div>
-                                <div class="modal-body text-center">
-                                    <h4>Error!</h4>
-                                    <p>An error occured</p>
-                                    <a class="btn btn-success" href="/student-payment">Finish</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endif
+                    </form>
+                    @if($fee->status == 'unpaid')
 
+                    @endif
                 </div>
+                <a style="display: none;" id="clickme" href="#myModal" class="trigger-btn" data-toggle="modal" data-backdrop="static">Click to Open Success Modal</a>
+                <a style="display: none;" id="clickme2" href="#myModal2" class="trigger-btn" data-toggle="modal" data-backdrop="static">Click to Open Success Modal</a>
+                <div id="myModal" class="modal fade">
+                    <div class="modal-dialog modal-confirm">
+                        <div class="modal-content">
+                            <div class="modal-header justify-content-center">
+                                <div class="icon-box">
+                                    <i class="material-icons">&#xE876;</i>
+                                </div>
+                            </div>
+                            <div class="modal-body text-center">
+                                <h4>Kindly copy the Reference Number below.</h4>
+                                <p>Note: This payment can be made via bank or via <a target="_blank" href="https://quickteller.com/pay-bills">quickteller</a> </p>
+                                <input class="form-control" type="text" id="rrr" readonly>
+                                <br>
+                                <button class="btn" data-clipboard-target="#rrr">
+                                    Copy <i class="fa fa-copy"></i>
+                                </button> &nbsp;&nbsp;&nbsp;
+                                <a class="btn btn-success" href="/student-payment">Close</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="myModal2" class="modal fade">
+                    <div class="modal-dialog modal-confirm">
+                        <div class="modal-content">
+                            <div class="modal-header justify-content-center">
+                                <div class="icon-box">
+                                    <i class="material-icons">&#xE876;</i>
+                                </div>
+                            </div>
+                            <div class="modal-body text-center">
+                                <h4>Error!</h4>
+                                <p>An error occured</p>
+                                <a class="btn btn-success" href="/student-payment">Finish</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
+</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
 <script src="https://webpay.interswitchng.com/collections/public/javascripts/inline-checkout.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         new ClipboardJS('.btn');
     })
 
-    $('#shr').click(function(){
+    $('#shr').click(function() {
         $('#remita').slideToggle();
     })
-    $('#send').click(function(){
+    $('#send').click(function() {
         $(this).html('Loading...')
         $.ajaxSetup({
             headers: {
@@ -214,7 +219,7 @@
         });
     });
 
-    $('#interswitch').click(function(){
+    $('#interswitch').click(function() {
         $('#send').attr('disabled', 'true');
         $(this).html('Loading...')
         $.ajaxSetup({
@@ -257,7 +262,7 @@
         });
     });
 
-    $('#bank').click(function(){
+    $('#bank').click(function() {
         $(this).html('Loading...')
         $('#send').attr('disabled', true)
         $('#interswitch').attr('disabled', true)
@@ -298,7 +303,11 @@
             let client_ref = resp.data.client_ref
             let rrr = resp.data.tranx_ref
             let payment_channel = 'interswitch'
-            $.post('/api/save_bank_ref', {rrr, client_ref, payment_channel}).done(function(response){
+            $.post('/api/save_bank_ref', {
+                rrr,
+                client_ref,
+                payment_channel
+            }).done(function(response) {
                 $('#rrr').val(rrr)
                 $('#clickme').click()
             })
@@ -307,11 +316,11 @@
     });
 
 
-    
-   
+
+
     function checkout() {
-        var merchantCode =  "MX18847"; //'MX20245';
-        var payItemId = "9182240";    //'9716256';   
+        var merchantCode = "MX18847"; //'MX20245';
+        var payItemId = "9182240"; //'9716256';   
         amount = document.getElementsByName('amount')[0].value
         amount = amount + '00'
         console.log(amount)
@@ -369,7 +378,9 @@
             });
 
 
-            $.post('/save_payment_details',{datastring}).done(function(data){
+            $.post('/save_payment_details', {
+                datastring
+            }).done(function(data) {
                 if (data.body == "success") {
                     $.LoadingOverlay("hide");
                     $('#clickme').click()
@@ -379,7 +390,7 @@
                     $('#clickme2').click()
                 }
             });
-        }else{
+        } else {
             $.LoadingOverlay("hide");
         }
 
