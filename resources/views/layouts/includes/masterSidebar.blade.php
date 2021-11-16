@@ -419,7 +419,6 @@
                             </li>
                             @endpermission
 
-
                             @permission('course-read')
                             <li>
                                 <a href="{{ route('course.index') }}">

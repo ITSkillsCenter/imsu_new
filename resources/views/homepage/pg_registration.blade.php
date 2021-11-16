@@ -17,7 +17,7 @@
                                             <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-center-align gdlr-core-title-item-caption-bottom gdlr-core-item-pdlr" style="padding-bottom: 60px ;">
                                                 <div class="gdlr-core-title-item-title-wrap clearfix">
                                                     @if ($message = Session::get('success'))
-                                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 39px ;">THANK YOU FOR SIGNING UP</h3>
+                                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 39px ;">Welcome </h3>
                                                     @else
                                                     <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 30px ;">PG Student Registration</h3>
                                                     @endif
@@ -34,10 +34,18 @@
                                                         <div class="quform-elements">
                                                             
                                                             <div class="quform-element">
-                                                                <p>Full Name
+                                                                <p>First Name
                                                                     <br>
                                                                     <span class="wpcf7-form-control-wrap your-name">
-                                                                        <input id="full_name" type="text" name="full_name" class="input1" aria-required="true" required>
+                                                                        <input id="first_name" type="text" name="first_name" class="input1" aria-required="true" required>
+                                                                    </span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="quform-element">
+                                                                <p>Last Name
+                                                                    <br>
+                                                                    <span class="wpcf7-form-control-wrap your-name">
+                                                                        <input id="last_name" type="text" name="last_name" class="input1" aria-required="true" required>
                                                                     </span>
                                                                 </p>
                                                             </div>
@@ -61,7 +69,7 @@
                                                                 <p>Password
                                                                     <br>
                                                                     <span class="wpcf7-form-control-wrap your-email">
-                                                                        <input id="password" type="password" name="password" class="input1" aria-required="true" required>
+                                                                        <input id="password" type="password" name="the_password" class="input1" aria-required="true" required>
                                                                     </span>
                                                                 </p>
                                                             </div>

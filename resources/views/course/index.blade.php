@@ -43,6 +43,7 @@
             @if(count($courses) > 0)
              <div class="card-header">
               <h4 class="card-title">Courses in {{$department->name}}</h4>
+              <a href="/admin/course/programme/{{$department->id}}" class="btn btn-primary">View Programmes</a>
             </div>
 
               <div class="table-responsive">

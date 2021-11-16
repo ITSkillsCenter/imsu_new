@@ -10,7 +10,9 @@ use App\Department;
 use App\StudentInfo;
 use App\Faculty;
 use App\FeeHistory;
+use App\Programme;
 use App\Semester;
+use App\Specialization;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -85,6 +87,16 @@ class Helper
     public static function get_department($dept_id){
         $dept = Department::find($dept_id);
         return $dept;
+    }
+
+    public static function get_programme($p_id){
+        $p = Programme::find($p_id);
+        return $p;
+    }
+
+    public static function get_specialization($s_id){
+        $s = Specialization::find($s_id);
+        return $s;
     }
 
     public static function get_faculty($faculty_id){

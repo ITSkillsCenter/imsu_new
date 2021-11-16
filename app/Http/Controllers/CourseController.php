@@ -12,6 +12,8 @@ use App\Current_Semester_Running;
 use App\Faculty;
 use App\Syllabus;
 use App\Imports\SyllabusImport;
+use App\Programme;
+use App\Specialization;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -349,6 +351,39 @@ class CourseController extends Controller
         $upd->save();
         return back()->with('success', 'Carry over rejected successfully');
 
+    }
+
+    public function programme(Request $request, $dept_id){
+        if($request->isMethod('post')){
+           Programme::create($request->except('_token'));
+           return back()->with('success', 'Programme Saved'); 
+        }
+        $specialization = Specialization::all();
+        $programme = Programme::where(['dept_id' => $dept_id])->get();
+        // dd($programme);
+        return view('course.view_programme',compact('specialization', 'programme', 'dept_id'));
+    }
+
+    public function remove_programme(Request $request, $id){
+        Programme::find($id)->delete();
+        return back()->with('success', 'Programme Deleted Successfully');
+    }
+
+    public function remove_specialization(Request $request, $id){
+        Specialization::find($id)->delete();
+        return back()->with('success', 'Specialization Deleted Successfully');
+    }
+
+    public function programme_specialization(Request $request, $id){
+        if($request->isMethod('post')){
+            Specialization::create($request->except('_token'));
+            return back()->with('success', 'Programme Saved'); 
+        }
+        $programme = Programme::find($id);
+        $specialization = Specialization::where(['programme_id' => $id])->get();
+        // dd($programme);
+        return view('course.view_specialization',compact('specialization', 'programme'));
+        
     }
     
 }

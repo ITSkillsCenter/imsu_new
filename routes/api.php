@@ -36,6 +36,12 @@ Route::group(['namespace' => 'student'], function () {
     Route::post('/save_application_fee_interswitch/{fee_id}', 'PaymentController@save_application_fee_interswitch');
     Route::get('/save_application_fee_interswitch/{fee_id}', 'PaymentController@save_application_fee_interswitch');
 
+    Route::post('/pg/save_application_fee/{fee_id}', 'PaymentController@pg_save_application_fee');
+    Route::get('/pg/save_application_fee/{fee_id}', 'PaymentController@pg_save_application_fee');
+    
+    Route::post('/pg/save_application_fee_interswitch/{fee_id}', 'PaymentController@pg_save_application_fee_interswitch');
+    Route::get('/pg/save_application_fee_interswitch/{fee_id}', 'PaymentController@pg_save_application_fee_interswitch');
+
     Route::get('/payment-notification', 'PaymentController@payment_notification');
     Route::post('/payment-notification', 'PaymentController@payment_notification');
 

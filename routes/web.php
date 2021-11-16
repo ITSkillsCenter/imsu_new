@@ -273,6 +273,16 @@ Route::group(['prefix' => '/admin', 'middleware' => ['2fa', 'auth']], function (
   Route::get('subject/{deparment}/{semester}', ['as' => 'subject.DeptAndSem', 'uses' => 'CourseController@subjetsByDptSem']);
   Route::get('subject/{deparment}', ['as' => 'subject.DeptAndSem', 'uses' => 'CourseController@subjetsByDpt']);
 
+  Route::get('/course/programme/{id}', 'CourseController@programme');
+  Route::post('/course/programme/{id}', 'CourseController@programme');
+  Route::get('/remove-programme/{id}', 'CourseController@remove_programme');
+  Route::get('/remove-specialization/{id}', 'CourseController@remove_specialization');
+
+  Route::get('/course/programme/{id}/specialization', 'CourseController@programme_specialization');
+  Route::post('/course/programme/{id}/specialization', 'CourseController@programme_specialization');
+  // Route::get('/course/create', 'CourseController@create')->name('course.create');
+  
+
   Route::post('/course/carry-over', 'CourseController@carryover')->name('course.carryover');
   Route::get('/course/carry-over', 'CourseController@carryover')->name('course.carryover');
 
@@ -567,8 +577,22 @@ Route::group(['namespace' => 'student'], function () {
 Route::get('/', 'HomeController@homepage');
 Route::get('/post-graduate', 'HomeController@pghome');
 
-Route::get('/post-graduate-application', 'HomeController@pg_application');
-Route::post('/post-graduate-application', 'HomeController@pg_application');
+Route::get('/post-graduate-application', 'PgController@pg_application');
+Route::post('/post-graduate-application', 'PgController@pg_application');
+Route::get('/verify-pg/{email}', 'PgController@verify');
+Route::get('/pg-application-fee', 'PgController@application_fee');
+Route::get('/pg-application-step3/{id}', 'PgController@application_step3');
+Route::post('/pg-application-step3/{id}', 'PgController@application_step3');
+Route::get('/pg-application-step4', 'PgController@application_step4');
+Route::post('/pg-application-step4', 'PgController@application_step4');
+Route::get('/pg-application-step5', 'PgController@application_step5');
+Route::post('/pg-application-step5', 'PgController@application_step5');
+Route::get('/pg-application-step6', 'PgController@application_step6');
+Route::post('/pg-application-step6', 'PgController@application_step6');
+Route::get('/pg-application-step7', 'PgController@application_step7');
+Route::post('/pg-application-step7', 'PgController@application_step7');
+Route::get('/pg-application-form', 'PgController@application_form');
+
 
 Route::get('/scholarship-application', 'HomeController@scholarship_application');
 Route::post('/scholarship-application', 'HomeController@scholarship_application');
@@ -600,6 +624,8 @@ Route::get('/staff-portal-home', 'HomeController@staff_portal');
 Route::get('/alumni-portal-home', 'HomeController@alumni_portal');
 Route::post('/get_lgas', 'HomeController@get_lgas');
 Route::post('/get_departments', 'HomeController@get_departments');
+Route::post('/get_programmes', 'HomeController@get_programmes');
+Route::post('/get_specializations', 'HomeController@get_specializations');
 Route::get('/admission/verify/{email}', 'HomeController@admission_verify');
 Route::get('/verify/{email}', 'HomeController@verify');
 Route::post('/get_department_options', 'HomeController@get_department_options');

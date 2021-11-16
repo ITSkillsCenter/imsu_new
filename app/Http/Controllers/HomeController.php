@@ -9,8 +9,9 @@ use App\IctFee;
 use App\Faculty;
 use App\FeeList;
 use App\Program;
-use App\Lecturer;
-// use Session;
+use App\Specialization;
+use App\Pgapplicant;
+use App\PgApplicationFee;
 use App\Applicant;
 use App\Institute;
 use Carbon\Carbon;
@@ -29,7 +30,7 @@ use App\Models\Category;
 use App\DepartmentOption;
 use App\Mail\VerifyEmail;
 use App\Mail\BiodataEmail;
-use App\Student_Templogin;
+use App\Programme;
 use App\Mail\ContactUsMail;
 use App\Mail\ErrorLogEmail;
 use App\Mail\PasswordReset;
@@ -1313,6 +1314,30 @@ class HomeController extends Controller
 				}
 				return redirect()->route('applicant.home');
 			}
+
+			if($request->type == 'Postgraduate'){
+				$applicant = Pgapplicant::where(['application_number' => $id])->first();
+				if (!Hash::check($password, $applicant->password)) {
+					return back()->with('error', 'Invalid login credentials!');
+				}
+				if ($applicant->status == null) {
+					return back()->with('error', 'Verify Your Email Address!');
+				}
+				Session::put('pgapplicant', $applicant);
+				$check = PgApplicationFee::where(['email' => $applicant->email, 'status' => 'PAID'])->first();
+				if ($check !== null) {
+					return redirect('/pg-application-fee')->with('error', 'Pay application fee');
+				}
+				$step = $applicant->step;
+				if($step == 3) {
+					return redirect('/pg-application-step3/' . base64_encode($applicant->application_number));
+				}else if($step !== 7){
+					return redirect('/pg-application-step' . $step);
+				}else{
+					return redirect('/pg-application-form');
+				}
+				// return redirect()->route('applicant.home');
+			}
 			//use registration_number for everyone
 			$data = StudentInfo::where('registration_number', $id)->first();
 			// } else {
@@ -1514,6 +1539,20 @@ class HomeController extends Controller
 	public function get_departments(Request $request)
 	{
 		$options = Department::where(['faculty_id' => $request->faculty_id])->get();
+		$resp['body'] = $options;
+		return $resp;
+	}
+
+	public function get_programmes(Request $request)
+	{
+		$options = Programme::where(['dept_id' => $request->dept_id])->get();
+		$resp['body'] = $options;
+		return $resp;
+	}
+
+	public function get_specializations(Request $request)
+	{
+		$options = Specialization::where(['programme_id' => $request->programme_id])->get();
 		$resp['body'] = $options;
 		return $resp;
 	}

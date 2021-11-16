@@ -14,6 +14,8 @@ use App\Helper\Helper;
 use App\IctFee;
 use App\Mail\InvoiceMail;
 use App\PaymentNotification;
+use App\Pgapplicant;
+use App\PgApplicationFee;
 use App\Semester;
 use App\StudentInfo;
 use Illuminate\Support\Facades\DB;
@@ -261,6 +263,62 @@ class PaymentController extends Controller
         Mail::to(urldecode($std->email))->send(new InvoiceMail($details));
         Session::put('jamb_reg', $request->matric_no);
         return redirect('/application-step3/'.$request->matric_no);
+    }
+
+    public function pg_save_application_fee(Request $request)
+    {
+        $std = Pgapplicant::where(['email' => $request->matric_no])->first();
+        $fee = FeeList::where(['fee_name' => 'IMSU - PG APPLICATION FORM'])->first();
+        $details['amount'] = $fee->amount;
+        $details['name'] = $std->full_name;
+        $details['email'] = $std->email;
+        $details['application_number'] = $request->matric_no;
+        $details['phone'] = $std->phone_number;
+        $details['reference_id'] = $request->reference;
+        $details['pms_id'] = $request->invoice_no;
+        $details['status'] = $request->status;
+        $details['item'] = $fee->fee_name;
+        $details['payment_channel'] = 'remita';
+        // dd($request->all(), $details);
+
+        $cr = PgApplicationFee::create($details);
+        // dd($details, $cr);
+        if($cr){
+            $std->status = 'paid';
+            $std->save();
+        }
+       
+        Mail::to(urldecode($std->email))->send(new InvoiceMail($details));
+        Session::put('jamb_reg', $request->matric_no);
+        return redirect('/pg-application-step3/'.$request->matric_no);
+        
+    }
+
+    public function pg_save_application_fee_interswitch(Request $request){
+        $std = Applicant::where(['application_number' => $request->matric_no])->first();
+        $fee = FeeList::where(['fee_name' => 'IMSU - PG APPLICATION FORM'])->first();
+        $details['amount'] = $fee->amount;
+        $details['name'] = $std->full_name;
+        $details['email'] = $std->email;
+        $details['application_number'] = $request->matric_no;
+        $details['phone'] = $std->phone_number;
+        $details['reference_id'] = $request->reference;
+        $details['pms_id'] = $request->invoice_no;
+        $details['status'] = $request->status;
+        $details['item'] = $fee->fee_name;
+        $details['payment_channel'] = 'interswitch';
+        // dd($request->all(), $details);
+
+        $cr = PgApplicationFee::create($details);
+        // dd($details, $cr);
+        if($cr){
+            $std->status = 'paid';
+            $std->save();
+        }
+       
+        Mail::to(urldecode($std->email))->send(new InvoiceMail($details));
+        Session::put('jamb_reg', $request->matric_no);
+        return redirect('/pg-application-step3/'.$request->matric_no);
     }
 
 
