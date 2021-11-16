@@ -1325,7 +1325,7 @@ class HomeController extends Controller
 				}
 				Session::put('pgapplicant', $applicant);
 				$check = PgApplicationFee::where(['email' => $applicant->email, 'status' => 'PAID'])->first();
-				if ($check !== null) {
+				if ($check == null) {
 					return redirect('/pg-application-fee')->with('error', 'Pay application fee');
 				}
 				$step = $applicant->step;
