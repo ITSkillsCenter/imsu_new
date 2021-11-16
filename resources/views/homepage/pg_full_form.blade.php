@@ -22,7 +22,7 @@
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-center-align gdlr-core-title-item-caption-bottom gdlr-core-item-pdlr" style="padding-bottom: 60px ;">
                                                     <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 32px ;">Exam Pass</h3>
+                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 32px ;">ACKNOWLEDGEMENT SLIP</h3>
                                                     </div>
                                                     <p class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 19px ;font-style: normal ;">Thank you for applying for the Post UTME of Imo State University, your application has been submitted successfully. You will be notified when the Post –UTME screening exercise is scheduled by the university. Thank You once again!</p>
                                                 </div>

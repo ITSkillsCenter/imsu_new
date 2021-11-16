@@ -92,9 +92,10 @@ class PgController extends Controller
     public function application_step3(Request $request){
         $applicant = Session::get('pgapplicant');
         $check = PgApplicationFee::where(['application_number' => $applicant->application_number, 'status' => 'PAID'])->first();
-        // if (!$check) {
-		// 	return redirect('/application-step2')->with('error', 'Pay application fee');
-		// }
+        $check = PgApplicationFee::where(['email' => $applicant->email, 'status' => 'PAID'])->first();
+		if ($check == null) {
+			return redirect('/pg-application-fee')->with('error', 'Pay application fee');
+		}
 		if ($request->isMethod('post')) {
             $request->merge(['step' => 3]);
 			$save = PgApplicant::where(['application_number' => $applicant->application_number])->update($request->except(['_token', 'phone_number', 'date_of_birth', 'home_town']));
@@ -114,10 +115,10 @@ class PgController extends Controller
     public function application_step4(Request $request){
         $applicant = Session::get('pgapplicant');
         $std = Pgapplicant::find($applicant->id);
-        // $check = PgApplicationFee::where(['application_number' => $applicant->application_number, 'status' => 'PAID'])->first();
-        // if (!$check) {
-		// 	return redirect('/application-step2')->with('error', 'Pay application fee');
-		// }
+        $check = PgApplicationFee::where(['email' => $applicant->email, 'status' => 'PAID'])->first();
+		if ($check == null) {
+			return redirect('/pg-application-fee')->with('error', 'Pay application fee');
+		}
 		if ($request->isMethod('post')) {
             $request->merge([
                 'previous_education' => json_encode($request->prevedu),
@@ -136,10 +137,10 @@ class PgController extends Controller
     public function application_step5(Request $request){
         $applicant = Session::get('pgapplicant');
         $std = Pgapplicant::find($applicant->id);
-        // $check = PgApplicationFee::where(['application_number' => $applicant->application_number, 'status' => 'PAID'])->first();
-        // if (!$check) {
-		// 	return redirect('/application-step2')->with('error', 'Pay application fee');
-		// }
+        $check = PgApplicationFee::where(['email' => $applicant->email, 'status' => 'PAID'])->first();
+		if ($check == null) {
+			return redirect('/pg-application-fee')->with('error', 'Pay application fee');
+		}
 		if ($request->isMethod('post')) {
             $request->merge([
                 'step' => 5,
@@ -156,10 +157,10 @@ class PgController extends Controller
     public function application_step6(Request $request){
         $applicant = Session::get('pgapplicant');
         $std = Pgapplicant::find($applicant->id);
-        // $check = PgApplicationFee::where(['application_number' => $applicant->application_number, 'status' => 'PAID'])->first();
-        // if (!$check) {
-		// 	return redirect('/application-step2')->with('error', 'Pay application fee');
-		// }
+        $check = PgApplicationFee::where(['email' => $applicant->email, 'status' => 'PAID'])->first();
+		if ($check == null) {
+			return redirect('/pg-application-fee')->with('error', 'Pay application fee');
+		}
 		if ($request->isMethod('post')) {
             $request->merge([
                 'step' => 6,
@@ -177,10 +178,10 @@ class PgController extends Controller
     public function application_step7(Request $request){
         $applicant = Session::get('pgapplicant');
         $std = Pgapplicant::find($applicant->id);
-        // $check = PgApplicationFee::where(['application_number' => $applicant->application_number, 'status' => 'PAID'])->first();
-        // if (!$check) {
-		// 	return redirect('/application-step2')->with('error', 'Pay application fee');
-		// }
+        $check = PgApplicationFee::where(['email' => $applicant->email, 'status' => 'PAID'])->first();
+		if ($check == null) {
+			return redirect('/pg-application-fee')->with('error', 'Pay application fee');
+		}
 		if ($request->isMethod('post')) {
 
             if ($request->hasFile('olevelres')) {
