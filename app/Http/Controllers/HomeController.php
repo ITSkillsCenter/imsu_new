@@ -1331,6 +1331,8 @@ class HomeController extends Controller
 				$step = $applicant->step;
 				if($step == 3) {
 					return redirect('/pg-application-step3/' . base64_encode($applicant->application_number));
+				}else if($step == null){
+					return redirect('/pg-application-fee');
 				}else if($step !== 7){
 					return redirect('/pg-application-step' . $step);
 				}else{
