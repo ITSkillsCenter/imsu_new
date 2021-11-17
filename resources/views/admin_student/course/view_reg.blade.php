@@ -140,6 +140,21 @@ Student || Course
                                 </tr>
                                 @endif
                                 @endforeach
+                                @foreach($borrowed_courses as $course)
+                                @if(!in_array($course->id, $reg_arr))
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="stds_r stds elective" data-unit="{{$course->unit}}" name="course_id[]" value="{{$course->id}}">
+                                    </td>
+                                    <td>{{$course->course_code}}</td>
+                                    <td>{{$course->course_name}}</td>
+                                    <td>
+                                        {{$course->unit}}
+                                        <input type="hidden" name="course_unit[]" value="{{$course->unit}}">
+                                    </td>
+                                </tr>
+                                @endif
+                                @endforeach
                                 <tr>
                                     <td colspan="3">Total Course Unit Selected</td>
                                     <td id="total_course_unit">{{$c_unit}}</td>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BorrowedCourse;
 use App\Course;
 use App\Course_Student;
 use App\Cversion;
@@ -53,10 +54,8 @@ class CourseController extends Controller
             $prg = $request->program;
             $department = Department::find($dept);
             $sel_prog = Program::find($prg);
-            $courses = Course::where(['dept_id' => $dept, 'croutine_id' => $request->program])->get();
+            $courses = Course::where(['dept_id' => $dept, 'program' => $request->program])->get();
             // dd($dept,$request->program, $courses);
-         }else{
-            $prg = null;
          }
 
         return view('course.index',compact('dept','courses','departments','department', 'programs', 'prg', 'sel_prog'));
@@ -182,8 +181,8 @@ class CourseController extends Controller
         
         $course->update($request->all());
         $notification= array('title' => 'Data Saved', 'body' => "Course Data Updated Successfully");
-        $url ="/admin/course/index/". base64_encode($course->dept_id);
-        return redirect($url)->with("success",$notification);
+        // $url ="/admin/course/index/". base64_encode($course->dept_id);
+        return back()->with("success",'Course Data Updated Successfully');
 
     }
 
@@ -396,6 +395,60 @@ class CourseController extends Controller
         // dd($programme);
         return view('course.view_specialization',compact('specialization', 'programme'));
         
+    }
+
+    public function borrowed_course(Request $request){
+        if($request->isMethod('post')){
+            return redirect('/admin/course/borrowed/'.base64_encode($request->dept).'/'.base64_encode($request->program));
+        }
+
+        if(Auth::user()->dept_id !== null){
+            $departments = Department::where(['id' => Auth::user()->dept_id])->get();
+            $courses = BorrowedCourse::select('courses.*', 'borrowed_courses.id as bid', 'borrowed_courses.owner_id', 'borrowed_courses.dept_borrow_id' ,'borrowed_courses.status as bstatus')->join('courses', 'courses.id', '=', 'course_id')->where(['owner_id' => Auth::user()->dept_id])->get();
+        }else{
+            $departments = Department::all();
+        }
+
+        $programs = Program::all();
+        return view('course.borrowed_index',compact('dept','courses','departments','department', 'programs'));
+    }
+
+    public function show_borrowed_course(Request $request, $dept_id, $program){
+        $dept = base64_decode($dept_id);
+        $prg= base64_decode($program);
+        $department = Department::find($dept);
+        $sel_prog = Program::find($prg);
+        $departments = Department::all();
+        $faculties = Faculty::all();
+        $courses = BorrowedCourse::join('courses', 'courses.id', '=', 'course_id')->where(['dept_borrow_id' => $dept, 'program' => $prg])->get();
+        // $courses = Course::where(['dept_id' => $dept, 'program' => $request->program])->get();
+        // dd($dept,$prg, $courses);
+        return view('course.show_borrowed_index',compact('dept','courses','departments','department','faculties', 'sel_prog'));
+    
+    }  
+    
+    public function get_courses_dept_level(Request $request){
+        $courses = Course::where(['program'=>$request->program, 'level' => $request->level, 'dept_id' => $request->dept_id])->get();
+        return $courses;
+    }
+
+    public function apply_borrowed_course(Request $request, $dept_id, $program, $course_id){
+        $crs = Course::find($course_id);
+        $data['course_id'] = $course_id;
+        $data['owner_id'] = $crs->dept_id;
+        $data['dept_borrow_id'] = $dept_id;
+        $data['status'] = 'pending';
+
+        BorrowedCourse::create($data);
+        return back()->with('success', 'Appication successful, awaiting approval');
+
+    }
+
+    public function toggle_borrowed_course(Request $request, $id, $status){
+        $b = BorrowedCourse::find($id);
+        $b->status = $status;
+        $b->save();
+        return back()->with('success', ucwords($status) . ' successfully');
     }
     
 }

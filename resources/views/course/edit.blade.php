@@ -93,12 +93,12 @@
                   <div class="col-md-12 col-sm-12 col-xs-12">
                     <select name="level" class="form-control" required>
                       <option value="">Select Level</option>
-                      <option {{$course->type=='100' ? 'selected' : ''}} value="100">100 Level</option>
-                      <option {{$course->type=='200' ? 'selected' : ''}} value="200">200 Level</option>
-                      <option {{$course->type=='300' ? 'selected' : ''}} value="300">300 Level</option>
-                      <option {{$course->type=='400' ? 'selected' : ''}} value="400">400 Level</option>
-                      <option {{$course->type=='500' ? 'selected' : ''}} value="500">500 Level</option>
-                      <option {{$course->type=='600' ? 'selected' : ''}} value="600">600 Level</option>
+                      <option {{$course->level=='100' ? 'selected' : ''}} value="100">100 Level</option>
+                      <option {{$course->level=='200' ? 'selected' : ''}} value="200">200 Level</option>
+                      <option {{$course->level=='300' ? 'selected' : ''}} value="300">300 Level</option>
+                      <option {{$course->level=='400' ? 'selected' : ''}} value="400">400 Level</option>
+                      <option {{$course->level=='500' ? 'selected' : ''}} value="500">500 Level</option>
+                      <option {{$course->level=='600' ? 'selected' : ''}} value="600">600 Level</option>
                     </select>
                     <span class="text-danger">{{ $errors->first('Level') }}</span>
                   </div>
@@ -146,7 +146,7 @@
                   <div class="col-md-6 col-md-offset-3 btn-group">
                     <button id="send" type="submit" class="btn btn-success"> Update</i></button>
                     &nbsp;
-                    <a href="{{url()->previous()}}" class="btn btn-info">Return Back</a>
+                    <a href="/admin/course/index/{{base64_encode($course->dept_id)}}" class="btn btn-info">Return Back</a>
                   </div>
                 </div>
 

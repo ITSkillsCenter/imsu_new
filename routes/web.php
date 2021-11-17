@@ -278,6 +278,20 @@ Route::group(['prefix' => '/admin', 'middleware' => ['2fa', 'auth']], function (
   Route::get('/remove-programme/{id}', 'CourseController@remove_programme');
   Route::get('/remove-specialization/{id}', 'CourseController@remove_specialization');
 
+  //borrowed course
+  Route::get('/course/borrowed', 'CourseController@borrowed_course');
+  Route::post('/course/borrowed', 'CourseController@borrowed_course');
+  
+  Route::post('/borrow-course/{dept_id}/{program}/{course_id}', 'CourseController@apply_borrowed_course');
+  Route::get('/borrow-course/{dept_id}/{program}/{course_id}', 'CourseController@apply_borrowed_course');
+  Route::get('/toggle-borrow/{id}/{status}', 'CourseController@toggle_borrowed_course');
+
+  
+
+  Route::get('/course/borrowed/{dept_id}/{program}', 'CourseController@show_borrowed_course');
+  Route::post('/course/borrowed/{dept_id}/{program}', 'CourseController@show_borrowed_course');
+
+
   Route::get('/course/programme/{id}/specialization', 'CourseController@programme_specialization');
   Route::post('/course/programme/{id}/specialization', 'CourseController@programme_specialization');
   // Route::get('/course/create', 'CourseController@create')->name('course.create');
@@ -573,7 +587,7 @@ Route::group(['namespace' => 'student'], function () {
   Route::post('/save_application_fee_interswitch', 'PaymentController@save_application_fee_interswitch');
 });
 
-
+Route::post('/get_courses_dept_level', 'CourseController@get_courses_dept_level');
 Route::get('/', 'HomeController@homepage');
 Route::get('/post-graduate', 'HomeController@pghome');
 

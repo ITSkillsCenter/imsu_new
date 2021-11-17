@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\student;
 
+use App\BorrowedCourse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\StudentInfo;
@@ -125,6 +126,8 @@ class StudentCourseController extends Controller
         $courses = Course::where(['dept_id' => $dept_id, 'level' => $level, 'semester' => $semester])->get();
         $compulsory_courses = Course::where(['dept_id' => $dept_id, 'semester' => $semester, 'level' => $level, 'type' => 'compulsory'])->get();
         $elective_courses = Course::where(['dept_id' => $dept_id, 'semester' => $semester, 'level' => $level])->where('type', '!=', 'compulsory')->get();
+        $borrowed_courses = BorrowedCourse::select('courses.*', 'borrowed_courses.id as bid', 'borrowed_courses.owner_id', 'borrowed_courses.dept_borrow_id' ,'borrowed_courses.status as bstatus')
+        ->join('courses', 'courses.id', '=', 'course_id')->where(['dept_borrow_id' => $dept_id, 'level' => $level, 'borrowed_courses.status' => 'approved'])->get();
         $manageCourseCreditUnit = ManageCourseCreditUnit::where('department_id', $dept_id)->where('level', $level)->first();
         $reg_courses = Course_Student::select('courses.*', 'courses_student.id as cid', 'course_status')->join('courses', 'course_id', '=', 'courses.id')
                     ->where(['session_id' => $session, 'courses_student.semester' => $semester, 'courses_student.level' => $level])->get();
@@ -180,7 +183,7 @@ class StudentCourseController extends Controller
             }
         }
 
-        return view('admin_student.course.view_reg',compact('manageCourseCreditUnit','compulsory_courses','elective_courses','student','curr_semester','semester','department','level', 'courses','reg_courses', 'reg_arr', 'session'));
+        return view('admin_student.course.view_reg',compact('borrowed_courses','manageCourseCreditUnit','compulsory_courses','elective_courses','student','curr_semester','semester','department','level', 'courses','reg_courses', 'reg_arr', 'session'));
 
     }
 
