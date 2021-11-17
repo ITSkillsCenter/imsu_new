@@ -83,8 +83,8 @@ class PgController extends Controller
 		$std = Pgapplicant::where(['email' => $applicant->email])->first();
 		$fee = FeeList::where(['fee_name' => 'IMSU - PG APPLICATION FORM'])->first();
 		$check = PgApplicationFee::where(['email' => $applicant->email, 'status' => 'PAID'])->first();
-		if ($check == null) {
-			return redirect('/pg-application-fee')->with('error', 'Pay application fee');
+		if ($check !== null) {
+            return redirect('/pg-application-step3/'.$std->application_number);
 		}
 		return view('homepage.pg_application_fee', compact('fee', 'std'));
 	}
