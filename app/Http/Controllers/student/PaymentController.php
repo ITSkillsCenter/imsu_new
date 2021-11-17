@@ -267,7 +267,7 @@ class PaymentController extends Controller
 
     public function pg_save_application_fee(Request $request)
     {
-        $std = Pgapplicant::where(['email' => $request->matric_no])->first();
+        $std = Pgapplicant::where(['application_number' => $request->matric_no])->first();
         $fee = FeeList::where(['fee_name' => 'IMSU - PG APPLICATION FORM'])->first();
         $details['amount'] = $fee->amount;
         $details['name'] = $std->full_name;
@@ -289,13 +289,13 @@ class PaymentController extends Controller
         }
        
         Mail::to(urldecode($std->email))->send(new InvoiceMail($details));
-        Session::put('jamb_reg', $request->matric_no);
-        return redirect('/pg-application-step3/'.$request->matric_no);
+        // Session::put('jamb_reg', $request->matric_no);
+        return redirect('/pg-application-step3/'.base64_encode($std->application_number));
         
     }
 
     public function pg_save_application_fee_interswitch(Request $request){
-        $std = Applicant::where(['application_number' => $request->matric_no])->first();
+        $std = Pgapplicant::where(['application_number' => $request->matric_no])->first();
         $fee = FeeList::where(['fee_name' => 'IMSU - PG APPLICATION FORM'])->first();
         $details['amount'] = $fee->amount;
         $details['name'] = $std->full_name;
@@ -317,8 +317,8 @@ class PaymentController extends Controller
         }
        
         Mail::to(urldecode($std->email))->send(new InvoiceMail($details));
-        Session::put('jamb_reg', $request->matric_no);
-        return redirect('/pg-application-step3/'.$request->matric_no);
+        // Session::put('jamb_reg', $request->matric_no);
+        return redirect('/pg-application-step3/'.base64_encode($std->application_number));
     }
 
 

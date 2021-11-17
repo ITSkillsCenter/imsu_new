@@ -89,8 +89,9 @@ class PgController extends Controller
 		return view('homepage.pg_application_fee', compact('fee', 'std'));
 	}
 
-    public function application_step3(Request $request){
+    public function application_step3(Request $request, $id){
         $applicant = Session::get('pgapplicant');
+        $applicant = Pgapplicant::where(['application_number' => base64_decode($id)])->first();
         $check = PgApplicationFee::where(['application_number' => $applicant->application_number, 'status' => 'PAID'])->first();
         $check = PgApplicationFee::where(['email' => $applicant->email, 'status' => 'PAID'])->first();
 		if ($check == null) {
