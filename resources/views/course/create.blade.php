@@ -77,13 +77,13 @@
                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="croutine_id">Program
                              </label>
                              <div class="col-md-12 col-sm-12 col-xs-12">
-                               <select class="form-control col-md-12 col-sm-12 col-xs-12" id="crid" name="croutine_id" required="required">
+                               <select class="form-control col-md-12 col-sm-12 col-xs-12" id="crid" name="program" required="required">
                                  <option value="">--Select one--</option>
                                  @foreach($programs as $program)
                                  <option value="{{$program->id}}">{{$program->name}}</option>
                                  @endforeach
                                </select>
-                                 <span class="text-danger">{{ $errors->first('croutine_id') }}</span>
+                                 <span class="text-danger">{{ $errors->first('program') }}</span>
                              </div>
                            </div>
 

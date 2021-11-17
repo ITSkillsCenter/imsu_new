@@ -103,7 +103,7 @@ class CourseController extends Controller
             'unit' => 'required',
             'type' => 'required',
             'dept_id' => 'required',
-            'croutine_id' => 'required',
+            'program' => 'required',
             // 'level' => 'required',
             'semester' => 'required',
         ]);
@@ -141,6 +141,7 @@ class CourseController extends Controller
         $course = Course::find($id);
         $departments = Department::all();
         $faculty = Faculty::all();
+        $programs = Program::all();
         $semesters= $this->semesters;
         
         if($request->isMethod('post')){
@@ -154,7 +155,8 @@ class CourseController extends Controller
             'course'=>$course,
             'departments' =>$departments,
             'faculties' =>$faculty,
-            'semesters'=>$semesters
+            'semesters'=>$semesters,
+            'programs' => $programs
         ]);
         
         // return view('course.edit',[
