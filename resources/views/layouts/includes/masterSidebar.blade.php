@@ -443,6 +443,37 @@
                 
                 @endpermission
 
+                @permission('generalcourse_module-read')
+                <li class="nav-item {{ request()->is(['admin/general-course', '/admin/general-course/index', 'admin/general-course/create']) ? 'active' : '' }}">
+                    <a data-toggle="collapse" href="#gcourse">
+                        <i class="fas fa-book"></i>
+                        <p>Manage General Courses</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="gcourse">
+                        <ul class="nav nav-collapse">
+
+                            @permission('generalcourse_module-create')
+                            <li>
+                                <a href="{{ route('generalcourse.create') }}">
+                                    <span class="sub-item">Add New Course</span></a>
+                            </li>
+                            @endpermission
+
+                            @permission('generalcourse_module-read')
+                            <li>
+                                <a href="{{ route('generalcourse.index') }}">
+                                    <span class="sub-item">View All Courses</span></a>
+                            </li>
+                            @endpermission
+
+                            
+                        </ul>
+                    </div>
+                </li>
+                
+                @endpermission
+
                 @permission('posts-read')
                 <li class="nav-item {{ request()->is(['admin/article/create', 'admin/article', 'admin/category']) ? 'active' : '' }}">
                     <a data-toggle="collapse" href="#posts">

@@ -278,6 +278,10 @@ Route::group(['prefix' => '/admin', 'middleware' => ['2fa', 'auth']], function (
   Route::get('/remove-programme/{id}', 'CourseController@remove_programme');
   Route::get('/remove-specialization/{id}', 'CourseController@remove_specialization');
 
+  Route::get('/general-course/create', 'CourseController@general_create')->name('generalcourse.create');
+  Route::get('/general-course/index', 'CourseController@general_index')->name('generalcourse.index');
+  // Route::get('/general-course/create', 'CourseController@general_create')->name('generalcourse.create');
+
   //borrowed course
   Route::get('/course/borrowed', 'CourseController@borrowed_course');
   Route::post('/course/borrowed', 'CourseController@borrowed_course');

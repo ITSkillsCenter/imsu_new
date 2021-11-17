@@ -42,9 +42,13 @@
                              </label>
                              <div class="col-md-12 col-sm-12 col-xs-12">
                                <select name="type" class="form-control">
+                                 @if($general)
+                                 <option value="general">General</option>
+                                 @else
                                  <option value="compulsory">Compulsory</option>
                                  <option value="optional">Optional</option>
-                                 <option value="general">General</option>
+                                 <!-- <option value="general">General</option> -->
+                                 @endif
                                </select>
                                <span class="text-danger">{{ $errors->first('course_name') }}</span>
                              </div>
@@ -58,7 +62,7 @@
                                  <span class="text-danger">{{ $errors->first('unit') }}</span>
                              </div>
                            </div>
-     
+                           @if($general == null)
                            <div class="item form-group">
                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="croutine_id">Department
                              </label>
@@ -72,6 +76,7 @@
                                  <span class="text-danger">{{ $errors->first('Program') }}</span>
                              </div>
                            </div>
+                           @endif
 
                            <div class="item form-group">
                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="croutine_id">Program

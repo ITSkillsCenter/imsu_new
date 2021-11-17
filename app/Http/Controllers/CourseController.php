@@ -61,6 +61,13 @@ class CourseController extends Controller
         return view('course.index',compact('dept','courses','departments','department', 'programs', 'prg', 'sel_prog'));
     }
 
+    public function general_index(Request $request)
+    {
+        $courses = Course::where(['type' => 'general'])->get();
+        $general = 1;
+        return view('course.index',compact('general','dept','courses','departments','department', 'programs', 'prg', 'sel_prog'));
+    }
+
    
     /**
      * Show the form for creating a new resource.
@@ -85,6 +92,26 @@ class CourseController extends Controller
             'programs' => $programs
         ]);
     }
+
+    public function general_create()
+    {
+         if(Auth::user()->dept_id !== null){
+            $departments = Department::where(['id' => Auth::user()->dept_id])->get();
+        }else{
+            $departments = Department::all();
+        }
+        $faculty = Faculty::all();
+        $programs = Program::all();
+        $semesters= $this->semesters;
+        //return $semesters; 
+        return view('course.create',[
+            'departments' =>$departments,
+            'faculties' =>$faculty,
+            'semesters'=>$semesters,
+            'programs' => $programs,
+            'general' => 1
+        ]);
+    }
     
 
     /**
@@ -101,7 +128,7 @@ class CourseController extends Controller
             'course_name'=>'required',
             'unit' => 'required',
             'type' => 'required',
-            'dept_id' => 'required',
+            // 'dept_id' => 'required',
             'program' => 'required',
             // 'level' => 'required',
             'semester' => 'required',

@@ -11,7 +11,7 @@
 
 
         <div class="card-body">
-
+          @if($general == null)
           <form method="post" class="row">
             <div class="col-md-5">
               <div class="form-group">
@@ -42,6 +42,7 @@
               </div>
             </div>
           </form>
+          
 
           
           @if(count($courses)== 0 && $department)
@@ -57,10 +58,12 @@
           </div>
           @endif
 
+          @endif
+
           @if(count($courses) > 0)
           <!-- only show for pg -->
          
-          <h4 class="card-title">Courses in {{$department->name}}</h4>
+          <h4 class="card-title">Courses in {{$department->name}} {{$general !== null ? 'General' : ''}}</h4>
           <div class="mt-5 table-responsive">
             <table id="datatable-buttons" class="table table-striped table-bordered">
               <thead>
