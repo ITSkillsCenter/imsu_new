@@ -151,7 +151,7 @@
                 "amount": $('#amount').val(),
                 "channel": "card",
                 "callback_url": $('#callback_url').val(),
-                // "item_code": $('#item_code').val(),
+                "item_code": $('#item_code').val(),
                 "remita_service_id": $('#remita_service_id').val(),
                 "client_ref": $('#client_ref').val(),
             }),
