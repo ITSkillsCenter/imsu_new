@@ -2,7 +2,7 @@
 
 
 @section('content')
-<a href="{{url()->previous()}}" class="btn btn-primary">Back</a>
+<a href="/admin/course/index" class="btn btn-primary">Back</a>
 <div class="page-inner">
     @include('layouts.includes.crumbMenu',['pageTitle'=>'All Courses','Title'=>'Course'])
     <div class="row">
