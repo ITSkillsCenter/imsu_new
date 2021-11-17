@@ -14,7 +14,7 @@ class Course extends Model implements Auditable
     
     protected $table = 'courses';
     protected $fillable = [
-        'course_code', 'course_name','unit','faculty_id', 'type', 'dept_id', 'semester', 'level','remarks','status'
+        'course_code', 'course_name','unit','faculty_id', 'type', 'dept_id', 'semester', 'level','remarks','status', 'croutine_id'
     ];
 
     // public function mark()

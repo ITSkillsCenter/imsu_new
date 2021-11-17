@@ -47,6 +47,7 @@
                                                 <td>
                                                     <div class="btn-group">
                                                         @permission('department-create')
+                                                            <a href="/admin/course/programme/{{$dept->id}}" class="btn btn-sm btn-primary">View Programmes</a>
                                                             <a href="{{ route('departments.edit', $dept->id) }}"
                                                                 class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>edit</a>
                                                             @endpermission

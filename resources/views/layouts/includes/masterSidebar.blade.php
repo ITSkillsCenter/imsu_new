@@ -433,6 +433,7 @@
                         </ul>
                     </div>
                 </li>
+                
                 @endpermission
 
                 @permission('posts-read')

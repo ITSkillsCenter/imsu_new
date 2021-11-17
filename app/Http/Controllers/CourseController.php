@@ -12,6 +12,7 @@ use App\Current_Semester_Running;
 use App\Faculty;
 use App\Syllabus;
 use App\Imports\SyllabusImport;
+use App\Program;
 use App\Programme;
 use App\Specialization;
 use Maatwebsite\Excel\Facades\Excel;
@@ -45,14 +46,20 @@ class CourseController extends Controller
         }else{
             $departments = Department::all();
         }
+
+        $programs = Program::all();
         // return $dept;
          if($dept){
+            $prg = $request->program;
             $department = Department::find($dept);
-            $courses = Course::where('dept_id','=',$dept)->get();
-            //dd($dept, $courses);
+            $sel_prog = Program::find($prg);
+            $courses = Course::where(['dept_id' => $dept, 'croutine_id' => $request->program])->get();
+            // dd($dept,$request->program, $courses);
+         }else{
+            $prg = null;
          }
 
-        return view('course.index',compact('dept','courses','departments','department'));
+        return view('course.index',compact('dept','courses','departments','department', 'programs', 'prg', 'sel_prog'));
     }
 
    
@@ -69,12 +76,14 @@ class CourseController extends Controller
             $departments = Department::all();
         }
         $faculty = Faculty::all();
+        $programs = Program::all();
         $semesters= $this->semesters;
         //return $semesters; 
         return view('course.create',[
             'departments' =>$departments,
             'faculties' =>$faculty,
-            'semesters'=>$semesters
+            'semesters'=>$semesters,
+            'programs' => $programs
         ]);
     }
     
@@ -87,14 +96,15 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        // dd($request->all());
         $this->validate($request,[
             'course_code'=>'required',
             'course_name'=>'required',
             'unit' => 'required',
             'type' => 'required',
             'dept_id' => 'required',
-            'level' => 'required',
+            'croutine_id' => 'required',
+            // 'level' => 'required',
             'semester' => 'required',
         ]);
         $attr = $request->all(); 
@@ -104,8 +114,8 @@ class CourseController extends Controller
         }
         //dd($attr);
         Course::create($attr);
-        $notification= array('title' => 'Data Store', 'body' => 'Course data store Succesfully.');
-        return redirect()->route('course.create')->with('success',$notification);
+        // $notification= array('title' => 'Data Store', 'body' => 'Course data store Succesfully.');
+        return redirect()->route('course.create')->with('success','Course created successfully');
     }
 
     /**

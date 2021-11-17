@@ -7,6 +7,7 @@
      @include('layouts.includes.crumbMenu',['pageTitle'=>'Course','Title'=>'Course'])
       
      <div class="row">
+     <div class="col-lg-12">@include('homepage.flash_message')</div>
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
@@ -53,8 +54,8 @@
                              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="credit">Credit<span class="required">*</span>
                              </label>
                              <div class="col-md-12 col-sm-12 col-xs-12">
-                               <input type="text" id="credit" class="form-control col-md-12 col-sm-12 col-xs-12"  name="unit" value="{{old('credit')}}" placeholder="3"  required="required">
-                                 <span class="text-danger">{{ $errors->first('credit') }}</span>
+                               <input type="text" id="credit" class="form-control col-md-12 col-sm-12 col-xs-12" name="unit" value="{{old('credit')}}" placeholder="3"  required="required">
+                                 <span class="text-danger">{{ $errors->first('unit') }}</span>
                              </div>
                            </div>
      
@@ -73,7 +74,21 @@
                            </div>
 
                            <div class="item form-group">
-                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="croutine_id">Level
+                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="croutine_id">Program
+                             </label>
+                             <div class="col-md-12 col-sm-12 col-xs-12">
+                               <select class="form-control col-md-12 col-sm-12 col-xs-12" id="crid" name="croutine_id" required="required">
+                                 <option value="">--Select one--</option>
+                                 @foreach($programs as $program)
+                                 <option value="{{$program->id}}">{{$program->name}}</option>
+                                 @endforeach
+                               </select>
+                                 <span class="text-danger">{{ $errors->first('croutine_id') }}</span>
+                             </div>
+                           </div>
+
+                           <div class="item form-group" id="level">
+                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Level
                              </label>
                              <div class="col-md-12 col-sm-12 col-xs-12">
                               <select name="level" class="form-control" required>
@@ -85,7 +100,7 @@
                                 <option value="500">500 Level</option>
                                 <option value="600">600 Level</option>
                               </select>
-                                 <span class="text-danger">{{ $errors->first('Level') }}</span>
+                                 <span class="text-danger">{{ $errors->first('level') }}</span>
                              </div>
                            </div>
 
@@ -131,5 +146,14 @@
 @section('extrascript')
 <script src="{{ URL::asset('assets/js/validator.min.js')}}"></script>
 <script src="{{ URL::asset('assets/js/jquery.inputmask.bundle.min.js')}}"></script>
-
+<script>
+  $('#crid').change(function(){
+        let c_id = $(this).find(":selected").val()
+        if(c_id == 2){
+          $('#level').slideUp()
+        }else{
+          $('#level').slideDown()
+        } 
+    })
+</script>
 @endsection
