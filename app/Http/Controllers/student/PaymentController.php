@@ -268,6 +268,9 @@ class PaymentController extends Controller
     public function save_direct_interswitch(Request $request){
         $fee = FeeList::find($request->client_ref);
         $student = StudentInfo::where(['Email_Address' => $request->matric_no])->first();
+        if($request->status !== 'PAID'){
+            return redirect('/make-payment')->with('error', 'An error occured');
+        }
         $details['fee_id'] = $fee->id;
         $details['amount'] = $fee->amount;
         $details['student_id'] = $student->id;
