@@ -16,7 +16,7 @@
         padding: 30px 20px
     }
 
-    label{
+    label {
         color: black
     }
 </style>
@@ -35,83 +35,85 @@
                                 </div><span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 19px ;font-style: normal ;">An email containing your receipt has been sent to you</span>
                                 <!-- <p style="color:red; font-style:italic">An email containing your receipt has been sent to you</p> -->
                             </div>
-
-                            <div id="preview">
-                            <div class="gdlr-core-course-form clearfix element-to-print" id="preview_page" style="padding: 10px; border: 1px solid black;">
-                                <div class="gdlr-core-course-column gdlr-core-column-50" style="width: 100%; display: flex; justify-content:center">
-                                    <img class="gdlr-core-course-column gdlr-core-column-10" style="margin-bottom: 20px;" src="/homepage/images/logo.png" alt="">
-                                </div>
-                                <h5 style="text-align: center;">RECEIPT</h5>
-
-                                <div class="gdlr-core-pbf-column gdlr-core-column-full">
-                                    <h5 class="gdlr-core-course-column gdlr-core-column-full" style="border-bottom: 3px solid black;"></h5>
-                                    <div class="gdlr-core-course-column gdlr-core-column-20">
-                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                            <label for="" style="color:black">Date </label>
-                                            @php $date = date_create($check->created_at); @endphp
-                                            <p>{{ date_format($date,"jS F, Y") }}</p>
-                                            <!-- <p>{{$check->created_at}}</p> -->
-
-                                        </div>
-                                    </div>
-                                    <div class="gdlr-core-course-column gdlr-core-column-20">
-                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                            <label for="">Payment Reference </label>
-                                            <p>{{$check->payment_type}}</p>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="gdlr-core-course-column gdlr-core-column-20">
-                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                            <label for="">Paid By </label>
-                                            <p>{{$student->first_name}}</p> <br>
-                                        </div>
-                                    </div>
-
-                                    <div class="gdlr-core-course-column gdlr-core-column-20">
-                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                            <label for="">Phone Number </label>
-                                            <p>{{$student->Student_Mobile_Number}}</p> <br>
-                                        </div>
-                                    </div>
-
-                                    <div class="gdlr-core-course-column gdlr-core-column-20">
-                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                            <label for="">Jamb Registration Number </label>
-                                            <p>{{$student->registration_number}}</p> <br>
-                                        </div>
-                                    </div>
-
-                                    <div class="gdlr-core-course-column gdlr-core-column-full">
-                                        <table>
-                                            <thead>
-                                                <th style="text-align: center;">S/N</th>
-                                                <th style="text-align: center;">Fee Name</th>
-                                                <th style="text-align: center;">Amount</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>{{$fee->fee_name}}</td>
-                                                    <td>₦{{number_format($check->amount, 2)}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <br>
                             <div>
-                                <button type="button" class="btn btn-primary" id="print_receipt">Print Receipt</button>
+                                <button type="button" class="btn btn-primary" id="print_receipt2">Print Receipt</button>
                             </div>
-                            <br>
-                        </div>
+                            <div id="preview">
+                                <div class="gdlr-core-course-form clearfix element-to-print" id="preview_page" style="padding: 10px; border: 1px solid black;">
+                                    <div class="gdlr-core-course-column gdlr-core-column-50" style="width: 100%; display: flex; justify-content:center">
+                                        <img class="gdlr-core-course-column gdlr-core-column-10" style="margin-bottom: 20px;" src="/homepage/images/logo.png" alt="">
+                                    </div>
+                                    <h5 style="text-align: center;">RECEIPT</h5>
+
+                                    <div class="gdlr-core-pbf-column gdlr-core-column-full">
+                                        <h5 class="gdlr-core-course-column gdlr-core-column-full" style="border-bottom: 3px solid black;"></h5>
+                                        <div class="gdlr-core-course-column gdlr-core-column-20">
+                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                <label for="" style="color:black">Date </label>
+                                                @php $date = date_create($check->created_at); @endphp
+                                                <p>{{ date_format($date,"jS F, Y") }}</p>
+                                                <!-- <p>{{$check->created_at}}</p> -->
+
+                                            </div>
+                                        </div>
+                                        <div class="gdlr-core-course-column gdlr-core-column-20">
+                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                <label for="">Payment Reference </label>
+                                                <p>{{$check->payment_type}}</p>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="gdlr-core-course-column gdlr-core-column-20">
+                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                <label for="">Paid By </label>
+                                                <p>{{$student->first_name}}</p> <br>
+                                            </div>
+                                        </div>
+
+                                        <div class="gdlr-core-course-column gdlr-core-column-20">
+                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                <label for="">Phone Number </label>
+                                                <p>{{$student->Student_Mobile_Number}}</p> <br>
+                                            </div>
+                                        </div>
+
+                                        <div class="gdlr-core-course-column gdlr-core-column-20">
+                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                <label for="">Jamb Registration Number </label>
+                                                <p>{{$student->registration_number}}</p> <br>
+                                            </div>
+                                        </div>
+
+                                        <div class="gdlr-core-course-column gdlr-core-column-full">
+                                            <table>
+                                                <thead>
+                                                    <th style="text-align: center;">S/N</th>
+                                                    <th style="text-align: center;">Fee Name</th>
+                                                    <th style="text-align: center;">Amount</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>{{$fee->fee_name}}</td>
+                                                        <td>₦{{number_format($check->amount, 2)}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <br>
+                                <div>
+                                    <button type="button" class="btn btn-primary" id="print_receipt">Print Receipt</button>
+                                </div>
+                                <br>
+                            </div>
                         </div>
 
-                        
+
 
                     </div>
 
@@ -135,23 +137,41 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js" integrity="sha512-w3u9q/DeneCSwUDjhiMNibTRh/1i/gScBVp2imNVAMCt6cUHIw6xzhzcPFIaL3Q1EbI2l+nu17q2aLJJLo4ZYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
-$('#print_receipt').click(function() {
+    $('#print_receipt').click(function() {
 
-// $(".element-to-print").printThis({importCSS: true,});
-var element = document.getElementById('preview_page');
-// console.log(element);
-var opt = {
-    filename: 'Receipt.pdf',
-    image: {
-        type: 'jpeg',
-        quality: 0.98
-    },
-    html2canvas: {
-        scale: 2
-    },
-};
-html2pdf(element, opt)
-})
+        // $(".element-to-print").printThis({importCSS: true,});
+        var element = document.getElementById('preview_page');
+        // console.log(element);
+        var opt = {
+            filename: 'Receipt.pdf',
+            image: {
+                type: 'jpeg',
+                quality: 0.98
+            },
+            html2canvas: {
+                scale: 2
+            },
+        };
+        html2pdf(element, opt)
+    })
+
+    $('#print_receipt2').click(function() {
+
+        // $(".element-to-print").printThis({importCSS: true,});
+        var element = document.getElementById('preview_page');
+        // console.log(element);
+        var opt = {
+            filename: 'Receipt.pdf',
+            image: {
+                type: 'jpeg',
+                quality: 0.98
+            },
+            html2canvas: {
+                scale: 2
+            },
+        };
+        html2pdf(element, opt)
+    })
 </script>
 
 @endsection

@@ -7,7 +7,7 @@
     <thead>
       <tr>
         <th style="text-align:left;"><img style="max-width: 150px;"
-            src="https://dev.imsu.edu.ng/homepage/images/logo.png" alt="IMSU"></th>
+            src="https://imsu.edu.ng/homepage/images/logo.png" alt="IMSU"></th>
         <th style="text-align:right;font-weight:400;">{{date("F d, Y ")}}</th>
       </tr>
     </thead>
