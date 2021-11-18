@@ -100,7 +100,7 @@
 
                                         <div class="col-lg-4">
                                             <input type="hidden" name="callback_url" id="callback_url" value="https://imsu.edu.ng/api/save_application_fee/{{base64_encode($fee->id)}}">
-                                            <input type="hidden" name="callback_url" id="callback_url_interswitch" value="http://localhost:4000/api/save_direct_interswitch">
+                                            <input type="hidden" name="callback_url" id="callback_url_interswitch" value="http://imsu.edu.ng/api/save_direct_interswitch">
                                             <!-- <input type="hidden" name="email" id="email" value="{{$std->email}}">
                                             <input type="hidden" name="phone" id="phone" value="{{$std->phone_number}}">
                                             <input type="hidden" name="first_name" id="first_name" value="{{$std->full_name}}">
@@ -241,7 +241,7 @@
                 "matric_no": $('#registration_number').val(),
                 "amount": $("#fee").find(":selected").data('amount'),
                 "channel": "card",
-                "callback_url": $('#callback_url').val(),
+                "callback_url": $('#callback_url_interswitch').val(),
                 "item_code": $("#fee").find(":selected").data('item_code'),
                 "remita_service_id": '',
                 "client_ref": $("#fee").find(":selected").val(),
