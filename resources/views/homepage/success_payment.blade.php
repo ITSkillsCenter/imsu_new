@@ -82,7 +82,7 @@
                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                 <label for="">Matric Number </label>
-                                                <p>{{$student->registration_number !== null? $student->registration_number : 'Nill' }}</p> <br>
+                                                <p>{{$student->registration_number !== null? $student->registration_number : 'Nil' }}</p> <br>
                                             </div>
                                         </div>
 
