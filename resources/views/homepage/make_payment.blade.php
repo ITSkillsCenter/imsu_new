@@ -44,13 +44,18 @@
                                         <div class="quform-element">
                                             <p>Payment for
                                                 <br>
+                                                @php 
+                                                    $avoid = [7,19,20,21,22,23,24, 39,40];
+                                                @endphp
                                                 <span class="wpcf7-form-control-wrap your-name">
                                                     <select id="fee" class="input" aria-required="true" name="type" required>
                                                         <option value="">--Select--</option>
                                                         @foreach($fee_lists as $fee_list)
+                                                        @if(!in_array($fee_list->id, $avoid))
                                                         <option value="{{$fee_list->id}}" data-item_code="{{$fee_list->interswitch_item_code}}" data-amount="{{$fee_list->amount}}" data-remita_service_id="{{$fee_list->remita_service_id}}">
                                                             {{$fee_list->fee_name}} - {{$fee_list->amount}}
                                                         </option>
+                                                        @endif
                                                         @endforeach
                                                     </select>
                                                 </span>
