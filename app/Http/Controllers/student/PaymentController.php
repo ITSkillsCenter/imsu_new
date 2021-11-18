@@ -65,7 +65,84 @@ class PaymentController extends Controller
 
     public function payment_notification(Request $request){
         $save = PaymentNotification::create($request->all());
-        return $save;
+        $ref = isset($request->tranx_ref) ? $request->tranx_ref : $request->rrr;
+        $check_for_fee_history = FeeHistory::where(['reference_id' => $ref])->first();
+        // dd($ref);
+        if($check_for_fee_history){
+            $check_for_fee_history->status = strtoupper($request->status);
+            $check_for_fee_history->save();
+            $fee = FeeList::find($check_for_fee_history->fee_id);
+            $student = StudentInfo::find($check_for_fee_history->student_id);
+            $details['fee_id'] = $fee->id;
+            $details['amount'] = $fee->amount;
+            $details['student_id'] = $student->id;
+            $details['session_id'] = Helper::current_session_details()->id;
+            $details['status'] = $request->status;
+            $details['payment_channel'] = 'interswitch';
+            $details['reference'] = $ref;
+            $details['reference_id'] = $ref;
+            $details['payment_type'] = $request->invoice_no;
+            $details['name'] = $student->Full_Name;
+            $details['email'] = $student->Email_Address;
+            $details['application_number'] = $student->matric_number;
+            $details['phone'] = $student->Student_Mobile_Number;
+            $details['item'] = $fee->fee_name;
+            // dd($details);
+            Mail::to(urldecode($student->Email_Address))->send(new InvoiceMail($details));
+
+            return $save;
+        }
+        $check_for_applicant = ApplicationFee::where(['reference_id' => $ref])->first();
+        if($check_for_applicant){
+            $check_for_applicant->status = strtoupper($request->status);
+            $check_for_applicant->save();
+            $fee = FeeList::where(['fee_name' => 'PUTME Fee'])->first();
+            $student = Applicant::where(['application_number' => $request->client_ref])->first();
+            $details['fee_id'] = $fee->id;
+            $details['amount'] = $fee->amount;
+            $details['student_id'] = $student->id;
+            $details['session_id'] = Helper::current_session_details()->id;
+            
+            $details['status'] = $request->status;
+            $details['payment_channel'] = 'interswitch';
+            $details['reference'] = $ref;
+            $details['reference_id'] = $ref;
+            $details['payment_type'] = $request->invoice_no;
+            $details['name'] = $student->full_name;
+            $details['email'] = $student->email;
+            $details['application_number'] = $student->application_number;
+            $details['phone'] = $student->phone_number;
+            $details['item'] = $fee->fee_name;
+
+            Mail::to(urldecode($student->email))->send(new InvoiceMail($details));
+            return $save;
+        }
+
+        $check_for_pg = PgApplicationFee::where(['reference_id' => $ref])->first();
+        if($check_for_pg){
+            $check_for_pg->status = strtoupper($request->status);
+            $check_for_pg->save();
+            $fee = FeeList::where(['fee_name' => 'IMSU - PG APPLICATION FORM'])->first();
+            $student = Pgapplicant::where(['application_number' => $request->client_ref])->first();
+            $details['fee_id'] = $fee->id;
+            $details['amount'] = $fee->amount;
+            $details['student_id'] = $student->id;
+            $details['session_id'] = Helper::current_session_details()->id;
+            
+            $details['status'] = $request->status;
+            $details['payment_channel'] = 'interswitch';
+            $details['reference'] = $ref;
+            $details['reference_id'] = $ref;
+            $details['payment_type'] = $request->invoice_no;
+            $details['name'] = $student->first_name. ' ' .$student->last_name;
+            $details['email'] = $student->email;
+            $details['application_number'] = $student->application_number;
+            $details['phone'] = $student->phone;
+            $details['item'] = $fee->fee_name;
+
+            Mail::to(urldecode($student->email))->send(new InvoiceMail($details));
+            return $save;
+        }
     }
 
     public function generate_invoice(Request $request){
@@ -291,6 +368,34 @@ class PaymentController extends Controller
         Mail::to(urldecode($student->Email_Address))->send(new InvoiceMail($details));
       
         return redirect('/success-payment/'.base64_encode($sv->id))->with('success', 'Payment is Successful, An reciept has been sent to your email');
+    }
+
+    public function save_bank_ref_direct(Request $request){
+        $fee = FeeList::find($request->client_ref);
+        $student = StudentInfo::where(['Email_Address' => $request->matric_no])->first();
+        // if($request->status !== 'PAID'){
+        //     return redirect('/make-payment')->with('error', 'An error occured');
+        // }
+        $details['fee_id'] = $fee->id;
+        $details['amount'] = $fee->amount;
+        $details['student_id'] = $student->id;
+        $details['session_id'] = Helper::current_session_details()->id;
+        $details['is_applicable_discount'] = 'no';
+        $details['status'] = 'UNPAID';
+        $details['payment_channel'] = 'interswitch';
+        $details['reference'] = $request->rrr;
+        $details['reference_id'] = $request->rrr;
+        $details['payment_type'] = $request->invoice_no;
+        $details['name'] = $student->Full_name;
+        $details['email'] = $student->Email_Address;
+        $details['application_number'] = $request->matric_no;
+        $details['phone'] = $student->Student_Mobile_Number;
+        $details['item'] = $fee->fee_name;
+        // dd($details);
+        FeeHistory::create($details);
+        $resp['body'] = 'success';
+        $resp['status'] = true;
+        return $resp;
     }
 
     public function pg_save_application_fee(Request $request)

@@ -317,8 +317,6 @@
     });
 
 
-
-
     function checkout() {
         var merchantCode = "MX18847"; //'MX20245';
         var payItemId = "9182240"; //'9716256';   

@@ -29,6 +29,7 @@ Route::group(['namespace' => 'student'], function () {
 
 
     Route::post('/save_bank_ref', 'PaymentController@save_bank_ref');
+    Route::post('/save_bank_ref_direct', 'PaymentController@save_bank_ref_direct');
 
     Route::post('/save_application_fee/{fee_id}', 'PaymentController@save_application_fee');
     Route::get('/save_application_fee/{fee_id}', 'PaymentController@save_application_fee');

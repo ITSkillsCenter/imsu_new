@@ -1610,4 +1610,12 @@ class HomeController extends Controller
 		// dd($student);
 		return view('homepage.success_payment', compact('check', 'student', 'fee'));
 	}
+
+	public function bank_payment_invoice(Request $request, $id){
+		$check = FeeHistory::where(['reference_id' => $id])->first();
+		$student = StudentInfo::find($check->student_id);
+		$fee = FeeList::find($check->fee_id);
+
+		return view('homepage.bank_invoice', compact('check', 'student', 'fee', 'id'));
+	}
 }
