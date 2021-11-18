@@ -35,9 +35,10 @@
                                 </div><span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 19px ;font-style: normal ;">An email containing your receipt has been sent to you</span>
                                 <!-- <p style="color:red; font-style:italic">An email containing your receipt has been sent to you</p> -->
                             </div>
-                            <div>
+                            <div class="text-center">
                                 <button type="button" class="btn btn-primary" id="print_receipt2">Print Receipt</button>
                             </div>
+                            <br>
                             <div id="preview">
                                 <div class="gdlr-core-course-form clearfix element-to-print" id="preview_page" style="padding: 10px; border: 1px solid black;">
                                     <div class="gdlr-core-course-column gdlr-core-column-50" style="width: 100%; display: flex; justify-content:center">
