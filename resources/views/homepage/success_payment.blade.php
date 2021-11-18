@@ -81,10 +81,19 @@
 
                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                <label for="">Jamb Registration Number </label>
-                                                <p>{{$student->registration_number}}</p> <br>
+                                                <label for="">Matric Number </label>
+                                                <p>{{$student->registration_number !== null? $student->registration_number : 'Nill' }}</p> <br>
                                             </div>
                                         </div>
+
+                                        <div class="gdlr-core-course-column gdlr-core-column-20">
+                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                <label for="">Email </label>
+                                                <p>{{$student->Email_Address}}</p> <br>
+                                            </div>
+                                        </div>
+
+                                        
 
                                         <div class="gdlr-core-course-column gdlr-core-column-full">
                                             <table>
