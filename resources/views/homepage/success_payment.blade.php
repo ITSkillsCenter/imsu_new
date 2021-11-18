@@ -57,7 +57,7 @@
                                     <div class="gdlr-core-course-column gdlr-core-column-20">
                                         <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                             <label for="">Payment Reference </label>
-                                            <p>{{$check->reference_id}}</p>
+                                            <p>{{$check->payment_type}}</p>
 
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@
                                     <div class="gdlr-core-course-column gdlr-core-column-20">
                                         <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                             <label for="">Paid By </label>
-                                            <p>{{$student->Full_name}}</p> <br>
+                                            <p>{{$student->first_name}}</p> <br>
                                         </div>
                                     </div>
 

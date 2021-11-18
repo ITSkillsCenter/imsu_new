@@ -1607,7 +1607,7 @@ class HomeController extends Controller
 		$check = FeeHistory::find(base64_decode($id));
 		$student = StudentInfo::find($check->student_id);
 		$fee = FeeList::find($check->fee_id);
-		// dd($student)
+		// dd($student);
 		return view('homepage.success_payment', compact('check', 'student', 'fee'));
 	}
 }
