@@ -28,8 +28,8 @@
                             <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-center-align gdlr-core-title-item-caption-bottom gdlr-core-item-pdlr" style="padding-bottom: 60px ;">
                                 <div class="gdlr-core-title-item-title-wrap clearfix">
                                     <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 32px ;">Make Payment</h3>
-                                </div><span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 19px ;font-style: normal ;">Hello <b>{{$std->full_name}}</b>, you are required to pay your registration fee before you can register on the portal.</span>
-                                <p style="color:red; font-style:italic">Note: Bank payment takes within 24 hours to update on the portal</p>
+                                </div><span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 19px ;font-style: normal ;">You can make any payment to the school below and print your receipt</span>
+                                <!-- <p style="color:red; font-style:italic">Note: Bank payment takes within 24 hours to update on the portal</p> -->
                             </div>
                         </div>
 
@@ -41,6 +41,25 @@
                                     <!-- <form class="quform" method="post"> -->
                                         @csrf
                                         <div class="quform-elements">
+                                        <div class="quform-element">
+                                                <p>Payment for
+                                                    <br>
+                                                    <span class="wpcf7-form-control-wrap your-name">
+                                                        <select id="fee" class="input" aria-required="true" name="type" required>
+                                                            <option value="">--Select--</option>
+                                                            @foreach($fee_lists as $fee_list)
+                                                            <option value="{{$fee_list->id}}" 
+                                                                data-item_code="{{$fee_list->interswitch_item_code}}"
+                                                                data-amount="{{$fee_list->amount}}"
+                                                                data-remita_service_id="{{$fee_list->remita_service_id}}"
+                                                            >
+                                                                {{$fee_list->fee_name}} - {{$fee_list->amount}}
+                                                            </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </span>
+                                                </p>
+                                            </div>
 
                                             <div class="quform-element">
                                                 <p>Name
@@ -75,25 +94,7 @@
                                                 </p>
                                             </div>
 
-                                            <div class="quform-element">
-                                                <p>Fee Head
-                                                    <br>
-                                                    <span class="wpcf7-form-control-wrap your-name">
-                                                        <select id="fee" class="input" aria-required="true" name="type" required>
-                                                            <option value="">--Select--</option>
-                                                            @foreach($fee_lists as $fee_list)
-                                                            <option value="{{$fee_list->id}}" 
-                                                                data-item_code="{{$fee_list->interswitch_item_code}}"
-                                                                data-amount="{{$fee_list->amount}}"
-                                                                data-remita_service_id="{{$fee_list->remita_service_id}}"
-                                                            >
-                                                                {{$fee_list->fee_name}} - {{$fee_list->amount}}
-                                                            </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </span>
-                                                </p>
-                                            </div>
+                                            
 
                                         </div>
 
