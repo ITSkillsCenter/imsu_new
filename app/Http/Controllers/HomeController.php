@@ -1577,7 +1577,7 @@ class HomeController extends Controller
 	}
 
 	public function create_user(Request $request){
-		$check = StudentInfo::where(['registration_number' => $request->registration_number])->count();
+		$check = StudentInfo::where(['Email_Address' => $request->Email_Address])->count();
 		if($check > 0){
 			$save = StudentInfo::updateOrCreate(
 				['registration_number' => $request->registration_number],
@@ -1586,7 +1586,7 @@ class HomeController extends Controller
 			
 		}else{
 			$save = StudentInfo::updateOrCreate(
-				['registration_number' => $request->registration_number],
+				['Email_Address' => $request->Email_Address],
 				[
 					'password' => Hash::make('12345'),
 					'temp_password' => '12345',

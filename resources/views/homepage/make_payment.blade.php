@@ -59,7 +59,7 @@
                                                 </p>
                                             </div>
                                             <div class="quform-element">
-                                                <p>Jamb Registration Number
+                                                <p>Matric Number (If applicable)
                                                     <br>
                                                     <span class="wpcf7-form-control-wrap your-name">
                                                         <input id="registration_number" type="text" name="registration_number" aria-required="true" required>
@@ -193,7 +193,7 @@
         let phone = $('#phone').val()
         let fee = $('#fee').val()
         console.log(email, name, registration_number, phone)
-        if(email == '' || name == '' || registration_number == '' || phone == '' || fee == ''){
+        if(email == '' || name == '' ||  phone == '' || fee == ''){
             return alert('All fields is required')
         }
         $(this).attr('disabled', 'true');
@@ -238,7 +238,7 @@
                 "last_name": '',
                 "email": $('#email').val(),
                 "phone": $('#phone').val(),
-                "matric_no": $('#registration_number').val(),
+                "matric_no": $('#email').val(),
                 "amount": $("#fee").find(":selected").data('amount'),
                 "channel": "card",
                 "callback_url": $('#callback_url_interswitch').val(),
