@@ -1589,6 +1589,7 @@ class HomeController extends Controller
 				['registration_number' => $request->registration_number],
 				[
 					'password' => Hash::make('12345'),
+					'temp_password' => '12345',
 					'first_name' => $request->Full_name,
 					'last_name' => $request->Full_name,
 					"Full_name" => $request->Full_name,
