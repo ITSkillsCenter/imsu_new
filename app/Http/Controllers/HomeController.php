@@ -1580,7 +1580,7 @@ class HomeController extends Controller
 		$check = StudentInfo::where(['Email_Address' => $request->Email_Address])->count();
 		if($check > 0){
 			$save = StudentInfo::updateOrCreate(
-				['registration_number' => $request->registration_number],
+				['Email_Address' => $request->Email_Address],
 				[$request->all()]
 			);
 			
