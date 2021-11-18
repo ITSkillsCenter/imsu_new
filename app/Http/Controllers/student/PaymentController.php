@@ -285,7 +285,7 @@ class PaymentController extends Controller
         $details['item'] = $fee->fee_name;
         // dd($details);
         $sv = FeeHistory::create($details);
-        // Mail::to(urldecode($student->Email_Address))->send(new InvoiceMail($details));
+        Mail::to(urldecode($student->Email_Address))->send(new InvoiceMail($details));
       
         return redirect('/success-payment/'.base64_encode($sv->id))->with('success', 'Payment is Successful, An reciept has been sent to your email');
     }
