@@ -254,7 +254,7 @@
             let invoice_no = resp.data.invoice_no
             let status = resp.data.status
             let client_ref = resp.data.client_ref
-            // window.location.href = resp.data.authorization_url
+            window.location.href = resp.data.authorization_url
 
         });
     });
