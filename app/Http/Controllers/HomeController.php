@@ -24,6 +24,7 @@ use App\Helper\Helper;
 use App\Http\Requests;
 use App\ApplicationFee;
 use App\Course_Student;
+use App\Current_Semester_Running;
 use App\LecturerCourse;
 use App\Models\Article;
 use App\Models\Category;
@@ -37,6 +38,7 @@ use App\Mail\PasswordReset;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Mail\VerifyAdmissionEmail;
+use App\Semester;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Log;
@@ -1564,5 +1566,47 @@ class HomeController extends Controller
 		$options = DepartmentOption::where(['dept_id' => $request->dept_id])->get();
 		$resp['body'] = $options;
 		return $resp;
+	}
+
+	public function make_payment(Request $request){
+		$sessions = Current_Semester_Running::all();
+        $semesters = Semester::all();
+        $fee_lists = FeeList::all();
+        //   dd($sessions);
+        return view('homepage.make_payment', compact('sessions', 'fee_lists', 'semesters'));
+	}
+
+	public function create_user(Request $request){
+		$check = StudentInfo::where(['registration_number' => $request->registration_number])->count();
+		if($check > 0){
+			$save = StudentInfo::updateOrCreate(
+				['registration_number' => $request->registration_number],
+				[$request->all()]
+			);
+			
+		}else{
+			$save = StudentInfo::updateOrCreate(
+				['registration_number' => $request->registration_number],
+				[
+					'password' => Hash::make('12345'),
+					'first_name' => $request->Full_name,
+					'last_name' => $request->Full_name,
+					"Full_name" => $request->Full_name,
+					"Email_Address" => $request->Email_Address,
+					"Student_Mobile_Number"=> $request->Student_Mobile_Number,
+				]
+			);
+		}
+		
+
+		return $save;
+	}
+
+	public function success_payment(Request $request, $id){
+		$check = FeeHistory::find(base64_decode($id));
+		$student = StudentInfo::find($check->student_id);
+		$fee = FeeList::find($check->fee_id);
+		// dd($student)
+		return view('homepage.success_payment', compact('check', 'student', 'fee'));
 	}
 }

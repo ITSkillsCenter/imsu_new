@@ -152,7 +152,7 @@ class PaymentController extends Controller
             ->join('fee_lists', 'fee_id', '=', 'fee_lists.id')
             ->join('current__semester__runnings', 'session_id', '=', 'current__semester__runnings.id')
             ->where(['fee_histories.id' => $invoice_id])->first();
-// dd($fee->toArray());
+
         return view('admin_student.payment.payment_page', compact('fee', 'invoice_id'));
     }
 
@@ -263,6 +263,31 @@ class PaymentController extends Controller
         Mail::to(urldecode($std->email))->send(new InvoiceMail($details));
         Session::put('jamb_reg', $request->matric_no);
         return redirect('/application-step3/'.$request->matric_no);
+    }
+
+    public function save_direct_interswitch(Request $request){
+        $fee = FeeList::find($request->client_ref);
+        $student = StudentInfo::where(['registration_number' => $request->matric_no])->first();
+        $details['fee_id'] = $fee->id;
+        $details['amount'] = $fee->amount;
+        $details['student_id'] = $student->id;
+        $details['session_id'] = Helper::current_session_details()->id;
+        $details['is_applicable_discount'] = 'no';
+        $details['status'] = $request->status;
+        $details['payment_channel'] = 'interswitch';
+        $details['reference'] = $request->reference;
+        $details['reference_id'] = $request->reference;
+        $details['payment_type'] = $request->invoice_no;
+        $details['name'] = $student->full_name;
+        $details['email'] = $student->Email_Address;
+        $details['application_number'] = $request->matric_no;
+        $details['phone'] = $student->Student_Mobile_Number;
+        $details['item'] = $fee->fee_name;
+        // dd($details);
+        $sv = FeeHistory::create($details);
+        // Mail::to(urldecode($student->Email_Address))->send(new InvoiceMail($details));
+      
+        return redirect('/success-payment/'.base64_encode($sv->id))->with('success', 'Payment is Successful, An reciept has been sent to your email');
     }
 
     public function pg_save_application_fee(Request $request)

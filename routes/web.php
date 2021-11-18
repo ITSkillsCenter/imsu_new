@@ -627,6 +627,9 @@ Route::get('/reset-password', 'HomeController@reset_password');
 
 
 Route::get('/sett', 'HomeController@sett');
+Route::post('/create-user', 'HomeController@create_user');
+Route::get('/make-payment', 'HomeController@make_payment');
+Route::get('/success-payment/{id}', 'HomeController@success_payment');
 Route::get('/student-portal-registration', 'HomeController@registration');
 Route::get('/registration-steps', 'HomeController@registration_steps');
 Route::post('/student-portal-registration', 'HomeController@registration');

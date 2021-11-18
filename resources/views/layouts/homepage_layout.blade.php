@@ -177,6 +177,9 @@
                                     <a href="https://oer.imsu.edu.ng">E-Library</a>
                                 </li>
                                 <li class="menu-item">
+                                    <a href="/make-payment">Make Payment</a>
+                                </li>
+                                <li class="menu-item">
                                     <a href="#">E-Learning</a>
                                 </li>
                                 <li class="menu-item">
@@ -217,9 +220,9 @@
                     sf-menu
                     kingster-top-bar-menu kingster-top-bar-right-menu
                   ">
-                                <!-- <li class="menu-item kingster-normal-menu">
-                                    <a href="/student-portal">Student Registration</a>
-                                </li> -->
+                                <li class="menu-item kingster-normal-menu">
+                                    <a href="/make-payment">Make Payment</a>
+                                </li>
                                 <li class="menu-item kingster-normal-menu">
                                     <a href="#">TETFUND</a>
                                 </li>
@@ -455,6 +458,7 @@
                                     <li class="menu-item kingster-normal-menu">
                                         <a href="#">Centers</a>
                                     </li>
+                                    
                                     <!-- <li class="menu-item">
                                         <a href="https://webmail.imsu.edu.ng/portal">Webmail</a>
                                     </li> -->
