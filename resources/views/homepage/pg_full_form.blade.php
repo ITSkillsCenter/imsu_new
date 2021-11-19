@@ -68,14 +68,14 @@
                                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">Paid By </label>
-                                                                <p>{{$check->first_name}}</p> <br>
+                                                                <p>{{$std->name}}</p> <br>
                                                             </div>
                                                         </div>
 
                                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">Phone Number </label>
-                                                                <p>{{$check->Student_Mobile_Number}}</p> <br>
+                                                                <p>{{$std->phone}}</p> <br>
                                                             </div>
                                                         </div>
 
