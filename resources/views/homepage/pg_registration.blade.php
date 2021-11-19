@@ -29,6 +29,9 @@
                                                 @include('homepage.flash_message')
                                                 <div role="form" class="wpcf7" id="wpcf7-f1979-p1964-o1" lang="en-US" dir="ltr">
                                                     <div class="screen-reader-response"></div>
+                                                    @if ($message = Session::get('success'))
+                                                    <p></p>
+                                                    @else
                                                     <form class="quform" method="post">
                                                         @csrf
                                                         <div class="quform-elements">
@@ -95,6 +98,7 @@
                                                             </p>
                                                         </div>
                                                     </form>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

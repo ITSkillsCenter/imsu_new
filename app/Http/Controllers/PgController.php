@@ -55,6 +55,16 @@ class PgController extends Controller
 		return view('homepage.pg_registration');
 	}
 
+    public function check_application_number($id){
+        $ap = 'SPGS/IMSU/2021/'. str_pad($id, 5, "0", STR_PAD_LEFT );
+        $pg = Pgapplicant::where(['application_number' => $ap])->count();
+        if($pg > 0){
+            $this->check_application_number($id + 1);
+        }else{
+            return $ap;
+        }
+    }
+
     public function verify(Request $request, $email){
         $email_address = base64_decode($email);
 		$email = Pgapplicant::where(['email' => $email_address])->first();
@@ -64,7 +74,7 @@ class PgController extends Controller
 		}
         if($email->application_number == null){
             $count = Pgapplicant::all()->count();
-            $email->application_number = 'SPGS/IMSU/2021/'. str_pad($count, 5, "0", STR_PAD_LEFT );
+            $email->application_number = $this->check_application_number($count);
         }
         
 		$email->status = 'verified';
@@ -73,6 +83,8 @@ class PgController extends Controller
 
         return view('homepage.pg_verified', compact('email_address', 'email'));
     }
+
+    
 
     public function application_fee(Request $request)
 	{
