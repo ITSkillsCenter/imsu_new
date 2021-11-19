@@ -81,7 +81,7 @@
 
                                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                <label for="">Jamb Registration Number </label>
+                                                                <label for="">Application Number </label>
                                                                 <p>{{$std->application_number}}</p> <br>
                                                             </div>
                                                         </div>
@@ -536,10 +536,26 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="gdlr-core-course-column gdlr-core-column-20">
+                                                    <div class="gdlr-core-course-column gdlr-core-column-50">
                                                         <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                             <label for="">Email</label>
                                                             <p>{{ucwords($nok['email'])}}</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="gdlr-core-course-column gdlr-core-column-10">
+                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                            <label for="">&nbsp;</label>
+                                                            <p>&nbsp;</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <h5 class="gdlr-core-course-column gdlr-core-column-full" style="border-bottom: 3px solid black;"><br> Statement in support of your application</h5>
+
+                                                    <div class="gdlr-core-course-column gdlr-core-column-50">
+                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                            <!-- <label for="">Essay</label> -->
+                                                            <p>{{$std->supporting_information}}</p>
                                                         </div>
                                                     </div>
 
