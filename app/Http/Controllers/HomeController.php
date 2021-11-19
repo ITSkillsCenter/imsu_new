@@ -1462,7 +1462,14 @@ class HomeController extends Controller
 			}
 			$std = StudentInfo::where(['Email_Address' => $request->email])->first();
 			if (!$std) {
-				return back()->with('error', 'An error occured');
+				$std = Applicant::where(['email' => $request->email])->first();
+				if(!$std){
+					return back()->with('error', 'An error occured');
+				}
+				$std->otp = null;
+				$std->password = Hash::make($request->password);
+				$std->save();
+				return redirect('/student-portal')->with(['success' => 'Login with your new password']);
 			} else {
 				$std->otp = null;
 				$std->password = Hash::make($request->password);
