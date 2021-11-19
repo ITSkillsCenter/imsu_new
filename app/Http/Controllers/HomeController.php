@@ -1445,8 +1445,11 @@ class HomeController extends Controller
 			$std = StudentInfo::where(['Email_Address' => $request->email, 'otp' => $request->otp])->first();
 			if (!$std) {
 				$std = Applicant::where(['email' => $request->email, 'otp' => $request->otp])->first();
-
-				return back()->with('error', 'Invalid OTP');
+				if(!$std){
+					return back()->with('error', 'Invalid OTP');
+				}
+				return redirect('/reset-password');
+				
 			} else {
 				return redirect('/reset-password');
 			}
