@@ -119,8 +119,11 @@
                                                 <div class="gdlr-core-course-column gdlr-core-column-50" style="width: 100%; display: flex; justify-content:center">
                                                     <img class="gdlr-core-course-column gdlr-core-column-20" style="margin-bottom: 20px;" src="/homepage/images/logo.png" alt="">
                                                 </div>
-                                                <!-- <h5 style="text-align: center;">EXAM PASS</h5> -->
-                                                <p style="text-align: center; font-weight:bold;">IMO STATE UNIVERSITY, OWERRI, NIGERIA POST-GRADUATE SCREENING EXERCISE ACKNOWLEDGEMENT SLIP</p>
+                                                <div>
+                                                    <h5 style="text-align: center;">SCHOOL OF POST-GRADUATE STUDIES</h5>
+                                                    <p style="text-align: center; font-weight:bold;">Application for Admission Acknowledgement Slip</p>
+                                                </div>
+                                                
                                                 <div class="gdlr-core-pbf-column gdlr-core-column-full">
                                                     <h5 class="gdlr-core-course-column gdlr-core-column-full" style="border-bottom: 3px solid black;">Basic Information</h5>
                                                     <div class="gdlr-core-course-column gdlr-core-column-20">
