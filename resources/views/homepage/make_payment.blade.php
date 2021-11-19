@@ -33,7 +33,34 @@
                             </div>
                         </div>
 
-                        <div class="gdlr-core-pbf-element gdlr-core-column-60">
+                        <div class="gdlr-core-course-column gdlr-core-column-30">
+                            <div class="gdlr-core-contact-form-7-item gdlr-core-item-pdlr gdlr-core-item-pdb ">
+                                <div>
+                                    <p>PROCEDURES FOR ONLINE PAYMENT OF FEES:</p> 
+                                    <p>This option is meant for payers who were admitted to Imo State University before 2016, those admitted after 2016 should login to their students’ accounts on the portal to make their payments.</p> 
+                                        i. Visit the University official website: www.imsu.edu.ng <br>
+                                        ii. Click on make payment on the top menu <br>
+                                        iii. Enter your full name, mat number , functional email address, phone number and select fees you want to pay <br>
+                                        iv. Click to Make Payment - You will be shown different payment options: <br>
+                                        &nbsp;&nbsp; a. Pay with REMITA <br>
+                                       <p style="padding-left: 20px;">This option will redirect to the REMITA Payment Gateway to facilitate your payment with options listed below:</p>
+                                       <p style="padding-left: 20px;">• CARD: This button will provide with the option to pay with your ATM Card </p>
+                                       <p style="padding-left: 20px;">• BANK: This button with generate an RRR number that you can take to any bank branch to make payment.</p> 
+
+                                        &nbsp;&nbsp;b. Pay with INTERSWITCH <br>
+                                        <p style="padding-left: 20px;">• Pay with Interswitch Card option - This option will redirect to the INTERSWITCH Payment Gateway to facilitate payment with your ATM Card</p>
+                                        <p style="padding-left: 20px;">• Pay with Interswitch Bank option - This option will generate a REFERENCE NUMBER (in the format: MNTA******)</p>
+                                        <p style="padding-left: 20px;">• You can take this REFERENCE NUMBER to any bank brank and tell the bank teller you want to make payment for “IMSU-PAYDIRECT</p>
+                                        <p style="padding-left: 20px;">• You can also use that REFERENCE NUMBER on this URL https://quickteller.com/imsu.edu.ng</p>
+                                        <p style="padding-left: 20px;">• Search for IMO STATE UNIVERSITY</p>
+                                        <p style="padding-left: 20px;">• Enter your Email and put the generated reference number in the INVOICE NUMBER</p>
+                                        v. Print your receipt from the payment page of from your email <br>
+                                        vi. Submit your receipt to the bursary for confirmation <br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="gdlr-core-course-column gdlr-core-column-30">
                             <div class="gdlr-core-contact-form-7-item gdlr-core-item-pdlr gdlr-core-item-pdb ">
                                 @include('homepage.flash_message')
                                 <div role="form" class="wpcf7" style="width: 60%; margin: 0 auto" id="wpcf7-f1979-p1964-o1" lang="en-US" dir="ltr">
@@ -44,18 +71,14 @@
                                         <div class="quform-element">
                                             <p>Payment for
                                                 <br>
-                                                @php 
-                                                    $avoid = [7,19,20,21,22,23,24, 39,40];
-                                                @endphp
+
                                                 <span class="wpcf7-form-control-wrap your-name">
                                                     <select id="fee" class="input" aria-required="true" name="type" required>
                                                         <option value="">--Select--</option>
                                                         @foreach($fee_lists as $fee_list)
-                                                        @if(!in_array($fee_list->id, $avoid))
                                                         <option value="{{$fee_list->id}}" data-item_code="{{$fee_list->interswitch_item_code}}" data-amount="{{$fee_list->amount}}" data-remita_service_id="{{$fee_list->remita_service_id}}">
                                                             {{$fee_list->fee_name}} - {{$fee_list->amount}}
                                                         </option>
-                                                        @endif
                                                         @endforeach
                                                     </select>
                                                 </span>
@@ -142,43 +165,44 @@
     </div>
 
     <style>
-        .ssh{
+        .ssh {
             left: 25%;
         }
+
         @media (max-width: 768px) {
             .payment_btn {
                 width: 100%;
                 margin-bottom: 10px !important;
             }
-            .ssh{
+
+            .ssh {
                 left: 0 !important;
             }
         }
-        
     </style>
 
-<div class="ssh" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; top: 5%; position: absolute; margin: 0 auto;">
-    <div class="modal-dialog" style="border: 0;" role="document">
-        <div class="modal-content" style="border: 0;">
-            <div class="modal-header text-white" style="display:flex; justify-content:space-between; background: linear-gradient(90deg,rgb(17, 182, 122) 0%, rgb(0, 148, 68) 100%);">
-                <!-- <p style="font-weight:bold; color:white">News Update!</p> -->
-                <button type="button" id="closeit" class="close" data-dismiss="modal" style="opacity: 1; color:white" aria-label="Close">
-                    <span aria-hidden="true" class="white-text">×</span>
-                </button>
-            </div>
-            <div class="modal-body text-center">
-                <h4>Kindly copy the Reference Number below.</h4>
-                <p>Note: This payment can be made via bank or via <a target="_blank" href="https://quickteller.com/pay-bills">quickteller</a> </p>
-                <input class="form-control" type="text" id="rrr" readonly>
-                <br>
-                <button class="btn" data-clipboard-target="#rrr">
-                    Copy <i class="fa fa-copy"></i>
-                </button> &nbsp;&nbsp;&nbsp;
-                <a class="btn btn-success" href="/make-payment">Close</a>
+    <div class="ssh" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; top: 5%; position: absolute; margin: 0 auto;">
+        <div class="modal-dialog" style="border: 0;" role="document">
+            <div class="modal-content" style="border: 0;">
+                <div class="modal-header text-white" style="display:flex; justify-content:space-between; background: linear-gradient(90deg,rgb(17, 182, 122) 0%, rgb(0, 148, 68) 100%);">
+                    <!-- <p style="font-weight:bold; color:white">News Update!</p> -->
+                    <button type="button" id="closeit" class="close" data-dismiss="modal" style="opacity: 1; color:white" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">×</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <h4>Kindly copy the Reference Number below.</h4>
+                    <p>Note: This payment can be made via bank or via <a target="_blank" href="https://quickteller.com/pay-bills">quickteller</a> </p>
+                    <input class="form-control" type="text" id="rrr" readonly>
+                    <br>
+                    <button class="btn" data-clipboard-target="#rrr">
+                        Copy <i class="fa fa-copy"></i>
+                    </button> &nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-success" href="/make-payment">Close</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 </div>
 
@@ -214,9 +238,9 @@
     })
 
     $('#closeit').click(function() {
-      $('#centralModal').css('display', 'none');
-      $('#overlay').css('display', 'none');
-   });
+        $('#centralModal').css('display', 'none');
+        $('#overlay').css('display', 'none');
+    });
 
     $('#send').click(function() {
         // $('#interswitch').attr('disabled', 'true');
