@@ -191,7 +191,7 @@
     }
 
     .right.programmes .widget .faculties {
-        display: flex;
+        /* display: flex; */
         justify-content: flex-start;
         align-items: center;
         background-color: #ffffff;
@@ -200,7 +200,12 @@
         color: #3db166;
     }
 
-    .right.programmes div.widget div:hover {
+    /* .right.programmes div.widget div:hover {
+        color: #ffffff;
+        background-color: #192F59;
+    } */
+
+    .right.programmes div.widget div a:hover {
         color: #ffffff;
         background-color: #192F59;
     }
@@ -239,7 +244,7 @@
     }
 
     .maincontainer {
-        background-image: radial-gradient(rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4)),url(homepage/images/bg.jpg);
+        background-image: radial-gradient(rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.4)), url(homepage/images/bg.jpg);
         padding: 5vw 1vw;
         background-position: center bottom;
         background-size: cover;
@@ -264,8 +269,7 @@
     .right.enquire h5 {
         color: #192f59;
         padding-bottom: 1vw;
-        border-bottom: 2px
-        #192f59 solid;
+        border-bottom: 2px #192f59 solid;
     }
 
     .right.enquire .widget.link222 {
@@ -276,7 +280,7 @@
         width: 95%;
     }
 
-    .widget.link222 a{
+    .widget.link222 a {
         color: white !important;
     }
 
@@ -288,7 +292,18 @@
         font-weight: 700;
         border-left: 5px #3db166 solid;
     }
-    
+
+    .faculties .dropdown {
+        padding: 1vw;
+        display: none;
+    }
+    .faculties .show{
+        display: block;
+    }
+    .faculties a:focus, .faculties a:active, .faculties a:hover{
+        color:#ffffff;
+        /* background-color:#3db166; */
+    }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @php
@@ -339,11 +354,11 @@
                     </div>
                 </div>
             </div>
-            
-            
+
+
         </div>
     </div>
-    
+
     <br><br>
     <div class="gdlr-core-pbf-wrapper " style="padding: 60px 0px 60px 0px;">
         <div class="gdlr-core-pbf-background-wrap"></div>
@@ -525,26 +540,92 @@
                     </div>
                     <div class="widget">
                         <div class="faculties">
-                            <a href="#">Faculty of Physical Sciences <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
-                           
+                            <a>Faculty of Physical Sciences <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown">
+                                <p>Msc PhD</p>
+                            </div>
                         </div>
-                        <div class="faculties"><a href="#">Faculty of Biological Sciences <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
-                        <div class="faculties"><a href="#">Faculty of Health Sciences <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
-                        <div class="faculties"><a href="#">Faculty of Law <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
-                        <div class="faculties"><a href="#">Faculty of Engineering <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
-                        <div class="faculties"><a href="#">Faculty of Education <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
-                        <div class="faculties"><a href="#">Faculty of Humanities <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
-                        <div class="faculties"><a href="#">Faculty of Social Sciences <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
-                        <div class="faculties"><a href="#">Faculty of Enviromental Sciences <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
-                        <div class="faculties"><a href="#">Faculty of Basic Medical Sciences <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
-                        <div class="faculties"><a href="#">Faculty of Basic Clinical <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
-                        <div class="faculties"><a href="#">Faculty of Agricultural Science &amp; Veterinary <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
-                        <div class="faculties"><a href="#">Faculty of Business Administration (Management Sciences) <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
-                        <div class="faculties"><a href="#">Faculty of Clinical Medicine <i class="fas fa-chevron-down" aria-hidden="true"></i></a></div>
+                        <div class="faculties">
+                            <a>Faculty of Biological Sciences <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown">
+                                <p>Msc PhD</p>
+                            </div>
+                        </div>
+                        <div class="faculties">
+                            <a>Faculty of Health Sciences <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown">
+                                <p>Msc PhD</p>
+                            </div>
+                        </div>
+                        <div class="faculties">
+                            <a>Faculty of Law <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown">
+                                <p>Msc PhD</p>
+                            </div>
+                        </div>
+                        <div class="faculties">
+                            <a>Faculty of Engineering <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown">
+                                <p>Msc PhD</p>
+                            </div>
+                        </div>
+                        <div class="faculties">
+                            <a>Faculty of Education <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown">
+                                <p>Msc PhD</p>
+                            </div>
+                        </div>
+                        <div class="faculties">
+                            <a>Faculty of Humanities <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown">
+                                <p>Msc PhD</p>
+                            </div>
+                        </div>
+                        <div class="faculties">
+                            <a>Faculty of Social Sciences <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown">
+                                <p>Msc PhD</p>
+                            </div>
+                        </div>
+                        <div class="faculties">
+                            <a>Faculty of Enviromental Sciences <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown">
+                                <p>Msc PhD</p>
+                            </div>
+                        </div>
+                        <div class="faculties">
+                            <a>Faculty of Basic Medical Sciences <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown">
+                                <p>Msc PhD</p>
+                            </div>
+                        </div>
+                        <div class="faculties">
+                            <a>Faculty of Basic Clinical <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown">
+                                <p>Msc PhD</p>
+                            </div>
+                        </div>
+                        <div class="faculties">
+                            <a>Faculty of Agricultural Science & Veterinary <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown">
+                                <p>Msc PhD</p>
+                            </div>
+                        </div>
+                        <div class="faculties">
+                            <a>Faculty of Business Administration (Management Sciences) <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown">
+                                <p>Msc PhD</p>
+                            </div>
+                        </div>
+                        <div class="faculties"><a>Faculty of Clinical Medicine <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown">
+                                <p>Msc PhD</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                
+
             </div>
         </div>
 
@@ -581,6 +662,25 @@
 
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
 <script>
+    var drop = document.getElementsByClassName('dropdown');
+    var link = document.getElementsByClassName('faculties')
+    var i
+
+
+    for (let i = 0; i < link.length; i++) {
+        link[i].addEventListener('click', () => {
+            //         var present = drop[i+1].classList.contains('show');
+            //         if (present == true) {
+            //             drop[1+1].classList.remove('show')
+            // //             alert('hi')
+            //         }
+            for (var j = 0; j < drop.length; j++) {
+                if (j !== i) drop[j].classList.remove("show");
+            }
+            drop[i].classList.toggle('show');
+        });
+    }
+
     $(document).ready(function() {
         //   $('#centralModal').css('display', 'block');
         //   $('#overlay').css('display', 'block');
@@ -603,9 +703,9 @@
             /* Toggle between hiding and showing the active panel */
             var panel = this.nextElementSibling;
             if (panel.style.display === "block") {
-            panel.style.display = "none";
+                panel.style.display = "none";
             } else {
-            panel.style.display = "block";
+                panel.style.display = "block";
             }
         });
     }

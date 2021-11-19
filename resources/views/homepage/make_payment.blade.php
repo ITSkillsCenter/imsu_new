@@ -36,26 +36,26 @@
                         <div class="gdlr-core-course-column gdlr-core-column-30">
                             <div class="gdlr-core-contact-form-7-item gdlr-core-item-pdlr gdlr-core-item-pdb ">
                                 <div>
-                                    <p>PROCEDURES FOR ONLINE PAYMENT OF FEES:</p> 
-                                    <p>This option is meant for payers who were admitted to Imo State University before 2016, those admitted after 2016 should login to their students’ accounts on the portal to make their payments.</p> 
-                                        i. Visit the University official website: www.imsu.edu.ng <br>
-                                        ii. Click on make payment on the top menu <br>
-                                        iii. Enter your full name, mat number , functional email address, phone number and select fees you want to pay <br>
-                                        iv. Click to Make Payment - You will be shown different payment options: <br>
-                                        &nbsp;&nbsp; a. Pay with REMITA <br>
-                                       <p style="padding-left: 20px;">This option will redirect to the REMITA Payment Gateway to facilitate your payment with options listed below:</p>
-                                       <p style="padding-left: 20px;">• CARD: This button will provide with the option to pay with your ATM Card </p>
-                                       <p style="padding-left: 20px;">• BANK: This button with generate an RRR number that you can take to any bank branch to make payment.</p> 
+                                    <h5>PROCEDURES FOR ONLINE PAYMENT OF FEES:</h5>
+                                    <p>This option is meant for payers who were admitted to Imo State University before 2016, those admitted after 2016 should login to their students’ accounts on the portal to make their payments.</p>
+                                    i. Visit the University official website: www.imsu.edu.ng <br>
+                                    ii. Click on make payment on the top menu <br>
+                                    iii. Enter your full name, mat number , functional email address, phone number and select fees you want to pay <br>
+                                    iv. Click to Make Payment - You will be shown different payment options: <br>
+                                    &nbsp;&nbsp; a. Pay with REMITA <br>
+                                    <p style="padding-left: 20px;">This option will redirect to the REMITA Payment Gateway to facilitate your payment with options listed below:</p>
+                                    <p style="padding-left: 20px;">• CARD: This button will provide with the option to pay with your ATM Card </p>
+                                    <p style="padding-left: 20px;">• BANK: This button with generate an RRR number that you can take to any bank branch to make payment.</p>
 
-                                        &nbsp;&nbsp;b. Pay with INTERSWITCH <br>
-                                        <p style="padding-left: 20px;">• Pay with Interswitch Card option - This option will redirect to the INTERSWITCH Payment Gateway to facilitate payment with your ATM Card</p>
-                                        <p style="padding-left: 20px;">• Pay with Interswitch Bank option - This option will generate a REFERENCE NUMBER (in the format: MNTA******)</p>
-                                        <p style="padding-left: 20px;">• You can take this REFERENCE NUMBER to any bank brank and tell the bank teller you want to make payment for “IMSU-PAYDIRECT</p>
-                                        <p style="padding-left: 20px;">• You can also use that REFERENCE NUMBER on this URL https://quickteller.com/imsu.edu.ng</p>
-                                        <p style="padding-left: 20px;">• Search for IMO STATE UNIVERSITY</p>
-                                        <p style="padding-left: 20px;">• Enter your Email and put the generated reference number in the INVOICE NUMBER</p>
-                                        v. Print your receipt from the payment page of from your email <br>
-                                        vi. Submit your receipt to the bursary for confirmation <br>
+                                    &nbsp;&nbsp;b. Pay with INTERSWITCH <br>
+                                    <p style="padding-left: 20px;">• Pay with Interswitch Card option - This option will redirect to the INTERSWITCH Payment Gateway to facilitate payment with your ATM Card</p>
+                                    <p style="padding-left: 20px;">• Pay with Interswitch Bank option - This option will generate a REFERENCE NUMBER (in the format: MNTA******)</p>
+                                    <p style="padding-left: 20px;">• You can take this REFERENCE NUMBER to any bank brank and tell the bank teller you want to make payment for “IMSU-PAYDIRECT</p>
+                                    <p style="padding-left: 20px;">• You can also use that REFERENCE NUMBER on this URL https://quickteller.com/imsu.edu.ng</p>
+                                    <p style="padding-left: 20px;">• Search for IMO STATE UNIVERSITY</p>
+                                    <p style="padding-left: 20px;">• Enter your Email and put the generated reference number in the INVOICE NUMBER</p>
+                                    v. Print your receipt from the payment page of from your email <br>
+                                    vi. Submit your receipt to the bursary for confirmation <br>
                                 </div>
                             </div>
                         </div>
@@ -233,6 +233,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
 
 <script>
+    function validateEmail(email) {
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+    function validate() {
+        const $result = $("#result");
+        const email = $("#email").val();
+        $result.text("");
+
+        if (validateEmail(email)) {
+            return true
+        } else {
+            return false
+        }
+        return false;
+    }
     $(document).ready(function() {
         new ClipboardJS('.btn');
     })
@@ -251,6 +268,9 @@
         console.log(email, name, registration_number, phone)
         if (email == '' || name == '' || phone == '' || fee == '') {
             return alert('All fields is required')
+        }
+        if(!validate($("#email").val())){
+            return alert('Invalid Email, please provide a valid email address')
         }
         $('#shr').attr('disabled', true)
         $(this).attr('disabled', 'true');
@@ -300,7 +320,7 @@
                 "channel": "card",
                 "callback_url": $('#callback_url').val(),
                 "item_code": $("#fee").find(":selected").data('item_code'),
-                "remita_service_id": $("#fee").find(":selected").data('remita_service_id'), 
+                "remita_service_id": $("#fee").find(":selected").data('remita_service_id'),
                 "client_ref": $("#fee").find(":selected").val(),
             }),
         };
@@ -329,6 +349,9 @@
         console.log(email, name, registration_number, phone)
         if (email == '' || name == '' || phone == '' || fee == '') {
             return alert('All fields is required')
+        }
+        if(!validate($("#email").val())){
+            return alert('Invalid Email, please provide a valid email address')
         }
         $('#bank').attr('disabled', true)
         $(this).attr('disabled', 'true');
@@ -403,6 +426,9 @@
         console.log(email, name, registration_number, phone)
         if (email == '' || name == '' || phone == '' || fee == '') {
             return alert('All fields is required')
+        }
+        if(!validate($("#email").val())){
+            return alert('Invalid Email, please provide a valid email address')
         }
         $('#interswitch').attr('disabled', true)
         $(this).attr('disabled', 'true');
