@@ -63,7 +63,7 @@
                         <div class="gdlr-core-course-column gdlr-core-column-30">
                             <div class="gdlr-core-contact-form-7-item gdlr-core-item-pdlr gdlr-core-item-pdb ">
                                 @include('homepage.flash_message')
-                                <div role="form" class="wpcf7" style="width: 60%; margin: 0 auto" id="wpcf7-f1979-p1964-o1" lang="en-US" dir="ltr">
+                                <div role="form" class="wpcf7" style="width: 80%; margin: 0 auto" id="wpcf7-f1979-p1964-o1" lang="en-US" dir="ltr">
                                     <div class="screen-reader-response"></div>
                                     <!-- <form class="quform" method="post"> -->
                                     @csrf
