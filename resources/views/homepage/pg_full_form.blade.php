@@ -68,7 +68,7 @@
                                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">Paid By </label>
-                                                                <p>{{$std->name}}</p> <br>
+                                                                <p>{{$std->first_name}}</p> <br>
                                                             </div>
                                                         </div>
 
