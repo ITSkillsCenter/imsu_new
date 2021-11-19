@@ -23,7 +23,7 @@
                                                 <span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 19px ;font-style: normal ;">Your email - <b>{{$email_address}}</b>, has been verified.</span>
                                                 <br>
                                                 <div>
-                                                    <a class="gdlr-core-button gdlr-core-button-solid gdlr-core-button-no-border" href="/pg-application-fee">Pay or Verify Acceptance Fee</a>
+                                                    <a class="gdlr-core-button gdlr-core-button-solid gdlr-core-button-no-border" href="/pg-application-fee">Pay Application Fee</a>
                                                 </div>
                                                 @else
                                                 <span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 19px ;font-style: normal ;">Invalid email</span>
