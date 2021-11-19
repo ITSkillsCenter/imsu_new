@@ -1595,6 +1595,7 @@ class HomeController extends Controller
 					"Full_name" => $request->Full_name,
 					"Email_Address" => $request->Email_Address,
 					"Student_Mobile_Number"=> $request->Student_Mobile_Number,
+					"registration_number"=> $request->registration_number,
 				]
 			);
 		}
