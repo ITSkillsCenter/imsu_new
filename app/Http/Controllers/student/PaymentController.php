@@ -370,6 +370,34 @@ class PaymentController extends Controller
         return redirect('/success-payment/'.base64_encode($sv->id))->with('success', 'Payment is Successful, An reciept has been sent to your email');
     }
 
+    public function save_direct_remita(Request $request){
+        $fee = FeeList::find($request->client_ref);
+        $student = StudentInfo::where(['Email_Address' => $request->matric_no])->first();
+        if($request->status !== 'PAID'){
+            return redirect('/make-payment')->with('error', 'An error occured');
+        }
+        $details['fee_id'] = $fee->id;
+        $details['amount'] = $fee->amount;
+        $details['student_id'] = $student->id;
+        $details['session_id'] = Helper::current_session_details()->id;
+        $details['is_applicable_discount'] = 'no';
+        $details['status'] = $request->status;
+        $details['payment_channel'] = 'remita';
+        $details['reference'] = $request->reference;
+        $details['reference_id'] = $request->reference;
+        $details['payment_type'] = $request->invoice_no;
+        $details['name'] = $student->full_name;
+        $details['email'] = $student->Email_Address;
+        $details['application_number'] = $request->matric_no;
+        $details['phone'] = $student->Student_Mobile_Number;
+        $details['item'] = $fee->fee_name;
+        // dd($details);
+        $sv = FeeHistory::create($details);
+        Mail::to(urldecode($student->Email_Address))->send(new InvoiceMail($details));
+      
+        return redirect('/success-payment/'.base64_encode($sv->id))->with('success', 'Payment is Successful, An reciept has been sent to your email');
+    }
+
     public function save_bank_ref_direct(Request $request){
         $fee = FeeList::find($request->client_ref);
         $student = StudentInfo::where(['Email_Address' => $request->matric_no])->first();

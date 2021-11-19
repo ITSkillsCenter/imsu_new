@@ -40,6 +40,9 @@ Route::group(['namespace' => 'student'], function () {
     Route::post('/save_direct_interswitch', 'PaymentController@save_direct_interswitch');
     Route::get('/save_direct_interswitch', 'PaymentController@save_direct_interswitch');
 
+    Route::post('/save_direct_remita', 'PaymentController@save_direct_remita');
+    Route::get('/save_direct_remita', 'PaymentController@save_direct_remita');
+
     Route::post('/pg/save_application_fee/{fee_id}', 'PaymentController@pg_save_application_fee');
     Route::get('/pg/save_application_fee/{fee_id}', 'PaymentController@pg_save_application_fee');
     

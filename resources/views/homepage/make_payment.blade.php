@@ -124,7 +124,7 @@
 
 
                                     <div class="col-lg-4">
-                                        <input type="hidden" name="callback_url" id="callback_url" value="https://imsu.edu.ng/api/save_application_fee/{{base64_encode($fee->id)}}">
+                                        <input type="hidden" name="callback_url" id="callback_url" value="https://imsu.edu.ng/api/save_direct_remita">
                                         <input type="hidden" name="callback_url" id="callback_url_interswitch" value="https://imsu.edu.ng/api/save_direct_interswitch">
                                         <!-- <input type="hidden" name="email" id="email" value="{{$std->email}}">
                                             <input type="hidden" name="phone" id="phone" value="{{$std->phone_number}}">
@@ -139,8 +139,8 @@
                                             <input type="hidden" name="client_ref" id="client_ref" value="{{Session::get('jamb_reg')}}"> -->
                                     </div>
                                     <div class="col-md-12 text-center">
-                                        <button id="shr" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button>
-                                        <!-- <button id="send" type="button" class="btn btn-lg btn-success"><i class="fa fa-money"> Pay with remita</i></button> -->
+                                        <button id="shr" type="button" class="btn btn-sm btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button>
+                                        <button id="send" type="button" class="btn btn-sm btn-success"><i class="fa fa-money"> Pay with remita</i></button>
                                         <!-- <button id="interswitch" type="button" class="btn btn-lg btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button> -->
                                     </div>
 
@@ -243,7 +243,17 @@
     });
 
     $('#send').click(function() {
-        // $('#interswitch').attr('disabled', 'true');
+        let email = $('#email').val()
+        let name = $('#name').val()
+        let registration_number = $('#registration_number').val()
+        let phone = $('#phone').val()
+        let fee = $('#fee').val()
+        console.log(email, name, registration_number, phone)
+        if (email == '' || name == '' || phone == '' || fee == '') {
+            return alert('All fields is required')
+        }
+        $('#shr').attr('disabled', true)
+        $(this).attr('disabled', 'true');
         $(this).html('Loading...')
         $.ajaxSetup({
             headers: {
@@ -252,6 +262,27 @@
         });
 
         var settings = {
+            "url": "/create-user",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json",
+                // "Cookie": "ci_session=9pmf6h66uun6pnuqqiinrtccq3q1jku9"
+            },
+            "data": JSON.stringify({
+                "Full_name": $('#name').val(),
+                "Email_Address": $('#email').val(),
+                "Student_Mobile_Number": $('#phone').val(),
+                "registration_number": $('#registration_number').val(),
+            }),
+        };
+
+        $.ajax(settings).done(function(response) {
+            console.log(JSON.parse(response));
+
+        });
+
+        var setting2 = {
             "url": "https://imorms.ng/api/v1/college/cie/27?token=1GnUy2F50dCtcJsRcGccx5E6KrSp4fyQ9nhDoIC5UqRA898FHFBHF21213HFHRH2HHD8F&userId=1",
             "method": "POST",
             "timeout": 0,
@@ -260,21 +291,21 @@
                 // "Cookie": "ci_session=9pmf6h66uun6pnuqqiinrtccq3q1jku9"
             },
             "data": JSON.stringify({
-                "first_name": $('#first_name').val(),
-                "last_name": $('#last_name').val(),
+                "first_name": $('#name').val(),
+                "last_name": '',
                 "email": $('#email').val(),
                 "phone": $('#phone').val(),
-                "matric_no": $('#matric_no').val(),
-                "amount": $('#amount').val(),
+                "matric_no": $('#email').val(),
+                "amount": $("#fee").find(":selected").data('amount'),
                 "channel": "card",
                 "callback_url": $('#callback_url').val(),
-                "item_code": $('#item_code').val(),
-                "remita_service_id": $('#remita_service_id').val(),
-                "client_ref": $('#client_ref').val(),
+                "item_code": $("#fee").find(":selected").data('item_code'),
+                "remita_service_id": $("#fee").find(":selected").data('remita_service_id'), 
+                "client_ref": $("#fee").find(":selected").val(),
             }),
         };
 
-        $.ajax(settings).done(function(response) {
+        $.ajax(setting2).done(function(response) {
             console.log(JSON.parse(response));
             let resp = JSON.parse(response)
             let invoice_no = resp.data.invoice_no

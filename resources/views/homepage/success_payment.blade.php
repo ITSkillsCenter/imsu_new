@@ -60,7 +60,7 @@
                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                 <label for="">Payment Reference </label>
-                                                <p>{{$check->payment_type}}</p>
+                                                <p>{{($check->reference_id !== null)? $check->reference_id : $check->payment_type}}</p>
 
                                             </div>
                                         </div>
