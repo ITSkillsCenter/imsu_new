@@ -31,7 +31,7 @@
                                                 @if($check !== null)
                                                 <button type="button" class="btn btn-primary" id="show_receipt">Show Receipt</button>
                                                 @endif
-                                                <button type="button" class="btn btn-primary submit_form">Print Pass</button>
+                                                <button type="button" class="btn btn-primary submit_form">Print Acknowledgement Slip</button>
                                                 <!-- <a class="btn btn-primary" style="color: white;" id="app_dash" href="/student-portal">Go to your application dashboard</a> -->
                                                 <button type="button" class="btn btn-primary">
                                                     <a style="color: white;" href="/home/logout">Logout</a>
@@ -569,7 +569,7 @@
                                         @csrf
                                         <div class="gdlr-core-course-form-submit gdlr-core-course-column gdlr-core-column-first gdlr-core-center-align">
                                             <!-- <input  value="Submit" /> -->
-                                            <button type="button" id="submit_form" class="submit_form btn btn-primary">Print</button>
+                                            <button type="button" id="submit_form" class="submit_form btn btn-primary">Print Acknowledgement Slip</button>
                                         </div>
                                     </div>
                                 </div>
