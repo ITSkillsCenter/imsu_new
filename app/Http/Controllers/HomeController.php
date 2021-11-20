@@ -1336,7 +1336,8 @@ class HomeController extends Controller
 				}else if($step == null){
 					return redirect('/pg-application-fee');
 				}else if($step !== 7){
-					return redirect('/pg-application-step' . $step+1);
+					$new_step = intval($step) + 1;
+					return redirect('/pg-application-step' . $new_step);
 				}else{
 					return redirect('/pg-application-form');
 				}
