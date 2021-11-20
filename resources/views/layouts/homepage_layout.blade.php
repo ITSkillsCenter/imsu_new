@@ -246,6 +246,11 @@
                                 <li class="menu-item kingster-normal-menu">
                                     <a class="kingster-top-bar-right-button" href="/portal">Portal</a>
                                 </li>
+                                @if(Session::has('pgapplicant') || Session::has('jamb_reg') || Session::has('jamb_reg') )
+                                <li class="menu-item kingster-normal-menu">
+                                    <a class="kingster-top-bar-right-button" style="background: darkgreen;" href="/portal-logout">Logout</a>
+                                </li>
+                                @endif
                             </ul>
                             <div class="kingster-top-bar-right-social"></div>
 
