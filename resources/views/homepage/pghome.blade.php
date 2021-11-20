@@ -383,7 +383,7 @@
                                     </div>
                                     <div>
                                         Admissions into the Imo State University Post Graduate Studies for 2021/2022 academic session is in progress
-                                        <br><br> <a href="/post-graduate-application" class="btn btn-primary btn-xs rm">Apply Now</a> <br><br>
+                                        <br><br> <a href="/admission-application#pg" class="btn btn-primary btn-xs rm">Apply Now</a> <br><br>
                                     </div>
                                 </div>
 
@@ -417,7 +417,7 @@
                 <p class="ttl">Welcome to</p>
                 <h4 style="color: #3db166;">Imo State University Post Graduate Studies</h4>
                 <p>
-                    It is with great pleasure that I welcome you to Imo State University (IMSU).
+                    It is with great pleasure that we welcome you to Imo State University (IMSU).
                     IMSU was established in 1981 through law No. 4 passed by the Imo State House of Assembly.
                     Established with the vision of pursuing the advancement of learning and academic excellence,
                     the university has been unrelenting in the pursuit of its mission of becoming a citadel of learning,
