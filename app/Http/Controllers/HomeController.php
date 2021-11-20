@@ -1249,7 +1249,7 @@ class HomeController extends Controller
 				// dd($data, '453');
 				//if we created the record using "findStudent function" and still cant find it, there is a problem
 				if (!$data) {
-					return back()->with('error', "Something went wrong, please contact technical support using the ChatBox or Visit the FAQ page");
+					return back()->with('error', "Student registration number not found on the portal, Please contact the school administration via the live chat");
 				}
 
 				$data->Email_Address = strtolower($request->email);
