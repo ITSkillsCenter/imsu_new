@@ -87,7 +87,7 @@ $subjects = [
                                                             <div class="gdlr-core-course-column gdlr-core-column-20">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                     <label for="">Phone Number </label>
-                                                                    <p>{{$check->phone}}</p> <br>
+                                                                    <p>{{$std->phone}}</p> <br>
                                                                 </div>
                                                             </div>
 
