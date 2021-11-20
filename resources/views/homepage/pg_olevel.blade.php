@@ -192,7 +192,9 @@ $subjects = [
                                                                     </div>
                                                                 </div>
 
-                                                                <table class="col-lg-6">
+                                                                <div class="gdlr-core-course-column gdlr-core-column-full">
+                                                                    <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                    <table>
                                                                     <thead>
                                                                         <th class="text-center">#</th>
                                                                         <th class="text-center">Subject</th>
@@ -202,7 +204,7 @@ $subjects = [
                                                                         @for($i = 1; $i<=9; $i++) <tr>
                                                                             <td>{{$i}}</td>
                                                                             <td>
-                                                                                <select class="gdlr-core-skin-e-content my_input2" name="olevel[1][exams][subject][]">
+                                                                                <select class="gdlr-core-skin-e-content my_input2" style="width: 90%;" name="olevel[1][exams][subject][]">
                                                                                     <option value="">Select Subject</option>
                                                                                     @foreach($subjects as $subject)
                                                                                     <option value="{{$subject}}">{{$subject}}</option>
@@ -228,6 +230,10 @@ $subjects = [
                                                                             @endfor
                                                                     </tbody>
                                                                 </table>
+                                                                    </div>
+                                                                </div>
+
+                                                                
                                                             </div>
 
                                                         </div>
@@ -271,7 +277,7 @@ $subjects = [
                                                                     </div>
                                                                 </div>
 
-                                                                <table>
+                                                                <table class="gdlr-core-course-column gdlr-core-column-full">
                                                                     <thead>
                                                                         <th class="text-center">#</th>
                                                                         <th class="text-center">Subject</th>
@@ -281,7 +287,7 @@ $subjects = [
                                                                         @for($i = 1; $i<=9; $i++) <tr>
                                                                             <td>{{$i}}</td>
                                                                             <td>
-                                                                                <select class="gdlr-core-skin-e-content my_input2" name="olevel[2][exams][subject][]">
+                                                                                <select class="gdlr-core-skin-e-content my_input2" style="width: 90%;" name="olevel[2][exams][subject][]">
                                                                                     <option value="">Select Subject</option>
                                                                                     @foreach($subjects as $subject)
                                                                                     <option value="{{$subject}}">{{$subject}}</option>

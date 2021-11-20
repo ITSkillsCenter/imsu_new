@@ -115,7 +115,7 @@
 
 
                                             <div class="gdlr-core-accordion-item-icon gdlr-core-js gdlr-core-skin-icon "></div>
-                                            <div class="gdlr-core-course-form clearfix element-to-print" id="preview_exam_pass" style="padding: 10px; border: 1px solid black;">
+                                            <div class="gdlr-core-course-form clearfix element-to-print" id="preview_exam_pass" style="padding: 20px; border: 1px solid black;">
                                                 <div class="gdlr-core-course-column gdlr-core-column-50" style="width: 100%; display: flex; justify-content:center">
                                                     <img class="gdlr-core-course-column gdlr-core-column-20" style="margin-bottom: 20px;" src="/homepage/images/logo.png" alt="">
                                                 </div>
@@ -454,14 +454,15 @@
                                                         <br>
                                                     </div>
                                                     @endif
-                                                    @endforeach
-
                                                     <div class="gdlr-core-course-column gdlr-core-column-10">
                                                         <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                             <label for="">&nbsp;</label>
                                                             <p>&nbsp;</p>
                                                         </div>
                                                     </div>
+                                                    @endforeach
+
+                                                    
 
 
                                                     @php 
@@ -607,7 +608,7 @@
         var element = document.getElementById('preview_exam_pass');
         // console.log(element);
         var opt = {
-            filename: 'Exam_Pass.pdf',
+            filename: 'PG_Acknoledgement_form.pdf',
             image: {
                 type: 'jpeg',
                 quality: 0.98
