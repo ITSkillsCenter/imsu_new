@@ -28,7 +28,7 @@
                             <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-center-align gdlr-core-title-item-caption-bottom gdlr-core-item-pdlr" style="padding-bottom: 60px ;">
                                 <div class="gdlr-core-title-item-title-wrap clearfix">
                                     <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 39px ;">Application FEE</h3>
-                                </div><span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 19px ;font-style: normal ;">Hello <b>{{$std->full_name}}</b>, you are required to pay your registration fee before you can register on the portal.</span>
+                                </div><span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 19px ;font-style: normal ;">Hello <b>{{$std->first_name}} {{$std->last_name}}</b>, you are required to pay your application fee before you can register on the portal.</span>
                                 <p style="color:red; font-style:italic">Note: Bank payment takes within 24 hours to update on the portal</p>
                             </div>
                         </div>
