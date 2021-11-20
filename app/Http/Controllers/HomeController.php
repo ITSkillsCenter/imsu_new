@@ -1631,6 +1631,8 @@ class HomeController extends Controller
 		return view('homepage.bank_invoice', compact('check', 'student', 'fee', 'id'));
 	}
 
+	
+
 	public function portal_logout(Request $request){
 		$request->session()->flush();
 		return redirect('/student-portal')->with('success', 'Logged out successfully');

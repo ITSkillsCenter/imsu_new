@@ -459,7 +459,7 @@ class PaymentController extends Controller
         $std = Pgapplicant::where(['application_number' => $request->matric_no])->first();
         $fee = FeeList::where(['fee_name' => 'IMSU - PG APPLICATION FORM'])->first();
         $details['amount'] = $fee->amount;
-        $details['name'] = $std->full_name;
+        $details['name'] = $std->first_name . $std->last_name;
         $details['email'] = $std->email;
         $details['application_number'] = $request->matric_no;
         $details['phone'] = $std->phone_number;
@@ -471,15 +471,33 @@ class PaymentController extends Controller
         // dd($request->all(), $details);
 
         $cr = PgApplicationFee::create($details);
+       
+        $resp['body'] = 'success';
+        $resp['status'] = true;
+        return $resp;
+    }
+
+    public function pg_save_bank_ref(Request $request){
+        $std = Pgapplicant::where(['application_number' => $request->matric_no])->first();
+        $fee = FeeList::where(['fee_name' => 'IMSU - PG APPLICATION FORM'])->first();
+        $details['amount'] = $fee->amount;
+        $details['name'] = $std->full_name;
+        $details['email'] = $std->email;
+        $details['application_number'] = $request->matric_no;
+        $details['phone'] = $std->phone_number;
+        $details['reference_id'] = $request->rrr;
+        $details['pms_id'] = $request->invoice_no;
+        $details['status'] = 'UNPAID';
+        $details['item'] = $fee->fee_name;
+        $details['payment_channel'] = 'interswitch';
+        // dd($request->all(), $details);
+
+        $cr = PgApplicationFee::create($details);
         // dd($details, $cr);
         if($cr){
             $std->status = 'paid';
             $std->save();
         }
-       
-        Mail::to(urldecode($std->email))->send(new InvoiceMail($details));
-        // Session::put('jamb_reg', $request->matric_no);
-        return redirect('/pg-application-step3/'.base64_encode($std->application_number));
     }
 
 

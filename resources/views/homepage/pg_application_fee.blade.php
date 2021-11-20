@@ -61,7 +61,7 @@
                                                 </p>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="col-lg-4">
                                             <input type="hidden" name="callback_url" id="callback_url" value="https://imsu.edu.ng/api/pg/save_application_fee/{{base64_encode($fee->id)}}">
                                             <input type="hidden" name="callback_url" id="callback_url_interswitch" value="https://imsu.edu.ng/api/pg/save_application_fee_interswitch/{{base64_encode($fee->id)}}">
@@ -79,7 +79,13 @@
                                         </div>
                                         <div class="col-md-12 text-center">
                                             <button id="send" type="button" class="btn btn-lg btn-success"><i class="fa fa-money"> Pay with remita</i></button>
-                                            <button id="interswitch" type="button" class="btn btn-lg btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button>
+                                            <button id="shr" type="button" class="btn btn-lg btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button>
+                                        </div>
+
+                                        <div class="col-md-12 text-center" id="remita" style="display: none;">
+                                            <br>
+                                            <button id="interswitch" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Card</i></button>
+                                            <button id="bank" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with (Bank)</i></button>
                                         </div>
                                     </form>
 
@@ -120,12 +126,11 @@
             }
         }
     </style>
-    
+
 </div>
 
 <script>
-
-    $('#send').click(function(){
+    $('#send').click(function() {
         // $('#interswitch').attr('disabled', 'true');
         $(this).html('Loading...')
         $.ajaxSetup({
@@ -168,7 +173,7 @@
         });
     });
 
-    $('#interswitch').click(function(){
+    $('#interswitch').click(function() {
         $('#send').attr('disabled', 'true');
         $(this).html('Loading...')
         $.ajaxSetup({
@@ -207,6 +212,71 @@
             let status = resp.data.status
             let client_ref = resp.data.client_ref
             window.location.href = resp.data.authorization_url
+
+        });
+    });
+
+    $('#shr').click(function() {
+        $('#remita').slideToggle();
+    })
+
+    $('#bank').click(function() {
+       
+        $('#interswitch').attr('disabled', true)
+        $(this).attr('disabled', 'true');
+        $(this).html('Loading...')
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        var settings = {
+            "url": "https://imorms.ng/api/v1/college/cie/27?token=1GnUy2F50dCtcJsRcGccx5E6KrSp4fyQ9nhDoIC5UqRA898FHFBHF21213HFHRH2HHD8F&userId=1",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json",
+                // "Cookie": "ci_session=9pmf6h66uun6pnuqqiinrtccq3q1jku9"
+            },
+            "data": JSON.stringify({
+                "first_name": $('#first_name').val(),
+                "last_name": $('#last_name').val(),
+                "email": $('#email').val(),
+                "phone": $('#phone').val(),
+                "matric_no": $('#matric_no').val(),
+                "amount": $('#amount').val(),
+                "channel": "card",
+                "callback_url": $('#callback_url').val(),
+                "item_code": $('#interswitch_item_code').val(),
+                "remita_service_id": '',
+                "client_ref": $('#client_ref').val(),
+            }),
+        };
+
+        $.ajax(settings).done(function(response) {
+            console.log(JSON.parse(response));
+            let resp = JSON.parse(response)
+            let invoice_no = resp.data.invoice_no
+            let status = resp.status
+            let client_ref = resp.data.client_ref
+            let matric_no = resp.data.matric_no
+            let rrr = resp.data.tranx_ref
+            let payment_channel = 'interswitch'
+            $.post('/api/pg/save_bank_ref', {
+                rrr,
+                client_ref,
+                payment_channel,
+                invoice_no,
+                matric_no,
+            }).done(function(response) {
+                $('#rrr').val(rrr)
+                $('#interswitch').attr('disabled', false)
+                $('#bank').attr('disabled', false)
+                $('#bank').html('Pay with bank')
+                // $('#centralModal').css('display', 'block');
+                window.location.href = `/pg-bank-payment-invoice/${rrr}`
+            })
 
         });
     });

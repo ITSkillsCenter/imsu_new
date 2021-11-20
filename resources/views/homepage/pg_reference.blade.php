@@ -74,14 +74,23 @@ $subjects = [
                                             <div class="gdlr-core-accordion-item-tab clearfix gdlr-core-active">
                                                 <div class="gdlr-core-accordion-item-icon gdlr-core-js gdlr-core-skin-icon "></div>
                                                 <div class="gdlr-core-accordion-item-content-wrapper">
-                                                    <h4 class="gdlr-core-accordion-item-title gdlr-core-js  gdlr-core-skin-e-background gdlr-core-skin-e-content">REFERENCE DETAILS</h4>
+                                                    <h4 class="gdlr-core-accordion-item-title gdlr-core-js  gdlr-core-skin-e-background gdlr-core-skin-e-content">DOWNLOAD REFERENCE MATERIALS</h4>
                                                     <div class="gdlr-core-accordion-item-content">
 
-                                                        <div class="gdlr-core-course-column gdlr-core-column-20">
+                                                        <div class="gdlr-core-course-column gdlr-core-column-30">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">DOWNLOAD REFEREE FORM</label>
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                     <a href="/docs/referee_form_sch_of_postgraduate.docx" download="">Click here to download referee form</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-30">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">DOWNLOAD TRANSCRIPT LABEL</label>
+                                                                <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                    <a target="_blank" href="/transcript-label">Click here to view and download transcript label</a>
                                                                 </div>
                                                             </div>
                                                         </div>

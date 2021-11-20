@@ -611,6 +611,7 @@ Route::post('/pg-application-step6', 'PgController@application_step6');
 Route::get('/pg-application-step7', 'PgController@application_step7');
 Route::post('/pg-application-step7', 'PgController@application_step7');
 Route::get('/pg-application-form', 'PgController@application_form');
+Route::get('/transcript-label', 'PgController@transcript_label');
 
 
 Route::get('/scholarship-application', 'HomeController@scholarship_application');
@@ -631,6 +632,7 @@ Route::get('/sett', 'HomeController@sett');
 Route::post('/create-user', 'HomeController@create_user');
 Route::get('/make-payment', 'HomeController@make_payment');
 Route::get('/bank-payment-invoice/{id}', 'HomeController@bank_payment_invoice');
+Route::get('/pg-bank-payment-invoice/{id}', 'PgController@pg_bank_payment_invoice');
 Route::get('/success-payment/{id}', 'HomeController@success_payment');
 Route::get('/student-portal-registration', 'HomeController@registration');
 Route::get('/registration-steps', 'HomeController@registration_steps');

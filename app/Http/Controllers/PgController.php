@@ -220,6 +220,29 @@ class PgController extends Controller
                     'olevel_result' => $destinationPath . $fileNameToStore,
                 ]);
             }
+            if ($request->hasFile('olevelres2')) {
+                if (!$request->file('olevelres2')->isValid()) {
+                    return redirect()->back()->with('error', 'File not valid');
+                }
+                $file = $request->file('olevelres2');
+                // Get filename with extension
+                $filenameWithExt = $file->getClientOriginalName();
+                // Get file path
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                // Remove unwanted characters
+                $filename = preg_replace("/[^A-Za-z0-9 ]/", '', $filename);
+                $filename = preg_replace("/\s+/", '-', $filename);
+                // Get the original image extension
+                $extension = $file->getClientOriginalExtension();
+                // Create unique file name
+                $fileNameToStore = strtolower($filename . '_' . time() . '_olevel2.' . $extension);
+                $destinationPath = public_path('uploads/postgraduate/');
+                $file->move($destinationPath, $fileNameToStore);
+                // $this->resizeImage($destinationPath . $fileNameToStore);
+                $request->merge([
+                    'olevel_result2' => $destinationPath . $fileNameToStore,
+                ]);
+            }
             if ($request->hasFile('educert')) {
                 if (!$request->file('educert')->isValid()) {
                     return redirect()->back()->with('error', 'File not valid');
@@ -422,4 +445,19 @@ class PgController extends Controller
         $check = PgApplicationFee::where(['application_number' => $applicant->application_number, 'status' => 'PAID'])->first();
         return view('homepage.pg_full_form', compact('std', 'check'));
     }
+
+    public function transcript_label(Request $request){
+        $applicant = Session::get('pgapplicant');
+        $std = Pgapplicant::find($applicant->id);
+        return view('homepage.pg_transcript_label', compact('std'));
+    }
+
+    public function pg_bank_payment_invoice(Request $request, $id){
+		$check = PgApplicationFee::where(['reference_id' => $id])->first();
+		$student = Pgapplicant::where(['application_number' => $check->application_number])->first();
+        // dd($check);
+		$fee = FeeList::where(['fee_name' => 'IMSU - PG APPLICATION FORM'])->first();
+
+		return view('homepage.pg_bank_invoice', compact('check', 'student', 'fee', 'id'));
+	}
 }

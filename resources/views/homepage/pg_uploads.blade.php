@@ -86,6 +86,13 @@ $subjects = [
 
                                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Second O'level result (If applicable) </label>
+                                                                <input type="file" class="my_input" placeholder="Attach Certificate" name="olevelres2" value="" />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-20">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">Higher education certificate</label>
                                                                 <input type="file" required class="my_input" placeholder="Attach Certificate" name="educert" value="" />
                                                             </div>

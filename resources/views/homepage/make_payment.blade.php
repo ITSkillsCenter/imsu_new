@@ -232,17 +232,17 @@
                             <input type="hidden" name="callback_url" id="callback_url_interswitch" value="https://imsu.edu.ng/api/save_direct_interswitch" />
                         </div>
                         <div class="col-md-12 text-center">
-                            <button id="shr" type="button" class="btn ">
+                            <button id="shr" type="button" class="btn btn-lg ">
                                 <i class="bx bx-money pr-2"></i> Pay with Interswitch
                             </button>
-                            <button id="send" type="button" class="btn ">
+                            <button id="send" type="button" class="btn btn-lg ">
                                 <i class="bx bx-money pr-2"></i> Pay with remita
                             </button>
                         </div>
                         <div class="col-md-12 text-center" id="remita" style="display: none;">
                             <br>
-                            <button id="interswitch" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Card</i></button>
-                            <button id="bank" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with (Bank)</i></button>
+                            <button id="interswitch" type="button" style="padding: 10px; font-size:14px" class="btn btn-lg btn-success"><i class="fa fa-money"> Pay with Card</i></button>
+                            <button id="bank" type="button" style="padding: 10px; font-size:14px" class="btn btn-lg btn-success"><i class="fa fa-money"> Pay with (Bank)</i></button>
                         </div>
                         <!-- </form> -->
                     </div>
