@@ -1132,14 +1132,14 @@
          </div>
          <div class="modal-body">
             <div class="text-center">
-               <a href="/article/25/course-registration-and-examination-card">
-                  <img src="homepage/upload/special_annoucement3.jpg" class="img-responsive" alt="">
+               <a href="/post-graduate">
+                  <img src="homepage/upload/spgs_admission_popup.jpg" class="img-responsive" alt="">
                </a>
                <!-- <p>Registration of students on the portal has commenced Click here to register
                   </p> -->
                   <div class="row">
-                     <a href="/article/25/course-registration-and-examination-card"><span class="btn btn-primary">Read More</span></a>
-                     <!-- <a href="/admission-portal"><span class="btn btn-primary">Register</span></a> -->
+                     <a href="https://spgs.imsu.edu.ng"><span class="btn btn-primary">Read More</span></a>
+                     <a href="/admission-application#pg"><span class="btn btn-primary">Apply now</span></a>
                      
                   </div>
             </div>

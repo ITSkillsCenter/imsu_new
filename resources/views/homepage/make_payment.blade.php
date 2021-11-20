@@ -1,5 +1,7 @@
 @extends('layouts.homepage_layout')
 @section('content')
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/css/payment.css">
 <style>
     #vn-click {
         padding: 10px 15px;
@@ -16,9 +18,242 @@
         padding: 30px 20px
     }
 </style>
+<main id="main">
+    <section class="space-ptb">
+        <div class="section-banner mb-5">
+            <div class="title text-center pb-2 pb-lg-4">
+                <h1 class="text-uppercase">How to make payment to imo state university</h1>
+                <p>You can make any payment to the university by following the guide below</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-6 pr-lg-3 mx-0 mb-4 mb-lg-0 border-right">
+                    <div class="pro-info pro-info-style-08">
+                        <div class="pro-info_title text-md-left mb-4">
+                            <h5 class="pro-info-title text-uppercase">
+                                Procedures for online payment of fees:
+                            </h5>
+                            <p>
+                                This option is meant for payers who were admitted to Imo
+                                State University before 2016, those admitted after 2016
+                                should login to their students’ accounts on the portal to
+                                make their payments.
+                            </p>
+                        </div>
+                        <div class="pro-info-inner">
+                            <div class="pro-info-item">
+                                <div class="pro-info-number"><span>01</span></div>
+                                <div class="pro-info-content">
+                                    <p class="mb-0">
+                                        Visit the University official website:
+                                        <a href="https://imsu.edu.ng">www.imsu.edu.ng</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="pro-info-item">
+                                <div class="pro-info-number"><span>02</span></div>
+                                <div class="pro-info-content">
+                                    <p class="mb-0">Click on make payment on the top menu.</p>
+                                </div>
+                            </div>
+                            <div class="pro-info-item">
+                                <div class="pro-info-number"><span>03</span></div>
+                                <div class="pro-info-content">
+                                    <p class="mb-0">
+                                        Enter your full name, matric number , functional email
+                                        address, phone number and select fees you want to pay
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="options pro-info-item">
+                                <div class="pro-info-number"><span>04</span></div>
+                                <div class="pro-info-content">
+                                    <p class="mb-0">
+                                        Click to Make Payment - You will be shown different
+                                        payment options:
+                                    </p>
+
+                                    <ul class="list-unstyle pro-list m-0 p-0">
+                                        <li class="pro-option">
+                                            <div class="pro-info-number"><span>i</span></div>
+                                            <div class="pro-info-content">
+                                                <h5 class="pro-info-subtitle">Pay with REMITA</h5>
+                                                <p>
+                                                    This option will redirect to the REMITA Payment
+                                                    Gateway to facilitate your payment with options
+                                                    listed below:
+                                                </p>
+                                                <ul class="sub-list">
+                                                    <li>
+                                                        <strong>CARD OPTION:</strong> This button will
+                                                        provide you an option to pay with your ATM
+                                                        Card
+                                                    </li>
+                                                    <li>
+                                                        <strong>BANK OPTION:</strong> This button with
+                                                        generate an RRR number that you can take to any
+                                                        bank branch to make payment.
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="pro-option mt-0">
+                                            <div class="pro-info-number"><span>ii</span></div>
+                                            <div class="pro-info-content">
+                                                <h5 class="pro-info-subtitle">
+                                                    Pay with INTERSWITCH
+                                                </h5>
+                                                <p>
+                                                    This option will redirect to the REMITA Payment
+                                                    Gateway to facilitate your payment with options
+                                                    listed below:
+                                                </p>
+                                                <ul class="sub-list">
+                                                    <li>
+                                                        <strong>CARD OPTION:</strong> This option will
+                                                        redirect to the INTERSWITCH Payment Gateway to
+                                                        facilitate payment with your ATM Card
+                                                    </li>
+                                                    <li>
+                                                        <strong>BANK OPTION:</strong> This option will
+                                                        generate a REFERENCE NUMBER (in the format:
+                                                        MNTA******).
+                                                    </li>
+                                                    <li>
+                                                        You can take this REFERENCE NUMBER to any bank
+                                                        branch and tell the bank teller you want to make
+                                                        payment for “IMSU-PAYDIRECT
+                                                    </li>
+                                                    <li>
+                                                        You can also use that REFERENCE NUMBER on this
+                                                        URL
+                                                        <a href="https://quickteller.com/imsu.edu.ng">https://quickteller.com/imsu.edu.ng</a>
+                                                    </li>
+                                                    <li>Search for IMO STATE UNIVERSITY</li>
+                                                    <li>
+                                                        Enter your Email and put the generated reference
+                                                        number in the INVOICE NUMBER
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="pro-info-item">
+                                <div class="pro-info-number"><span>05</span></div>
+                                <div class="pro-info-content">
+                                    <p class="mb-0">
+                                        Print your receipt from the payment page of from your
+                                        email.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="pro-info-item">
+                                <div class="pro-info-number"><span>06</span></div>
+                                <div class="pro-info-content">
+                                    <p class="mb-0">
+                                        Submit your receipt to the bursary for confirmation.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 px-4 py-4 rounded payment-form" style="max-height: 120vh;">
+                    <div role="form" class="pay-form">
+                        <div class="screen-reader-response"></div>
+                        <!-- <form class="quform" method="post"> -->
+                        <input type="hidden" name="_token" />
+                        <div class="pro-info_title text-center pty-dash mb-3 pb-2">
+                            <h5 class="pro-info-title text-uppercase text-white ">
+                                Make Payments
+                            </h5>
+                            <p class="text-white ">
+                                You can make any payment to the university below and print your receipt
+                            </p>
+                        </div>
+                        <div class="quform-elements">
+                            <div class="quform-element">
+                                <label class="d-block form-label" for="fee">
+                                    <span>Payment for</span>
+                                    <span class="wpcf7-form-control-wrap your-name">
+                                        <select id="fee" class="input form-control form-control-lg px-4" aria-required="true" name="type" required="">
+                                            <option value="">--Select--</option>
+                                            @foreach($fee_lists as $fee_list)
+                                            <option value="{{$fee_list->id}}" data-item_code="{{$fee_list->interswitch_item_code}}" data-amount="{{$fee_list->amount}}" data-remita_service_id="{{$fee_list->remita_service_id}}">
+                                                {{$fee_list->fee_name}} - {{$fee_list->amount}}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="quform-element">
+                                <label class="d-block form-label" for="name">
+                                    <span>Fullname</span>
+                                    <span class="wpcf7-form-control-wrap your-name">
+                                        <input type="text" name="Full_Name" id="name" class="form-control form-control-lg w-100" aria-required="true" required="" />
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="quform-element">
+                                <label class="d-block form-label" for="email">
+                                    <span>Email Address</span>
+                                    <span class="wpcf7-form-control-wrap your-name">
+                                        <input id="email" type="text" name="Email_Address" class="form-control form-control-lg w-100" aria-required="true" required="" />
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="quform-element">
+                                <label class="d-block form-label" for="registration_number">
+                                    <span>Matric Number (If applicable)</span>
+                                    <span class="wpcf7-form-control-wrap your-name">
+                                        <input id="registration_number" type="text" name="registration_number" class="form-control form-control-lg w-100" aria-required="true" required="" />
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="quform-element">
+                                <label class="d-block form-label" for="phone">
+                                    <span>Phone Number</span>
+                                    <span class="wpcf7-form-control-wrap your-name">
+                                        <input id="phone" type="text" name="Student_Mobile_Number" class="form-control form-control-lg w-100" aria-required="true" required="" />
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <input type="hidden" name="callback_url" id="callback_url" value="https://imsu.edu.ng/api/save_direct_remita" />
+                            <input type="hidden" name="callback_url" id="callback_url_interswitch" value="https://imsu.edu.ng/api/save_direct_interswitch" />
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <button id="shr" type="button" class="btn ">
+                                <i class="bx bx-money pr-2"></i> Pay with Interswitch
+                            </button>
+                            <button id="send" type="button" class="btn ">
+                                <i class="bx bx-money pr-2"></i> Pay with remita
+                            </button>
+                        </div>
+                        <div class="col-md-12 text-center" id="remita" style="display: none;">
+                            <br>
+                            <button id="interswitch" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Card</i></button>
+                            <button id="bank" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with (Bank)</i></button>
+                        </div>
+                        <!-- </form> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 <div class="gdlr-core-page-builder-body">
 
-    <div class="gdlr-core-pbf-wrapper" id="div_1dd7_105">
+    <!-- <div class="gdlr-core-pbf-wrapper" id="div_1dd7_105">
         <div class="gdlr-core-pbf-wrapper-content gdlr-core-js">
             <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container ">
 
@@ -29,7 +264,6 @@
                                 <div class="gdlr-core-title-item-title-wrap clearfix">
                                     <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 32px ;">Make Payment</h3>
                                 </div><span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 19px ;font-style: normal ;">You can make any payment to the school below and print your receipt</span>
-                                <!-- <p style="color:red; font-style:italic">Note: Bank payment takes within 24 hours to update on the portal</p> -->
                             </div>
                         </div>
 
@@ -65,7 +299,6 @@
                                 @include('homepage.flash_message')
                                 <div role="form" class="wpcf7" style="width: 80%; margin: 0 auto" id="wpcf7-f1979-p1964-o1" lang="en-US" dir="ltr">
                                     <div class="screen-reader-response"></div>
-                                    <!-- <form class="quform" method="post"> -->
                                     @csrf
                                     <div class="quform-elements">
                                         <div class="quform-element">
@@ -113,7 +346,7 @@
                                             <p>Phone Number
                                                 <br>
                                                 <span class="wpcf7-form-control-wrap your-name">
-                                                    <input id="phone" type="text" name="Student_Mobile_Number" id="phone" aria-required="true" required>
+                                                    <input id="phone" type="text" name="Student_Mobile_Number" aria-required="true" required>
                                                 </span>
                                             </p>
                                         </div>
@@ -126,31 +359,18 @@
                                     <div class="col-lg-4">
                                         <input type="hidden" name="callback_url" id="callback_url" value="https://imsu.edu.ng/api/save_direct_remita">
                                         <input type="hidden" name="callback_url" id="callback_url_interswitch" value="https://imsu.edu.ng/api/save_direct_interswitch">
-                                        <!-- <input type="hidden" name="email" id="email" value="{{$std->email}}">
-                                            <input type="hidden" name="phone" id="phone" value="{{$std->phone_number}}">
-                                            <input type="hidden" name="first_name" id="first_name" value="{{$std->full_name}}">
-                                            <input type="hidden" name="last_name" id="last_name" value="{{$std->full_name}}">
-                                            <input type="hidden" name="matric_no" id="matric_no" value="{{Session::get('jamb_reg')}}">
-                                            <input type="hidden" name="amount" id="amount" value="{{$fee->amount}}">
-                                            <input type="hidden" name="channel" id="channel" value="card">
-                                            <input type="hidden" name="item_code" id="item_code" value="{{$fee->pms_id}}">
-                                            <input type="hidden" name="interswitch_item_code" id="interswitch_item_code" value="{{$fee->interswitch_item_code}}">
-                                            <input type="hidden" name="remita_service_id" id="remita_service_id" value="{{$fee->remita_service_id}}">
-                                            <input type="hidden" name="client_ref" id="client_ref" value="{{Session::get('jamb_reg')}}"> -->
+                                        
                                     </div>
                                     <div class="col-md-12 text-center">
                                         <button id="shr" type="button" class="btn btn-sm btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button>
                                         <button id="send" type="button" class="btn btn-sm btn-success"><i class="fa fa-money"> Pay with remita</i></button>
-                                        <!-- <button id="interswitch" type="button" class="btn btn-lg btn-success"><i class="fa fa-money"> Pay with Interswitch</i></button> -->
                                     </div>
 
                                     <div class="col-md-12 text-center" id="remita" style="display: none;">
                                         <br>
                                         <button id="interswitch" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Card</i></button>
-                                        <!-- <button id="send" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with Interswitch (Card)</i></button> -->
                                         <button id="bank" type="button" class="btn btn-success"><i class="fa fa-money"> Pay with (Bank)</i></button>
                                     </div>
-                                    <!-- </form> -->
 
                                 </div>
                             </div>
@@ -162,7 +382,7 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
 
     <style>
         .ssh {
@@ -185,7 +405,6 @@
         <div class="modal-dialog" style="border: 0;" role="document">
             <div class="modal-content" style="border: 0;">
                 <div class="modal-header text-white" style="display:flex; justify-content:space-between; background: linear-gradient(90deg,rgb(17, 182, 122) 0%, rgb(0, 148, 68) 100%);">
-                    <!-- <p style="font-weight:bold; color:white">News Update!</p> -->
                     <button type="button" id="closeit" class="close" data-dismiss="modal" style="opacity: 1; color:white" aria-label="Close">
                         <span aria-hidden="true" class="white-text">×</span>
                     </button>
@@ -269,7 +488,7 @@
         if (email == '' || name == '' || phone == '' || fee == '') {
             return alert('All fields is required')
         }
-        if(!validate($("#email").val())){
+        if (!validate($("#email").val())) {
             return alert('Invalid Email, please provide a valid email address')
         }
         $('#shr').attr('disabled', true)
@@ -350,7 +569,7 @@
         if (email == '' || name == '' || phone == '' || fee == '') {
             return alert('All fields is required')
         }
-        if(!validate($("#email").val())){
+        if (!validate($("#email").val())) {
             return alert('Invalid Email, please provide a valid email address')
         }
         $('#bank').attr('disabled', true)
@@ -427,7 +646,7 @@
         if (email == '' || name == '' || phone == '' || fee == '') {
             return alert('All fields is required')
         }
-        if(!validate($("#email").val())){
+        if (!validate($("#email").val())) {
             return alert('Invalid Email, please provide a valid email address')
         }
         $('#interswitch').attr('disabled', true)

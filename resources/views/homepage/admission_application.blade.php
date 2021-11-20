@@ -52,91 +52,91 @@
                                                         <div class="gdlr-core-tab-item gdlr-core-js gdlr-core-item-pdb  gdlr-core-left-align gdlr-core-tab-style1-horizontal gdlr-core-item-pdlr">
                                                             <div class="gdlr-core-tab-item-wrap">
                                                                 <div class="gdlr-core-tab-item-title-wrap clearfix gdlr-core-title-font">
-                                                                    <div class="gdlr-core-tab-item-title gdlr-core-tab-item-title gdlr-core-active" data-tab-id="1">Post-UTME</div>
+                                                                    <div class="gdlr-core-tab-item-title gdlr-core-active" data-tab-id="1">Post-UTME</div>
                                                                     <div class="gdlr-core-tab-item-title" data-tab-id="4">Direct Entry</div>
-                                                                    <div class="gdlr-core-tab-item-title" data-tab-id="2">Post-graduate</div>
+                                                                    <div class="gdlr-core-tab-item-title" id="spgs" data-tab-id="2">Post-graduate</div>
                                                                     <div class="gdlr-core-tab-item-title" data-tab-id="33">ICEP</div>
                                                                 </div>
                                                                 <div class="gdlr-core-tab-item-content-wrap clearfix">
 
-                                                                    <div class="gdlr-core-tab-item-content " data-tab-id="1" style="background-color: rgb(255, 255, 255); background-image: url(&quot;upload/tab-bg.png&quot;); background-position: right top; display: block;">
+                                                                    <div class="gdlr-core-tab-item-content " data-tab-id="1" id="und" style="background-color: rgb(255, 255, 255); background-image: url(&quot;upload/tab-bg.png&quot;); background-position: right top; display: block;">
                                                                         <div role="form" class="wpcf7" id="wpcf7-f1979-p1964-o1" lang="en-US" dir="ltr">
                                                                             <div class="screen-reader-response"></div>
                                                                             @if((date('Y-m-d') >= $undergraduate->start_date) && (date('Y-m-d') <= $undergraduate->end_date))
-                                                                            <form class="quform" method="post">
-                                                                                @csrf
-                                                                                <input type="hidden" name="type" value="jamb">
-                                                                                <input type="hidden" name="mode_of_admission" value="UTME">
-                                                                                <div class="quform-elements">
-                                                                                    <div class="quform-element">
-                                                                                        <p>Jamb Registration Number
-                                                                                            <br>
-                                                                                            <span class="wpcf7-form-control-wrap your-name">
-                                                                                                <input id="jamb_reg" style="background-color: #efefef ;" type="text" name="jamb_reg" class="input1" aria-required="true" required>
-                                                                                            </span>
-                                                                                        </p>
-                                                                                    </div>
-
-                                                                                    <div class="quform-element">
-                                                                                        <p>Full Name
-                                                                                            <br>
-                                                                                            <span class="wpcf7-form-control-wrap your-name">
-                                                                                                <input id="jamb_reg" style="background-color: #efefef ;" type="text" name="full_name" class="input1" aria-required="true" required>
-                                                                                            </span>
-                                                                                        </p>
-                                                                                    </div>
-
-                                                                                    <div class="quform-element">
-                                                                                        <p>Email
-                                                                                            <br>
-                                                                                            <span class="wpcf7-form-control-wrap your-name">
-                                                                                                <input id="email" style="background-color: #efefef ;" type="email" name="email" class="input1" aria-required="true" required>
-                                                                                            </span>
-                                                                                        </p>
-                                                                                    </div>
-
-                                                                                    <div class="quform-element">
-                                                                                        <p>Phone Number
-                                                                                            <br>
-                                                                                            <span class="wpcf7-form-control-wrap your-name">
-                                                                                                <input id="phone_number" style="background-color: #efefef ;" type="tel" name="phone_number" class="input1" aria-required="true" required>
-                                                                                            </span>
-                                                                                        </p>
-                                                                                    </div>
-
-                                                                                    <div class="quform-element">
-                                                                                        <p>Password
-                                                                                            <br>
-                                                                                            <span class="wpcf7-form-control-wrap your-name">
-                                                                                                <input id="password" style="background-color: #efefef ;" type="password" name="password" class="input1" aria-required="true" required>
-                                                                                            </span>
-                                                                                        </p>
-                                                                                    </div>
-
-                                                                                    <div class="quform-element">
-                                                                                        <p>Confirm Password
-                                                                                            <br>
-                                                                                            <span class="wpcf7-form-control-wrap your-name">
-                                                                                                <input id="conf_password" style="background-color: #efefef ;" type="password" name="conf_password" class="input1" aria-required="true" required>
-                                                                                            </span>
-                                                                                        </p>
-                                                                                    </div>
-
-                                                                                    <p>
-                                                                                    <div class="quform-submit">
-                                                                                        <div class="quform-submit-inner">
-                                                                                            <button type="submit" class="submit-button"><span>Sign up</span></button>
+                                                                                <form class="quform" method="post">
+                                                                                    @csrf
+                                                                                    <input type="hidden" name="type" value="jamb">
+                                                                                    <input type="hidden" name="mode_of_admission" value="UTME">
+                                                                                    <div class="quform-elements">
+                                                                                        <div class="quform-element">
+                                                                                            <p>Jamb Registration Number
+                                                                                                <br>
+                                                                                                <span class="wpcf7-form-control-wrap your-name">
+                                                                                                    <input id="jamb_reg" style="background-color: #efefef ;" type="text" name="jamb_reg" class="input1" aria-required="true" required>
+                                                                                                </span>
+                                                                                            </p>
                                                                                         </div>
-                                                                                        <div class="quform-loading-wrap"><span class="quform-loading"></span></div>
+
+                                                                                        <div class="quform-element">
+                                                                                            <p>Full Name
+                                                                                                <br>
+                                                                                                <span class="wpcf7-form-control-wrap your-name">
+                                                                                                    <input id="jamb_reg" style="background-color: #efefef ;" type="text" name="full_name" class="input1" aria-required="true" required>
+                                                                                                </span>
+                                                                                            </p>
+                                                                                        </div>
+
+                                                                                        <div class="quform-element">
+                                                                                            <p>Email
+                                                                                                <br>
+                                                                                                <span class="wpcf7-form-control-wrap your-name">
+                                                                                                    <input id="email" style="background-color: #efefef ;" type="email" name="email" class="input1" aria-required="true" required>
+                                                                                                </span>
+                                                                                            </p>
+                                                                                        </div>
+
+                                                                                        <div class="quform-element">
+                                                                                            <p>Phone Number
+                                                                                                <br>
+                                                                                                <span class="wpcf7-form-control-wrap your-name">
+                                                                                                    <input id="phone_number" style="background-color: #efefef ;" type="tel" name="phone_number" class="input1" aria-required="true" required>
+                                                                                                </span>
+                                                                                            </p>
+                                                                                        </div>
+
+                                                                                        <div class="quform-element">
+                                                                                            <p>Password
+                                                                                                <br>
+                                                                                                <span class="wpcf7-form-control-wrap your-name">
+                                                                                                    <input id="password" style="background-color: #efefef ;" type="password" name="password" class="input1" aria-required="true" required>
+                                                                                                </span>
+                                                                                            </p>
+                                                                                        </div>
+
+                                                                                        <div class="quform-element">
+                                                                                            <p>Confirm Password
+                                                                                                <br>
+                                                                                                <span class="wpcf7-form-control-wrap your-name">
+                                                                                                    <input id="conf_password" style="background-color: #efefef ;" type="password" name="conf_password" class="input1" aria-required="true" required>
+                                                                                                </span>
+                                                                                            </p>
+                                                                                        </div>
+
+                                                                                        <p>
+                                                                                        <div class="quform-submit">
+                                                                                            <div class="quform-submit-inner">
+                                                                                                <button type="submit" class="submit-button"><span>Sign up</span></button>
+                                                                                            </div>
+                                                                                            <div class="quform-loading-wrap"><span class="quform-loading"></span></div>
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <div>Applied ? <a href="/student-portal">Click here to login</a></div>
+                                                                                        </p>
                                                                                     </div>
-                                                                                    <br>
-                                                                                    <div>Applied ? <a href="/student-portal">Click here to login</a></div>
-                                                                                    </p>
-                                                                                </div>
-                                                                            </form>
-                                                                            @else
-                                                                            <div>{{$undergraduate->notice}}</div>
-                                                                            @endif
+                                                                                </form>
+                                                                                @else
+                                                                                <div>{{$undergraduate->notice}}</div>
+                                                                                @endif
                                                                         </div>
                                                                     </div>
 
@@ -144,86 +144,155 @@
                                                                         <div role="form" class="wpcf7" id="wpcf7-f1979-p1964-o1" lang="en-US" dir="ltr">
                                                                             <div class="screen-reader-response"></div>
                                                                             @if((date('Y-m-d') >= $undergraduate->start_date) && (date('Y-m-d') <= $undergraduate->end_date))
-                                                                            <form class="quform" method="post">
-                                                                                @csrf
-                                                                                <input type="hidden" name="type" value="de">
-                                                                                <input type="hidden" name="mode_of_admission" value="Direct Entry">
-                                                                                <div class="quform-elements">
-                                                                                    <div class="quform-element">
-                                                                                        <p>Jamb Registration Number
-                                                                                            <br>
-                                                                                            <span class="wpcf7-form-control-wrap your-name">
-                                                                                                <input id="jamb_reg" style="background-color: #efefef ;" type="text" name="jamb_reg" class="input1" aria-required="true" required>
-                                                                                            </span>
-                                                                                        </p>
-                                                                                    </div>
-
-                                                                                    <div class="quform-element">
-                                                                                        <p>Email
-                                                                                            <br>
-                                                                                            <span class="wpcf7-form-control-wrap your-name">
-                                                                                                <input id="email" style="background-color: #efefef ;" type="email" name="email" class="input1" aria-required="true" required>
-                                                                                            </span>
-                                                                                        </p>
-                                                                                    </div>
-
-                                                                                    <div class="quform-element">
-                                                                                        <p>Phone Number
-                                                                                            <br>
-                                                                                            <span class="wpcf7-form-control-wrap your-name">
-                                                                                                <input id="phone_number" style="background-color: #efefef ;" type="tel" name="phone_number" class="input1" aria-required="true" required>
-                                                                                            </span>
-                                                                                        </p>
-                                                                                    </div>
-
-                                                                                    <div class="quform-element">
-                                                                                        <p>Password
-                                                                                            <br>
-                                                                                            <span class="wpcf7-form-control-wrap your-name">
-                                                                                                <input id="password" style="background-color: #efefef ;" type="password" name="password" class="input1" aria-required="true" required>
-                                                                                            </span>
-                                                                                        </p>
-                                                                                    </div>
-
-                                                                                    <div class="quform-element">
-                                                                                        <p>Confirm Password
-                                                                                            <br>
-                                                                                            <span class="wpcf7-form-control-wrap your-name">
-                                                                                                <input id="conf_password" style="background-color: #efefef ;" type="password" name="conf_password" class="input1" aria-required="true" required>
-                                                                                            </span>
-                                                                                        </p>
-                                                                                    </div>
-
-                                                                                    <p>
-                                                                                    <div class="quform-submit">
-                                                                                        <div class="quform-submit-inner">
-                                                                                            <button type="submit" class="submit-button"><span>Sign up</span></button>
+                                                                                <form class="quform" method="post">
+                                                                                    @csrf
+                                                                                    <input type="hidden" name="type" value="de">
+                                                                                    <input type="hidden" name="mode_of_admission" value="Direct Entry">
+                                                                                    <div class="quform-elements">
+                                                                                        <div class="quform-element">
+                                                                                            <p>Jamb Registration Number
+                                                                                                <br>
+                                                                                                <span class="wpcf7-form-control-wrap your-name">
+                                                                                                    <input id="jamb_reg" style="background-color: #efefef ;" type="text" name="jamb_reg" class="input1" aria-required="true" required>
+                                                                                                </span>
+                                                                                            </p>
                                                                                         </div>
-                                                                                        <div class="quform-loading-wrap"><span class="quform-loading"></span></div>
+
+                                                                                        <div class="quform-element">
+                                                                                            <p>Email
+                                                                                                <br>
+                                                                                                <span class="wpcf7-form-control-wrap your-name">
+                                                                                                    <input id="email" style="background-color: #efefef ;" type="email" name="email" class="input1" aria-required="true" required>
+                                                                                                </span>
+                                                                                            </p>
+                                                                                        </div>
+
+                                                                                        <div class="quform-element">
+                                                                                            <p>Phone Number
+                                                                                                <br>
+                                                                                                <span class="wpcf7-form-control-wrap your-name">
+                                                                                                    <input id="phone_number" style="background-color: #efefef ;" type="tel" name="phone_number" class="input1" aria-required="true" required>
+                                                                                                </span>
+                                                                                            </p>
+                                                                                        </div>
+
+                                                                                        <div class="quform-element">
+                                                                                            <p>Password
+                                                                                                <br>
+                                                                                                <span class="wpcf7-form-control-wrap your-name">
+                                                                                                    <input id="password" style="background-color: #efefef ;" type="password" name="password" class="input1" aria-required="true" required>
+                                                                                                </span>
+                                                                                            </p>
+                                                                                        </div>
+
+                                                                                        <div class="quform-element">
+                                                                                            <p>Confirm Password
+                                                                                                <br>
+                                                                                                <span class="wpcf7-form-control-wrap your-name">
+                                                                                                    <input id="conf_password" style="background-color: #efefef ;" type="password" name="conf_password" class="input1" aria-required="true" required>
+                                                                                                </span>
+                                                                                            </p>
+                                                                                        </div>
+
+                                                                                        <p>
+                                                                                        <div class="quform-submit">
+                                                                                            <div class="quform-submit-inner">
+                                                                                                <button type="submit" class="submit-button"><span>Sign up</span></button>
+                                                                                            </div>
+                                                                                            <div class="quform-loading-wrap"><span class="quform-loading"></span></div>
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <div>Applied ? <a href="/student-portal">Click here to login</a></div>
+                                                                                        </p>
                                                                                     </div>
-                                                                                    <br>
-                                                                                    <div>Applied ? <a href="/student-portal">Click here to login</a></div>
-                                                                                    </p>
-                                                                                </div>
-                                                                            </form>
-                                                                            @else
-                                                                            <div>{{$undergraduate->notice}}</div>
-                                                                            @endif
+                                                                                </form>
+                                                                                @else
+                                                                                <div>{{$undergraduate->notice}}</div>
+                                                                                @endif
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="gdlr-core-tab-item-content " data-tab-id="2" style="background-color: rgb(255, 255, 255); background-image: url(&quot;upload/tab-bg.png&quot;); background-position: right top; display: none;">
-                                                                        @if((date('Y-m-d') >= $postgraduate->start_date) && (date('Y-m-d') <= $postgraduate->end_date))
-                                                                        <p>PG</p> 
-                                                                        @else
-                                                                        <div>{{$postgraduate->notice}}</div>
-                                                                        @endif
-                                                                    </div>
-
-                                                                    <div class="gdlr-core-tab-item-content " data-tab-id="33" style="background-color: rgb(255, 255, 255); background-image: url(&quot;upload/tab-bg.png&quot;); background-position: right top; display: none;">
+                                                                    <div class="gdlr-core-tab-item-content " data-tab-id="2" id="spgs_id" style="background-color: rgb(255, 255, 255); background-image: url(&quot;upload/tab-bg.png&quot;); background-position: right top; display: none;">
                                                                         <div role="form" class="wpcf7" id="wpcf7-f1979-p1964-o1" lang="en-US" dir="ltr">
                                                                             <div class="screen-reader-response"></div>
-                                                                            @if((date('Y-m-d') >= $icep->start_date) && (date('Y-m-d') <= $icep->end_date))
+                                                                                @if((date('Y-m-d') >= $postgraduate->start_date) && (date('Y-m-d') <= $postgraduate->end_date))
+                                                                                <form class="quform" method="post" action="/post-graduate-application">
+                                                                                    @csrf
+                                                                                    <div class="quform-elements">
+
+                                                                                        <div class="quform-element">
+                                                                                            <p>First Name
+                                                                                                <br>
+                                                                                                <span class="wpcf7-form-control-wrap your-name">
+                                                                                                    <input style="background-color: #efefef ;" id="first_name" type="text" name="first_name" class="input1" aria-required="true" required>
+                                                                                                </span>
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        <div class="quform-element">
+                                                                                            <p>Last Name
+                                                                                                <br>
+                                                                                                <span class="wpcf7-form-control-wrap your-name">
+                                                                                                    <input style="background-color: #efefef ;" id="last_name" type="text" name="last_name" class="input1" aria-required="true" required>
+                                                                                                </span>
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        <div class="quform-element">
+                                                                                            <p>Email
+                                                                                                <br>
+                                                                                                <span class="wpcf7-form-control-wrap your-name">
+                                                                                                    <input style="background-color: #efefef ;" id="email" type="email" name="email" class="input1" aria-required="true" required>
+                                                                                                </span>
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        <div class="quform-element">
+                                                                                            <p>Phone
+                                                                                                <br>
+                                                                                                <span class="wpcf7-form-control-wrap your-name">
+                                                                                                    <input style="background-color: #efefef ;" id="phone" type="text" name="phone" maxlength="12" class="input1" aria-required="true" required>
+                                                                                                </span>
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        <div class="quform-element">
+                                                                                            <p>Password
+                                                                                                <br>
+                                                                                                <span class="wpcf7-form-control-wrap your-email">
+                                                                                                    <input style="background-color: #efefef ;" id="password" type="password" name="the_password" class="input1" aria-required="true" required>
+                                                                                                </span>
+                                                                                            </p>
+                                                                                        </div>
+
+                                                                                        <div class="quform-element">
+                                                                                            <p>Confirm Password
+                                                                                                <br>
+                                                                                                <span class="wpcf7-form-control-wrap your-email">
+                                                                                                    <input style="background-color: #efefef ;" id="cnf_password" type="password" name="cnf_password" class="input1" aria-required="true" required>
+                                                                                                </span>
+                                                                                            </p>
+                                                                                        </div>
+
+                                                                                        <p>
+                                                                                        <div class="quform-submit">
+                                                                                            <div class="quform-submit-inner">
+                                                                                                <button type="submit" class="submit-button"><span>Submit</span></button>
+                                                                                            </div>
+                                                                                            <div class="quform-loading-wrap"><span class="quform-loading"></span></div>
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <div>Registered ? <a href="/student-portal">Click here to login</a></div>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                </form>
+                                                                                @else
+                                                                                <div>{{$postgraduate->notice}}</div>
+                                                                                @endif
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="gdlr-core-tab-item-content " data-tab-id="33" style="background-color: rgb(255, 255, 255); background-image: url(&quot;upload/tab-bg.png&quot;); background-position: right top; display: none;">
+                                                                    <div role="form" class="wpcf7" id="wpcf7-f1979-p1964-o1" lang="en-US" dir="ltr">
+                                                                        <div class="screen-reader-response"></div>
+                                                                        @if((date('Y-m-d') >= $icep->start_date) && (date('Y-m-d') <= $icep->end_date))
                                                                             <form class="quform" method="post">
                                                                                 @csrf
                                                                                 <input type="hidden" name="type" value="icep">
@@ -288,7 +357,6 @@
                                                                             @else
                                                                             <div>{{$icep->notice}}</div>
                                                                             @endif
-                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -307,6 +375,7 @@
         </div>
     </div>
 </div>
+</div>
 
 <style>
     input:read-only {
@@ -322,8 +391,17 @@
         }
     });
     $(document).ready(function() {
-        $("#wizard").steps();
-    })
+        if (window.location.href.indexOf("#pg") > -1) {
+            $('.gdlr-core-tab-item-title').removeClass('gdlr-core-active')
+            $('#spgs').addClass('gdlr-core-active')
+            $('#und').css('display', 'none')
+            $('#spgs_id').css('display', 'block')
+            // alert("your url contains the name franky");
+        }
+    });
+    // $(document).ready(function() {
+    //     $("#wizard").steps();
+    // })
     $('.close').click(function() {
         $('#close_alert').slideUp()
     })

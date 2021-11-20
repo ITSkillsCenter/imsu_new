@@ -151,7 +151,7 @@
                                 </li>
                                 <li class="menu-item">
                                     <a href="/admission-portal">Admissions</a>
-                                    <!-- <ul class="sub-menu">
+                                    <ul class="sub-menu">
                                         <li class="menu-item">
                                             <a href="/admission-portal">Post UTME/DE</a>
                                         </li>
@@ -171,7 +171,7 @@
                                         <li class="menu-item">
                                             <a href="#">continuous Education</a>
                                         </li>
-                                    </ul> -->
+                                    </ul>
                                 </li>
                                 <li class="menu-item">
                                     <a href="https://oer.imsu.edu.ng">E-Library</a>
@@ -334,7 +334,17 @@
                                         </div>
                                     </li>
 
-                                    <li class="
+                                    <li class="menu-item menu-item-home menu-item-has-children kingster-normal-menu"><a href="" class="sf-with-ul-pre sf-with-ul">Academics</a>
+                                        <ul class="sub-menu" style="display: none;">
+                                            <li class="menu-item menu-item-home" data-size="60"><a href="student-portal">Undergraduate</a></li>
+                                            <li class="menu-item" data-size="60"><a href="/post-graduate">Post-graduate</a></li>
+                                            <li class="menu-item" data-size="60"><a href="#">Institute of Continuing Education Programme (ICEP)</a></li>
+                                            <li class="menu-item" data-size="60"><a href="#">JUPEB</a></li>
+                                            <li class="menu-item" data-size="60"><a href="#">Pre-Degree</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <!-- <li class="
                                         menu-item menu-item-has-children
                                         kingster-mega-menu">
                                         <a href="bachelor-of-science-in-business-administration.html" class="sf-with-ul-pre">Academic</a>
@@ -419,7 +429,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                    </li>
+                                    </li> -->
 
                                     <!-- <li class="
                                         menu-item menu-item-has-children
