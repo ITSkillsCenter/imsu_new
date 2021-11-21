@@ -1138,7 +1138,7 @@
                <!-- <p>Registration of students on the portal has commenced Click here to register
                   </p> -->
                   <div class="row">
-                     <a href="https://spgs.imsu.edu.ng"><span class="btn btn-primary">Read More</span></a>
+                     <a href="https://imsu.edu.ng/article/30/imsu-postgraduate-admission"><span class="btn btn-primary">Read More</span></a>
                      <a href="/admission-application#pg"><span class="btn btn-primary">Apply now</span></a>
                      
                   </div>

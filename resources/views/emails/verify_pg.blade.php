@@ -63,6 +63,9 @@
                     <td class="header-lg"><h3>Kindly verify your email</h3></td>
                   </tr>
                   <tr>
+                    <td class="header-lg"><h3>Your Application number is {{$data['application_number']}}</h3></td>
+                  </tr>
+                  <tr>
                     <td class="free-text">
                       <!-- Click here to verify <br><br> -->
                     </td>

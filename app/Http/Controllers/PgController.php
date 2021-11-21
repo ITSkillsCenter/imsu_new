@@ -35,14 +35,18 @@ class PgController extends Controller
 					Mail::to(strtolower($request->email))->send(new VerifyPgEmail($new_dataA));
 					return back()->with('error', 'Email is already Registered, another verification link has been sent, kindly check your email');
 				}
-				
+
+                $count = Pgapplicant::all()->count();
+                $app = $this->check_application_number($count);
                 $request->merge([
-                    'password' => Hash::make($request->the_password)
+                    'password' => Hash::make($request->the_password),
+                    'application_number' => $app
                 ]);
 
                 Pgapplicant::create($request->all());
 
 				$new_data['email'] = $request->email;
+				$new_data['application_number'] = $app;
 				Mail::to(strtolower($request->email))->send(new VerifyPgEmail($new_data));
 				return back()->with('success', 'An email verification link has been sent to your email, please click the link to verify your email before continuing on this portal. If you don\'t see the verification mail in your inbox, check your spam mail / promotions folder and mark it as "Not Spam" before clicking to verify');
 
@@ -72,10 +76,6 @@ class PgController extends Controller
 			$error = 1;
 			return view('homepage.verified', compact('error'));
 		}
-        if($email->application_number == null){
-            $count = Pgapplicant::all()->count();
-            $email->application_number = $this->check_application_number($count);
-        }
         
 		$email->status = 'verified';
 		$email->save();
@@ -104,7 +104,7 @@ class PgController extends Controller
     public function application_step3(Request $request, $id){
         $applicant = Session::get('pgapplicant');
         $applicant = Pgapplicant::where(['application_number' => base64_decode($id)])->first();
-        $check = PgApplicationFee::where(['application_number' => $applicant->application_number, 'status' => 'PAID'])->first();
+        // $check = PgApplicationFee::where(['application_number' => $applicant->application_number, 'status' => 'PAID'])->first();
         $check = PgApplicationFee::where(['email' => $applicant->email, 'status' => 'PAID'])->first();
 		if ($check == null) {
 			return redirect('/pg-application-fee')->with('error', 'Pay application fee');
@@ -215,9 +215,9 @@ class PgController extends Controller
                 $fileNameToStore = strtolower($filename . '_' . time() . '_olevel.' . $extension);
                 $destinationPath = public_path('uploads/postgraduate/');
                 $file->move($destinationPath, $fileNameToStore);
-                // $this->resizeImage($destinationPath . $fileNameToStore);
+                // $this->resizeImage($fileNameToStore);
                 $request->merge([
-                    'olevel_result' => $destinationPath . $fileNameToStore,
+                    'olevel_result' => $fileNameToStore,
                 ]);
             }
             if ($request->hasFile('olevelres2')) {
@@ -238,9 +238,9 @@ class PgController extends Controller
                 $fileNameToStore = strtolower($filename . '_' . time() . '_olevel2.' . $extension);
                 $destinationPath = public_path('uploads/postgraduate/');
                 $file->move($destinationPath, $fileNameToStore);
-                // $this->resizeImage($destinationPath . $fileNameToStore);
+                // $this->resizeImage($fileNameToStore);
                 $request->merge([
-                    'olevel_result2' => $destinationPath . $fileNameToStore,
+                    'olevel_result2' => $fileNameToStore,
                 ]);
             }
             if ($request->hasFile('educert')) {
@@ -261,9 +261,9 @@ class PgController extends Controller
                 $fileNameToStore = strtolower($filename . '_' . time() . '_educert.' . $extension);
                 $destinationPath = public_path('uploads/postgraduate/');
                 $file->move($destinationPath, $fileNameToStore);
-                // $this->resizeImage($destinationPath . $fileNameToStore);
+                // $this->resizeImage($fileNameToStore);
                 $request->merge([
-                    'education_certificates' => $destinationPath . $fileNameToStore,
+                    'education_certificates' => $fileNameToStore,
                 ]);
             }
             if ($request->hasFile('edutrans')) {
@@ -284,9 +284,9 @@ class PgController extends Controller
                 $fileNameToStore = strtolower($filename . '_' . time() . '_edutrans.' . $extension);
                 $destinationPath = public_path('uploads/postgraduate/');
                 $file->move($destinationPath, $fileNameToStore);
-                // $this->resizeImage($destinationPath . $fileNameToStore);
+                // $this->resizeImage($fileNameToStore);
                 $request->merge([
-                    'education_transcript' => $destinationPath . $fileNameToStore,
+                    'education_transcript' => $fileNameToStore,
                 ]);
             }
             if ($request->hasFile('nysccert')) {
@@ -307,9 +307,9 @@ class PgController extends Controller
                 $fileNameToStore = strtolower($filename . '_' . time() . '_nysc.' . $extension);
                 $destinationPath = public_path('uploads/postgraduate/');
                 $file->move($destinationPath, $fileNameToStore);
-                // $this->resizeImage($destinationPath . $fileNameToStore);
+                // $this->resizeImage($fileNameToStore);
                 $request->merge([
-                    'nysc_certificate' => $destinationPath . $fileNameToStore,
+                    'nysc_certificate' => $fileNameToStore,
                 ]);
             }
             if ($request->hasFile('ref1')) {
@@ -330,9 +330,9 @@ class PgController extends Controller
                 $fileNameToStore = strtolower($filename . '_' . time() . '_ref1.' . $extension);
                 $destinationPath = public_path('uploads/postgraduate/');
                 $file->move($destinationPath, $fileNameToStore);
-                // $this->resizeImage($destinationPath . $fileNameToStore);
+                // $this->resizeImage($fileNameToStore);
                 $request->merge([
-                    'reference_1' => $destinationPath . $fileNameToStore,
+                    'reference_1' => $fileNameToStore,
                 ]);
             }
             if ($request->hasFile('ref2')) {
@@ -353,9 +353,9 @@ class PgController extends Controller
                 $fileNameToStore = strtolower($filename . '_' . time() . '_ref2.' . $extension);
                 $destinationPath = public_path('uploads/postgraduate/');
                 $file->move($destinationPath, $fileNameToStore);
-                // $this->resizeImage($destinationPath . $fileNameToStore);
+                // $this->resizeImage($fileNameToStore);
                 $request->merge([
-                    'reference_2' => $destinationPath . $fileNameToStore,
+                    'reference_2' => $fileNameToStore,
                 ]);
             }
             if ($request->hasFile('idc')) {
@@ -376,9 +376,9 @@ class PgController extends Controller
                 $fileNameToStore = strtolower($filename . '_' . time() . '_idcard.' . $extension);
                 $destinationPath = public_path('uploads/postgraduate/');
                 $file->move($destinationPath, $fileNameToStore);
-                // $this->resizeImage($destinationPath . $fileNameToStore);
+                // $this->resizeImage($fileNameToStore);
                 $request->merge([
-                    'idcard' => $destinationPath . $fileNameToStore,
+                    'idcard' => $fileNameToStore,
                 ]);
             }
             if ($request->hasFile('indig')) {
@@ -399,9 +399,9 @@ class PgController extends Controller
                 $fileNameToStore = strtolower($filename . '_' . time() . '_indig.' . $extension);
                 $destinationPath = public_path('uploads/postgraduate/');
                 $file->move($destinationPath, $fileNameToStore);
-                // $this->resizeImage($destinationPath . $fileNameToStore);
+                // $this->resizeImage($fileNameToStore);
                 $request->merge([
-                    'indigene_certificate' => $destinationPath . $fileNameToStore,
+                    'indigene_certificate' => $fileNameToStore,
                 ]);
             }
             if ($request->hasFile('passp')) {
@@ -422,15 +422,15 @@ class PgController extends Controller
                 $fileNameToStore = strtolower($filename . '_' . time() . '_passport.' . $extension);
                 $destinationPath = public_path('uploads/postgraduate/');
                 $file->move($destinationPath, $fileNameToStore);
-                // $this->resizeImage($destinationPath . $fileNameToStore);
+                // $this->resizeImage($fileNameToStore);
                 $request->merge([
-                    'passport' => $destinationPath . $fileNameToStore,
+                    'passport' => $fileNameToStore,
                 ]);
             }
 
             $request->merge(['step' => 7]);
 			$save = PgApplicant::where(['application_number' => $applicant->application_number])->update($request->except([
-                '_token', 'olevelres', 'educert', 'edutrans', 'nysccert', 'ref1', 'ref2', 'idc', 'indig', 'passp'
+                '_token', 'olevelres', 'olevelres2', 'educert', 'edutrans', 'nysccert', 'ref1', 'ref2', 'idc', 'indig', 'passp'
             ]));
             return redirect('/pg-application-form');
 		}

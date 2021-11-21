@@ -35,7 +35,8 @@
                                             <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-center-align gdlr-core-title-item-caption-bottom gdlr-core-item-pdlr" style="padding-bottom: 60px ;">
                                                 <div class="gdlr-core-title-item-title-wrap clearfix">
                                                     @if ($message = Session::get('success'))
-                                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 39px ;">Application Successful</h3>
+                                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 39px ;">THANK YOU FOR SIGNING UP</h3>
+                                                    <p>Your application number has been send to your email</p>
                                                     @else
                                                     <h4>Welcome to the Admission Application Page</h4>
                                                     <p>You are required to sign-up first to continue your application</p>
@@ -44,7 +45,9 @@
                                                 </div>
                                             </div>
                                             @include('homepage.flash_message')
-
+                                            @if ($message = Session::get('success'))
+                                            <p></p>
+                                            @else
                                             <div class="gdlr-core-pbf-background-wrap"></div>
                                             <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
                                                 <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
@@ -364,6 +367,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

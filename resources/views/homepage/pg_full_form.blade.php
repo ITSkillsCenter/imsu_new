@@ -116,12 +116,13 @@
 
                                             <div class="gdlr-core-accordion-item-icon gdlr-core-js gdlr-core-skin-icon "></div>
                                             <div class="gdlr-core-course-form clearfix element-to-print" id="preview_exam_pass" style="padding: 20px; border: 1px solid black;">
-                                                <div class="gdlr-core-course-column gdlr-core-column-50" style="width: 100%; display: flex; justify-content:center">
+                                                <div class="gdlr-core-course-column gdlr-core-column-50" style="width: 100%; display: flex; justify-content:space-between">
                                                     <img class="gdlr-core-course-column gdlr-core-column-20" style="margin-bottom: 20px;" src="/homepage/images/logo.png" alt="">
+                                                    <img class="gdlr-core-course-column gdlr-core-column-20" style="margin-bottom: 20px; height:100px" src="/uploads/postgraduate/{{$std->passport}}" alt="">
                                                 </div>
                                                 <div>
                                                     <h5 style="text-align: center;">SCHOOL OF POST-GRADUATE STUDIES</h5>
-                                                    <p style="text-align: center; font-weight:bold;">Application for Admission Acknowledgement Slip</p>
+                                                    <p style="text-align: center; font-weight:bold;">Application For Admission Acknowledgement Form</p>
                                                 </div>
                                                 
                                                 <div class="gdlr-core-pbf-column gdlr-core-column-full">

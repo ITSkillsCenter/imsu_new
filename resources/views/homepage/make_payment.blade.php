@@ -232,10 +232,10 @@
                             <input type="hidden" name="callback_url" id="callback_url_interswitch" value="https://imsu.edu.ng/api/save_direct_interswitch" />
                         </div>
                         <div class="col-md-12 text-center">
-                            <button id="shr" type="button" class="btn btn-lg ">
+                            <button id="shr" type="button" class="btn btn-lg" style="padding: 10px; font-size:14px">
                                 <i class="bx bx-money pr-2"></i> Pay with Interswitch
                             </button>
-                            <button id="send" type="button" class="btn btn-lg ">
+                            <button id="send" type="button" class="btn btn-lg" style="padding: 10px; font-size:14px">
                                 <i class="bx bx-money pr-2"></i> Pay with remita
                             </button>
                         </div>
