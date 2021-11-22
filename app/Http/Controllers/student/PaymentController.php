@@ -251,7 +251,7 @@ class PaymentController extends Controller
     }
 
     public function update_application_payment(Request $request){
-        if($request->response['data']['status'] == 'Paid'){
+        if(strtolower($request->response['data']['status']) == 'paid'){
             $update_history = ApplicationFee::updateOrCreate(
                 [
                     'application_number' => $request->response['data']['matric_no'],
