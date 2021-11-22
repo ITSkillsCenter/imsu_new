@@ -707,7 +707,7 @@ class HomeController extends Controller
 		}
 		$undergraduate = Program::where(['name' => 'undergraduate'])->first();
 		$icep = Program::where(['name' => 'ICEP'])->first();
-		$postgraduate = Program::where(['name' => 'postgraduate'])->first();
+		$postgraduate = Program::where(['name' => 'Postgraduate Applicant'])->first();
 		return view('homepage.admission_application', compact('icep', 'undergraduate', 'postgraduate'));
 	}
 
