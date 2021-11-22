@@ -340,7 +340,7 @@
                         <div class="col col-stats ml-3 ml-sm-0">
                             <div class="numbers">
                                 <p class="card-category">Total Staffs</p>
-                                <h4 class="card-title">{{ 0}}</h4>
+                                <h4 class="card-title">{{0}}</h4>
                             </div>
                         </div>
                     </div>
