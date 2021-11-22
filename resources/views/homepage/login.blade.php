@@ -16,7 +16,7 @@
                                         <div class="gdlr-core-pbf-element">
                                             <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-center-align gdlr-core-title-item-caption-bottom gdlr-core-item-pdlr" style="padding-bottom: 60px ;">
                                                 <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 39px ;">Student Login</h3>
+                                                    <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 39px ;">User Login</h3>
                                                 </div><span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 19px ;font-style: normal ;text-transform: uppercase ;">Login to continue</span>
                                             </div>
                                         </div>
@@ -29,7 +29,7 @@
                                                         @csrf
                                                         <div class="quform-elements">
                                                             <div class="quform-element">
-                                                                <p>Student Type
+                                                                <p>User Type
                                                                     <br>
                                                                     <span class="wpcf7-form-control-wrap your-name">
                                                                         <select id="" class="input1" aria-required="true" name="type" required>
@@ -43,7 +43,7 @@
                                                             </div>
 
                                                             <div class="quform-element">
-                                                                <p>Registration Number Only
+                                                                <p>Reg Number / Matric Number (Reg number for applicant & matric number for students)
                                                                     <br>
                                                                     <span class="wpcf7-form-control-wrap your-name">
                                                                         <input id="matric_number" type="text" name="matric_number" class="input1" aria-required="true" required>

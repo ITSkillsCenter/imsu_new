@@ -1345,6 +1345,9 @@ class HomeController extends Controller
 			}
 			//use registration_number for everyone
 			$data = StudentInfo::where('registration_number', $id)->first();
+			if($data == null){
+				$data = StudentInfo::where('matric_number', $id)->first();
+			}
 			// } else {
 			// 	$data = StudentInfo::where('matric_number', $id)->first();
 			// }
