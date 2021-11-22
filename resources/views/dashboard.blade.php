@@ -204,7 +204,7 @@
                             <div class="col col-stats ml-3 ml-sm-0">
                                 <div class="numbers">
                                     <p class="card-category">No. of Applicants Post UTME</p>
-                                    <h4 class="card-title">{{ $paid_applicants }}</h4>
+                                    <h4 class="card-title">{{ $pu }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -226,7 +226,7 @@
                             <div class="col col-stats ml-3 ml-sm-0">
                                 <div class="numbers">
                                     <p class="card-category">No. of Applicants Direct Entry</p>
-                                    <h4 class="card-title">{{ $paid_applicants }}</h4>
+                                    <h4 class="card-title">{{ $pd }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -270,7 +270,7 @@
                             <div class="col col-stats ml-3 ml-sm-0">
                                 <div class="numbers">
                                     <p class="card-category">No. of Applicants ICEP</p>
-                                    <h4 class="card-title">{{ $paid_applicants }}</h4>
+                                    <h4 class="card-title">{{ 0 }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -292,7 +292,7 @@
                             <div class="col col-stats ml-3 ml-sm-0">
                                 <div class="numbers">
                                     <p class="card-category">No. of Applicants JUPEB</p>
-                                    <h4 class="card-title">{{ $paid_applicants }}</h4>
+                                    <h4 class="card-title">{{ 0 }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -314,7 +314,7 @@
                             <div class="col col-stats ml-3 ml-sm-0">
                                 <div class="numbers">
                                     <p class="card-category">No. of Applicants Pre-degree</p>
-                                    <h4 class="card-title">{{ $paid_applicants }}</h4>
+                                    <h4 class="card-title">{{ 0 }}</h4>
                                 </div>
                             </div>
                         </div>
