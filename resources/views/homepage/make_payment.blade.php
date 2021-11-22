@@ -184,7 +184,7 @@
                                         <select id="fee" class="input form-control form-control-lg px-4" aria-required="true" name="type" required="">
                                             <option value="">--Select--</option>
                                             @foreach($fee_lists as $fee_list)
-                                            <option value="{{$fee_list->id}}" data-item_code="{{$fee_list->interswitch_item_code}}" data-amount="{{$fee_list->amount}}" data-remita_service_id="{{$fee_list->remita_service_id}}">
+                                            <option value="{{$fee_list->id}}" data-fee_name="{{$fee_list->fee_name}}" data-item_code="{{$fee_list->interswitch_item_code}}" data-amount="{{$fee_list->amount}}" data-remita_service_id="{{$fee_list->remita_service_id}}">
                                                 {{$fee_list->fee_name}} - {{$fee_list->amount}}
                                             </option>
                                             @endforeach
@@ -208,6 +208,7 @@
                                         <input id="email" type="text" name="Email_Address" class="form-control form-control-lg w-100" aria-required="true" required="" />
                                     </span>
                                 </label>
+                                <span id="em_stat" style="color: red"></span>
                             </div>
                             <div class="quform-element">
                                 <label class="d-block form-label" for="registration_number">
@@ -253,11 +254,34 @@
 </main>
 <div class="gdlr-core-page-builder-body">
 
-    
+
 
     <style>
         .ssh {
             left: 25%;
+        }
+
+        #overlay {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        #centralModal {
+            display: block;
+            top: 0%;
+            position: absolute;
+            margin: 0 auto;
+            width: 100%;
+            z-index: 190;
         }
 
         @media (max-width: 768px) {
@@ -272,7 +296,7 @@
         }
     </style>
 
-    <div class="ssh" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; top: 5%; position: absolute; margin: 0 auto;">
+    <!-- <div class="ssh" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; top: 5%; position: absolute; margin: 0 auto;">
         <div class="modal-dialog" style="border: 0;" role="document">
             <div class="modal-content" style="border: 0;">
                 <div class="modal-header text-white" style="display:flex; justify-content:space-between; background: linear-gradient(90deg,rgb(17, 182, 122) 0%, rgb(0, 148, 68) 100%);">
@@ -292,33 +316,41 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 </div>
 
 <a style="display: none;" id="clickme" href="#myModal" class="trigger-btn" data-toggle="modal" data-backdrop="static">Click to Open Success Modal</a>
 <a style="display: none;" id="clickme2" href="#myModal2" class="trigger-btn" data-toggle="modal" data-backdrop="static">Click to Open Success Modal</a>
-<!-- <div id="myModal" class="modal fade">
-    <div class="modal-dialog modal-confirm">
-        <div class="modal-content">
-            <div class="modal-header justify-content-center">
-                <div class="icon-box">
-                    <i class="material-icons">&#xE876;</i>
-                </div>
+<div class="" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; top: 25%; position: absolute; margin: 0 auto;">
+    <div class="modal-dialog" style="border: 0;" role="document">
+        <div class="modal-content" style="border: 0;">
+            <div class="modal-header text-white" style="display:flex; justify-content:space-between; background: linear-gradient(90deg,rgb(17, 182, 122) 0%, rgb(0, 148, 68) 100%);">
+                <p style="font-weight:bold; color:white">News Update!</p>
+                <button type="button" id="closeit" class="close" data-dismiss="modal" style="opacity: 1; color:white" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">×</span>
+                </button>
             </div>
-            <div class="modal-body text-center">
-                <h4>Kindly copy the Reference Number below.</h4>
-                <p>Note: This payment can be made via bank or via <a target="_blank" href="https://quickteller.com/pay-bills">quickteller</a> </p>
-                <input class="form-control" type="text" id="rrr" readonly>
-                <br>
-                <button class="btn" data-clipboard-target="#rrr">
-                    Copy <i class="fa fa-copy"></i>
-                </button> &nbsp;&nbsp;&nbsp;
-                <a class="btn btn-success" href="/student-payment">Close</a>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div id="resb">
+                        This student with email <b><span id="em"></span></b> already paid for <b><span id="fn"></span></b>. Do you still want to make the same payment for this student? If no, kindly correct the email address
+                    </div>
+                    <!-- <p>Registration of students on the portal has commenced Click here to register
+                  </p> -->
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <button class="btn btn-primary" id="closeit2">Yes</button>
+                            <button class="btn btn-secondary" id="closeit3">No</button>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div> -->
+</div>
+<div id="overlay"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
 
@@ -340,6 +372,43 @@
         }
         return false;
     }
+
+    $('#email').on('blur', function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        var settings = {
+            "url": "/check-former-payment",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json",
+                // "Cookie": "ci_session=9pmf6h66uun6pnuqqiinrtccq3q1jku9"
+            },
+            "data": JSON.stringify({
+                "Full_name": $('#name').val(),
+                "Email_Address": $('#email').val(),
+                "fee_id": $("#fee").find(":selected").val(),
+                // "registration_number": $('#registration_number').val(),
+            }),
+        };
+
+        $.ajax(settings).done(function(response) {
+            console.log(response);
+            let rsp = response
+            if (rsp !== 'Continue') {
+                $('#centralModal').css('display', 'block');
+                $('#overlay').css('display', 'block');
+                $('#em').html($('#email').val())
+                $('#fn').html($("#fee").find(":selected").data('fee_name'))
+            }
+        });
+
+    })
+
     $(document).ready(function() {
         new ClipboardJS('.btn');
     })
@@ -348,6 +417,17 @@
         $('#centralModal').css('display', 'none');
         $('#overlay').css('display', 'none');
     });
+
+    $('#closeit2').click(function() {
+        $('#centralModal').css('display', 'none');
+        $('#overlay').css('display', 'none');
+    });
+
+    $('#closeit3').click(function(){
+        $('#email').val('')
+        $('#centralModal').css('display', 'none');
+        $('#overlay').css('display', 'none');
+    })
 
     $('#send').click(function() {
         let email = $('#email').val()
@@ -415,15 +495,15 @@
             }),
         };
 
-        $.ajax(setting2).done(function(response) {
-            console.log(JSON.parse(response));
-            let resp = JSON.parse(response)
-            let invoice_no = resp.data.invoice_no
-            let status = resp.data.status
-            let client_ref = resp.data.client_ref
-            window.location.href = resp.data.authorization_url
+        // $.ajax(setting2).done(function(response) {
+        //     console.log(JSON.parse(response));
+        //     let resp = JSON.parse(response)
+        //     let invoice_no = resp.data.invoice_no
+        //     let status = resp.data.status
+        //     let client_ref = resp.data.client_ref
+        //     window.location.href = resp.data.authorization_url
 
-        });
+        // });
     });
 
     $('#shr').click(function() {

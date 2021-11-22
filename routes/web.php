@@ -630,6 +630,7 @@ Route::get('/reset-password', 'HomeController@reset_password');
 
 Route::get('/sett', 'HomeController@sett');
 Route::post('/create-user', 'HomeController@create_user');
+Route::post('/check-former-payment', 'HomeController@check_former_payment');
 Route::get('/make-payment', 'HomeController@make_payment');
 Route::get('/bank-payment-invoice/{id}', 'HomeController@bank_payment_invoice');
 Route::get('/pg-bank-payment-invoice/{id}', 'PgController@pg_bank_payment_invoice');

@@ -1317,7 +1317,7 @@ class HomeController extends Controller
 				return redirect()->route('applicant.home');
 			}
 
-			if($request->type == 'Postgraduate'){
+			if($request->type == 'Postgraduate Applicant'){
 				$applicant = Pgapplicant::where(['application_number' => $id])->first();
 				if (!Hash::check($password, $applicant->password)) {
 					return back()->with('error', 'Invalid login credentials!');
@@ -1636,5 +1636,18 @@ class HomeController extends Controller
 	public function portal_logout(Request $request){
 		$request->session()->flush();
 		return redirect('/student-portal')->with('success', 'Logged out successfully');
+	}
+
+	public function check_former_payment(Request $request){
+		$std = StudentInfo::where(['Email_Address' => $request->Email_Address])->first();
+		$check = FeeHistory::where(['student_id' => $std->id,  'fee_id' => $request->fee_id ,'status' => 'PAID'])->count();
+		$fee = FeeList::find($request->fee_id);
+		if($check > 0){
+			$msg = "This student with email '" . $request->Email_Address . "' already paid for " . $fee->fee_name. ". Do you still want to make the same payment for this student? If no, kindly correct the email address";
+			
+		}else{
+			$msg = 'Continue';
+		}
+		return $msg;
 	}
 }
