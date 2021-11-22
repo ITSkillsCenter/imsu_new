@@ -291,9 +291,13 @@ class HomeController extends Controller
 			->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'pms_id', 'status', 'created_at', 'updated_at')
 			->get()->keyBy('application_number')->count();
 
-			// $paid_pg = PgApplicationFee::where(['status' => 'PAID'])
-			// ->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'pms_id', 'status', 'created_at', 'updated_at')
-			// ->get()->keyBy('application_number')->count();
+			// foreach($paid_applica)
+
+			// dd($paid_applicants);
+
+			$paid_pg = PgApplicationFee::where(['status' => 'PAID'])
+			->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'status', 'created_at', 'updated_at')
+			->get()->keyBy('application_number')->count();
 
 
 			$revenue =  DB::table('fee_histories')
@@ -324,7 +328,7 @@ class HomeController extends Controller
 			$lecturer_course_count = $lecturer_course->count();
 			return view('dashboard-lecturer', compact('putme','revenue', 'expected', 'deficit', 'faculties', 'departments', 's', 'r', 'rib', 'g', 'male', 'female', 'acceptance_total', 'programs', 'db_students', 'student_count', 'created_students', 'registered_students', 'paid_students', 'transactions_overview', 'showing', 'acceptance_fees', 'lecturer_course_count'));
 		} else {
-			return view('dashboard', compact('paid_applicants','interswitch' ,'remita','putme','revenue', 'expected', 'deficit', 'faculties', 'departments', 's', 'r', 'rib', 'g', 'male', 'female', 'acceptance_total', 'programs', 'db_students', 'created_students', 'registered_students', 'paid_students', 'transactions_overview', 'showing', 'acceptance_fees'));
+			return view('dashboard', compact('paid_pg','paid_applicants','interswitch' ,'remita','putme','revenue', 'expected', 'deficit', 'faculties', 'departments', 's', 'r', 'rib', 'g', 'male', 'female', 'acceptance_total', 'programs', 'db_students', 'created_students', 'registered_students', 'paid_students', 'transactions_overview', 'showing', 'acceptance_fees'));
 		}
 		//dd($revenue, $expected, abs($deficit));
 
