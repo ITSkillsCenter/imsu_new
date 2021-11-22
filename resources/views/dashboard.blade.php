@@ -203,7 +203,117 @@
                             </div>
                             <div class="col col-stats ml-3 ml-sm-0">
                                 <div class="numbers">
-                                    <p class="card-category">Total Number of Admission Applicant</p>
+                                    <p class="card-category">No. of Applicants Post UTME</p>
+                                    <h4 class="card-title">{{ $paid_applicants }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+            <div class="card card-stats card-round">
+                <div class="card-body">
+                    <a href="/admin/manage-admission">
+                        <div class="row align-items-center">
+                            <div class="col-icon">
+                                <div class="icon-big text-center icon-success bubble-shadow-small">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                            <div class="col col-stats ml-3 ml-sm-0">
+                                <div class="numbers">
+                                    <p class="card-category">No. of Applicants Direct Entry</p>
+                                    <h4 class="card-title">{{ $paid_applicants }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+            <div class="card card-stats card-round">
+                <div class="card-body">
+                    <a href="/admin/manage-admission">
+                        <div class="row align-items-center">
+                            <div class="col-icon">
+                                <div class="icon-big text-center icon-success bubble-shadow-small">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                            <div class="col col-stats ml-3 ml-sm-0">
+                                <div class="numbers">
+                                    <p class="card-category">No. of Applicants Postgraduate</p>
+                                    <h4 class="card-title">{{ $paid_pg }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+            <div class="card card-stats card-round">
+                <div class="card-body">
+                    <a href="/admin/manage-admission">
+                        <div class="row align-items-center">
+                            <div class="col-icon">
+                                <div class="icon-big text-center icon-success bubble-shadow-small">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                            <div class="col col-stats ml-3 ml-sm-0">
+                                <div class="numbers">
+                                    <p class="card-category">No. of Applicants ICEP</p>
+                                    <h4 class="card-title">{{ $paid_applicants }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+            <div class="card card-stats card-round">
+                <div class="card-body">
+                    <a href="/admin/manage-admission">
+                        <div class="row align-items-center">
+                            <div class="col-icon">
+                                <div class="icon-big text-center icon-success bubble-shadow-small">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                            <div class="col col-stats ml-3 ml-sm-0">
+                                <div class="numbers">
+                                    <p class="card-category">No. of Applicants JUPEB</p>
+                                    <h4 class="card-title">{{ $paid_applicants }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+            <div class="card card-stats card-round">
+                <div class="card-body">
+                    <a href="/admin/manage-admission">
+                        <div class="row align-items-center">
+                            <div class="col-icon">
+                                <div class="icon-big text-center icon-success bubble-shadow-small">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                            <div class="col col-stats ml-3 ml-sm-0">
+                                <div class="numbers">
+                                    <p class="card-category">No. of Applicants Pre-degree</p>
                                     <h4 class="card-title">{{ $paid_applicants }}</h4>
                                 </div>
                             </div>

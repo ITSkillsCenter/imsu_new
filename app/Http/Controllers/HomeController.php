@@ -291,6 +291,10 @@ class HomeController extends Controller
 			->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'pms_id', 'status', 'created_at', 'updated_at')
 			->get()->keyBy('application_number')->count();
 
+			// $paid_pg = PgApplicationFee::where(['status' => 'PAID'])
+			// ->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'pms_id', 'status', 'created_at', 'updated_at')
+			// ->get()->keyBy('application_number')->count();
+
 
 			$revenue =  DB::table('fee_histories')
 				->where('fee_histories.status', '=', 'paid')

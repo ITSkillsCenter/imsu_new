@@ -300,7 +300,7 @@
         $.ajax(settings).done(function(response) {
             $('#check_pay_status').html('Done')
             console.log(response)
-            if (response.data.status == 'Paid') {
+            if (response.data.status == 'PAID') {
                 let application_number = $('#client_ref').val()
                 let name = $('#full_name').val()
                 let phone = $('#phone').val()
