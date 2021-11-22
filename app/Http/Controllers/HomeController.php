@@ -705,8 +705,8 @@ class HomeController extends Controller
 				// }
 			}
 		}
-		$undergraduate = Program::where(['name' => 'undergraduate'])->first();
-		$icep = Program::where(['name' => 'ICEP'])->first();
+		$undergraduate = Program::where(['name' => 'Undergraduate Applicant  (Post UTME/DE)'])->first();
+		$icep = Program::where(['name' => 'ICEP Applicant'])->first();
 		$postgraduate = Program::where(['name' => 'Postgraduate Applicant'])->first();
 		return view('homepage.admission_application', compact('icep', 'undergraduate', 'postgraduate'));
 	}
@@ -1297,7 +1297,7 @@ class HomeController extends Controller
 
 			$id = trim($request->matric_number);
 			$password = $request->password;
-			if ($request->type == 'Admission Applicant') {
+			if ($request->type == 'Undergraduate Applicant  (Post UTME/DE)') {
 				$applicant = Applicant::where(['application_number' => $id])->first();
 				if (!Hash::check($password, $applicant->password)) {
 					return back()->with('error', 'Invalid login credentials!');
