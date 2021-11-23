@@ -65,7 +65,7 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode as FacadesQrCode;
                     <div class="col-lg-2 text-left">
                         {{-- {!!FacadesQrCode::size(200)->generate($student->matric_number)!!} --}}
 
-                        <img class="" src="data:image/png;base64, {!! base64_encode(FacadesQrCode::format('png')->size(170)->generate($student->matric_number)) !!} ">
+                        {{-- <img class="" src="data:image/png;base64, {!! base64_encode(FacadesQrCode::format('png')->size(170)->generate($student->matric_number)) !!} "> --}}
                     </div>
 
                     <div class="col-lg-12">
