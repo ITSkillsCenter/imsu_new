@@ -201,7 +201,7 @@
                 "email": $('#email').val(),
                 "phone": $('#phone').val(),
                 "matric_no": $('#matric_no').val(),
-                "amount": $('#amount').val(),
+                "amount": parseInt($('#amount').val()) + 200,
                 "channel": "card",
                 "callback_url": $('#callback_url_interswitch').val(),
                 "item_code": $('#interswitch_item_code').val(),
