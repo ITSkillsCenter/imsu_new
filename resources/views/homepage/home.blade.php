@@ -1133,7 +1133,7 @@
          <div class="modal-body">
             <div class="text-center">
                <a href="/post-graduate">
-                  <img src="homepage/upload/spgs_admission_popup.jpg" class="img-responsive" alt="">
+                  <img src="homepage/upload/spgs_admission_popup2.jpg" class="img-responsive" alt="">
                </a>
                <!-- <p>Registration of students on the portal has commenced Click here to register
                   </p> -->
