@@ -572,6 +572,7 @@ Route::group(['middleware' => 'studentreg'], function () {
 
 Route::group(['namespace' => 'applicant', 'middleware' => 'verified_applicant'], function () {
   Route::get('/applicant-home', 'ApplicantController@home')->name('applicant.home');
+  Route::get('/pg-applicant-home', 'ApplicantController@pghome')->name('applicant.pghome');
 });
 
 //default route uses both admin panel

@@ -197,6 +197,15 @@
                                 <li class="menu-item">
                                     <a href="/portal">Portal</a>
                                 </li>
+                                <li class="menu-item">
+                                    <a href="/make-payment">Make Payment</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/scholarship">Scholarship</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="/contacts">Contact</a>
+                                </li>
                             </ul>
                         </div>
                     </div>

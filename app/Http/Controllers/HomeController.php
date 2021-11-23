@@ -1355,7 +1355,8 @@ class HomeController extends Controller
 					$new_step = intval($step) + 1;
 					return redirect('/pg-application-step' . $new_step);
 				}else{
-					return redirect('/pg-application-form');
+					Session::put('verified_applicant', $applicant);
+					return redirect('/pg-applicant-home');
 				}
 				// return redirect()->route('applicant.home');
 			}

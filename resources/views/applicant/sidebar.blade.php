@@ -3,13 +3,20 @@
         <div class="sidebar-content">
             <div class="user">
                 <div class="avatar-sm float-left mr-2">
-                    <img src="/profile_images/{{session()->get('student')->Photo}}" alt="..." class="avatar-img rounded-circle">
+                    <img src="/uploads/postgraduate/{{session()->get('verified_applicant')->passport}}" alt="..." class="avatar-img rounded-circle">
                 </div>
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                         <span>
                            
-                            <span class="user-level">Jamb Reg No: <br>{{ session()->get('verified_applicant')->application_number }}</span>
+                            <span class="user-level">
+                                @if(request()->is(['pg-applicant-home'])) 
+                                Application Number
+                                @else
+                                Jamb Reg No: 
+                                @endif
+                                <br>{{ session()->get('verified_applicant')->application_number }}
+                            </span>
                             <span class="caret"></span>
                         </span>
                     </a>
@@ -44,7 +51,7 @@
             </div>
             <ul class="nav nav-primary">
                 <li class="nav-item">
-                    <a href="/applicant-home">
+                    <a href="{{request()->is(['pg-applicant-home']) ? '/pg-applicant-home' : '/applicant-home'}}">
                         <i class="fas fa-home"></i>
                         <p>Applicant Dashboard</p>
                     </a>

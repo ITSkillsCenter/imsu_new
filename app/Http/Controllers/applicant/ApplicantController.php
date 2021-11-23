@@ -30,6 +30,14 @@ class ApplicantController extends Controller
 		
 		return view('applicant.dashboard', compact('applicant'));
     }
+
+	public function pghome()
+    {
+		$applicant = Session::get('verified_applicant');
+		
+		return view('applicant.pg_dashboard', compact('applicant'));
+    }
+
     public function profile()
     {
 		$id = Session::get('student_id');
