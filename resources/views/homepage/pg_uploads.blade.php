@@ -63,7 +63,7 @@ $subjects = [
                                                 <div class="gdlr-core-pbf-element">
                                                     <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-center-align gdlr-core-title-item-caption-bottom gdlr-core-item-pdlr" style="padding-bottom: 60px ;">
                                                         <div class="gdlr-core-title-item-title-wrap clearfix">
-                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 30px ;">UPLOADS</h3>
+                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 30px ;">Declaration</h3>
                                                         </div>
                                                         <!-- <span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption" style="font-size: 19px ;font-style: normal ;">[Not more than two (2) sittings]</span> -->
                                                     </div>
@@ -71,7 +71,7 @@ $subjects = [
 
                                             </div>
 
-                                            <div class="gdlr-core-accordion-item-tab clearfix gdlr-core-active">
+                                            <!-- <div class="gdlr-core-accordion-item-tab clearfix gdlr-core-active">
                                                 <div class="gdlr-core-accordion-item-icon gdlr-core-js gdlr-core-skin-icon "></div>
                                                 <div class="gdlr-core-accordion-item-content-wrapper">
                                                     <h4 class="gdlr-core-accordion-item-title gdlr-core-js  gdlr-core-skin-e-background gdlr-core-skin-e-content">UPLOADS</h4>
@@ -149,7 +149,7 @@ $subjects = [
 
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
 
                                             <br><br>
                                             <h5>DECLARATION:</h5>
