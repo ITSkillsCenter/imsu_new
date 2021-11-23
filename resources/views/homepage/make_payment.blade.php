@@ -220,9 +220,9 @@
                             </div>
                             <div class="quform-element">
                                 <label class="d-block form-label" for="phone">
-                                    <span>Phone Number</span>
+                                    <span>Phone Number(11 digits)</span>
                                     <span class="wpcf7-form-control-wrap your-name">
-                                        <input id="phone" type="text" name="Student_Mobile_Number" class="form-control form-control-lg w-100" aria-required="true" required="" />
+                                        <input id="phone" type="tel" name="Student_Mobile_Number" class="form-control form-control-lg w-100" aria-required="true" required="" />
                                     </span>
                                 </label>
                             </div>
@@ -373,41 +373,41 @@
         return false;
     }
 
-    $('#email').on('blur', function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+    // $('#email').on('blur', function() {
+    //     $.ajaxSetup({
+    //         headers: {
+    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //         }
+    //     });
 
-        var settings = {
-            "url": "/check-former-payment",
-            "method": "POST",
-            "timeout": 0,
-            "headers": {
-                "Content-Type": "application/json",
-                // "Cookie": "ci_session=9pmf6h66uun6pnuqqiinrtccq3q1jku9"
-            },
-            "data": JSON.stringify({
-                "Full_name": $('#name').val(),
-                "Email_Address": $('#email').val(),
-                "fee_id": $("#fee").find(":selected").val(),
-                // "registration_number": $('#registration_number').val(),
-            }),
-        };
+    //     var settings = {
+    //         "url": "/check-former-payment",
+    //         "method": "POST",
+    //         "timeout": 0,
+    //         "headers": {
+    //             "Content-Type": "application/json",
+    //             // "Cookie": "ci_session=9pmf6h66uun6pnuqqiinrtccq3q1jku9"
+    //         },
+    //         "data": JSON.stringify({
+    //             "Full_name": $('#name').val(),
+    //             "Email_Address": $('#email').val(),
+    //             "fee_id": $("#fee").find(":selected").val(),
+    //             // "registration_number": $('#registration_number').val(),
+    //         }),
+    //     };
 
-        $.ajax(settings).done(function(response) {
-            console.log(response);
-            let rsp = response
-            if (rsp !== 'Continue') {
-                $('#centralModal').css('display', 'block');
-                $('#overlay').css('display', 'block');
-                $('#em').html($('#email').val())
-                $('#fn').html($("#fee").find(":selected").data('fee_name'))
-            }
-        });
+    //     $.ajax(settings).done(function(response) {
+    //         console.log(response);
+    //         let rsp = response
+    //         if (rsp !== 'Continue') {
+    //             $('#centralModal').css('display', 'block');
+    //             $('#overlay').css('display', 'block');
+    //             $('#em').html($('#email').val())
+    //             $('#fn').html($("#fee").find(":selected").data('fee_name'))
+    //         }
+    //     });
 
-    })
+    // })
 
     $(document).ready(function() {
         new ClipboardJS('.btn');
@@ -437,10 +437,13 @@
         let fee = $('#fee').val()
         console.log(email, name, registration_number, phone)
         if (email == '' || name == '' || phone == '' || fee == '') {
-            return alert('All fields is required')
+            return alert('All fields are required')
         }
         if (!validate($("#email").val())) {
             return alert('Invalid Email, please provide a valid email address')
+        }
+        if(phone.length !== 11){
+            return alert('Phone number must be 11 digit')
         }
         $('#shr').attr('disabled', true)
         $(this).attr('disabled', 'true');
@@ -468,7 +471,6 @@
         };
 
         $.ajax(settings).done(function(response) {
-            // console.log(JSON.parse(response));
 
         });
 
@@ -518,10 +520,13 @@
         let fee = $('#fee').val()
         console.log(email, name, registration_number, phone)
         if (email == '' || name == '' || phone == '' || fee == '') {
-            return alert('All fields is required')
+            return alert('All fields are required')
         }
         if (!validate($("#email").val())) {
             return alert('Invalid Email, please provide a valid email address')
+        }
+        if(phone.length !== 11){
+            return alert('Phone number must be 11 digit')
         }
         $('#bank').attr('disabled', true)
         $(this).attr('disabled', 'true');
@@ -595,10 +600,13 @@
         let fee = $('#fee').val()
         console.log(email, name, registration_number, phone)
         if (email == '' || name == '' || phone == '' || fee == '') {
-            return alert('All fields is required')
+            return alert('All fields are required')
         }
         if (!validate($("#email").val())) {
             return alert('Invalid Email, please provide a valid email address')
+        }
+        if(phone.length !== 11){
+            return alert('Phone number must be 11 digit')
         }
         $('#interswitch').attr('disabled', true)
         $(this).attr('disabled', 'true');
