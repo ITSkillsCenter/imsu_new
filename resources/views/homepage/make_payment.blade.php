@@ -468,7 +468,7 @@
         };
 
         $.ajax(settings).done(function(response) {
-            console.log(JSON.parse(response));
+            // console.log(JSON.parse(response));
 
         });
 
@@ -495,15 +495,15 @@
             }),
         };
 
-        // $.ajax(setting2).done(function(response) {
-        //     console.log(JSON.parse(response));
-        //     let resp = JSON.parse(response)
-        //     let invoice_no = resp.data.invoice_no
-        //     let status = resp.data.status
-        //     let client_ref = resp.data.client_ref
-        //     window.location.href = resp.data.authorization_url
+        $.ajax(setting2).done(function(response) {
+            console.log(JSON.parse(response));
+            let resp = JSON.parse(response)
+            let invoice_no = resp.data.invoice_no
+            let status = resp.data.status
+            let client_ref = resp.data.client_ref
+            window.location.href = resp.data.authorization_url
 
-        // });
+        });
     });
 
     $('#shr').click(function() {
