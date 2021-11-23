@@ -81,7 +81,7 @@ $subjects = [
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">DOWNLOAD REFEREE FORM</label>
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                    <a href="/docs/referee_form_sch_of_postgraduate.docx" download="">Click here to download referee form</a>
+                                                                    <a href="/docs/referee_form_sch_of_postgraduate.pdf" download="">Click here to download referee form</a>
                                                                 </div>
                                                             </div>
                                                         </div>
