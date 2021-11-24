@@ -242,7 +242,7 @@
                 @if(count($prev_edu) > 0)
                 @foreach($prev_edu as $single)
                 <tr>
-                  <p>School {{$ct++}}:</p>
+                  <td>School {{$ct++}}:</td>
                 </tr>
                 <tr>
                   <th>Name of School:</th>
