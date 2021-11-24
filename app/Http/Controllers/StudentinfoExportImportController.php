@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 
 use App\Imports\StudentsImport;
 use App\Exports\StudentInfoExport;
+use App\Pgapplicant;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -322,10 +323,18 @@ class StudentinfoExportImportController extends Controller
 
     public function viewjamb(Request $request){
         if($request->isMethod('post')){
-            $applicants = Applicant::where(['type' => $request->type, 'year' => $request->year])->get();
-            $type = $request->type;
-            $year = $request->year;
-            return view('student.jamb_students', compact('applicants', 'year', 'type'));
+            if($request->type == 'pg'){
+                $applicants = Pgapplicant::where(['year' => $request->year])->get();
+                $type = $request->type;
+                $year = $request->year;
+                return view('student.pg_applicants', compact('applicants', 'year', 'type'));
+            }else{
+                $applicants = Applicant::where(['type' => $request->type, 'year' => $request->year])->get();
+                $type = $request->type;
+                $year = $request->year;
+                return view('student.jamb_students', compact('applicants', 'year', 'type'));
+            }
+            
         }
         return view('student.jamb_students');
     }

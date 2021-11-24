@@ -188,7 +188,7 @@ $subjects = [
                                                                 </div>
                                                                 <div class="gdlr-core-course-column gdlr-core-column-40">
                                                                     <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                        <input type="text" class="my_input" value="" name="olevel[1][year_1]" placeholder="Year" required />
+                                                                        <input type="text" class="my_input" value="" name="olevel[1][year]" placeholder="Year" required />
                                                                     </div>
                                                                 </div>
 

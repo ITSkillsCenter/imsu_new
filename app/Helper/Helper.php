@@ -10,6 +10,7 @@ use App\Department;
 use App\StudentInfo;
 use App\Faculty;
 use App\FeeHistory;
+use App\PgApplicationFee;
 use App\Programme;
 use App\Semester;
 use App\Specialization;
@@ -68,6 +69,12 @@ class Helper
         return $previous_semester->title;
     }
 
+    public static function next_session(){
+        $previous_semester = Current_Semester_Running::where('status','active')->first();
+        $next_semester = Current_Semester_Running::find($previous_semester->id + 1);
+        return $next_semester;
+    }
+
     public static function student_info(){
         $id = Session::get('student_id');
         $student_info = StudentInfo::where('registration_number', $id)->first();
@@ -76,6 +83,10 @@ class Helper
 
     public static function get_payment_status_for_applicant($application_number){
         $check = ApplicationFee::where(['application_number' => $application_number, 'status' => 'PAID'])->first();
+        return $check !== null? 'Paid' : 'Unpaid';
+    }
+    public static function get_payment_status_for_pgapplicant($application_number){
+        $check = PgApplicationFee::where(['application_number' => $application_number, 'status' => 'PAID'])->first();
         return $check !== null? 'Paid' : 'Unpaid';
     }
 

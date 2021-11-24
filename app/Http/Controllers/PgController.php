@@ -38,9 +38,12 @@ class PgController extends Controller
 
                 $count = Pgapplicant::all()->count();
                 $app = $this->check_application_number($count);
+                $next = Helper::next_session()->title;
+                $year = explode('/', $next);
                 $request->merge([
                     'password' => Hash::make($request->the_password),
-                    'application_number' => $app
+                    'application_number' => $app,
+                    'year' => $year[0],
                 ]);
 
                 Pgapplicant::create($request->all());

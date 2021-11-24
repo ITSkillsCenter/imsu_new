@@ -279,6 +279,35 @@ class PaymentController extends Controller
         }
     }
 
+    public function update_pgapplication_payment(Request $request){
+        if(strtolower($request->response['data']['status']) == 'paid'){
+            $update_history = PgApplicationFee::updateOrCreate(
+                [
+                    'application_number' => $request->response['data']['matric_no'],
+                    'reference_id' => $request->response['data']['tranx_ref'],
+                ],
+                [
+                'pms_id' => $request->response['data']['inv_no'],
+                'status' => 'PAID',
+                'amount' => $request->response['data']['amount'],
+                'phone' => $request->phone,
+                'name' => $request->name,
+            ]);
+            // dd($update_history, $request->response['data']['rrr']);
+            if($update_history){
+                $resp['body'] = 'success';
+                $resp['status'] = true;
+            }else{
+                $resp['body'] = 'error';
+                $resp['status'] = false;
+            }
+            return $resp;
+        }else{
+            $resp['body'] = 'error';
+            $resp['status'] = false;
+        }
+    }
+
     public function save_bank_ref(Request $request){
         FeeHistory::where(['id' => $request->client_ref ])->update(['reference_id' => $request->rrr, 'payment_channel' => $request->payment_channel]);
         $resp['body'] = 'success';

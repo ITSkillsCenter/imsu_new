@@ -409,6 +409,34 @@
 
     // })
 
+    function create_user(){ 
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        var settings = {
+            "url": "/create-user",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json",
+                // "Cookie": "ci_session=9pmf6h66uun6pnuqqiinrtccq3q1jku9"
+            },
+            "data": JSON.stringify({
+                "Full_name": $('#name').val(),
+                "Email_Address": $('#email').val(),
+                "Student_Mobile_Number": $('#phone').val(),
+                "registration_number": $('#registration_number').val(),
+            }),
+        };
+
+        $.ajax(settings).done(function(response) {
+
+        });
+
+    }
+
     $(document).ready(function() {
         new ClipboardJS('.btn');
     })
@@ -454,25 +482,7 @@
             }
         });
 
-        var settings = {
-            "url": "/create-user",
-            "method": "POST",
-            "timeout": 0,
-            "headers": {
-                "Content-Type": "application/json",
-                // "Cookie": "ci_session=9pmf6h66uun6pnuqqiinrtccq3q1jku9"
-            },
-            "data": JSON.stringify({
-                "Full_name": $('#name').val(),
-                "Email_Address": $('#email').val(),
-                "Student_Mobile_Number": $('#phone').val(),
-                "registration_number": $('#registration_number').val(),
-            }),
-        };
-
-        $.ajax(settings).done(function(response) {
-
-        });
+        create_user()
 
         var setting2 = {
             "url": "https://imorms.ng/api/v1/college/cie/27?token=1GnUy2F50dCtcJsRcGccx5E6KrSp4fyQ9nhDoIC5UqRA898FHFBHF21213HFHRH2HHD8F&userId=1",
@@ -537,26 +547,7 @@
             }
         });
 
-        var settings = {
-            "url": "/create-user",
-            "method": "POST",
-            "timeout": 0,
-            "headers": {
-                "Content-Type": "application/json",
-                // "Cookie": "ci_session=9pmf6h66uun6pnuqqiinrtccq3q1jku9"
-            },
-            "data": JSON.stringify({
-                "Full_name": $('#name').val(),
-                "Email_Address": $('#email').val(),
-                "Student_Mobile_Number": $('#phone').val(),
-                "registration_number": $('#registration_number').val(),
-            }),
-        };
-
-        $.ajax(settings).done(function(response) {
-            console.log(JSON.parse(response));
-
-        });
+        create_user()
 
         var setting2 = {
             "url": "https://imorms.ng/api/v1/college/cie/27?token=1GnUy2F50dCtcJsRcGccx5E6KrSp4fyQ9nhDoIC5UqRA898FHFBHF21213HFHRH2HHD8F&userId=1",
@@ -617,26 +608,7 @@
             }
         });
 
-        var settings = {
-            "url": "/create-user",
-            "method": "POST",
-            "timeout": 0,
-            "headers": {
-                "Content-Type": "application/json",
-                // "Cookie": "ci_session=9pmf6h66uun6pnuqqiinrtccq3q1jku9"
-            },
-            "data": JSON.stringify({
-                "Full_name": $('#name').val(),
-                "Email_Address": $('#email').val(),
-                "Student_Mobile_Number": $('#phone').val(),
-                "registration_number": $('#registration_number').val(),
-            }),
-        };
-
-        $.ajax(settings).done(function(response) {
-            console.log(JSON.parse(response));
-
-        });
+        create_user()
 
         var setting2 = {
             "url": "https://imorms.ng/api/v1/college/cie/27?token=1GnUy2F50dCtcJsRcGccx5E6KrSp4fyQ9nhDoIC5UqRA898FHFBHF21213HFHRH2HHD8F&userId=1",

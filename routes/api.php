@@ -60,6 +60,7 @@ Route::group(['namespace' => 'student'], function () {
     Route::get('/save_acceptance_fee_interswitch/{fee_id}', 'PaymentController@save_acceptance_fee_interswitch');
 
     Route::post('/update_application_payment', 'PaymentController@update_application_payment');
+    Route::post('/update_pgapplication_payment', 'PaymentController@update_pgapplication_payment');
 });
 
 

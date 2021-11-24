@@ -122,6 +122,7 @@ Route::group(['prefix' => '/admin', 'middleware' => ['2fa', 'auth']], function (
   Route::post('/view-applicants', 'StudentinfoExportImportController@viewjamb')->name('student.viewjamb');
 
   Route::get('/view-applicant/{id}', 'StudentInfoController@view_applicant');
+  Route::get('/view-pg-applicant/{id}', 'StudentInfoController@view_pgapplicant');
 
   Route::get('/id-management', 'StudentInfoController@id_management');
   Route::get('/staff-id-management', 'StudentInfoController@staff_id_management')->name('staff.idcard');

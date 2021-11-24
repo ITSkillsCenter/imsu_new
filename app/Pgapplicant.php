@@ -13,6 +13,6 @@ class Pgapplicant extends Model
         'town_of_origin', 'location_of_origin', 'country_of_residence', 'state_of_residence', 'town_of_residence', 'location_of_residence',
         'disability', 'funding', 'funding_type', 'previous_education', 'olevel', 'employment', 'first_referee', 'second_referee', 
         'supporting_information', 'olevel_result','olevel_result2' , 'education_certificates', 'education_transcript', 'nysc_certificate', 'reference_1',
-        'reference_2', 'idcard', 'indigene_certificate', 'passport', 'status', 'application_number', 'lga_of_residence', 'step', 'next_of_kin'
+        'reference_2', 'idcard', 'indigene_certificate', 'passport', 'status', 'application_number', 'lga_of_residence', 'step', 'next_of_kin', 'year'
     ];
 }

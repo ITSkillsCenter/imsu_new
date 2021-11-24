@@ -17,6 +17,7 @@ use App\Http\Requests\StudentInfoRequest;
 use App\IctFee;
 use App\Mail\ApprovalEmail;
 use App\Mail\VerifyEmail;
+use App\Pgapplicant;
 use App\Scholarship;
 use App\Semester;
 use App\State;
@@ -562,6 +563,11 @@ class StudentInfoController extends Controller
         $applicant = Applicant::where(['application_number' => $id])->first();
 
         return view('student.view_applicant', compact('applicant'));
+    }
+
+    public function view_pgapplicant(Request $request, $id){
+        $applicant = Pgapplicant::where(['application_number' => base64_decode($id)])->first();
+        return view('student.view_pgapplicant', compact('applicant'));
     }
 
     public function print_slip($dept_id=null, $level=null){
