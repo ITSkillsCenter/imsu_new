@@ -203,7 +203,7 @@
                             </div>
                             <div class="quform-element">
                                 <label class="d-block form-label" for="email">
-                                    <span>Email Address</span>
+                                    <span>Email Address <small>(Please ensure that this is your correct email, as your receipt will be sent to this email)</small></span>
                                     <span class="wpcf7-form-control-wrap your-name">
                                         <input id="email" type="text" name="Email_Address" class="form-control form-control-lg w-100" aria-required="true" required="" />
                                     </span>
@@ -212,7 +212,7 @@
                             </div>
                             <div class="quform-element">
                                 <label class="d-block form-label" for="registration_number">
-                                    <span>Matric Number/ Registration Number</span>
+                                    <span>Matric Number/ Registration Number <small>(This is your identifier, ensure it is correct)</small></span>
                                     <span class="wpcf7-form-control-wrap your-name">
                                         <input id="registration_number" type="text" name="registration_number" class="form-control form-control-lg w-100" aria-required="true" required="" />
                                     </span>
