@@ -212,7 +212,7 @@
                             </div>
                             <div class="quform-element">
                                 <label class="d-block form-label" for="registration_number">
-                                    <span>Matric Number (If applicable)</span>
+                                    <span>Matric Number/ Registration Number</span>
                                     <span class="wpcf7-form-control-wrap your-name">
                                         <input id="registration_number" type="text" name="registration_number" class="form-control form-control-lg w-100" aria-required="true" required="" />
                                     </span>
@@ -436,7 +436,7 @@
         let phone = $('#phone').val()
         let fee = $('#fee').val()
         console.log(email, name, registration_number, phone)
-        if (email == '' || name == '' || phone == '' || fee == '') {
+        if (email == '' || name == '' || phone == '' || fee == '' || registration_number == '') {
             return alert('All fields are required')
         }
         if (!validate($("#email").val())) {
@@ -487,7 +487,7 @@
                 "last_name": '',
                 "email": $('#email').val(),
                 "phone": $('#phone').val(),
-                "matric_no": $('#email').val(),
+                "matric_no": $('#registration_number').val(),
                 "amount": $("#fee").find(":selected").data('amount'),
                 "channel": "card",
                 "callback_url": $('#callback_url').val(),
@@ -519,7 +519,7 @@
         let phone = $('#phone').val()
         let fee = $('#fee').val()
         console.log(email, name, registration_number, phone)
-        if (email == '' || name == '' || phone == '' || fee == '') {
+        if (email == '' || name == '' || phone == '' || fee == '' || registration_number == '') {
             return alert('All fields are required')
         }
         if (!validate($("#email").val())) {
@@ -571,7 +571,7 @@
                 "last_name": '',
                 "email": $('#email').val(),
                 "phone": $('#phone').val(),
-                "matric_no": $('#email').val(),
+                "matric_no": $('#registration_number').val(),
                 "amount": parseInt($("#fee").find(":selected").data('amount')) + 200,
                 "channel": "card",
                 "callback_url": $('#callback_url_interswitch').val(),
@@ -599,7 +599,7 @@
         let phone = $('#phone').val()
         let fee = $('#fee').val()
         console.log(email, name, registration_number, phone)
-        if (email == '' || name == '' || phone == '' || fee == '') {
+        if (email == '' || name == '' || phone == '' || fee == '' || registration_number == '') {
             return alert('All fields are required')
         }
         if (!validate($("#email").val())) {
@@ -651,7 +651,7 @@
                 "last_name": '',
                 "email": $('#email').val(),
                 "phone": $('#phone').val(),
-                "matric_no": $('#email').val(),
+                "matric_no": $('#registration_number').val(),
                 "amount": parseInt($("#fee").find(":selected").data('amount')) + 200,
                 "channel": "bank",
                 "callback_url": $('#callback_url_interswitch').val(),

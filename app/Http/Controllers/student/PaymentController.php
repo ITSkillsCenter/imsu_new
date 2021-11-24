@@ -344,7 +344,7 @@ class PaymentController extends Controller
 
     public function save_direct_interswitch(Request $request){
         $fee = FeeList::find($request->client_ref);
-        $student = StudentInfo::where(['Email_Address' => $request->matric_no])->first();
+        $student = StudentInfo::where(['registration_number' => $request->matric_no])->orWhere(['matric_number' => $request->matric_no])->first();
         if($request->status !== 'PAID'){
             return redirect('/make-payment')->with('error', 'An error occured');
         }
@@ -372,7 +372,7 @@ class PaymentController extends Controller
 
     public function save_direct_remita(Request $request){
         $fee = FeeList::find($request->client_ref);
-        $student = StudentInfo::where(['Email_Address' => $request->matric_no])->first();
+        $student = StudentInfo::where(['registration_number' => $request->matric_no])->orWhere(['matric_number' => $request->matric_no])->first();
         if($request->status !== 'PAID'){
             return redirect('/make-payment')->with('error', 'An error occured');
         }
@@ -400,10 +400,8 @@ class PaymentController extends Controller
 
     public function save_bank_ref_direct(Request $request){
         $fee = FeeList::find($request->client_ref);
-        $student = StudentInfo::where(['Email_Address' => $request->matric_no])->first();
-        // if($request->status !== 'PAID'){
-        //     return redirect('/make-payment')->with('error', 'An error occured');
-        // }
+        $student = StudentInfo::where(['registration_number' => $request->matric_no])->orWhere(['matric_number' => $request->matric_no])->first();
+        
         $details['fee_id'] = $fee->id;
         $details['amount'] = $fee->amount;
         $details['student_id'] = $student->id;

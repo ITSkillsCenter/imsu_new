@@ -1608,16 +1608,21 @@ class HomeController extends Controller
 	}
 
 	public function create_user(Request $request){
-		$check = StudentInfo::where(['Student_Mobile_Number' => $request->Student_Mobile_Number])->count();
-		if($check > 0){
-			$save = StudentInfo::updateOrCreate(
-				['Student_Mobile_Number' => $request->Student_Mobile_Number],
-				[$request->all()]
-			);
-			
-		}else{
-			$save = StudentInfo::updateOrCreate(
-				['Student_Mobile_Number' => $request->Student_Mobile_Number],
+		$check = StudentInfo::where(['registration_number' => $request->registration_number])->orWhere(['matric_number' => $request->registration_number])->first();
+		if($check !== null){
+			$check->password = Hash::make('12345');
+			$check->temp_password = 12345;
+			$check->first_name = $request->Full_name;
+			$check->last_name = $request->Full_name;
+			$check->Full_name = $request->Full_name;
+			$check->Email_Address = $request->Email_Address;
+			$check->Student_Mobile_Number= $request->Student_Mobile_Number;
+			$check->registration_number= $request->registration_number;
+			$check->matric_number= $request->registration_number;
+			$check->save();
+		}else{ 
+			$check = StudentInfo::updateOrCreate(
+				['matric_number' => $request->registration_number],
 				[
 					'password' => Hash::make('12345'),
 					'temp_password' => '12345',
@@ -1627,12 +1632,13 @@ class HomeController extends Controller
 					"Email_Address" => $request->Email_Address,
 					"Student_Mobile_Number"=> $request->Student_Mobile_Number,
 					"registration_number"=> $request->registration_number,
+					"matric_number"=> $request->registration_number,
 				]
 			);
 		}
 		
-
-		return $save;
+		return $check;
+		
 	}
 
 	public function success_payment(Request $request, $id){
