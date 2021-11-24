@@ -1617,8 +1617,8 @@ class HomeController extends Controller
 			$check->Full_name = $request->Full_name;
 			$check->Email_Address = $request->Email_Address;
 			$check->Student_Mobile_Number= $request->Student_Mobile_Number;
-			$check->registration_number= $request->registration_number;
-			$check->matric_number= $request->registration_number;
+			// $check->registration_number= $request->registration_number;
+			// $check->matric_number= $request->registration_number;
 			$check->save();
 		}else{ 
 			$check = StudentInfo::updateOrCreate(
