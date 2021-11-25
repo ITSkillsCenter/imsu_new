@@ -517,7 +517,7 @@
                         <ul class="nav nav-collapse">
 
                             @permission('receivable-read')
-                            <li><a href="{{ route('all.fee_history') }}"><span class="sub-item">Fee History</span></a></li>
+                            <li><a href="{{ route('all.fee_history') }}"><span class="sub-item">Payment History</span></a></li>
                             <li><a href="{{ route('all.receivable') }}"><span class="sub-item">Revenue</span></a></li>
                             <li>
                                 <a href="/admin/approve_acceptance/waiting">

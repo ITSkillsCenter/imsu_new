@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="page-inner">
-    @include('layouts.includes.crumbMenu',['pageTitle'=>'Payment History','Title'=>'Ledger'])
+    @include('layouts.includes.crumbMenu',['pageTitle'=>'Payment History','Title'=>'Payment'])
 
     <div class="row">
         <div class="col-md-12">
