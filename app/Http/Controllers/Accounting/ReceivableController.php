@@ -470,7 +470,7 @@ class ReceivableController extends Controller
         $all_fees = FeeHistory::join('student_infos', 'fee_histories.student_id', '=', 'student_infos.id')
                 ->join('fee_lists', 'fee_histories.fee_id', '=', 'fee_lists.id')
                 ->select('fee_histories.*', 'student_infos.*', 'fee_histories.id as rid', 'fee_histories.status as pstatus', 'fee_histories.updated_at as fupdated','fee_histories.created_at as fcreated', 'fee_histories.reason as res', 'fee_name')
-                ->get();
+                ->orderBy('fee_histories.id', 'desc')->get();
         // dd($all_fees);
         return view('accounting.receivable.fee_history', compact('all_fees'));
     }

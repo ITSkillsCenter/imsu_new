@@ -144,6 +144,7 @@
             if ($("#datatable-buttons").length) {
                 $("#datatable-buttons").DataTable({
                     responsive: true,
+                    sorting: false,
                     dom: "Bfrtip",
                     buttons: [{
                             extend: "copy",
