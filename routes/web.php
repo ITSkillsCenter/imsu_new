@@ -438,12 +438,14 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth', 'namespace' => 'Acco
   Route::post('/get_department_fees', 'ReceivableController@get_department_fees');
   Route::get('/view_payment_details/{id}', 'ReceivableController@view_payment_details');
   Route::post('/view_payment_details', 'ReceivableController@view_payment_details');
+  Route::post('/view_payment_details_filter', 'ReceivableController@view_payment_details_filter');
   Route::get('/view_admission_payment_details', 'ReceivableController@view_admission_payment_details');
   Route::post('/view_admission_payment_details', 'ReceivableController@view_admission_payment_details');
 
 
   Route::post('approve_school_fees', 'ReceivableController@approve_school_fees');
   Route::get('fee-history', 'ReceivableController@fee_history')->name('all.fee_history');
+  Route::post('fee-history', 'ReceivableController@fee_history')->name('all.fee_history');
   Route::post('update_payment_details', 'ReceivableController@update_payment_details');
   Route::get('receivable-all', 'ReceivableController@receivable_all')->name('all.receivable');
   Route::get('verify-receivable', 'ReceivableController@verify_receivable')->name('verify.receivable');

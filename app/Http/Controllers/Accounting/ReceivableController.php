@@ -467,11 +467,183 @@ class ReceivableController extends Controller
     }
 
     public function fee_history(Request $request){
+        $fee_list = FeeList::all();
+        $sessions = Current_Semester_Running::all();
+        $departments = Department::orderBy('name')->get();
+        $title='';
+        if ($request->isMethod('post')) {
+
+            //dd($request->all(), isset($request['filter']));
+            $student_id = '';
+
+            if ($request['revenue_heads'] == 5) {
+                $acceptance = DB::table('ict_payments')
+                    ->join('student_infos', 'ict_payments.student_id', '=', 'student_infos.registration_number')
+                    ->select('ict_payments.*', 'student_infos.*')->where(['ict_payments.status' => 'approved'])
+                    ->get();
+                //dd('acceptance',$acceptance);
+                $type = 'acceptance';
+                $title = 'Acceptance Fees';
+            } else {
+                $id = $request['revenue_heads'];
+                $msg = 'Searching ';
+                $title = '';
+
+                $query = FeeHistory::query();
+                $query->join('student_infos', 'fee_histories.student_id', '=', 'student_infos.id')
+                    ->join('fee_lists', 'fee_histories.fee_id', '=', 'fee_lists.id')
+                    ->select('fee_histories.*', 'student_infos.*', 'fee_histories.id as rid', 'fee_histories.status as pstatus', 'fee_histories.updated_at as fupdated','fee_histories.created_at as fcreated', 'fee_histories.reason as res', 'fee_name');
+                    // ->where(['fee_histories.status' => 'paid']);
+                // dd($request->all());
+                if ($request['revenue_heads'] != 'all') {
+                    $title = FeeList::find($id);
+                    $title = $title->fee_name;
+                    $msg .= $title;
+                    $query->where(['fee_histories.fee_id' => $id]);
+                }
+
+                if ($request['session'] != 'all') {
+                    $s = Current_Semester_Running::find($request['session']);
+                    $msg .= ' - Session ' . $s->title;
+                    $query->where('fee_histories.session_id', $request['session']);
+                }
+                if ($request['department'] != 'all') {
+                    $d = Department::find($request['department']);
+                    $msg .= ' - Department ' . $d->name;
+                    $query->where('fee_histories.department_id', $request['department']);
+                }
+                if ($request['matno'] != Null) {
+                    $stud = StudentInfo::where('registration_number', $request['matno'])->first();
+                    $msg .= ' - ' . $stud->first_name . ' ' . $stud->last_name;
+                    if ($stud) {
+                        // dd($stud->id);
+                        $query->where('fee_histories.student_id', $stud->id);
+                    }
+                }
+                if ($request['student_name'] != Null) {
+                    $name = explode(' ', $request['student_name']);
+                    $st = StudentInfo::query();
+                    if (isset($name[0])) $st->where('first_name', 'LIKE', '%' . $name[0] . '%');
+                    if (isset($name[1])) $st->orWhere('last_name', 'LIKE', '%' . $name[1] . '%');
+
+                    $stud = $st->get()->toArray();
+                    $msg .= '- students matching ' . $request['student_name'];
+                    //dd($stud, $msg);
+                    if (count($stud)) {
+                        // $query->where('fee_histories.student_id',$stud->id);
+                    }
+                }
+
+                if ($request['start_date'] != Null && $request['end_date'] != Null) {
+
+                    $from = date($request['start_date']);
+                    $to = date($request['end_date']);
+                    // dd($from, $to);
+                    $msg .= ' - between ' . $from . ' to ' . $to;
+                    $query->whereBetween('fee_histories.created_at', [$from, $to]);
+                }
+
+                //dd($msg);
+                $all_fees = $query->get();
+                $title = $msg;
+                $type = 'fees';
+            }
+
+            return view('accounting.receivable.fee_history', compact('all_fees', 'departments', 'fee_list', 'sessions', 'title'));
+        }
         $all_fees = FeeHistory::join('student_infos', 'fee_histories.student_id', '=', 'student_infos.id')
                 ->join('fee_lists', 'fee_histories.fee_id', '=', 'fee_lists.id')
                 ->select('fee_histories.*', 'student_infos.*', 'fee_histories.id as rid', 'fee_histories.status as pstatus', 'fee_histories.updated_at as fupdated','fee_histories.created_at as fcreated', 'fee_histories.reason as res', 'fee_name')
                 ->orderBy('fee_histories.id', 'desc')->get();
         // dd($all_fees);
-        return view('accounting.receivable.fee_history', compact('all_fees'));
+        
+        return view('accounting.receivable.fee_history', compact('all_fees', 'departments', 'fee_list', 'sessions', 'title'));
+    }
+
+    public function view_payment_details_filter(Request $request, $id = null)
+    {
+
+        if ($request->isMethod('post')) {
+
+            //dd($request->all(), isset($request['filter']));
+            $student_id = '';
+
+            if ($request['revenue_heads'] == 5) {
+                $acceptance = DB::table('ict_payments')
+                    ->join('student_infos', 'ict_payments.student_id', '=', 'student_infos.registration_number')
+                    ->select('ict_payments.*', 'student_infos.*')->where(['ict_payments.status' => 'approved'])
+                    ->get();
+                //dd('acceptance',$acceptance);
+                $type = 'acceptance';
+                $title = 'Acceptance Fees';
+            } else {
+                $id = $request['revenue_heads'];
+                $msg = 'Searching ';
+                $title = '';
+
+                $query = FeeHistory::query();
+                $query->join('student_infos', 'fee_histories.student_id', '=', 'student_infos.id')
+                    ->join('fee_lists', 'fee_histories.fee_id', '=', 'fee_lists.id')
+                    ->select('fee_histories.*', 'student_infos.*', 'fee_histories.id as rid', 'fee_histories.status as paid', 'fee_histories.reason as res', 'fee_name');
+                    // ->where(['fee_histories.status' => 'paid']);
+                // dd($request->all());
+                if ($request['revenue_heads'] != 'all') {
+                    $title = FeeList::find($id);
+                    $title = $title->fee_name;
+                    $msg .= $title;
+                    $query->where(['fee_histories.fee_id' => $id]);
+                }
+
+                if ($request['session'] != 'all') {
+                    $s = Current_Semester_Running::find($request['session']);
+                    $msg .= ' - Session ' . $s->title;
+                    $query->where('fee_histories.session_id', $request['session']);
+                }
+                if ($request['department'] != 'all') {
+                    $d = Department::find($request['department']);
+                    $msg .= ' - Department ' . $d->name;
+                    $query->where('fee_histories.department_id', $request['department']);
+                }
+                if ($request['matno'] != Null) {
+                    $stud = StudentInfo::where('registration_number', $request['matno'])->first();
+                    $msg .= ' - ' . $stud->first_name . ' ' . $stud->last_name;
+                    if ($stud) {
+                        // dd($stud->id);
+                        $query->where('fee_histories.student_id', $stud->id);
+                    }
+                }
+                if ($request['student_name'] != Null) {
+                    $name = explode(' ', $request['student_name']);
+                    $st = StudentInfo::query();
+                    if (isset($name[0])) $st->where('first_name', 'LIKE', '%' . $name[0] . '%');
+                    if (isset($name[1])) $st->orWhere('last_name', 'LIKE', '%' . $name[1] . '%');
+
+                    $stud = $st->get()->toArray();
+                    $msg .= '- students matching ' . $request['student_name'];
+                    //dd($stud, $msg);
+                    if (count($stud)) {
+                        // $query->where('fee_histories.student_id',$stud->id);
+                    }
+                }
+
+                if ($request['start_date'] != Null && $request['end_date'] != Null) {
+
+                    $from = date($request['start_date']);
+                    $to = date($request['end_date']);
+                    // dd($from, $to);
+                    $msg .= ' - between ' . $from . ' to ' . $to;
+                    $query->whereBetween('fee_histories.created_at', [$from, $to]);
+                }
+
+                //dd($msg);
+                $fees = $query->get();
+                $title = $msg;
+                $type = 'fees';
+            }
+
+            // return view('accounting.receivable.filter', compact('acceptance', 'type', 'fees', 'title'));
+        }
+
+        
     }
 }

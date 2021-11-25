@@ -10,7 +10,100 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Payment History.</div>
+                    <h4 class="card-title">Filter By:</h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>{{ __('Revenue Heads') }}</label>
+                                    <select class="form-control" name="revenue_heads">
+                                        <option value="all">{{ __('All') }}</option>
+                                        @if(count($fee_list) > 0)
+                                        @foreach($fee_list as $f)
+                                        <option value="{{$f->id}}">{{$f->fee_name}}</option>
+                                        @endforeach
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>{{ __('Session') }}</label>
+                                    <select class="form-control" name="session">
+                                        <option value="all">{{ __('All') }}</option>
+                                        @if(count($sessions) > 0)
+                                        @foreach($sessions as $f)
+                                        <option value="{{$f->id}}">{{$f->title}}</option>
+                                        @endforeach
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>{{ __('Department') }}</label>
+                                    <select class="form-control" name="department">
+                                        <option value="all">{{ __('All') }}</option>
+                                        @if(count($departments) > 0)
+                                        @foreach($departments as $f)
+                                        <option value="{{$f->id}}">{{$f->name}}</option>
+                                        @endforeach
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>{{ __('Matric No') }}</label>
+                                    <input type="text" class="form-control" name="matno" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>{{ __('Start Date') }}</label>
+                                    <input type="date" class="form-control" name="start_date" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>{{ __('End Date') }}</label>
+                                    <input type="date" class="form-control" name="end_date" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>{{ __('Student Name') }}</label>
+                                    <input type="text" class="form-control" name="student_name" />
+                                </div>
+                            </div>
+
+                            <div div class="col-md-3">
+                                <div class="form-group">
+                                    <label style="width: 100%;">{{ __('.') }}</label>
+                                    <br>
+                                    <button name="filter" type="submit" class="btn btn-md btn-primary"><i class="fa fa-check"></i> Search </button>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Payment History: {{$title}}</div>
                 </div>
                 <div class="card-header">
                     <a id="clickme2" href="#myModal2" class="btn btn-primary trigger-btn" data-toggle="modal" data-backdrop="static">Click here to verify payment</a>
@@ -18,7 +111,6 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12 col-lg-12">
-                            @if(count($all_fees)>0)
                             <div class="x_content">
                                 <table id="datatable-buttons" class="table table-striped table-bordered">
                                     <thead>
@@ -58,7 +150,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                            @endif
 
                         </div>
                     </div>
@@ -219,11 +310,11 @@
                         $('#err_clickme').click()
                     }
                 })
-            }else{
+            } else {
                 $('#clickme3').click()
             }
         });
     })
-  </script>
+</script>
 <!-- /validator -->
 @endsection
