@@ -445,4 +445,33 @@ class ReceivableController extends Controller
             return back()->with('success', 'Payment Disapproved successfully');
         }
     }
+
+    public function update_payment_details(Request $request){
+        // dd($request->all(), $request->response);
+        if($request->response['data']['status'] == 'PAID'){
+            $update_history = FeeHistory::where(['reference_id' => $request->response['data']['tranx_ref']])
+            ->update(['status' => 'paid']);
+            // dd($update_history, $request->response['data']['rrr']);
+            if($update_history){
+                $resp['body'] = 'success';
+                $resp['status'] = true;
+            }else{
+                $resp['body'] = 'error';
+                $resp['status'] = false;
+            }
+        }else{
+            $resp['body'] = 'error';
+            $resp['status'] = false;
+        }
+        return $resp;
+    }
+
+    public function fee_history(Request $request){
+        $all_fees = FeeHistory::join('student_infos', 'fee_histories.student_id', '=', 'student_infos.id')
+                ->join('fee_lists', 'fee_histories.fee_id', '=', 'fee_lists.id')
+                ->select('fee_histories.*', 'student_infos.*', 'fee_histories.id as rid', 'fee_histories.status as pstatus', 'fee_histories.updated_at as fupdated','fee_histories.created_at as fcreated', 'fee_histories.reason as res', 'fee_name')
+                ->get();
+        // dd($all_fees);
+        return view('accounting.receivable.fee_history', compact('all_fees'));
+    }
 }

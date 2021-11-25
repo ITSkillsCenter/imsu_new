@@ -9,11 +9,11 @@
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                         <span>
                             {{ Auth::user()->name }}
-                            <span class="user-level">  
+                            <span class="user-level">
                                 @if (auth()->user()->hasRole('lecturer'))
-                                    Lecturer
+                                Lecturer
                                 @else
-                                    Administrator
+                                Administrator
                                 @endif
                             </span>
                             <span class="caret"></span>
@@ -232,7 +232,7 @@
                             </li>
                             @endpermission
 
-                           
+
 
                             <!-- {{-- @permission('lecturerAssignedCourses-read')
                             <li><a href="{{ route('lecturerAssignedCourses.list') }}">
@@ -241,7 +241,7 @@
                             </li>
                             @endpermission --}} -->
 
-                            
+
                         </ul>
                     </div>
                 </li>
@@ -259,12 +259,12 @@
                     </a>
                     <div class="collapse" id="manage-courses">
                         <ul class="nav nav-collapse">
-                          
+
                             <li><a href="{{ route('max-course-credit-unit.list') }}">
                                     <span class="sub-item">Max. Course Credit Unit</span>
                                 </a>
                             </li>
-                    
+
                         </ul>
                     </div>
                 </li>
@@ -280,12 +280,12 @@
                     </a>
                     <div class="collapse" id="manage-student">
                         <ul class="nav nav-collapse">
-                          
+
                             {{-- <li><a href="javascript:void()">
                                     <span class="sub-item">My Courses</span>
                                 </a>
                             </li> --}}
-                            
+
                         </ul>
                     </div>
                 </li>
@@ -300,12 +300,12 @@
                     </a>
                     <div class="collapse" id="assessment">
                         <ul class="nav nav-collapse">
-                          
+
                             {{-- <li><a href="javascript:void()">
                                     <span class="sub-item">My Courses</span>
                                 </a>
                             </li> --}}
-                            
+
                         </ul>
                     </div>
                 </li>
@@ -320,12 +320,12 @@
                     </a>
                     <div class="collapse" id="massages">
                         <ul class="nav nav-collapse">
-                          
+
                             {{-- <li><a href="javascript:void()">
                                     <span class="sub-item">My Courses</span>
                                 </a>
                             </li> --}}
-                            
+
                         </ul>
                     </div>
                 </li>
@@ -340,17 +340,17 @@
                     </a>
                     <div class="collapse" id="publication">
                         <ul class="nav nav-collapse">
-                          
+
                             {{-- <li><a href="javascript:void()">
                                     <span class="sub-item">My Courses</span>
                                 </a>
                             </li> --}}
-                            
+
                         </ul>
                     </div>
                 </li>
                 @endrole
-                
+
 
 
                 {{-- end --}}
@@ -440,7 +440,7 @@
                         </ul>
                     </div>
                 </li>
-                
+
                 @endpermission
 
                 @permission('generalcourse_module-read')
@@ -467,11 +467,11 @@
                             </li>
                             @endpermission
 
-                            
+
                         </ul>
                     </div>
                 </li>
-                
+
                 @endpermission
 
                 @permission('posts-read')
@@ -517,8 +517,7 @@
                         <ul class="nav nav-collapse">
 
                             @permission('receivable-read')
-                            <!-- <li><a href="{{ route('account.receivable') }}"><span
-                                            class="sub-item">Receivable</span></a></li> -->
+                            <li><a href="{{ route('all.fee_history') }}"><span class="sub-item">Fee History</span></a></li>
                             <li><a href="{{ route('all.receivable') }}"><span class="sub-item">Revenue</span></a></li>
                             <li>
                                 <a href="/admin/approve_acceptance/waiting">

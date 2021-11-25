@@ -443,6 +443,8 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth', 'namespace' => 'Acco
 
 
   Route::post('approve_school_fees', 'ReceivableController@approve_school_fees');
+  Route::get('fee-history', 'ReceivableController@fee_history')->name('all.fee_history');
+  Route::post('update_payment_details', 'ReceivableController@update_payment_details');
   Route::get('receivable-all', 'ReceivableController@receivable_all')->name('all.receivable');
   Route::get('verify-receivable', 'ReceivableController@verify_receivable')->name('verify.receivable');
   Route::get('receivable/{id}', 'ReceivableController@show')->name('receivable.show');
@@ -532,6 +534,7 @@ Route::group(['namespace' => 'student', 'middleware' => 'student'], function () 
   Route::post('/student-payment/pay/{invoice_id}', 'PaymentController@payment_page');
   Route::get('/student-payment/view/{invoice_id}', 'PaymentController@view_invoice');
   Route::post('/update_payment_details', 'PaymentController@update_payment_details');
+  
   Route::post('/save_payment_details', 'PaymentController@save_payment_details');
   Route::post('/generate-invoice', 'PaymentController@generate_invoice');
   Route::get('/cancel-invoice/{inv}', 'PaymentController@cancel_invoice');
