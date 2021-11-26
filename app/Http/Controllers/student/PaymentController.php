@@ -89,7 +89,7 @@ class PaymentController extends Controller
             $details['phone'] = $student->Student_Mobile_Number;
             $details['item'] = $fee->fee_name;
             $details['bcc'] = true;
-            $details['subject'] = "Receipt for " . $ref;
+            $details['subject'] = "Receipt for " . $fee->fee_name;
             // dd($details);
             Mail::to(urldecode($student->Email_Address))->send(new InvoiceMail($details));
 

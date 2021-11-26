@@ -16,7 +16,7 @@
         <td style="height:35px;"></td>
       </tr>
       <tr>
-        <td>
+        <td style="font-size: 16px;">
           @if(strtolower($details['status']) == 'paid')
           Receipt For {{$details['item']}}
           @else
