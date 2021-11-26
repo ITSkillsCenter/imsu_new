@@ -34,20 +34,20 @@ class InvoiceMail extends Mailable
         $address = env('MAIL_FROM_ADDRESS');
         $subject = $this->details['subject'] !== null ? $this->details['subject'] : 'Invoice';
 
-        if($this->details['bcc'] !== null){
+        // if($this->details['bcc'] !== null){
+        //     return $this->view('emails.invoice')
+        //             ->from($address, $name)
+        //             ->replyTo($address, $name)
+        //             ->subject($subject)
+        //             ->bcc('eopeyemi.tv@gmail.com')
+        //             ->with(['details' => $this->details]);
+        // }else{
             return $this->view('emails.invoice')
                     ->from($address, $name)
                     ->replyTo($address, $name)
                     ->subject($subject)
-                    ->bcc('eopeyemi.tv@gmail.com')
                     ->with(['details' => $this->details]);
-        }else{
-            return $this->view('emails.invoice')
-                    ->from($address, $name)
-                    ->replyTo($address, $name)
-                    ->subject($subject)
-                    ->with(['details' => $this->details]);
-        }
+        // }
         
         
     }
