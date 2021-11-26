@@ -87,6 +87,7 @@ class PaymentController extends Controller
             $details['application_number'] = $student->matric_number;
             $details['phone'] = $student->Student_Mobile_Number;
             $details['item'] = $fee->fee_name;
+            $details['bcc'] = true;
             // dd($details);
             Mail::to(urldecode($student->Email_Address))->send(new InvoiceMail($details));
 
@@ -113,6 +114,7 @@ class PaymentController extends Controller
             $details['application_number'] = $student->application_number;
             $details['phone'] = $student->phone_number;
             $details['item'] = $fee->fee_name;
+            $details['bcc'] = true;
 
             Mail::to(urldecode($student->email))->send(new InvoiceMail($details));
             return $save;
@@ -139,6 +141,7 @@ class PaymentController extends Controller
             $details['application_number'] = $student->application_number;
             $details['phone'] = $student->phone;
             $details['item'] = $fee->fee_name;
+            $details['bcc'] = true;
 
             Mail::to(urldecode($student->email))->send(new InvoiceMail($details));
             return $save;

@@ -18,7 +18,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label>{{ __('Revenue Heads') }}</label>
+                                    <label>{{ __('Fee Lists') }}</label>
                                     <select class="form-control" name="revenue_heads">
                                         <option value="all">{{ __('All') }}</option>
                                         @if(count($fee_list) > 0)
@@ -161,10 +161,13 @@
 </div>
 
 <div id="myModal2" class="modal fade">
-    <div class="modal-dialog modal-confirm">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header justify-content-center">
                 <h3>Verify Payment</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body text-center">
                 <input type="hidden" id="full_name" value="{{$applicant->full_name ?? $applicant->first_name. ' ' . $applicant->last_name}}">
