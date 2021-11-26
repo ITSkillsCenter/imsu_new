@@ -16,6 +16,15 @@
         <td style="height:35px;"></td>
       </tr>
       <tr>
+        <td>
+          @if(strtolower($details['status']) == 'paid')
+          Receipt For {{$details['item']}}
+          @else
+          Invoice For {{$details['item']}}
+          @endif
+        </td>
+      </tr>
+      <tr>
         <td colspan="2" style="border: solid 1px #ddd; padding:10px 20px;">
           <p style="font-size:14px;margin:0 0 6px 0;"><span
               style="font-weight:bold;display:inline-block;min-width:150px">Status</span><b
