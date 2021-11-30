@@ -100,8 +100,11 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="x_panel">
                 <div class="x_title">
-
-                  <h4 class="text-primary">Search Result : {{ count($applicants) }}</h4>
+                @if(msg !== null)
+                  <h4 class="text-primary">Total Applicant that has Paid Admission Fee : {{ count($applicants) }}</h4>
+                @elseif
+                <h4 class="text-primary">Search result : {{ count($applicants) }}</h4>
+                @endif
                   <div class="clearfix"></div>
                   <!--<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target=".bd-example-modal-lg" style="margin-top: 15px">+ Add Courses</button>-->
                 </div>
