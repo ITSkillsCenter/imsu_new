@@ -102,7 +102,7 @@
                 <div class="x_title">
                 @if(msg !== null)
                   <h4 class="text-primary">Total Applicant that has Paid Admission Fee : {{ count($applicants) }}</h4>
-                @elseif
+                @else
                 <h4 class="text-primary">Search result : {{ count($applicants) }}</h4>
                 @endif
                   <div class="clearfix"></div>
