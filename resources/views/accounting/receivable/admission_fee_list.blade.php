@@ -101,7 +101,7 @@
               <div class="x_panel">
                 <div class="x_title">
 
-                  <h4 class="text-primary">Total Applicant that has Paid Admission Fee : {{ count($applicants) }}</h4>
+                  <h4 class="text-primary">Search Result : {{ count($applicants) }}</h4>
                   <div class="clearfix"></div>
                   <!--<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target=".bd-example-modal-lg" style="margin-top: 15px">+ Add Courses</button>-->
                 </div>

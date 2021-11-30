@@ -210,7 +210,7 @@ class ReceivableController extends Controller
                 $msg .= ' - Full Name ' . $request->name;
             }
 
-            $applicants = $query->get();
+            $applicants = $query->where(['application_payments.status' => 'paid'])->orWhere(['application_payments.status' => 'approved'])->get();
             // $applicants = ApplicationFee::all();
             $states = State::all();
             $departments = Department::all();
