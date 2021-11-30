@@ -100,7 +100,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="x_panel">
                 <div class="x_title">
-                @if(msg !== null)
+                @if(msg == null)
                   <h4 class="text-primary">Total Applicant that has Paid Admission Fee : {{ count($applicants) }}</h4>
                 @else
                 <h4 class="text-primary">Search result : {{ count($applicants) }}</h4>
