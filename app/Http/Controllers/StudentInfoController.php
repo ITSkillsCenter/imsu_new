@@ -94,7 +94,8 @@ class StudentInfoController extends Controller
         ->get()->keyBy('application_number');
         $states = State::all();
         $departments = Department::all();
-        return view('accounting.receivable.admission_fee_list', compact('applicants', 'states', 'lgas', 'departments'));
+        $msg = null;
+        return view('accounting.receivable.admission_fee_list', compact('applicants', 'states', 'lgas', 'departments', 'msg'));
     }
 
     public function get_mat_num($reg){
