@@ -568,6 +568,9 @@ class PaymentController extends Controller
 
     public function save_acceptance_fee(Request $request)
     {
+        if(strtolower($request->status) == 'unpaid'){
+            return redirect('/pay-acceptance-fee')->with('error', 'Pay Acceptance Fee'); 
+        }
         $data['reference_id'] = $request->reference;
         $data['student_id'] = $request->matric_no;
         $data['amount'] = $request->amount;
@@ -593,6 +596,9 @@ class PaymentController extends Controller
 
     public function save_acceptance_fee_interswitch(Request $request)
     {
+        if(strtolower($request->status) == 'unpaid'){
+            return redirect('/pay-acceptance-fee')->with('error', 'Pay Acceptance Fee'); 
+        }
         $data['reference_id'] = $request->reference;
         $data['student_id'] = $request->matric_no;
         $data['amount'] = $request->amount;
