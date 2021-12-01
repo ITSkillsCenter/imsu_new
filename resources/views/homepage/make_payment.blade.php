@@ -236,9 +236,9 @@
                             <button id="shr" type="button" class="btn btn-lg" style="padding: 10px; font-size:14px">
                                 <i class="bx bx-money pr-2"></i> Pay with Interswitch
                             </button>
-                            <button id="send" type="button" class="btn btn-lg" style="padding: 10px; font-size:14px">
+                            <!-- <button id="send" type="button" class="btn btn-lg" style="padding: 10px; font-size:14px">
                                 <i class="bx bx-money pr-2"></i> Pay with remita
-                            </button>
+                            </button> -->
                         </div>
                         <div class="col-md-12 text-center" id="remita" style="display: none;">
                             <br>
