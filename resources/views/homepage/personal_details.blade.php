@@ -381,7 +381,7 @@ $subjects = [
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">Specializations</label>
                                                                 <div class="gdlr-core-course-form-combobox">
-                                                                    <select class="gdlr-core-skin-e-content my_input2" name="specialization_id" id="specialization_id" required>
+                                                                    <select class="gdlr-core-skin-e-content my_input2" name="specialization_id" id="specialization_id">
                                                                         <option value="">Select Specializations</option>
                                                                     </select>
                                                                 </div>

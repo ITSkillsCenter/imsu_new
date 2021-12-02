@@ -131,7 +131,7 @@ class StudentCourseController extends Controller
         
         $manageCourseCreditUnit = ManageCourseCreditUnit::where('department_id', $dept_id)->where('level', $level)->first();
         $reg_courses = Course_Student::select('courses.*', 'courses_student.id as cid', 'course_status')->join('courses', 'course_id', '=', 'courses.id')
-                    ->where(['session_id' => $session, 'courses_student.semester' => $semester, 'courses_student.level' => $level])->get();
+                    ->where(['session_id' => $session, 'courses_student.semester' => $semester, 'courses_student.level' => $level, 'courses_student.student_id' => $student->matric_number])->get();
         $reg_arr = [];
         foreach($reg_courses as $single){
             $reg_arr[] = $single->id;

@@ -294,7 +294,7 @@
                                                     <div class="gdlr-core-course-column gdlr-core-column-20">
                                                         <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
                                                             <label for="">Specialization: </label>
-                                                            <p>{{ucwords(Helper::get_specialization($std->specialization_id)->name)}}</p>
+                                                            <p>{{ucwords(Helper::get_specialization($std->specialization_id)->name) ?? ' '}}</p>
                                                         </div>
                                                     </div>
 
