@@ -163,7 +163,8 @@ class StudentCourseController extends Controller
 
                 if($manageCourseCreditUnit->max_credit_unit){
                     if($totalCreditUnit > $manageCourseCreditUnit->max_credit_unit){
-                        throw new \Exception("Maximum credit unit for your departnent is {$manageCourseCreditUnit->max_credit_unit}, you have added  {$previouselyAddedCreditUnit} and just selected {$totalSelectedCreditUnit}, making a total of  {$totalCreditUnit}", 1);
+                        $tt = $previouselyAddedCreditUnit + $totalSelectedCreditUnit;
+                        throw new \Exception("The maximum credit unit for your department is {$manageCourseCreditUnit->max_credit_unit}. You have attempted to add a total of {$tt} units. This exceeds the maximum unit load.", 1);
                     }
                 }
 
