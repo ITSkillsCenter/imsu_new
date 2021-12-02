@@ -1274,7 +1274,7 @@ class HomeController extends Controller
 				$data->password = Hash::make($request->password);
 
 				//to be removed later
-				$data->status ='verified';
+				// $data->status ='verified';
 				//generate matric number automatically
 				// if (strlen($data->matric_number) < 2) {
 				// 	$data->matric_number = $this->generateMatric($request->year);
@@ -1293,8 +1293,8 @@ class HomeController extends Controller
 				// }
 				$new_data['email'] = $request->email;
 				Mail::to(strtolower($request->email))->send(new VerifyEmail($new_data));
-				// return back()->with('success', 'An email verification link has been sent to your email, please click the link to verify your email before continuing on this portal. If you don\'t see the verification mail in your inbox, check your spam mail / promotions folder and mark it as "Not Spam" before clicking to verify');
-				return back()->with('success', 'Registration successful, Kindly login to continue!');
+				return back()->with('success', 'An email verification link has been sent to your email, please click the link to verify your email before continuing on this portal. If you don\'t see the verification mail in your inbox, check your spam mail / promotions folder and mark it as "Not Spam" before clicking to verify');
+				// return back()->with('success', 'Registration successful, Kindly login to continue!');
 				// return redirect('registration-steps');
 
 			} catch (\Exception $e) {
