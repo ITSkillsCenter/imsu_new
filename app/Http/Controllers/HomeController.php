@@ -986,6 +986,7 @@ class HomeController extends Controller
 		}
 
 		//check if verified
+		dd(Session::get('student_id'), Session::get('student'));
 		$student = Session::get('student_id') ?? Session::get('student')['registration_number'];
 		$std =  StudentInfo::where('registration_number', $student)->first();
 		if ($std && $std->status == null) {
