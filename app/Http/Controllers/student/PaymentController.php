@@ -600,9 +600,10 @@ class PaymentController extends Controller
         if(strtolower($request->status) == 'unpaid'){
             return redirect('/pay-acceptance-fee')->with('error', 'Pay Acceptance Fee'); 
         }
+        $fee = FeeList::where('fee_name', 'Undergraduate Program - Acceptance Fee')->first();
         $data['reference_id'] = $request->reference;
         $data['student_id'] = $request->matric_no;
-        $data['amount'] = $request->amount;
+        $data['amount'] = $request->amount ?? $fee->amount;
         $data['session_id'] = Helper::current_semester();
         $data['paid_via'] = 'interswitch';
         $data['status'] = 'paid';
