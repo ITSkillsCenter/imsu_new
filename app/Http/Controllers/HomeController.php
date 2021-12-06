@@ -372,6 +372,29 @@ class HomeController extends Controller
 		return view('homepage.home', compact('articles', 'events', 'faculties', 'announcement', 'articles_latest'));
 	}
 
+	public function homepage2(){
+		$faculties = Faculty::all();
+		$articles = Article::where(['type' => 'article'])->orwhere(['type' => 'event'])->orwhere(['type' => 'announcement'])->published()
+			->latest()
+			->notDeleted()
+			->orderby('articles.id', 'DESC')->paginate(6);
+
+		$articles_latest = Article::where(['type' => 'article'])->published()->latest()->first();
+
+		$events = Article::where(['type' => 'event'])->notDeleted()->orderby('id', 'DESC')->take(6)->get();
+
+
+		$announcement = Article::where(['type' => 'announcement'])->published()
+			->latest()
+			->notDeleted()
+			->orderby('articles.id', 'DESC')->take(1)->get();
+		//dd($announcement);
+
+		return view('homepage.home2', compact('articles', 'events', 'faculties', 'announcement', 'articles_latest'));
+	}
+
+
+
 	public function pghome()
 	{
 
@@ -963,7 +986,8 @@ class HomeController extends Controller
 		}
 
 		//check if verified
-		$std =  StudentInfo::where('registration_number', Session::get('student_id'))->first();
+		$student = Session::get('student_id') ?? Session::get('registration_number');
+		$std =  StudentInfo::where('registration_number', $student)->first();
 		if ($std && $std->status == null) {
 			return redirect('/student-portal')->with('error', 'Please verify your email to continue! Check your inbox and spam folder also for the verification email.');
 		}
