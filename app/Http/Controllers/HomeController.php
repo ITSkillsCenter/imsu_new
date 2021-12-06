@@ -377,11 +377,13 @@ class HomeController extends Controller
 		$articles = Article::where(['type' => 'article'])->orwhere(['type' => 'event'])->orwhere(['type' => 'announcement'])->published()
 			->latest()
 			->notDeleted()
-			->orderby('articles.id', 'DESC')->paginate(6);
+			->orderby('articles.id', 'DESC')->paginate(3);
 
 		$articles_latest = Article::where(['type' => 'article'])->published()->latest()->first();
+		$event_latest = Article::where(['type' => 'events'])->published()->latest()->first();
 
-		$events = Article::where(['type' => 'event'])->notDeleted()->orderby('id', 'DESC')->take(6)->get();
+
+		$events = Article::where(['type' => 'events'])->notDeleted()->orderby('id', 'DESC')->take(3)->get();
 
 
 		$announcement = Article::where(['type' => 'announcement'])->published()
@@ -390,7 +392,7 @@ class HomeController extends Controller
 			->orderby('articles.id', 'DESC')->take(1)->get();
 		//dd($announcement);
 
-		return view('homepage.home2', compact('articles', 'events', 'faculties', 'announcement', 'articles_latest'));
+		return view('homepage.home2', compact('articles', 'events', 'faculties', 'announcement', 'articles_latest', 'event_latest'));
 	}
 
 

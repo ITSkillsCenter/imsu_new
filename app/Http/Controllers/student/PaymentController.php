@@ -581,7 +581,7 @@ class PaymentController extends Controller
         IctFee::create($data);
 
         $std = StudentInfo::where(['registration_number' => $request->matric_no])->first();
-        $details['amount'] = $request->amount;
+        $details['amount'] = $request->amount ?? $fee->amount;
         $details['name'] = $std->first_name . ' ' . $std->last_name;
         $details['email'] = $std->Email_Address;
         $details['matric'] = $std->matric_number;
@@ -610,7 +610,7 @@ class PaymentController extends Controller
         IctFee::create($data);
 
         $std = StudentInfo::where(['registration_number' => $request->matric_no])->first();
-        $details['amount'] = $request->amount;
+        $details['amount'] = $request->amount ?? $fee->amount;
         $details['name'] = $std->first_name . ' ' . $std->last_name;
         $details['email'] = $std->Email_Address;
         $details['matric'] = $std->matric_number;

@@ -918,7 +918,7 @@
                         <div class="card-title"> <a href="/article/{{$article->id}}/{{str_slug($article->heading, '-')}}">{{$article->heading}} </a> </div>
                         <div class="card-text">
 
-                           {{trimString($article->content, 300)}}
+                           {!!trimString($article->content, 300)!!}
 
 
                            <a style="color: green;" href="/article/{{$article->id}}/{{str_slug($article->heading, '-')}}">
@@ -1201,7 +1201,7 @@
       padding: 10px 15px;
 
       position: static;
-      width: 184px;
+      width: 205px;
       height: 38px;
       left: 0px;
       top: 0px;
