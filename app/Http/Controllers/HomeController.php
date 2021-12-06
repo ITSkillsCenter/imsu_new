@@ -986,7 +986,7 @@ class HomeController extends Controller
 		}
 
 		//check if verified
-		$student = Session::get('student_id') ?? Session::get('registration_number');
+		$student = Session::get('student_id') ?? Session::get('student')['registration_number'];
 		$std =  StudentInfo::where('registration_number', $student)->first();
 		if ($std && $std->status == null) {
 			return redirect('/student-portal')->with('error', 'Please verify your email to continue! Check your inbox and spam folder also for the verification email.');
