@@ -219,7 +219,7 @@
                 @include('homepage.flash_message')
                 <div class="row">
                   <div class="table-responsive">
-                    <table id="datatable-buttons" class="table table-striped table-bordered w-auto">
+                    <table id="datatable-buttons" class="table table-striped table-bordered">
                       <thead>
                         <tr>
                           <th>Mat Number</th>
@@ -474,7 +474,7 @@
     $("#datatable-buttons").DataTable({
       // "scrollX": true,
       "pageLength": 20,
-      responsive: true,
+      // responsive: true,
       dom: "Bfrtip",
       buttons: [{
           extend: "copy",
