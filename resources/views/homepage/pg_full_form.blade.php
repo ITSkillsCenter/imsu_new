@@ -380,7 +380,7 @@
                                                     </div>
                                                     <br>
                                                     @foreach($olevel as $single)
-                                                    <div class="gdlr-core-course-column gdlr-core-column-{{count($olevel) > 1 ? '30' : '50'}}">
+                                                    <div class="gdlr-core-course-column gdlr-core-column-{{count($olevel) > 1 ? '30' : 'full'}}">
                                                         
                                                         @if($single['exam_type'] !== null)
                                                         <div class="gdlr-core-course-column gdlr-core-column-50">
@@ -463,9 +463,15 @@
                                                         </div>
                                                     </div>
 
+                                                    <div class="gdlr-core-course-column gdlr-core-column-10">
+                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
+                                                            &nbsp;
+                                                        </div>
+                                                    </div>
+
                                                     <br><br>
 
-                                                    <div class="gdlr-core-course-column gdlr-core-column-full">
+                                                    <div class="gdlr-core-course-column gdlr-core-column-50">
                                                         <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
                                                             <label style="text-align: center;" for="">Section B (For official use only)</label>
                                                             <div>Recommendations of the departmental postgraduate committee</div>

@@ -71,6 +71,11 @@ $subjects = [
 
                                             </div>
 
+                                            @php
+                                                $prev = json_decode($std->previous_education, true);
+                                                $ct = 1;
+                                            @endphp
+                                            <input type="hidden" id="ct"  value="{{$prev ? count($prev) : 1}}">
                                             <div class="gdlr-core-accordion-item-tab clearfix">
                                                 <div class="gdlr-core-accordion-item-icon gdlr-core-js gdlr-core-skin-icon "></div>
                                                 <div class="gdlr-core-accordion-item-content-wrapper">
@@ -81,75 +86,12 @@ $subjects = [
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for=""></label>
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                    <h3>Institution <span><button id="addInst" type="button">+</button> <button id="remInst" disabled type="button">-</button></span></h3>
+                                                                    <h3>Institution <span><button id="addInst" type="button">+</button> <button id="remInst" {{$std->previous_education ? '' : 'disabled'}} type="button">-</button></span></h3>
                                                                 </div>
                                                             </div>
                                                         </div>
 
-                                                        @if($std->previous_education !== null)
-                                                        @php
-                                                        $prev = json_decode($std->previous_education, true);
-                                                        $ct = 1;
-                                                        @endphp
-
-                                                        @foreach($prev as $single)
-
-                                                        <div class="gdlr-core-course-column gdlr-core-column-50">
-                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                <label for=""></label>
-                                                                <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                    <p>Institution {{$ct++}}</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="gdlr-core-course-column gdlr-core-column-20">
-                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                <label for="">Name</label>
-                                                                <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                    <input type="text" class="my_input" value="{{$single['name']}}" name="prevedu[1][name]" placeholder="Imo state university" required />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="gdlr-core-course-column gdlr-core-column-20">
-                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                <label for="">Programme Studied</label>
-                                                                <input type="text" class="my_input" name="prevedu[{{$ct}}][programme_studied]" value="{{$single['programme_studied']}}" required />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="gdlr-core-course-column gdlr-core-column-20">
-                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                <label for="">Qualification</label>
-                                                                <input type="text" class="my_input" name="prevedu[{{$ct}}][qualification]" value="{{$single['qualification']}}" required />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="gdlr-core-course-column gdlr-core-column-20">
-                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                <label for="">Grade Achieved</label>
-                                                                <input type="text" class="my_input" name="prevedu[{{$ct}}][grade_achieved]" value="{{$single['grade_achieved']}}" required />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="gdlr-core-course-column gdlr-core-column-20">
-                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                <label for="">Duration of studies</label>
-                                                                <input type="text" class="my_input" name="prevedu[{{$ct}}][duration_of_studies]" value="{{$single['duration_of_studies']}}" required />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="gdlr-core-course-column gdlr-core-column-20">
-                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                <label for="">Date of award</label>
-                                                                <input type="date" class="my_input" name="prevedu[{{$ct}}][date_of_award]" value="{{$single['date_of_award']}}" required />
-                                                            </div>
-                                                        </div>
-
-                                                        @endforeach
-                                                        @else
-
+                                                        @if($std->previous_education == null)
                                                         <div class="gdlr-core-course-column gdlr-core-column-50">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for=""></label>
@@ -206,7 +148,66 @@ $subjects = [
                                                         @endif
 
                                                         <div id="body">
+                                                            @if($std->previous_education !== null)
+                                                                
+                                                                @foreach($prev as $single)
+                                                                <div class="child">
+                                                                    <div class="gdlr-core-course-column gdlr-core-column-50">
+                                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                            <label for=""></label>
+                                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                                <p>Institution {{$ct}}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
 
+                                                                    <div class="gdlr-core-course-column gdlr-core-column-20">
+                                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                            <label for="">Name</label>
+                                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                                <input type="text" class="my_input" value="{{$single['name']}}" name="prevedu[{{$ct}}][name]" placeholder="Imo state university" required />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="gdlr-core-course-column gdlr-core-column-20">
+                                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                            <label for="">Programme Studied</label>
+                                                                            <input type="text" class="my_input" name="prevedu[{{$ct}}][programme_studied]" value="{{$single['programme_studied']}}" required />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="gdlr-core-course-column gdlr-core-column-20">
+                                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                            <label for="">Qualification</label>
+                                                                            <input type="text" class="my_input" name="prevedu[{{$ct}}][qualification]" value="{{$single['qualification']}}" required />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="gdlr-core-course-column gdlr-core-column-20">
+                                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                            <label for="">Grade Achieved</label>
+                                                                            <input type="text" class="my_input" name="prevedu[{{$ct}}][grade_achieved]" value="{{$single['grade_achieved']}}" required />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="gdlr-core-course-column gdlr-core-column-20">
+                                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                            <label for="">Duration of studies</label>
+                                                                            <input type="text" class="my_input" name="prevedu[{{$ct}}][duration_of_studies]" value="{{$single['duration_of_studies']}}" required />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="gdlr-core-course-column gdlr-core-column-20">
+                                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                            <label for="">Date of award</label>
+                                                                            <input type="date" class="my_input" name="prevedu[{{$ct++}}][date_of_award]" value="{{$single['date_of_award']}}" required />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                @endforeach
+                                                            @endif
                                                         </div>
 
                                                     </div>
@@ -561,7 +562,7 @@ $subjects = [
         }
     })
 
-    let ct = 1
+    let ct = parseInt($('#ct').val())
 
     $('#addInst').click(function() {
         $('#remInst').attr('disabled', false)
