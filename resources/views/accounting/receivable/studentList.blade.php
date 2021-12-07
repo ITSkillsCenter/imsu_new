@@ -167,7 +167,7 @@
                         <td>{{ date('d/m/Y', strtotime($item->updated_at)) }}</td>
                         <td>
                           @if($item->receipt !== null)
-                          <img src="/uploads/images/receipts/{{$item->receipt}}" alt="" style="width:100px;">
+                          <!-- <img src="/uploads/images/receipts/{{$item->receipt}}" alt="" style="width:100px;"> -->
                           <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" data-id="{{$item->rid}}" data-img="/uploads/images/receipts/{{$item->receipt}}" data-name="{{ $item->first_name }} {{$item->last_name}}" data-status="{{$item->paid}}">
                             View
                           </button>
