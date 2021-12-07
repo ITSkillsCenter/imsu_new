@@ -472,7 +472,7 @@
   $(document).ready(function() {
     $('.toggle-sidebar').click();
     $("#datatable-buttons").DataTable({
-      "scrollX": true,
+      // "scrollX": true,
       "pageLength": 20,
       responsive: true,
       dom: "Bfrtip",
@@ -497,7 +497,7 @@
           className: "btn-sm"
         },
       ],
-      responsive: true,
+      // responsive: true,
     });
     //datatables code
     // var handleDataTableButtons = function() {
