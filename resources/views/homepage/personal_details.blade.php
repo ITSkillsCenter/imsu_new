@@ -152,13 +152,13 @@ $subjects = [
                                                                     <div class="gdlr-core-course-form-combobox">
                                                                         <select class="gdlr-core-skin-e-content my_input2" name="title" id="title" required>
                                                                             <option value="">Select title</option>
-                                                                            <option value="Mr.">Mr.</option>
-                                                                            <option value="Mrs.">Mrs</option>
-                                                                            <option value="Ms.">Ms</option>
-                                                                            <option value="Miss">Miss</option>
-                                                                            <option value="Dr">Dr</option>
-                                                                            <option value="Chief">Chief</option>
-                                                                            <option value="Others">Others</option>
+                                                                            <option value="Mr." {{$std->title == 'Mr.'? 'selected' : ''}}>Mr.</option>
+                                                                            <option value="Mrs." {{$std->title == 'Mrs.'? 'selected' : ''}}>Mrs</option>
+                                                                            <option value="Ms." {{$std->title == 'Ms.'? 'selected' : ''}}>Ms</option>
+                                                                            <option value="Miss" {{$std->title == 'Miss'? 'selected' : ''}}>Miss</option>
+                                                                            <option value="Dr" {{$std->title == 'Dr'? 'selected' : ''}}>Dr</option>
+                                                                            <option value="Chief" {{$std->title == 'Chief'? 'selected' : ''}}>Chief</option>
+                                                                            <option value="Others" {{$std->title == 'others'? 'selected' : ''}}>Others</option>
 
                                                                         </select>
                                                                     </div>
@@ -194,8 +194,8 @@ $subjects = [
                                                                     <div class="gdlr-core-course-form-combobox gdlr-core-skin-e-background">
                                                                         <select class="gdlr-core-skin-e-content my_input2" name="gender" required>
                                                                             <option value="">Select one</option>
-                                                                            <option value="M">Male</option>
-                                                                            <option value="F">Female</option>
+                                                                            <option value="M" {{$std->gender == 'M'? 'selected' : ''}}>Male</option>
+                                                                            <option value="F" {{$std->gender == 'F'? 'selected' : ''}}>Female</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -207,10 +207,10 @@ $subjects = [
                                                                     <div class="gdlr-core-course-form-combobox gdlr-core-skin-e-background">
                                                                         <select class="gdlr-core-skin-e-content my_input2" name="marital_status" required>
                                                                             <option value="">Select one</option>
-                                                                            <option value="single">Single</option>
-                                                                            <option value="married">Married</option>
-                                                                            <option value="divorced">Divorced</option>
-                                                                            <option value="widowed ">Widowed </option>
+                                                                            <option value="single" {{$std->marital_status == 'single'? 'selected' : ''}}>Single</option>
+                                                                            <option value="married" {{$std->marital_status == 'married'? 'selected' : ''}}>Married</option>
+                                                                            <option value="divorced" {{$std->marital_status == 'divorced'? 'selected' : ''}}>Divorced</option>
+                                                                            <option value="widowed" {{$std->marital_status == 'widowed'? 'selected' : ''}}>Widowed </option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -230,7 +230,7 @@ $subjects = [
                                                                         <select class="gdlr-core-skin-e-content my_input2" name="country_of_origin" id="country_of_origin" required>
                                                                             <option value="">Select Country</option>
                                                                             @foreach($countries as $country)
-                                                                            <option value="{{$country->name}}" data-id="{{$country->id}}">{{$country->name}}</option>
+                                                                            <option value="{{$country->name}}" data-id="{{$country->id}}" {{$std->country_of_origin == $country->name ? 'selected' : ''}}>{{$country->name}}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
@@ -244,7 +244,7 @@ $subjects = [
                                                                         <select class="gdlr-core-skin-e-content my_input2" name="state_of_origin" id="state_of_origin" required>
                                                                             <option value="">Select State</option>
                                                                             @foreach($states as $state)
-                                                                            <option value="{{$state->name}}" data-id="{{$state->id}}">{{$state->name}}</option>
+                                                                            <option value="{{$state->name}}" data-id="{{$state->id}}" {{$std->state_of_origin == $state->name ? 'selected' : ''}}>{{$state->name}}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
@@ -257,6 +257,9 @@ $subjects = [
                                                                     <div class="gdlr-core-course-form-combobox gdlr-core-skin-e-background">
                                                                         <select class="gdlr-core-skin-e-content my_input2" name="lga_of_origin" id="lga_of_origin" required>
                                                                             <option value="">LGA</option>
+                                                                            @if($std->lga_of_origin !== null)
+                                                                            <option value="{{$std->lga_of_origin}}" selected>{{$std->lga_of_origin}}</option>
+                                                                            @endif
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -276,7 +279,7 @@ $subjects = [
                                                                         <select class="gdlr-core-skin-e-content my_input2" name="country_of_residence" id="country_of_residence" required>
                                                                             <option value="">Select Country</option>
                                                                             @foreach($countries as $country)
-                                                                            <option value="{{$country->name}}" data-id="{{$country->id}}">{{$country->name}}</option>
+                                                                            <option value="{{$country->name}}" data-id="{{$country->id}}" {{$std->country_of_residence == $country->name ? 'selected' : ''}}>{{$country->name}}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
@@ -290,7 +293,7 @@ $subjects = [
                                                                         <select class="gdlr-core-skin-e-content my_input2" name="state_of_residence" id="state_of_residence" required>
                                                                             <option value="">Select State</option>
                                                                             @foreach($states as $state)
-                                                                            <option value="{{$state->name}}" data-id="{{$state->id}}">{{$state->name}}</option>
+                                                                            <option value="{{$state->name}}" data-id="{{$state->id}}" {{$std->state_of_residence == $state->name ? 'selected' : ''}}>{{$state->name}}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
@@ -303,6 +306,9 @@ $subjects = [
                                                                     <div class="gdlr-core-course-form-combobox gdlr-core-skin-e-background">
                                                                         <select class="gdlr-core-skin-e-content my_input2" name="lga_of_residence" id="lga_of_residence" required>
                                                                             <option value="">LGA</option>
+                                                                            @if($std->lga_of_residence !== null)
+                                                                            <option value="{{$std->lga_of_residence}}" selected>{{$std->lga_of_residence}}</option>
+                                                                            @endif
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -326,7 +332,7 @@ $subjects = [
                                                             <div class="gdlr-core-course-column gdlr-core-column-60">
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                     <label for="" class="gdlr-core-column-60">Do you have any Medical Condition? If yes, provide us more information.</label>
-                                                                    <textarea maxlength="500" name="disability" style="background-color: #3b4b6b; color: #b1c0e0;" class="gdlr-core-column-30 input1 scholarship" cols="20" rows="10"></textarea>
+                                                                    <textarea maxlength="500" name="disability" style="background-color: #3b4b6b; color: #b1c0e0;" class="gdlr-core-column-30 input1 scholarship" cols="20" rows="10">{{$std->disability}}</textarea>
                                                                 </div>
                                                             </div>
 
@@ -348,7 +354,9 @@ $subjects = [
                                                                     <select class="gdlr-core-skin-e-content my_input2" name="faculty_id" id="faculty_id" required>
                                                                         <option value="">Select Faculty</option>
                                                                         @foreach($faculties as $faculty)
-                                                                        <option value="{{$faculty->id}}">{{$faculty->name}}</option>
+                                                                        @if($std->faculty_id !== null)
+                                                                        <option value="{{$faculty->id}}" {{$std->faculty_id == $faculty->id? 'selected' : ''}}>{{$faculty->name}}</option>
+                                                                        @endif
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
@@ -361,6 +369,9 @@ $subjects = [
                                                                 <div class="gdlr-core-course-form-combobox">
                                                                     <select class="gdlr-core-skin-e-content my_input2" name="dept_id" id="dept_id" required>
                                                                         <option value="">Select Department</option>
+                                                                        @if($std->dept_id !== null)
+                                                                        <option value="{{$std->dept_id}}" selected>{{Helper::get_department($std->dept_id)->name}}</option>
+                                                                        @endif
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -372,6 +383,9 @@ $subjects = [
                                                                 <div class="gdlr-core-course-form-combobox">
                                                                     <select class="gdlr-core-skin-e-content my_input2" name="programme_id" id="programme_id" required>
                                                                         <option value="">Select Programme</option>
+                                                                        @if($std->programme_id !== null)
+                                                                        <option value="{{$std->programme_id}}" selected>{{Helper::get_programme($std->programme_id)->name}}</option>
+                                                                        @endif
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -383,6 +397,9 @@ $subjects = [
                                                                 <div class="gdlr-core-course-form-combobox">
                                                                     <select class="gdlr-core-skin-e-content my_input2" name="specialization_id" id="specialization_id">
                                                                         <option value="">Select Specializations</option>
+                                                                        @if($std->specialization_id !== null)
+                                                                        <option value="{{$std->specialization_id}}" selected>{{Helper::get_specialization($std->specialization_id)->name}}</option>
+                                                                        @endif
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -394,10 +411,10 @@ $subjects = [
                                                                 <div class="gdlr-core-course-form-combobox">
                                                                     <select class="gdlr-core-skin-e-content my_input2" name="qualification" id="qualification" required>
                                                                         <option value="">Select Qualification</option>
-                                                                        <option value="M.Sc">M.Sc</option>
-                                                                        <option value="M.Phil">M.Phil</option>
-                                                                        <option value="Ph.D">Ph.D</option>
-                                                                        <option value="PGD">PGD</option>
+                                                                        <option value="M.Sc" {{$std->qualification == 'M.Sc'? 'selected' : ''}}>M.Sc</option>
+                                                                        <option value="M.Phil" {{$std->qualification == 'M.Phil'? 'selected' : ''}}>M.Phil</option>
+                                                                        <option value="Ph.D" {{$std->qualification == 'Ph.D'? 'selected' : ''}}>Ph.D</option>
+                                                                        <option value="PGD" {{$std->qualification == 'PGD'? 'selected' : ''}}>PGD</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -409,9 +426,9 @@ $subjects = [
                                                                 <div class="gdlr-core-course-form-combobox">
                                                                     <select class="gdlr-core-skin-e-content my_input2" name="study_type" id="study_type" required>
                                                                         <option value="">Select one</option>
-                                                                        <option value="fulltime">Fulltime</option>
-                                                                        <option value="part-time">Part-time</option>
-                                                                        <option value="online">Online</option>
+                                                                        <option value="fulltime" {{$std->study_type == 'fulltime'? 'selected' : ''}}>Fulltime</option>
+                                                                        <option value="part-time" {{$std->study_type == 'part-time'? 'selected' : ''}}>Part-time</option>
+                                                                        <option value="online" {{$std->study_type == 'online'? 'selected' : ''}}>Online</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -433,11 +450,11 @@ $subjects = [
                                                                 <div class="gdlr-core-course-form-combobox">
                                                                     <select class="gdlr-core-skin-e-content my_input2" name="funding" id="funding" required>
                                                                         <option value="">Select one</option>
-                                                                        <option value="Parents">Parents</option>
-                                                                        <option value="Self‐funded">Self‐funded</option>
-                                                                        <option value="Scholarship">Scholarship</option>
-                                                                        <option value="Company">Company</option>
-                                                                        <option value="Others">Others</option>
+                                                                        <option value="Parents" {{$std->funding == 'Parents'? 'selected' : ''}}>Parents</option>
+                                                                        <option value="Self‐funded" {{$std->funding == 'Self‐funded' ? 'selected' : ''}}>Self‐funded</option>
+                                                                        <option value="Scholarship" {{$std->funding == 'Scholarship'? 'selected' : ''}}>Scholarship</option>
+                                                                        <option value="Company" {{$std->funding == 'Company'? 'selected' : ''}}>Company</option>
+                                                                        <option value="Others" {{$std->funding == 'Others'? 'selected' : ''}}>Others</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -449,8 +466,8 @@ $subjects = [
                                                                 <div class="gdlr-core-course-form-combobox">
                                                                     <select class="gdlr-core-skin-e-content my_input2" name="funding_type" id="funding_type" required>
                                                                         <option value="">Select one</option>
-                                                                        <option value="Definite">Definite</option>
-                                                                        <option value="Proposed">Proposed</option>
+                                                                        <option value="Definite" {{$std->funding_type == 'Definite'? 'selected' : ''}}>Definite</option>
+                                                                        <option value="Proposed" {{$std->funding_type == 'Proposed'? 'selected' : ''}}>Proposed</option>
                                                                     </select>
                                                                 </div>
                                                             </div>

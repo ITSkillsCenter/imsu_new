@@ -420,6 +420,29 @@ class HomeController extends Controller
 		return view('homepage.pghome', compact('articles', 'events', 'faculties', 'announcement', 'articles_latest'));
 	}
 
+	public function pg()
+	{
+
+		$faculties = Faculty::all();
+		$articles = Article::where(['type' => 'article'])->orwhere(['type' => 'event'])->orwhere(['type' => 'announcement'])->published()
+			->latest()
+			->notDeleted()
+			->orderby('articles.id', 'DESC')->paginate(3);
+
+		$articles_latest = Article::where(['type' => 'article'])->published()->latest()->first();
+
+		$events = Article::where(['type' => 'event'])->notDeleted()->orderby('id', 'DESC')->take(6)->get();
+
+
+		$announcement = Article::where(['type' => 'announcement'])->published()
+			->latest()
+			->notDeleted()
+			->orderby('articles.id', 'DESC')->take(1)->get();
+		//dd($announcement);
+
+		return view('homepage.pghome2', compact('articles', 'events', 'faculties', 'announcement', 'articles_latest'));
+	}
+
 	public function pg_application(Request $request){
 		if ($request->isMethod('post')) {
 

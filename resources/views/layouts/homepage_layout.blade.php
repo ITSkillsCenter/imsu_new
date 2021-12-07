@@ -526,7 +526,7 @@
                 ">
                             <div id="text-2" class="widget widget_text kingster-widget">
                                 <div class="textwidget">
-                                    <p>
+                                    <div>
                                         <img src="{{ URL::asset('homepage/images/logo.png')}}" alt="" style="background: white; padding: 10px" />
                                         <br />
                                         <span class="gdlr-core-space-shortcode" id="span_1dd7_10"></span>
@@ -534,13 +534,13 @@
                                         Our primarily goals focuses on continuous provision of
                                         quality learning environment and producing highly
                                         intellectual graduates with reputable character
-                                    </p>
-                                    <p>
+                                    </div>
+                                    <div>
                                         <span class="gdlr-core-space-shortcode" id="span_1dd7_12"></span>
                                         <br />
                                         <a id="a_1dd7_8" href="#">
                                             info@imsu.edu.ng</a>
-                                    </p>
+                                    </div>
                                     <div class="
                         gdlr-core-divider-item
                         gdlr-core-divider-item-normal

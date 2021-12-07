@@ -70,6 +70,10 @@ $subjects = [
 
                                             </div>
 
+                                            @php 
+                                                $emp = json_decode($std->employment, true);
+                                            @endphp
+
                                             <div class="gdlr-core-accordion-item-tab clearfix gdlr-core-active">
                                                 <div class="gdlr-core-accordion-item-icon gdlr-core-js gdlr-core-skin-icon "></div>
                                                 <div class="gdlr-core-accordion-item-content-wrapper">
@@ -80,7 +84,7 @@ $subjects = [
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">Name of Employer</label>
                                                                 <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                    <input type="text" class="my_input" value="" name="prevemp[name]" />
+                                                                    <input type="text" class="my_input" value="{{$emp !== null ? $emp['name'] : ''}}" name="prevemp[name]" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -88,35 +92,35 @@ $subjects = [
                                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">Address of employer </label>
-                                                                <input type="text" class="my_input" name="prevemp[address]" value="" />
+                                                                <input type="text" class="my_input" name="prevemp[address]" value="{{$emp !== null ? $emp['address'] : ''}}" />
                                                             </div>
                                                         </div>
 
                                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">Phone number of employer </label>
-                                                                <input type="text" class="my_input" name="prevemp[phone]" value="" />
+                                                                <input type="text" class="my_input" name="prevemp[phone]" value="{{$emp !== null ? $emp['phone'] : ''}}" />
                                                             </div>
                                                         </div>
 
                                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">Duration of Employment </label>
-                                                                <input type="text" class="my_input" name="prevemp[duration]" value="" />
+                                                                <input type="text" class="my_input" name="prevemp[duration]" value="{{$emp !== null ? $emp['duration'] : ''}}" />
                                                             </div>
                                                         </div>
 
                                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">Designation </label>
-                                                                <input type="text" class="my_input" name="prevemp[designation]" value="" />
+                                                                <input type="text" class="my_input" name="prevemp[designation]" value="{{$emp !== null ? $emp['designation'] : ''}}" />
                                                             </div>
                                                         </div>
 
                                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">Key responsibilities </label>
-                                                                <input type="text" class="my_input" name="prevemp[responsibilities]" value="" />
+                                                                <input type="text" class="my_input" name="prevemp[responsibilities]" value="{{$emp !== null ? $emp['responsibilities'] : ''}}" />
                                                             </div>
                                                         </div>
 

@@ -33,9 +33,11 @@ class StudentHomeController extends Controller
 		// if($check < 1){
 		// 	return redirect()->route('student.ict');
 		// }
-		$student_id = Session::get('student')->id;
+		$student_id = Session::get('student')->matric_number;
 		$current_session = Current_Semester_Running::where('id',Helper::current_semester())->first();
-		$current_courses = Course_Student::where(['session_id' => Helper::current_semester(), 'student_id' => $student_id])->count();
+		$semester = Helper::current_semester_details();
+		$semester = $semester->id == 1 ? '1st' : '2nd';
+		$current_courses = Course_Student::where(['session_id' => Helper::current_semester(), 'student_id' => $student_id, 'semester' => $semester])->count();
 		$events = Event::with('type')->where('session_id',$current_session->id)->get();
 		$pending_payments = FeeHistory::where(['student_id' => $student_id, 'status' => 'unpaid'])->count();
 		// return $events;
@@ -79,20 +81,19 @@ class StudentHomeController extends Controller
     public function profile()
     {
 		$id = Session::get('student_id');
-		$student = StudentInfo::where('matric_number',$id)->first();
+		$student = StudentInfo::where('registration_number',$id)->orWhere('matric_number',$id)->first();
     	return view('admin_student.profile.profile', compact('student'));
     	
     }
 
 	public function edit_profile(Request $request){
 		$id = Session::get('student_id');
-		$student = StudentInfo::where('matric_number',$id)->first();
+		$student = StudentInfo::where('registration_number',$id)->orWhere('matric_number',$id)->first();
 		if ($request->isMethod('post')){
-			$update = StudentInfo::where('matric_number',$id)->update($request->except(['_token']));
+			$update = StudentInfo::where('registration_number',$id)->orWhere('matric_number',$id)->update($request->except(['_token']));
 			// dd($update);
 			return back()->with('success','Profile Updated'); 
 		}
-		
 		
 		return view('admin_student.profile.edit', compact('student'));
 	}

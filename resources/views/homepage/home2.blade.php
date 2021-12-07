@@ -645,7 +645,7 @@
 
 
 </main>
-<div class="" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; top: 20%; left:35%; z-index:1000; position: absolute; margin: 0 auto;">
+<div class="" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; top: 5%; left:35%; z-index:1000; position: absolute; margin: 0 auto;">
         <div class="modal-dialog" style="border: 0;" role="document">
             <div class="modal-content" style="border: 0;">
                 <div class="modal-header text-white" style="display:flex; justify-content:space-between; background: linear-gradient(90deg,rgb(17, 182, 122) 0%, rgb(0, 148, 68) 100%);">

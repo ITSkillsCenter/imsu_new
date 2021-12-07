@@ -95,6 +95,109 @@ $subjects = [
                                                             </div>
                                                         </div>
 
+                                                        @php 
+                                                            $first_ref = json_decode($std->first_referee, true);
+                                                            $second_ref = json_decode($std->second_referee, true);
+                                                            $third_ref = json_decode($std->third_referee, true);
+                                                            $nok = json_decode($std->next_of_kin, true);
+                                                        @endphp
+
+                                                        <div class="gdlr-core-title-item-title-wrap clearfix">
+                                                            <h4 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 20px ;">Referee 1</h4>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-30">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Name</label>
+                                                                <input type="text" class="my_input" name="ref1[name]" value="{{$first_ref ? $first_ref['name'] : ''}}" required />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-30">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Phone Number </label>
+                                                                <input type="text" class="my_input" name="ref1[phone]" value="{{$first_ref ? $first_ref['phone'] : ''}}" required />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-30">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Address </label>
+                                                                <input type="text" class="my_input" name="ref1[address]" value="{{$first_ref ? $first_ref['address'] : ''}}" required />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-30">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Email </label>
+                                                                <input type="email" class="my_input" name="ref1[email]" value="{{$first_ref ? $first_ref['email'] : ''}}" required />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-title-item-title-wrap clearfix">
+                                                            <h4 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 20px ;">Referee 2</h4>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-30">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Name</label>
+                                                                <input type="text" class="my_input" name="ref2[name]" value="{{$second_ref ? $second_ref['name'] : ''}}" required />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-30">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Phone Number </label>
+                                                                <input type="text" class="my_input" name="ref2[phone]" value="{{$second_ref ? $second_ref['phone'] : ''}}" required />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-30">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Address </label>
+                                                                <input type="text" class="my_input" name="ref2[address]" value="{{$second_ref ? $second_ref['address'] : ''}}" required />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-30">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Email </label>
+                                                                <input type="email" class="my_input" name="ref2[email]" value="{{$second_ref ? $second_ref['email'] : ''}}" required />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-title-item-title-wrap clearfix">
+                                                            <h4 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 20px ;">Referee 3</h4>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-30">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Name</label>
+                                                                <input type="text" class="my_input" name="ref3[name]" value="{{$third_ref ? $third_ref['name'] : ''}}" required />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-30">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Phone Number </label>
+                                                                <input type="text" class="my_input" name="ref3[phone]" value="{{$third_ref ? $third_ref['phone'] : ''}}" required />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-30">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Address </label>
+                                                                <input type="text" class="my_input" name="ref3[address]" value="{{$third_ref ? $third_ref['address'] : ''}}" required />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-30">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Email </label>
+                                                                <input type="email" class="my_input" name="ref3[email]" value="{{$third_ref ? $third_ref['email'] : ''}}" required />
+                                                            </div>
+                                                        </div>
+
 
 
                                                     </div>
@@ -110,28 +213,28 @@ $subjects = [
                                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">Name</label>
-                                                                <input type="text" class="my_input" name="nok[name]" value="" />
+                                                                <input type="text" class="my_input" name="nok[name]" value="{{$nok ? $nok['name'] : ''}}" />
                                                             </div>
                                                         </div>
 
                                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">Phone Number </label>
-                                                                <input type="text" class="my_input" name="nok[phone]" value="" />
+                                                                <input type="text" class="my_input" name="nok[phone]" value="{{$nok ? $nok['phone'] : ''}}" />
                                                             </div>
                                                         </div>
 
                                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">Address </label>
-                                                                <input type="text" class="my_input" name="nok[address]" value="" />
+                                                                <input type="text" class="my_input" name="nok[address]" value="{{$nok ? $nok['address'] : ''}}" />
                                                             </div>
                                                         </div>
 
                                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">Email </label>
-                                                                <input type="email" class="my_input" name="nok[email]" value="" />
+                                                                <input type="email" class="my_input" name="nok[email]" value="{{$nok ? $nok['email'] : ''}}" />
                                                             </div>
                                                         </div>
 
@@ -158,7 +261,7 @@ $subjects = [
 
 
                                                                 </label>
-                                                                <textarea name="supporting_information" style="background-color: #3b4b6b; color: #b1c0e0; width:100%" class="gdlr-core-column-30 input1 scholarship" cols="20" rows="10"></textarea>
+                                                                <textarea name="supporting_information" style="background-color: #3b4b6b; color: #b1c0e0; width:100%" class="gdlr-core-column-30 input1 scholarship" cols="20" rows="10">{{$std->supporting_information}}</textarea>
                                                             </div>
                                                         </div>
 

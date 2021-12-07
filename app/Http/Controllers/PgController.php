@@ -181,8 +181,11 @@ class PgController extends Controller
             $request->merge([
                 'step' => 6,
                 'next_of_kin' => json_encode($request->nok),
+                'first_referee' => json_encode($request->ref1),
+                'second_referee' => json_encode($request->ref2),
+                'third_referee' => json_encode($request->ref3),
             ]);
-			$save = PgApplicant::where(['application_number' => $applicant->application_number])->update($request->except(['_token', 'nok']));
+			$save = PgApplicant::where(['application_number' => $applicant->application_number])->update($request->except(['_token', 'nok', 'ref1', 'ref2', 'ref3']));
             // dd($save);
             return redirect('/pg-application-step7');
 		}

@@ -16,7 +16,8 @@
         -webkit-border-radius: 3px;
     }
 
-    #addInst, #remInst{
+    #addInst,
+    #remInst {
         background-color: green;
         color: white;
         border-radius: 5px;
@@ -85,6 +86,70 @@ $subjects = [
                                                             </div>
                                                         </div>
 
+                                                        @if($std->previous_education !== null)
+                                                        @php
+                                                        $prev = json_decode($std->previous_education, true);
+                                                        $ct = 1;
+                                                        @endphp
+
+                                                        @foreach($prev as $single)
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-50">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for=""></label>
+                                                                <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                    <p>Institution {{$ct++}}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-20">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Name</label>
+                                                                <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                    <input type="text" class="my_input" value="{{$single['name']}}" name="prevedu[1][name]" placeholder="Imo state university" required />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-20">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Programme Studied</label>
+                                                                <input type="text" class="my_input" name="prevedu[{{$ct}}][programme_studied]" value="{{$single['programme_studied']}}" required />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-20">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Qualification</label>
+                                                                <input type="text" class="my_input" name="prevedu[{{$ct}}][qualification]" value="{{$single['qualification']}}" required />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-20">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Grade Achieved</label>
+                                                                <input type="text" class="my_input" name="prevedu[{{$ct}}][grade_achieved]" value="{{$single['grade_achieved']}}" required />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-20">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Duration of studies</label>
+                                                                <input type="text" class="my_input" name="prevedu[{{$ct}}][duration_of_studies]" value="{{$single['duration_of_studies']}}" required />
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="gdlr-core-course-column gdlr-core-column-20">
+                                                            <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <label for="">Date of award</label>
+                                                                <input type="date" class="my_input" name="prevedu[{{$ct}}][date_of_award]" value="{{$single['date_of_award']}}" required />
+                                                            </div>
+                                                        </div>
+
+                                                        @endforeach
+                                                        @else
+
                                                         <div class="gdlr-core-course-column gdlr-core-column-50">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for=""></label>
@@ -138,6 +203,8 @@ $subjects = [
                                                             </div>
                                                         </div>
 
+                                                        @endif
+
                                                         <div id="body">
 
                                                         </div>
@@ -151,28 +218,32 @@ $subjects = [
                                                 <div class="gdlr-core-accordion-item-content-wrapper">
                                                     <h4 class="gdlr-core-accordion-item-title gdlr-core-js  gdlr-core-skin-e-background gdlr-core-skin-e-content">O'LEVEL DETAILS </h4>
                                                     <div class="gdlr-core-accordion-item-content">
+                                                        @php
 
+                                                        $olevel = json_decode($std->olevel, true);
+                                                        $q = 1; $u = 1;
+                                                        @endphp
                                                         <div class="gdlr-core-course-column gdlr-core-column-30">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
                                                                 <label for="">1st Exams Result</label>
                                                                 <div class="gdlr-core-course-form-combobox gdlr-core-skin-e-background">
                                                                     <select class="gdlr-core-skin-e-content my_input2" name="olevel[1][exam_type]" id="exam_type_1" required>
                                                                         <option value="">Select exam type</option>
-                                                                        <option value="waec">WAEC</option>
-                                                                        <option value="neco">NECO</option>
-                                                                        <option value="gce">GCE</option>
-                                                                        <option value="nabteb">NABTEB</option>
+                                                                        <option value="waec" {{($olevel !== null) ? ($olevel[1]['exam_type'] == 'waec') ? 'selected' : '' : ''}}>WAEC</option>
+                                                                        <option value="neco" {{($olevel !== null) ? ($olevel[1]['exam_type'] == 'neco') ? 'selected' : '' : ''}}>NECO</option>
+                                                                        <option value="gce" {{($olevel !== null) ? ($olevel[1]['exam_type'] == 'gce') ? 'selected' : '' : ''}}>GCE</option>
+                                                                        <option value="nabteb" {{($olevel !== null) ? ($olevel[1]['exam_type'] == 'nabteb') ? 'selected' : '' : ''}}>NABTEB</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
 
-                                                            <div style="display: none;" id="content_1">
+                                                            <div style="display: {{$olevel !== null ? 'block' : 'none'}};" id="content_1">
                                                                 <div class="gdlr-core-course-column gdlr-core-column-20">
                                                                     <label for="">School:</label>
                                                                 </div>
                                                                 <div class="gdlr-core-course-column gdlr-core-column-40">
                                                                     <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                        <input type="text" class="my_input" value="" name="olevel[1][school]" placeholder="Name of school" required />
+                                                                        <input type="text" class="my_input" value="{{($olevel !== null) ? $olevel[1]['school'] : ''}}" name="olevel[1][school]" placeholder="Name of school" required />
                                                                     </div>
                                                                 </div>
                                                                 <div class="gdlr-core-course-column gdlr-core-column-20">
@@ -180,7 +251,7 @@ $subjects = [
                                                                 </div>
                                                                 <div class="gdlr-core-course-column gdlr-core-column-40">
                                                                     <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                        <input type="text" class="my_input" value="" name="olevel[1][exam_number]" placeholder="Exam Number" required />
+                                                                        <input type="text" class="my_input" value="{{($olevel !== null) ? $olevel[1]['exam_number'] : ''}}" name="olevel[1][exam_number]" placeholder="Exam Number" required />
                                                                     </div>
                                                                 </div>
                                                                 <div class="gdlr-core-course-column gdlr-core-column-20">
@@ -188,52 +259,111 @@ $subjects = [
                                                                 </div>
                                                                 <div class="gdlr-core-course-column gdlr-core-column-40">
                                                                     <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                        <input type="text" class="my_input" value="" name="olevel[1][year]" placeholder="Year" required />
+                                                                        <input type="text" class="my_input" value="{{($olevel !== null) ? $olevel[1]['year'] : ''}}" name="olevel[1][year]" placeholder="Year" required />
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="gdlr-core-course-column gdlr-core-column-full">
                                                                     <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                    <table>
-                                                                    <thead>
-                                                                        <th class="text-center">#</th>
-                                                                        <th class="text-center">Subject</th>
-                                                                        <th class="text-center">Grade</th>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        @for($i = 1; $i<=9; $i++) <tr>
-                                                                            <td>{{$i}}</td>
-                                                                            <td>
-                                                                                <select class="gdlr-core-skin-e-content my_input2" style="width: 90%;" name="olevel[1][exams][subject][]">
-                                                                                    <option value="">Select Subject</option>
-                                                                                    @foreach($subjects as $subject)
-                                                                                    <option value="{{$subject}}">{{$subject}}</option>
+                                                                        <table>
+                                                                            <thead>
+                                                                                <th class="text-center">#</th>
+                                                                                <th class="text-center">Subject</th>
+                                                                                <th class="text-center">Grade</th>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                @if($olevel == null)
+                                                                                @for($i = 1; $i<=9; $i++) <tr>
+                                                                                    <td>{{$i}}</td>
+                                                                                    <td>
+                                                                                        <select class="gdlr-core-skin-e-content my_input2" style="width: 90%;" name="olevel[1][exams][subject][]">
+                                                                                            <option value="">Select Subject</option>
+                                                                                            @foreach($subjects as $subject)
+                                                                                            <option value="{{$subject}}">{{$subject}}</option>
+                                                                                            @endforeach
+                                                                                        </select>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <select class="gdlr-core-skin-e-content my_input2" name="olevel[1][exams][grade][]">
+                                                                                            <option value="">Select grade</option>
+                                                                                            <option value="Awaiting">Awaiting Result</option>
+                                                                                            <option value="A1">A1</option>
+                                                                                            <option value="B2">B2</option>
+                                                                                            <option value="B3">B3</option>
+                                                                                            <option value="C4">C4</option>
+                                                                                            <option value="C5">C5</option>
+                                                                                            <option value="C6">C6</option>
+                                                                                            <option value="D7">D7</option>
+                                                                                            <option value="E8">E8</option>
+                                                                                            <option value="F9">F9</option>
+                                                                                        </select>
+                                                                                    </td>
+                                                                                    </tr>
+                                                                                    @endfor
+                                                                                    @else
+                                                                                    @foreach($olevel[1]['exams']['subject'] as $key => $value)
+                                                                                    <tr>
+                                                                                        <td>{{$q++}}</td>
+                                                                                        <td>
+                                                                                            <select class="gdlr-core-skin-e-content my_input2" style="width: 90%;" name="olevel[1][exams][subject][]">
+                                                                                                <option value="">Select Subject</option>
+                                                                                                @foreach($subjects as $subject)
+                                                                                                <option value="{{$subject}}" {{$value == $subject ? 'selected' : ''}}>{{$subject}}</option>
+                                                                                                @endforeach
+                                                                                            </select>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <select class="gdlr-core-skin-e-content my_input2" name="olevel[1][exams][grade][]">
+                                                                                                <option value="">Select grade</option>
+                                                                                                <!-- <option value="Awaiting">Awaiting Result</option> -->
+                                                                                                <option value="A1" {{$olevel[1]['exams']['grade'][$key] == 'A1' ? 'selected' : ''}}>A1</option>
+                                                                                                <option value="B2" {{$olevel[1]['exams']['grade'][$key] == 'B2' ? 'selected' : ''}}>B2</option>
+                                                                                                <option value="B3" {{$olevel[1]['exams']['grade'][$key] == 'B3' ? 'selected' : ''}}>B3</option>
+                                                                                                <option value="C4" {{$olevel[1]['exams']['grade'][$key] == 'C4' ? 'selected' : ''}}>C4</option>
+                                                                                                <option value="C5" {{$olevel[1]['exams']['grade'][$key] == 'C5' ? 'selected' : ''}}>C5</option>
+                                                                                                <option value="C6" {{$olevel[1]['exams']['grade'][$key] == 'C6' ? 'selected' : ''}}>C6</option>
+                                                                                                <option value="D7" {{$olevel[1]['exams']['grade'][$key] == 'D7' ? 'selected' : ''}}>D7</option>
+                                                                                                <option value="E8" {{$olevel[1]['exams']['grade'][$key] == 'E8' ? 'selected' : ''}}>E8</option>
+                                                                                                <option value="F9" {{$olevel[1]['exams']['grade'][$key] == 'F9' ? 'selected' : ''}}>F9</option>
+                                                                                            </select>
+                                                                                        </td>
+                                                                                    </tr>
                                                                                     @endforeach
-                                                                                </select>
-                                                                            </td>
-                                                                            <td>
-                                                                                <select class="gdlr-core-skin-e-content my_input2" name="olevel[1][exams][grade][]">
-                                                                                    <option value="">Select grade</option>
-                                                                                    <!-- <option value="Awaiting">Awaiting Result</option> -->
-                                                                                    <option value="A1">A1</option>
-                                                                                    <option value="B2">B2</option>
-                                                                                    <option value="B3">B3</option>
-                                                                                    <option value="C4">C4</option>
-                                                                                    <option value="C5">C5</option>
-                                                                                    <option value="C6">C6</option>
-                                                                                    <option value="D7">D7</option>
-                                                                                    <option value="E8">E8</option>
-                                                                                    <option value="F9">F9</option>
-                                                                                </select>
-                                                                            </td>
-                                                                            </tr>
-                                                                            @endfor
-                                                                    </tbody>
-                                                                </table>
+                                                                                    @for($i = $q; $i<=9; $i++) 
+                                                                                        <tr>
+                                                                                            <td>{{$i}}</td>
+                                                                                            <td>
+                                                                                                <select class="gdlr-core-skin-e-content my_input2" style="width: 90%;" name="olevel[1][exams][subject][]">
+                                                                                                    <option value="">Select Subject</option>
+                                                                                                    @foreach($subjects as $subject)
+                                                                                                    <option value="{{$subject}}">{{$subject}}</option>
+                                                                                                    @endforeach
+                                                                                                </select>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <select class="gdlr-core-skin-e-content my_input2" name="olevel[1][exams][grade][]">
+                                                                                                    <option value="">Select grade</option>
+                                                                                                    <option value="Awaiting">Awaiting Result</option>
+                                                                                                    <option value="A1">A1</option>
+                                                                                                    <option value="B2">B2</option>
+                                                                                                    <option value="B3">B3</option>
+                                                                                                    <option value="C4">C4</option>
+                                                                                                    <option value="C5">C5</option>
+                                                                                                    <option value="C6">C6</option>
+                                                                                                    <option value="D7">D7</option>
+                                                                                                    <option value="E8">E8</option>
+                                                                                                    <option value="F9">F9</option>
+                                                                                                </select>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        @endfor
+                                                                                    @endif
+                                                                            </tbody>
+                                                                        </table>
                                                                     </div>
                                                                 </div>
 
-                                                                
+
                                                             </div>
 
                                                         </div>
@@ -244,20 +374,20 @@ $subjects = [
                                                                 <div class="gdlr-core-course-form-combobox gdlr-core-skin-e-background">
                                                                     <select class="gdlr-core-skin-e-content my_input2" name="olevel[2][exam_type]" id="exam_type_2">
                                                                         <option value="">Select exam type</option>
-                                                                        <option value="waec">WAEC</option>
-                                                                        <option value="neco">NECO</option>
-                                                                        <option value="gce">GCE</option>
-                                                                        <option value="nabteb">NABTEB</option>
+                                                                        <option value="waec" {{($olevel[2] !== null) ? ($olevel[2]['exam_type'] == 'waec') ? 'selected' : '' : ''}}>WAEC</option>
+                                                                        <option value="neco" {{($olevel[2] !== null) ? ($olevel[2]['exam_type'] == 'neco') ? 'selected' : '' : ''}}>NECO</option>
+                                                                        <option value="gce" {{($olevel[2] !== null) ? ($olevel[2]['exam_type'] == 'gce') ? 'selected' : '' : ''}}>GCE</option>
+                                                                        <option value="nabteb" {{($olevel[2] !== null) ? ($olevel[2]['exam_type'] == 'nabteb') ? 'selected' : '' : ''}}>NABTEB</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div style="display: none;" id="content_2">
+                                                            <div style="display: {{($olevel[2] !== null) ? 'block' : 'none'}};" id="content_2">
                                                                 <div class="gdlr-core-course-column gdlr-core-column-20">
                                                                     <label for="">School:</label>
                                                                 </div>
                                                                 <div class="gdlr-core-course-column gdlr-core-column-40">
                                                                     <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                        <input type="text" class="my_input" value="" name="olevel[2][school]" placeholder="Name of school" />
+                                                                        <input type="text" class="my_input" value="{{($olevel !== null) ? $olevel[2]['school'] : ''}}" name="olevel[2][school]" placeholder="Name of school" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="gdlr-core-course-column gdlr-core-column-20">
@@ -265,7 +395,7 @@ $subjects = [
                                                                 </div>
                                                                 <div class="gdlr-core-course-column gdlr-core-column-40">
                                                                     <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                        <input type="text" class="my_input" value="" name="olevel[2][exam_number]" placeholder="Exam Number" />
+                                                                        <input type="text" class="my_input" value="{{($olevel !== null) ? $olevel[1]['exam_number'] : ''}}" name="olevel[2][exam_number]" placeholder="Exam Number" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="gdlr-core-course-column gdlr-core-column-20">
@@ -273,7 +403,7 @@ $subjects = [
                                                                 </div>
                                                                 <div class="gdlr-core-course-column gdlr-core-column-40">
                                                                     <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
-                                                                        <input type="text" class="my_input" value="" name="olevel[2][year]" placeholder="Year" />
+                                                                        <input type="text" class="my_input" value="{{($olevel !== null) ? $olevel[1]['year'] : ''}}" name="olevel[2][year]" placeholder="Year" />
                                                                     </div>
                                                                 </div>
 
@@ -284,33 +414,93 @@ $subjects = [
                                                                         <th class="text-center">Grade</th>
                                                                     </thead>
                                                                     <tbody>
-                                                                        @for($i = 1; $i<=9; $i++) <tr>
-                                                                            <td>{{$i}}</td>
-                                                                            <td>
-                                                                                <select class="gdlr-core-skin-e-content my_input2" style="width: 90%;" name="olevel[2][exams][subject][]">
-                                                                                    <option value="">Select Subject</option>
-                                                                                    @foreach($subjects as $subject)
-                                                                                    <option value="{{$subject}}">{{$subject}}</option>
-                                                                                    @endforeach
-                                                                                </select>
-                                                                            </td>
-                                                                            <td>
-                                                                                <select class="gdlr-core-skin-e-content my_input2" name="olevel[2][exams][grade][]">
-                                                                                    <option value="">Select grade</option>
-                                                                                    <option value="Awaiting">Awaiting Result</option>
-                                                                                    <option value="A1">A1</option>
-                                                                                    <option value="B2">B2</option>
-                                                                                    <option value="B3">B3</option>
-                                                                                    <option value="C4">C4</option>
-                                                                                    <option value="C5">C5</option>
-                                                                                    <option value="C6">C6</option>
-                                                                                    <option value="D7">D7</option>
-                                                                                    <option value="E8">E8</option>
-                                                                                    <option value="F9">F9</option>
-                                                                                </select>
-                                                                            </td>
-                                                                            </tr>
+                                                                        @if($olevel == null)
+                                                                            @for($i = 1; $i<=9; $i++) 
+                                                                                <tr>
+                                                                                    <td>{{$i}}</td>
+                                                                                    <td>
+                                                                                        <select class="gdlr-core-skin-e-content my_input2" style="width: 90%;" name="olevel[2][exams][subject][]">
+                                                                                            <option value="">Select Subject</option>
+                                                                                            @foreach($subjects as $subject)
+                                                                                            <option value="{{$subject}}">{{$subject}}</option>
+                                                                                            @endforeach
+                                                                                        </select>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <select class="gdlr-core-skin-e-content my_input2" name="olevel[2][exams][grade][]">
+                                                                                            <option value="">Select grade</option>
+                                                                                            <option value="Awaiting">Awaiting Result</option>
+                                                                                            <option value="A1">A1</option>
+                                                                                            <option value="B2">B2</option>
+                                                                                            <option value="B3">B3</option>
+                                                                                            <option value="C4">C4</option>
+                                                                                            <option value="C5">C5</option>
+                                                                                            <option value="C6">C6</option>
+                                                                                            <option value="D7">D7</option>
+                                                                                            <option value="E8">E8</option>
+                                                                                            <option value="F9">F9</option>
+                                                                                        </select>
+                                                                                    </td>
+                                                                                </tr>
                                                                             @endfor
+                                                                        @else
+                                                                            @foreach($olevel[2]['exams']['subject'] as $key => $value)
+                                                                            <tr>
+                                                                                <td>{{$u++}}</td>
+                                                                                <td>
+                                                                                    <select class="gdlr-core-skin-e-content my_input2" style="width: 90%;" name="olevel[2][exams][subject][]">
+                                                                                        <option value="">Select Subject</option>
+                                                                                        @foreach($subjects as $subject)
+                                                                                        <option value="{{$subject}}" {{$value == $subject ? 'selected' : ''}}>{{$subject}}</option>
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <select class="gdlr-core-skin-e-content my_input2" name="olevel[2][exams][grade][]">
+                                                                                        <option value="">Select grade</option>
+                                                                                        <!-- <option value="Awaiting">Awaiting Result</option> -->
+                                                                                        <option value="A1" {{$olevel[1]['exams']['grade'][$key] == 'A1' ? 'selected' : ''}}>A1</option>
+                                                                                        <option value="B2" {{$olevel[1]['exams']['grade'][$key] == 'B2' ? 'selected' : ''}}>B2</option>
+                                                                                        <option value="B3" {{$olevel[1]['exams']['grade'][$key] == 'B3' ? 'selected' : ''}}>B3</option>
+                                                                                        <option value="C4" {{$olevel[1]['exams']['grade'][$key] == 'C4' ? 'selected' : ''}}>C4</option>
+                                                                                        <option value="C5" {{$olevel[1]['exams']['grade'][$key] == 'C5' ? 'selected' : ''}}>C5</option>
+                                                                                        <option value="C6" {{$olevel[1]['exams']['grade'][$key] == 'C6' ? 'selected' : ''}}>C6</option>
+                                                                                        <option value="D7" {{$olevel[1]['exams']['grade'][$key] == 'D7' ? 'selected' : ''}}>D7</option>
+                                                                                        <option value="E8" {{$olevel[1]['exams']['grade'][$key] == 'E8' ? 'selected' : ''}}>E8</option>
+                                                                                        <option value="F9" {{$olevel[1]['exams']['grade'][$key] == 'F9' ? 'selected' : ''}}>F9</option>
+                                                                                    </select>
+                                                                                </td>
+                                                                            </tr>
+                                                                            @endforeach
+                                                                            @for($i = $u; $i<=9; $i++) 
+                                                                                <tr>
+                                                                                    <td>{{$i}}</td>
+                                                                                    <td>
+                                                                                        <select class="gdlr-core-skin-e-content my_input2" style="width: 90%;" name="olevel[2][exams][subject][]">
+                                                                                            <option value="">Select Subject</option>
+                                                                                            @foreach($subjects as $subject)
+                                                                                            <option value="{{$subject}}">{{$subject}}</option>
+                                                                                            @endforeach
+                                                                                        </select>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <select class="gdlr-core-skin-e-content my_input2" name="olevel[2][exams][grade][]">
+                                                                                            <option value="">Select grade</option>
+                                                                                            <option value="Awaiting">Awaiting Result</option>
+                                                                                            <option value="A1">A1</option>
+                                                                                            <option value="B2">B2</option>
+                                                                                            <option value="B3">B3</option>
+                                                                                            <option value="C4">C4</option>
+                                                                                            <option value="C5">C5</option>
+                                                                                            <option value="C6">C6</option>
+                                                                                            <option value="D7">D7</option>
+                                                                                            <option value="E8">E8</option>
+                                                                                            <option value="F9">F9</option>
+                                                                                        </select>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            @endfor
+                                                                        @endif
                                                                     </tbody>
                                                                 </table>
                                                             </div>
@@ -435,14 +625,14 @@ $subjects = [
         `)
     })
 
-    $('#remInst').click(function(){
+    $('#remInst').click(function() {
         let dc = $("#body").children().length
-        if(dc > 0){
-          ct--
-          $('#body').children().last().remove()
+        if (dc > 0) {
+            ct--
+            $('#body').children().last().remove()
         }
-        
-        
+
+
     })
 </script>
 

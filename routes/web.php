@@ -601,6 +601,7 @@ Route::group(['namespace' => 'student'], function () {
 Route::post('/get_courses_dept_level', 'CourseController@get_courses_dept_level');
 Route::get('/', 'HomeController@homepage');
 Route::get('/home', 'HomeController@homepage2');
+Route::get('/pg', 'HomeController@pg');
 Route::get('/post-graduate', 'HomeController@pghome');
 Route::get('/portal-logout', 'HomeController@portal_logout');
 

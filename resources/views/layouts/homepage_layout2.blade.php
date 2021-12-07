@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="/assets/vendor/venobox/venobox.css" />
     <link rel="stylesheet" href="/assets/plugins/templates/tz_varaham/css/compiled-d391d77ac4a8028bd4649318fd082f73.css@v=2.5.2.css">
     <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" href="/assets/css/post-grad.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <style>
@@ -460,7 +461,7 @@
                                     <li class="menu-item menu-item-home menu-item-has-children kingster-normal-menu"><a href="" class="sf-with-ul-pre sf-with-ul">Academics</a>
                                         <ul class="sub-menu" style="display: none;">
                                             <li class="menu-item menu-item-home" data-size="60"><a href="student-portal">Undergraduate</a></li>
-                                            <li class="menu-item" data-size="60"><a href="post-graduate.html">Post-graduate</a></li>
+                                            <li class="menu-item" data-size="60"><a href="/post-graduate">Post-graduate</a></li>
                                             <li class="menu-item" data-size="60"><a href="#">Institute of Continuing Education Programme (ICEP)</a></li>
                                             <li class="menu-item" data-size="60"><a href="#">JUPEB</a></li>
                                             <li class="menu-item" data-size="60"><a href="#">Pre-Degree</a></li>
@@ -672,6 +673,28 @@
     <script src='/assets/vendor/jquery/ui/effect.min.js'></script>
     <script src='/assets/js/plugins.min.js'></script>
     <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/script.js"></script>
+
+  <script src="/assets/plugins/media/jollyany/assets/js/uikit.min.js@v=2.5.2.js"></script>
+  <script src="/assets/plugins/media/astroid/js/script.js@v=2.5.2.js"></script>
+  <script src="/assets/js/plugins.min.js"></script>
+
+
+  <script src="/assets/vendor/jquery/ui/effect.min.js"></script>
+  <script type="text/javascript">
+    var gdlr_core_pbf = {
+      admin: "",
+      video: {
+        width: "640",
+        height: "360",
+      },
+      ajax_url:
+        "https:\/\/demo.goodlayers.com\/kingster\/wp-admin\/admin-ajax.php",
+    };
+  </script>
+
+  <script src="/assets/plugins/goodlayers-core/plugins/combine/script.js"></script>
+  <script src="/assets/plugins/goodlayers-core/include/js/page-builder.js"></script>
 
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
 
