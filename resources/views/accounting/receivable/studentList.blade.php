@@ -128,13 +128,13 @@
               <div class="x_panel">
                 <div class="x_title">
 
-                  <h4 class="text-primary">Total {{ count($school_fees) }}</h4>
+                  <h4 class="text-primary">Total Verification {{ count($school_fees) }}</h4>
                   <div class="clearfix"></div>
                   <!--<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target=".bd-example-modal-lg" style="margin-top: 15px">+ Add Courses</button>-->
                 </div>
                 @include('homepage.flash_message')
                 <div class="row table-responsive">
-                  <table id="datatable-buttons" class="table table-striped table-bordered">
+                  <table id="datatable-buttons" class="col-lg-12 table table-striped table-bordered">
                     <thead>
                       <tr>
                         <th>Mat Number</th>
@@ -302,7 +302,7 @@
               <!-- </div> -->
               <div class="row">
 
-                <table id="datatable-buttons" class="table table-striped table-bordered">
+                <table id="datatable-buttons" class="col-lg-12 table table-striped table-bordered">
                   <thead>
                     <tr>
 
