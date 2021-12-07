@@ -380,7 +380,7 @@
                                                     </div>
                                                     <br>
                                                     @foreach($olevel as $single)
-                                                    <div class="gdlr-core-course-column gdlr-core-column-30">
+                                                    <div class="gdlr-core-course-column gdlr-core-column-{{count($olevel) > 1 ? '30' : '50'}}">
                                                         
                                                         @if($single['exam_type'] !== null)
                                                         <div class="gdlr-core-course-column gdlr-core-column-50">
@@ -455,7 +455,7 @@
                                                     </div>
                                                     @endforeach
 
-                                                    <div class="gdlr-core-course-column gdlr-core-column-full">
+                                                    <div class="gdlr-core-course-column gdlr-core-column-50">
                                                         <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
                                                             <label for="">Abstract: </label>
                                                             <div>{{$std->supporting_information}}</div>
