@@ -176,15 +176,6 @@
                         @php
                         $total+=$item->amount;
                         @endphp
-                        <!-- <td>
-                    @permission('receivableInvoice-read')
-                    <a href="{{ route('receivable.show',$item->id) }}" class="btn btn-info"> <i class="fas fa-print"></i> Invoice</a>
-                    @endpermission
-                    @permission('receivableReceipt-edit')
-                    <a href="{{ route('ledger.create',['receivable_id'=>$item->id,'student_id'=>$item->student_id ]) }}" class="btn btn-danger">
-                      <i class="fas fa-money"></i> Receipt</a>
-                    @endpermission
-                  </td> -->
                       </tr>
                       @endforeach
                       <tr>
@@ -507,22 +498,6 @@
         },
       ],
       responsive: true,
-      "columns": [{
-          "width": "5%"
-        },
-        null,
-        null,
-        {
-          "width": "1%"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-      ]
     });
     //datatables code
     // var handleDataTableButtons = function() {
