@@ -53,7 +53,7 @@
                                                 <button type="button" class="btn btn-primary" id="show_receipt">Show Receipt</button>
                                                 @endif
                                                 <button type="button" class="btn btn-primary submit_form">Print Acknowledgement Slip</button>
-                                                <!-- <a class="btn btn-primary" style="color: white;" id="app_dash" href="/student-portal">Go to your application dashboard</a> -->
+                                                <a class="btn btn-primary" style="color: white;" id="app_dash" href="/pg-application-step3/{{base64_encode($std->email)}}">Edit Application</a>
                                                 <button type="button" class="btn btn-primary">
                                                     <a style="color: white;" href="/home/logout">Logout</a>
                                                 </button>
