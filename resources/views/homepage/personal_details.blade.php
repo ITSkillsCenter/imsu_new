@@ -354,9 +354,7 @@ $subjects = [
                                                                     <select class="gdlr-core-skin-e-content my_input2" name="faculty_id" id="faculty_id" required>
                                                                         <option value="">Select Faculty</option>
                                                                         @foreach($faculties as $faculty)
-                                                                        @if($std->faculty_id !== null)
                                                                         <option value="{{$faculty->id}}" {{$std->faculty_id == $faculty->id? 'selected' : ''}}>{{$faculty->name}}</option>
-                                                                        @endif
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
