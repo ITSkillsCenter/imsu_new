@@ -181,10 +181,10 @@
                         <h2>Imo State University</h2>
                         <p>It is with great pleasure that I welcome you to Imo State University (IMSU). <br>
                             IMSU was established in 1981 through law No. 4 passed by the Imo State House of Assembly. Established with the vision of pursuing the advancement of learning and academic excellence, the university has been unrelenting in the pursuit of its mission of becoming a citadel of learning, a community with the trademark of excellence in teaching, research and service to humanity, a catalyst as well as an agent for development..</p>
-                        <a href="about.html" class="default-btn">
+                        <!-- <a href="about.html" class="default-btn">
                             Find out more
                             <i class="icofont-arrow-right"></i>
-                        </a>
+                        </a> -->
                     </div>
                 </div>
             </div>
@@ -340,8 +340,8 @@
                                         </div>
                                         <h3 class="headlne"><a href="/article/{{$article->id}}/{{str_slug($article->heading, '-')}}">{{$article->heading}} </a> </h3>
                                         <p class="pb-0 mb-0 news-details">
-                                            {{trimString($article->content, 300)}}...
-                                            <a href="/article/{{$article->id}}/{{str_slug($article->heading, '-')}}" class="rm">Continue reading</a>
+                                            {!!trimString($article->content, 250)!!}...
+                                            <a href="/article/{{$article->id}}/{{str_slug($article->heading, '-')}}" class="rm_">Continue reading</a>
                                         </p>
                                     </div>
                                 </div>
@@ -366,12 +366,14 @@
     <section class="events-area events-area-style-two py-4">
         <div class="container">
             <div class="row align-items-center">
+                @if(count($events) > 0)
                 <div class="col-lg-5">
                     <div class="imsu-recent_event">
+                        @if($event_latest !== null)
                         <div class="title">
                             <h2 class="text-white text-underline">:: Recent Event</h2>
                         </div>
-                        @if($event_latest !== null)
+                        
                         @php
                         if($event_latest->image !== null){
                         $img = '/uploads/images/articles/'.$event_latest->image;
@@ -427,6 +429,9 @@
                         @endif
                     </div>
                 </div>
+                @else 
+                <h2>No Upcoming events</h2>
+                @endif
             </div>
         </div>
     </section>
@@ -479,7 +484,7 @@
 
                 <div class="col-lg-6">
                     <div class="newsletter d-flex justify-content-center align-items-center text-center">
-                        <div class="newsletter-content">
+                        <div class="newsletter-content" style="padding: 0 20px;">
                             <div class="icon-box">
                                 <img src="/assets/img/icons/icon-envelope.png" alt="" class="img-fluid">
                             </div>
@@ -647,8 +652,8 @@
 
 
 </main>
-<div class="" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; top: 5%; left:35%; z-index:1000; position: absolute; margin: 0 auto;">
-        <div class="modal-dialog" style="border: 0;" role="document">
+<div class="" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; top: 4%; width:100%; z-index:1000; position: absolute; margin: 0 auto;">
+        <div class="modal-dialog modal-lg" style="border: 0;" role="document">
             <div class="modal-content" style="border: 0;">
                 <div class="modal-header text-white" style="display:flex; justify-content:space-between; background: linear-gradient(90deg,rgb(17, 182, 122) 0%, rgb(0, 148, 68) 100%);">
                     <p style="font-weight:bold; color:white">News Update!</p>
@@ -665,8 +670,8 @@
                   </p> -->
                         <br>
                         <div class="row mx-auto">
-                            <a class="col-md-6" href="https://imsu.edu.ng/article/31/imo-state-university-school-of-post-graduate-studies-admission"><span class="btn btn-primary">Read More</span></a>
-                            <a class="col-md-6" href="/admission-application#pg"><span class="btn btn-primary">Apply now</span></a>
+                            <a class="col-md-6" href="https://imsu.edu.ng/article/31/imo-state-university-school-of-post-graduate-studies-admission"><span class="btn btn-brimary" style="background-color: green; color:white; border:none;">Read More</span></a>
+                            <a class="col-md-6" href="/admission-application#pg"><span class="btn btn-primary" style="background-color: green; color:white; border:none;">Apply now</span></a>
                         </div>
                     </div>
                 </div>
