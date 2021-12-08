@@ -290,8 +290,10 @@
                             <h2>Our Faculties</h2>
                         </div>
                         <ul class="list-unstyled">
-                            <li><span class="bx bxs-right-down-arrow-circle"></span><a href="">Faculty of Agriculture & Veterinary Medicine</a> </li>
-                            <li><span class="bx bxs-right-down-arrow-circle"></span><a href="">Faculty of Basic Clinical</a> </li>
+                            @foreach($faculties as $faculty)
+                            <li><span class="bx bxs-right-down-arrow-circle"></span><a href="/faculty/{{$faculty->slug}}">{{$faculty->name}}</a> </li>
+                            @endforeach
+                            <!-- <li><span class="bx bxs-right-down-arrow-circle"></span><a href="">Faculty of Basic Clinical</a> </li>
                             <li><span class="bx bxs-right-down-arrow-circle"></span><a href="">Faculty of Basic Medical Sciences</a></li>
                             <li><span class="bx bxs-right-down-arrow-circle"></span><a href="">Faculty of Biological Sciences</a></li>
                             <li><span class="bx bxs-right-down-arrow-circle"></span><a href="">Faculty of Business Administration (Management Sciences)</a></li>
@@ -303,7 +305,7 @@
                             <li><span class="bx bxs-right-down-arrow-circle"></span><a href="">Faculty of Humanities</a></li>
                             <li><span class="bx bxs-right-down-arrow-circle"></span><a href="">Faculty of Law</a></li>
                             <li><span class="bx bxs-right-down-arrow-circle"></span><a href="">Faculty of Physical Sciences</a></li>
-                            <li><span class="bx bxs-right-down-arrow-circle"></span><a href="">Faculty of Social Sciences</a></li>
+                            <li><span class="bx bxs-right-down-arrow-circle"></span><a href="">Faculty of Social Sciences</a></li> -->
                         </ul>
                     </div>
                 </div>
