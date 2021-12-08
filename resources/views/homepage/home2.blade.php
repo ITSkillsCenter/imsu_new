@@ -338,9 +338,9 @@
                                             <div><i class="icofont-calendar">&nbsp; </i> {{date("F j, Y", strtotime($article->published_at))}}</div>
                                             <div class="news-cat">{{$article->category->name}}</div>
                                         </div>
-                                        <h3 class="headlne"><a href="/article/{{$article->id}}/{{str_slug($article->heading, '-')}}">{{$article->heading}} </a> </h3>
+                                        <h3 class="headlne"><a href="/article/{{$article->id}}/{{str_slug($article->heading, '-')}}">{{ucfirst($article->heading)}} </a> </h3>
                                         <p class="pb-0 mb-0 news-details">
-                                            {!!trimString($article->content, 250)!!}...
+                                            {!!trimString($article->content, 200)!!}...
                                             <a href="/article/{{$article->id}}/{{str_slug($article->heading, '-')}}" class="rm_">Continue reading</a>
                                         </p>
                                     </div>
@@ -363,10 +363,11 @@
     <!-- End UPdates -->
 
     <!-- ============== Events Area =================-->
+    @if(count($events) > 0)
     <section class="events-area events-area-style-two py-4">
         <div class="container">
             <div class="row align-items-center">
-                @if(count($events) > 0)
+               
                 <div class="col-lg-5">
                     <div class="imsu-recent_event">
                         @if($event_latest !== null)
@@ -429,12 +430,10 @@
                         @endif
                     </div>
                 </div>
-                @else 
-                <h2>No Upcoming events</h2>
-                @endif
             </div>
         </div>
     </section>
+    @endif
     <!-- End Events Area -->
 
     <!-- ================== Download & Newsletter =======================  -->
@@ -483,7 +482,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="newsletter d-flex justify-content-center align-items-center text-center">
+                    <div class="newsletter d-flex justify-content-center align-items-center text-center" style="background:white;">
                         <div class="newsletter-content" style="padding: 0 20px;">
                             <div class="icon-box">
                                 <img src="/assets/img/icons/icon-envelope.png" alt="" class="img-fluid">
