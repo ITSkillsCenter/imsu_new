@@ -83,7 +83,7 @@
             <div class="card-header">News and updates</div>
             <div class="card-body">
                 <div>
-                    <b>•    The IMSU Post-UTME screening commences from the 14th of December to the 17th of DEcember 2021. Click <a href="https://imsu.edu.ng/article/32/imo-state-university-owerri-2021-post-utme-schedule" target="_blank">here</a> to see the schedule 
+                    <b>•    The IMSU Post-UTME screening commences from the 14th of December to the 17th of December 2021. Click <a href="https://imsu.edu.ng/article/32/imo-state-university-owerri-2021-post-utme-schedule" target="_blank">here</a> to see the schedule 
                 </div><br>
                 <div>
                     <b>•	You can always log into your account using your JAMB Reg number and password to check news and updates regarding your application and admission from the admission portal 
