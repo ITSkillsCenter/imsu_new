@@ -340,7 +340,7 @@
                                         </div>
                                         <h3 class="headlne"><a href="/article/{{$article->id}}/{{str_slug($article->heading, '-')}}">{{ucfirst($article->heading)}} </a> </h3>
                                         <p class="pb-0 mb-0 news-details">
-                                            {!!trimString($article->content, 200)!!}...
+                                            {!!trimString($article->content, 150)!!}...
                                             <a href="/article/{{$article->id}}/{{str_slug($article->heading, '-')}}" class="rm_">Continue reading</a>
                                         </p>
                                     </div>
