@@ -537,8 +537,8 @@
                                     <p>
                                         <span class="gdlr-core-space-shortcode" id="span_1dd7_12"></span>
                                         <br />
-                                        <a id="a_1dd7_8" href="#">
-                                            <span class="__cf_email__" data-cfemail="b1d8dfd7def1d8dcc2c49fd4d5c49fdfd6"><a href="mailto:info@imsu.edu.ng"><i class="bx bx-envelope-open"></i> info@imsu.edu.ng</a></span></a>
+                                        
+                                        <span class="__cf_email__" data-cfemail="b1d8dfd7def1d8dcc2c49fd4d5c49fdfd6"><a href="mailto:info@imsu.edu.ng"><i class="bx bx-envelope-open"></i> info@imsu.edu.ng</a></span>
                                     </p>
                                     <div class="gdlr-core-divider-item gdlr-core-divider-item-normal gdlr-core-left-align">
                                         <div class="gdlr-core-divider-line gdlr-core-skin-divider" id="div_1dd7_111"></div>
