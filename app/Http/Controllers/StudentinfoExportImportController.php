@@ -341,7 +341,7 @@ class StudentinfoExportImportController extends Controller
                 // ->get()->keyBy('application_number');
                 // dd($applicants);
 
-                $applicants = Applicant::where(['type' => $request->type, 'year' => $request->year])->get();
+                // $applicants = Applicant::where(['type' => $request->type, 'year' => $request->year])->get();
                 $type = $request->type;
                 $year = $request->year;
                 return view('student.jamb_students', compact('applicants', 'year', 'type', 'bydept'));
