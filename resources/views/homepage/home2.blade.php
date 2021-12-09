@@ -86,6 +86,24 @@
                                                             </div>
                                                         </div>
                                                     </li>
+
+                                                    <li class="el-item item-2 js-fullheight">
+                                                        <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-top-left" style="-webkit-animation-duration: 5s; animation-duration: 5s;">
+                                                            <img style="filter: brightness(80%);" class="ui-image" src="/assets/img/banner/banner4.jpg" alt="Imo State University" uk-cover>
+                                                        </div>
+                                                        <div class="uk-position-cover" style="background: -webkit-linear-gradient(45deg, rgba(13, 71, 161, 0.71) 0%, rgba(15, 26, 44, 0.6) 43%) transparent;background: linear-gradient(45deg, rgba(13, 71, 161, 0.71) 0%, rgba(15, 26, 44, 0.6) 43%) transparent;">
+                                                        </div>
+                                                        <div class="uk-position-cover uk-flex uk-flex-left uk-flex-middle uk-container uk-container-large">
+                                                            <div class="uk-panel uk-width-2xlarge uk-light uk-margin-remove-first-child slider_text">
+                                                                <h3 class="ui-title uk-margin-remove-bottom uk-heading-medium uk-margin-top" style="font-family: 'Playfair Display', sans-serif; font-weight: 700;">Imo State University, Owerri.</h3>
+                                                                <p data-animation="animated fadeInRight" style="color: #c1dcec; font-weight: 600 !important; font-family: 'Poppins', sans-serif;">
+                                                                Imo state university, Owerri, Nigeria, an innovation ecosystem dedicated to producing problem solvers.
+                                                                </p>
+                                                                <div class="uk-margin-large-top"><a class="uk-button  uk-button-large uk-button-rounded default-btn" href="#" uk-scroll>Learn More</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
                                                 </ul>
                                                 <div class="uk-hidden-hover uk-hidden-touch uk-visible@m uk-light">
                                                     <a class="ui-slidenav  uk-position-medium uk-slidenav-large uk-position-center-left" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
@@ -655,6 +673,14 @@
                         <div class="gallery-item position-relative">
                             <a href="/assets/img/gallery/gallery-15.JPG" class="venobox card-img" data-gall="gallery-item">
                                 <img src="/assets/img/gallery/gallery-15.JPG" alt="" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <div class="gallery-item position-relative">
+                            <a href="/assets/img/gallery/gallery-16.jpg" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-16.jpg" alt="" class="img-fluid" />
                             </a>
                         </div>
                     </div>
