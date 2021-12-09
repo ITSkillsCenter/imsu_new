@@ -97,7 +97,7 @@
                                                             <div class="uk-panel uk-width-2xlarge uk-light uk-margin-remove-first-child slider_text">
                                                                 <h3 class="ui-title uk-margin-remove-bottom uk-heading-medium uk-margin-top" style="font-family: 'Playfair Display', sans-serif; font-weight: 700;">Imo State University, Owerri.</h3>
                                                                 <p data-animation="animated fadeInRight" style="color: #c1dcec; font-weight: 600 !important; font-family: 'Poppins', sans-serif;">
-                                                                Imo state university, Owerri, Nigeria, an innovation ecosystem dedicated to producing problem solvers.
+                                                                Imo state university, Owerri, Nigeria ...an innovation ecosystem dedicated to producing problem solvers.
                                                                 </p>
                                                                 <div class="uk-margin-large-top"><a class="uk-button  uk-button-large uk-button-rounded default-btn" href="#" uk-scroll>Learn More</a>
                                                                 </div>
