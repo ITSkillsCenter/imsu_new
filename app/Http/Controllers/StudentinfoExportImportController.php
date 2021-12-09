@@ -352,8 +352,12 @@ class StudentinfoExportImportController extends Controller
     }
 
     public function viewjamb_bydept(Request $request, $year, $type, $id){
-        $applicants = Applicant::where(['type' => $type, 'year' => $year, 'course' => base64_decode($id)])->get();
-        $tot = Applicant::where(['type' => $type, 'year' => $year, 'course' => base64_decode($id)])->count();
+        // $applicants = Applicant::where(['type' => $type, 'year' => $year, 'course' => base64_decode($id)])->get();
+        $applicants = Applicant::join('application_payments', 'applicants.application_number','application_payments.application_number')
+        ->where(['type' => $request->type, 'year' => $request->year, 'course' => base64_decode($id), 'application_payments.status' => 'PAID'])
+        ->distinct('applicants.application_number')->get()->keyBy('application_number');
+        
+        $tot = count($applicants);
         $msg = base64_decode($id);
         return view('student.jamb_students', compact('applicants', 'year', 'type', 'bydept', 'msg', 'tot'));
     }
