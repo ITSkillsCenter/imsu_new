@@ -335,7 +335,7 @@ class StudentinfoExportImportController extends Controller
                 });
                 $applicants = Applicant::join('application_payments', 'applicants.application_number','application_payments.application_number')
                 ->where(['mode_of_admission' => 'Direct Entry', 'year' => $request->year, 'application_payments.status' => 'PAID'])
-                ->distinct('applicants.application_number')->get()->keyBy('application_number');
+                ->groupBy('applicants.application_number')->get();
                 $type = $request->type;
                 $year = $request->year;
                 return view('student.jamb_students', compact('applicants', 'year', 'type', 'bydept'));
@@ -343,9 +343,14 @@ class StudentinfoExportImportController extends Controller
                 $bydept = Applicant::where(['applicants.type' => $request->type, 'year' => $request->year])->get()->groupBy('course')->map(function($values) {
                     return $values->count();
                 });
-                $applicants = Applicant::join('application_payments', 'applicants.application_number','application_payments.application_number')
+                // $applicants = Applicant::join('application_payments', 'applicants.application_number','application_payments.application_number')
+                // ->where(['mode_of_admission' => 'UTME', 'year' => $request->year, 'application_payments.status' => 'PAID'])
+                // ->groupBy('applicants.application_number')->get();
+
+                $applicants = Applicant::select('applicants.*', 'application_payments.*')->join('application_payments', 'applicants.application_number','application_payments.application_number')
                 ->where(['mode_of_admission' => 'UTME', 'year' => $request->year, 'application_payments.status' => 'PAID'])
-                ->distinct('applicants.application_number')->get()->keyBy('application_number');
+                ->groupBy('applicants.application_number')->get();
+
                 // $applicants = ApplicationFee::where(['status' => 'PAID'])
                 // ->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'pms_id', 'status', 'created_at', 'updated_at')
                 // ->get()->keyBy('application_number');
@@ -365,7 +370,7 @@ class StudentinfoExportImportController extends Controller
         // $applicants = Applicant::where(['type' => $type, 'year' => $year, 'course' => base64_decode($id)])->get();
         $applicants = Applicant::join('application_payments', 'applicants.application_number','application_payments.application_number')
         ->where(['type' => $request->type, 'year' => $request->year, 'course' => base64_decode($id), 'application_payments.status' => 'PAID'])
-        ->distinct('applicants.application_number')->get()->keyBy('application_number');
+        ->groupBy('applicants.application_number')->get();
         
         $tot = count($applicants);
         $msg = base64_decode($id);
