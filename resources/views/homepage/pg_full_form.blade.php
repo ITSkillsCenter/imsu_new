@@ -151,7 +151,7 @@
                                                 <div class="gdlr-core-pbf-column gdlr-core-column-full">
                                                     <h5 class="gdlr-core-course-column gdlr-core-column-full" style="border-bottom: 3px solid black; text-align:center">Basic Information</h5>
                                                     <br>
-                                                    <div class="gdlr-core-course-column gdlr-core-column-30">
+                                                    <div class="gdlr-core-course-column gdlr-core-column-40">
                                                         <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id stylo">
                                                             <label for="">Full Name: </label>
                                                             <p>{{ucwords($std->first_name . ' ' . $std->last_name)}}</p>
@@ -234,7 +234,7 @@
                                                     </div>
 
 
-                                                    <div class="gdlr-core-course-column gdlr-core-column-30" style="min-height: 47vh; display: flex; align-items: center;">
+                                                    <div class="gdlr-core-course-column gdlr-core-column-20" style="min-height: 47vh; display: flex; align-items: center;">
                                                         <img class="gdlr-core-course-column" src="/uploads/postgraduate/{{$std->passport}}" alt="">
                                                     </div>
 
