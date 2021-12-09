@@ -52,7 +52,7 @@
                                                 @if($check !== null)
                                                 <button type="button" class="btn btn-primary" id="show_receipt">Show Receipt</button>
                                                 @endif
-                                                <button type="button" class="btn btn-primary submit_forms" onclick="printDiv('preview_exam_pass')">Print Acknowledgement Slip</button>
+                                                <button type="button" class="btn btn-primary submit_form">Print Acknowledgement Slip</button>
                                                 <a class="btn btn-primary" style="color: white;" id="app_dash" href="/pg-application-step3/{{base64_encode($std->email)}}">Edit Application</a>
                                                 <button type="button" class="btn btn-primary">
                                                     <a style="color: white;" href="/home/logout">Logout</a>
@@ -469,7 +469,7 @@
                                                         </div>
                                                     </div> -->
 
-                                                    <br><br>
+                                                    <br><br><br><br>
 
                                                     <div class="gdlr-core-course-column gdlr-core-column-full">
                                                         <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
