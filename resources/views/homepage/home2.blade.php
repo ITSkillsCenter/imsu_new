@@ -181,10 +181,10 @@
                         <h2>Imo State University</h2>
                         <p>It is with great pleasure that I welcome you to Imo State University (IMSU). <br>
                             IMSU was established in 1981 through law No. 4 passed by the Imo State House of Assembly. Established with the vision of pursuing the advancement of learning and academic excellence, the university has been unrelenting in the pursuit of its mission of becoming a citadel of learning, a community with the trademark of excellence in teaching, research and service to humanity, a catalyst as well as an agent for development..</p>
-                        <!-- <a href="about.html" class="default-btn">
+                        <a href="#" class="default-btn">
                             Find out more
                             <i class="icofont-arrow-right"></i>
-                        </a> -->
+                        </a>
                     </div>
                 </div>
             </div>

@@ -40,7 +40,7 @@
       @endif
       @if($applicants)
       @if($msg)
-      <h3>{{ ucwords($type). " Applicants found in " . $year}}  <span>{{ isset($msg) ? 'in '. $msg : ''}}</span></h3>
+      <h3>{{ ucwords($type). " Applicants found in " . $year}}  <span>{{ isset($msg) ? 'in '. $msg . ' (Total ' . $tot . ')' : ''}}</span></h3>
       @else
       <h3>{{ ucwords($type) . " Applicants found in " . $year }}</h3>
       @endif
