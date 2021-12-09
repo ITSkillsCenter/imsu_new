@@ -23,7 +23,7 @@
     }
 
     table tr td {
-        padding: 5px 0px !important;
+        padding: 0px !important;
     }
 </style>
 <div class="gdlr-core-page-builder-body">
@@ -110,9 +110,9 @@
                                                         <div class="gdlr-core-course-column gdlr-core-column-full">
                                                             <table>
                                                                 <thead>
-                                                                    <th style="text-align: center;">S/N</th>
-                                                                    <th style="text-align: center;">Fee Name</th>
-                                                                    <th style="text-align: center;">Amount</th>
+                                                                    <th style="padding:0px; text-align: center;">S/N</th>
+                                                                    <th style="padding:0px; text-align: center;">Fee Name</th>
+                                                                    <th style="padding:0px; text-align: center;">Amount</th>
                                                                 </thead>
                                                                 <tbody>
                                                                     <tr>
@@ -322,11 +322,11 @@
                                                     <div class="gdlr-core-course-column gdlr-core-column-full">
                                                         <table>
                                                             <thead>
-                                                                <th style="text-align: center;">INSTITUTIONS</th>
-                                                                <th style="text-align: center;">QUALIFICATIONS</th>
-                                                                <th style="text-align: center;">CLASS OF DEGREE</th>
-                                                                <th style="text-align: center;">DISCIPLINE</th>
-                                                                <th style="text-align: center;">YEAR</th>
+                                                                <th style="padding:0px; text-align: center;">INSTITUTIONS</th>
+                                                                <th style="padding:0px; text-align: center;">QUALIFICATIONS</th>
+                                                                <th style="padding:0px; text-align: center;">CLASS OF DEGREE</th>
+                                                                <th style="padding:0px; text-align: center;">DISCIPLINE</th>
+                                                                <th style="padding:0px; text-align: center;">YEAR</th>
                                                             </thead>
                                                             <tbody>
                                                                 @foreach($prev as $single)
@@ -345,10 +345,10 @@
                                                     <div class="gdlr-core-course-column gdlr-core-column-full">
                                                         <table>
                                                             <thead>
-                                                                <th style="text-align: center;">Referee</th>
-                                                                <th style="text-align: center;">Address</th>
-                                                                <th style="text-align: center;">Mobile No.</th>
-                                                                <th style="text-align: center;">Email</th>
+                                                                <th style="padding:0px; text-align: center;">Referee</th>
+                                                                <th style="padding:0px; text-align: center;">Address</th>
+                                                                <th style="padding:0px; text-align: center;">Mobile No.</th>
+                                                                <th style="padding:0px; text-align: center;">Email</th>
                                                             </thead>
                                                             <tbody>
                                                                 @if($first_referee !== null)
@@ -378,8 +378,7 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                    <br>
-                                                    <br><br>
+                                                    <br><br><br>
                                                     @foreach($olevel as $single)
                                                     <div class="gdlr-core-course-column gdlr-core-column-{{count($olevel) > 1 ? '30' : 'full'}}">
                                                         
@@ -387,7 +386,7 @@
                                                         <div class="gdlr-core-course-column gdlr-core-column-50">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for=""></label>
-                                                                <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
+                                                                <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id" style="padding-top: 10px;">
                                                                     <p>O'level {{$ol++}}</p>
                                                                 </div>
                                                             </div>
@@ -427,10 +426,10 @@
 
 
                                                         <div class="gdlr-core-course-column gdlr-core-column-full">
-                                                            <table style="text-align: left;">
+                                                            <table style="text-align: left; margin-bottom:0px;">
                                                                 <thead>
-                                                                    <th>Subject</th>
-                                                                    <th>Grade</th>
+                                                                    <th style="padding:0px;">Subject</th>
+                                                                    <th style="padding:0px;">Grade</th>
                                                                 </thead>
                                                                 <tbody>
                                                                 @foreach($single['exams']['subject'] as $key => $value)
@@ -445,34 +444,34 @@
                                                             </table>
                                                         </div>
                                                         @endif
-                                                        <div class="gdlr-core-course-column gdlr-core-column-10">
+                                                        <br>
+                                                        <!-- <div class="gdlr-core-course-column gdlr-core-column-10">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">&nbsp;</label>
                                                                 <p>&nbsp;</p>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                         
                                                         
                                                     </div>
                                                     @endforeach
 
-                                                    <div class="gdlr-core-course-column gdlr-core-column-50">
+                                                    <div class="gdlr-core-course-column gdlr-core-column-60">
                                                         <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
                                                             <label for="">Abstract: </label>
-                                                            <div>{{$std->supporting_information}}</div>
-                                                            <div style="min-height: 50vh;"></div>
+                                                            <div style="min-height: 70vh;">{{$std->supporting_information}}</div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="gdlr-core-course-column gdlr-core-column-10">
+                                                    <!-- <div class="gdlr-core-course-column gdlr-core-column-10">
                                                         <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
                                                             &nbsp;
                                                         </div>
-                                                    </div>
+                                                    </div> -->
 
                                                     <br><br>
 
-                                                    <div class="gdlr-core-course-column gdlr-core-column-50">
+                                                    <div class="gdlr-core-course-column gdlr-core-column-full">
                                                         <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
                                                             <label style="text-align: center;" for="">Section B (For official use only)</label>
                                                             <div>Recommendations of the departmental postgraduate committee</div>
@@ -483,7 +482,7 @@
                                                                 d) Name of supervisor(s) (if recommended) <span style="width: 20em;display: inline-block; height: 1px;background-color: #4b4b4d;"></span> <br>
                                                                 e) Head of department's name <span style="width: 20em;display: inline-block; height: 1px;background-color: #4b4b4d;"></span> <br>
                                                                 Signature <span style="width: 20em;display: inline-block; height: 1px;background-color: #4b4b4d;"></span> 
-                                                                Date <span style="width: 20em;display: inline-block; height: 1px;background-color: #4b4b4d;"></span> 
+                                                                Date <span style="width: 15em;display: inline-block; height: 1px;background-color: #4b4b4d;"></span> 
                                                             </div>
                                                             <br>
                                                             <div>Recommendations of the faculty postgraduate committee</div>
@@ -492,7 +491,7 @@
                                                                 b) Comments <span style="width: 20em;display: inline-block; height: 1px;background-color: #4b4b4d;"></span> <br>
                                                                 c) Dean's name <span style="width: 20em;display: inline-block; height: 1px;background-color: #4b4b4d;"></span> <br>
                                                                 Signature <span style="width: 20em;display: inline-block; height: 1px;background-color: #4b4b4d;"></span> 
-                                                                Date <span style="width: 20em;display: inline-block; height: 1px;background-color: #4b4b4d;"></span> 
+                                                                Date <span style="width: 15em;display: inline-block; height: 1px;background-color: #4b4b4d;"></span> 
                                                             </div>
                                                             <br>
                                                             <div>Decision of school of postgraduate studies</div>
@@ -500,7 +499,7 @@
                                                                 a) Application recommended for approval (Yes/No) <span style="width: 20em;display: inline-block; height: 1px;background-color: #4b4b4d;"></span> <br>
                                                                 b) Comments (if any)<span style="width: 20em;display: inline-block; height: 1px;background-color: #4b4b4d;"></span> <br>
                                                                 c)Signature <span style="width: 20em;display: inline-block; height: 1px;background-color: #4b4b4d;"></span> 
-                                                                Date <span style="width: 20em;display: inline-block; height: 1px;background-color: #4b4b4d;"></span> 
+                                                                Date <span style="width: 15em;display: inline-block; height: 1px;background-color: #4b4b4d;"></span> 
                                                             </div>
                                                         </div>
                                                     </div>
@@ -994,10 +993,10 @@
             filename: 'Application_fee_receipt.pdf',
             image: {
                 type: 'jpeg',
-                quality: 0.98
+                quality: 1
             },
             html2canvas: {
-                scale: 2
+                scale: 1
             },
         };
         html2pdf(element, opt)

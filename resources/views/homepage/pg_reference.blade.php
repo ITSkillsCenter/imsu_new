@@ -95,11 +95,11 @@ $subjects = [
                                                             </div>
                                                         </div>
 
-                                                        @php 
-                                                            $first_ref = json_decode($std->first_referee, true);
-                                                            $second_ref = json_decode($std->second_referee, true);
-                                                            $third_ref = json_decode($std->third_referee, true);
-                                                            $nok = json_decode($std->next_of_kin, true);
+                                                        @php
+                                                        $first_ref = json_decode($std->first_referee, true);
+                                                        $second_ref = json_decode($std->second_referee, true);
+                                                        $third_ref = json_decode($std->third_referee, true);
+                                                        $nok = json_decode($std->next_of_kin, true);
                                                         @endphp
 
                                                         <div class="gdlr-core-title-item-title-wrap clearfix">
@@ -254,14 +254,14 @@ $subjects = [
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="" class="gdlr-core-column-full">
                                                                     Please write a statement in support of your application. We will not be able to make a decision on your application without it.
-                                                                    <br> Among the things you may wish to include are: 
-                                                                    <br> i. why you are applying for this course 
-                                                                    <br> ii. how your previous education and experience relates to this course of study 
+                                                                    <br> Among the things you may wish to include are:
+                                                                    <br> i. why you are applying for this course
+                                                                    <br> ii. how your previous education and experience relates to this course of study
                                                                     <br> iii. how this course fits into your long‐term academic or career plans
 
 
                                                                 </label>
-                                                                <textarea name="supporting_information" style="background-color: #3b4b6b; color: #b1c0e0; width:100%" class="gdlr-core-column-30 input1 scholarship" cols="20" rows="10">{{$std->supporting_information}}</textarea>
+                                                                <textarea name="supporting_information" id="supporting_information" style="background-color: #3b4b6b; color: #b1c0e0; width:100%" class="gdlr-core-column-30 input1 scholarship" cols="20" rows="10">{{$std->supporting_information}}</textarea>
                                                             </div>
                                                         </div>
 
@@ -301,6 +301,24 @@ $subjects = [
     $('#submit_form').click(function() {
         $('.gdlr-core-accordion-item-tab').addClass('gdlr-core-active')
     })
+
+    function check_words(e) {
+        var BACKSPACE = 8;
+        var DELETE = 46;
+        var MAX_WORDS = 250;
+        var valid_keys = [BACKSPACE, DELETE];
+        var words = this.value.split(' ');
+
+        if (words.length >= 250 && valid_keys.indexOf(e.keyCode) == -1) {
+            e.preventDefault();
+            words.length = 250;
+            this.value = words.join(' ');
+        }
+    }
+
+    var textarea = document.getElementById('supporting_information');
+    textarea.addEventListener('keydown', check_words);
+    textarea.addEventListener('keyup', check_words);
 </script>
 
 @endsection
