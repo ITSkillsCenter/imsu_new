@@ -92,6 +92,10 @@ class HomeController extends Controller
         ->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'pms_id', 'status', 'created_at', 'updated_at')
         ->get()->keyBy('application_number')->count();
 
+		$paid_applicants = ApplicationFee::where(['status' => 'PAID'])
+			->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'pms_id', 'status', 'created_at', 'updated_at')
+			->groupBy('application_number')->count();
+
 			$revenue =  DB::table('fee_histories')
 				->where(['department_id' => Auth::user()->dept_id])
 				->where('fee_histories.status', '=', 'paid')
@@ -294,6 +298,7 @@ class HomeController extends Controller
 			->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'pms_id', 'status', 'created_at', 'updated_at')
 			->groupBy('application_number')->get();
 
+			
 			// dd($paid_applicants);
 
 			$pu = 0; $pd = 0;
