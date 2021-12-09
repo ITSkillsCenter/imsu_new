@@ -253,7 +253,7 @@ $subjects = [
                                                         <div class="gdlr-core-course-column gdlr-core-column-full">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="" class="gdlr-core-column-full">
-                                                                    Please write a statement in support of your application. We will not be able to make a decision on your application without it.
+                                                                    Please write a statement (not more than 250 words) in support of your application. We will not be able to make a decision on your application without it.
                                                                     <br> Among the things you may wish to include are:
                                                                     <br> i. why you are applying for this course
                                                                     <br> ii. how your previous education and experience relates to this course of study

@@ -380,10 +380,10 @@ class HomeController extends Controller
 			->orderby('articles.id', 'DESC')->paginate(3);
 
 		$articles_latest = Article::where(['type' => 'article'])->published()->latest()->first();
-		$event_latest = Article::where(['type' => 'events'])->published()->latest()->first();
+		$event_latest = Article::where(['type' => 'event'])->published()->latest()->first();
 
 
-		$events = Article::where(['type' => 'events'])->notDeleted()->orderby('id', 'DESC')->take(3)->get();
+		$events = Article::where(['type' => 'event'])->notDeleted()->orderby('id', 'DESC')->take(3)->get();
 
 
 		$announcement = Article::where(['type' => 'announcement'])->published()
