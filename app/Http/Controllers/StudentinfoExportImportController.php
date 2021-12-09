@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Applicant;
+use App\ApplicationFee;
 use DB;
 use App\Lga;
 use App\State;
@@ -332,6 +333,14 @@ class StudentinfoExportImportController extends Controller
                 $bydept = Applicant::where(['applicants.type' => $request->type, 'year' => $request->year])->get()->groupBy('course')->map(function($values) {
                     return $values->count();
                 });
+                $applicants = Applicant::join('application_payments', 'applicants.application_number','application_payments.application_number')
+                ->where(['type' => $request->type, 'year' => $request->year, 'application_payments.status' => 'PAID'])
+                ->distinct('applicants.application_number')->get()->keyBy('application_number');
+                // $applicants = ApplicationFee::where(['status' => 'PAID'])
+                // ->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'pms_id', 'status', 'created_at', 'updated_at')
+                // ->get()->keyBy('application_number');
+                // dd($applicants);
+
                 $applicants = Applicant::where(['type' => $request->type, 'year' => $request->year])->get();
                 $type = $request->type;
                 $year = $request->year;

@@ -15,8 +15,14 @@
     @endif
     <div class="col-md-12">
       @if(!isset($msg) && $applicants)
+     
       <div class="card">
         <div class="card-body">
+        <div>
+          <h4><b>Application type: {{$type == 'jamb' ? 'PUTME' : $type}}</b></h4>
+          <h4><b>Year/Session: {{$year}}</b></h4>
+          <h4><b>Total: {{count($applicants)}}</b></h4>
+        </div>
           <table id="datatable-dept" class="table table-striped table-bordered">
             <thead>
               <tr>
@@ -110,7 +116,7 @@
               <div class="col-md-6">
                 <select name="type" class="form-control" required>
                   <option value="">--Select Type--</option>
-                  <option value="jamb">Jamb</option>
+                  <option value="jamb">PUTME</option>
                   <option value="DE">Direct Entry</option>
                   <option value="jupeb">Jupeb</option>
                   <option value="icep">ICEP</option>
