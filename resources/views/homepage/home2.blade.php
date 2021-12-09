@@ -378,7 +378,7 @@
     <!-- End UPdates -->
 
     <!-- ============== Events Area =================-->
-    @if(count($events) > 0)
+    
     <section class="events-area events-area-style-two py-4">
         <div class="container">
             <div class="row align-items-center">
@@ -448,7 +448,7 @@
             </div>
         </div>
     </section>
-    @endif
+   
     <!-- End Events Area -->
 
     <!-- ================== Download & Newsletter =======================  -->

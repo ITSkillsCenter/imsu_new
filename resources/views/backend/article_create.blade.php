@@ -100,12 +100,20 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                
+                                <div class="form-group">
+                                    <label for="title">Start Date (For events):</label>
+                                    <input type="text" class="form-control" name="start_date" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">End Date (For events):</label>
+                                    <input type="text" class="form-control" name="end_date" required>
+                                </div>
 
                                 <div class="form-group">
                                     <label for="pwd">Description:</label>
-                                    <textarea name="content" id="editor1" class="form-control">
-
-                                                </textarea>
+                                    <textarea name="content" id="editor1" class="form-control"></textarea>
                                 </div>
 
                                 <div class="form-group">

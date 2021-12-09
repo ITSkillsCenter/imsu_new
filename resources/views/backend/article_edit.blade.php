@@ -106,6 +106,17 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                
+                                <div class="form-group">
+                                    <label for="title">Start Date (For events):</label>
+                                    <input type="date" class="form-control" value="{{$article->start_date}}" name="start_date" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">End Date (For events):</label>
+                                    <input type="date" class="form-control" value="{{$article->end_date}}" name="end_date" required>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="pwd">Description:</label>
                                     <textarea name="content" id="editor1" class="form-control">{{$article->content}}</textarea>

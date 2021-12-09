@@ -57,9 +57,11 @@
         <div class="col-md-12">
           @include('homepage.flash_message')
         </div>
+        @php $y = 1; @endphp
         <table id="datatable-applicants" class="table table-striped table-bordered">
           <thead>
             <tr>
+              <th>S/N</th>
               <th>Full Name</th>
               <th>Application Number</th>
               <th>Email</th>
@@ -76,6 +78,7 @@
             @php if($dept && strtolower($dept) != strtolower($student['dept'])) continue
             @endphp
             <tr>
+              <td>{{$y++}}</td>
               <td>{{$student->first_name == null? $student->full_name: $student->first_name.' '.$student->last_name }}</td>
               <td>{{$student->application_number}}</td>
               <td>{{$student->email}}</td>

@@ -262,6 +262,7 @@ class ArticleController extends Controller
 
     public function update(Request $request,$id){
 
+        // dd($request->all());
         
         $this->validate($request,[
             "heading" => "required",
@@ -298,6 +299,8 @@ class ArticleController extends Controller
             
             $newArticle->heading = $request->heading;
             $newArticle->content =  $request->content;
+            $newArticle->start_date =  $request->start_date;
+            $newArticle->end_date =  $request->end_date;
             $newArticle->type =  $request->type;
             $newArticle->category_id =  $request->category_id;
             $newArticle->is_comment_enabled =  (bool) $request->is_comment_enabled;
