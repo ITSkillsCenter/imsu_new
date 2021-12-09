@@ -52,7 +52,7 @@
                                                 @if($check !== null)
                                                 <button type="button" class="btn btn-primary" id="show_receipt">Show Receipt</button>
                                                 @endif
-                                                <button type="button" class="btn btn-primary submit_form">Print Acknowledgement Slip</button>
+                                                <button type="button" class="btn btn-primary submit_forms" onclick="printDiv('preview_exam_pass')">Print Acknowledgement Slip</button>
                                                 <a class="btn btn-primary" style="color: white;" id="app_dash" href="/pg-application-step3/{{base64_encode($std->email)}}">Edit Application</a>
                                                 <button type="button" class="btn btn-primary">
                                                     <a style="color: white;" href="/home/logout">Logout</a>
@@ -242,7 +242,7 @@
 
                                                     <h5 class="gdlr-core-course-column gdlr-core-column-full" style="border-bottom: 3px solid black; text-align:center">&nbsp;</h5>
 
-                                                    <h5 class="gdlr-core-course-column gdlr-core-column-full text-center">PROGRAMME DETAILS</h5>
+                                                    <h5 class="gdlr-core-course-column gdlr-core-column-full text-center mt-5">PROGRAMME DETAILS</h5>
 
                                                     <div class="gdlr-core-course-column gdlr-core-column-30">
                                                         <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
@@ -379,6 +379,7 @@
                                                         </table>
                                                     </div>
                                                     <br>
+                                                    <br><br>
                                                     @foreach($olevel as $single)
                                                     <div class="gdlr-core-course-column gdlr-core-column-{{count($olevel) > 1 ? '30' : 'full'}}">
                                                         
@@ -1001,6 +1002,17 @@
         };
         html2pdf(element, opt)
     })
+
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
 </script>
 
 @endsection

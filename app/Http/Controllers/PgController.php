@@ -447,6 +447,9 @@ class PgController extends Controller
 
     public function application_form(Request $request){
         $applicant = Session::get('pgapplicant');
+        if($applicant == null){
+            return redirect('/student-portal');
+        }
         $std = Pgapplicant::find($applicant->id);
         $check = PgApplicationFee::where(['application_number' => $applicant->application_number, 'status' => 'PAID'])->first();
         return view('homepage.pg_full_form', compact('std', 'check'));

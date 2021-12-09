@@ -1,5 +1,20 @@
 @extends('layouts.homepage_layout2')
 @section('content')
+<style>
+    #overlay {
+      position: fixed;
+      display: none;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+      cursor: pointer;
+   }
+</style>
 
 <main id="main">
 
@@ -367,14 +382,14 @@
     <section class="events-area events-area-style-two py-4">
         <div class="container">
             <div class="row align-items-center">
-               
+
                 <div class="col-lg-5">
                     <div class="imsu-recent_event">
                         @if($event_latest !== null)
                         <div class="title">
                             <h2 class="text-white text-underline">:: Recent Event</h2>
                         </div>
-                        
+
                         @php
                         if($event_latest->image !== null){
                         $img = '/uploads/images/articles/'.$event_latest->image;
@@ -460,19 +475,19 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" download>
+                                <a href="#">
                                     <span class="icofont-ui-file icon"></span>
                                     <span>Student Handbook</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" download>
+                                <a href="#">
                                     <span class="icofont-ui-file icon"></span>
                                     <span>IMSU Anthem</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" download>
+                                <a href="#">
                                     <span class="icofont-ui-file icon"></span>
                                     <span>2020/2021 Supplemetary Admission List</span>
                                 </a>
@@ -490,7 +505,7 @@
                             <div class="newsletter-info mt-5">
                                 <h4>Subscribe To Newsletter</h4>
                                 <p class="subtitle pb-4">Get Updates to News & Events</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam animi dicta ex labore. Ipsum nobis amet nisi voluptate corporis consectetur adipisicing elit alias</p>
+                                <p>Subscribe to our newsletter to stay updated on our upcoming events, news and campus activities.</p>
                             </div>
                             <form action="#" class="newsletter-form mt-4">
                                 <div class="form-group">
@@ -652,43 +667,43 @@
 
 </main>
 <div class="" id="centralModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; top: 4%; width:100%; z-index:1000; position: absolute; margin: 0 auto;">
-        <div class="modal-dialog modal-lg" style="border: 0;" role="document">
-            <div class="modal-content" style="border: 0;">
-                <div class="modal-header text-white" style="display:flex; justify-content:space-between; background: linear-gradient(90deg,rgb(17, 182, 122) 0%, rgb(0, 148, 68) 100%);">
-                    <p style="font-weight:bold; color:white">News Update!</p>
-                    <button type="button" id="closeit" class="close" data-dismiss="modal" style="opacity: 1; color:white" aria-label="Close">
-                        <span aria-hidden="true" class="white-text">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="text-center">
-                        <a href="/post-graduate">
-                            <img src="homepage/upload/spgs_admission_popup2.jpg" class="img-responsive" alt="">
-                        </a>
-                        <!-- <p>Registration of students on the portal has commenced Click here to register
+    <div class="modal-dialog modal-lg" style="border: 0;" role="document">
+        <div class="modal-content" style="border: 0;">
+            <div class="modal-header text-white" style="display:flex; justify-content:space-between; background: linear-gradient(90deg,rgb(17, 182, 122) 0%, rgb(0, 148, 68) 100%);">
+                <p style="font-weight:bold; color:white">News Update!</p>
+                <button type="button" id="closeit" class="close" data-dismiss="modal" style="opacity: 1; color:white" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <a href="/post-graduate">
+                        <img src="homepage/upload/spgs_admission_popup2.jpg" class="img-responsive" alt="">
+                    </a>
+                    <!-- <p>Registration of students on the portal has commenced Click here to register
                   </p> -->
-                        <br>
-                        <div class="row mx-auto">
-                            <a class="col-md-6" href="https://imsu.edu.ng/article/31/imo-state-university-school-of-post-graduate-studies-admission"><span class="btn btn-brimary" style="background-color: green; color:white; border:none;">Read More</span></a>
-                            <a class="col-md-6" href="/admission-application#pg"><span class="btn btn-primary" style="background-color: green; color:white; border:none;">Apply now</span></a>
-                        </div>
+                    <br>
+                    <div class="row mx-auto">
+                        <a class="col-md-6" href="https://imsu.edu.ng/article/31/imo-state-university-school-of-post-graduate-studies-admission"><span class="btn btn-brimary" style="background-color: green; color:white; border:none;">Read More</span></a>
+                        <a class="col-md-6" href="/admission-application#pg"><span class="btn btn-primary" style="background-color: green; color:white; border:none;">Apply now</span></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="overlay"></div>
+</div>
+<div id="overlay"></div>
 
 <script>
-        $(document).ready(function() {
-            $('#centralModal').css('display', 'block');
-            $('#overlay').css('display', 'block');
-        });
+    $(document).ready(function() {
+        $('#centralModal').css('display', 'block');
+        $('#overlay').css('display', 'block');
+    });
 
-        $('#closeit').click(function() {
-            $('#centralModal').css('display', 'none');
-            $('#overlay').css('display', 'none');
-        });
-    </script>
+    $('#closeit').click(function() {
+        $('#centralModal').css('display', 'none');
+        $('#overlay').css('display', 'none');
+    });
+</script>
 
 @endsection
