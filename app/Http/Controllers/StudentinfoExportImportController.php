@@ -344,7 +344,7 @@ class StudentinfoExportImportController extends Controller
                     return $values->count();
                 });
                 $applicants = Applicant::join('application_payments', 'applicants.application_number','application_payments.application_number')
-                ->where(['type' => $request->type, 'year' => $request->year, 'application_payments.status' => 'PAID'])
+                ->where(['mode_of_admission' => 'UTME', 'year' => $request->year, 'application_payments.status' => 'PAID'])
                 ->distinct('applicants.application_number')->get()->keyBy('application_number');
                 // $applicants = ApplicationFee::where(['status' => 'PAID'])
                 // ->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'pms_id', 'status', 'created_at', 'updated_at')
