@@ -15,25 +15,28 @@
     @endif
     <div class="col-md-12">
       @if(!isset($msg) && $applicants)
-     
+
       <div class="card">
         <div class="card-body">
-        <div>
-          <h4><b>Application type: {{$type == 'jamb' ? 'PUTME' : $type}}</b></h4>
-          <h4><b>Year/Session: {{$year}}</b></h4>
-          <h4><b>Total: {{count($applicants)}}</b></h4>
-        </div>
+          <div>
+            <h4><b>Application type: {{$type == 'jamb' ? 'PUTME' : $type}}</b></h4>
+            <h4><b>Year/Session: {{$year}}</b></h4>
+            <h4><b>Total: {{count($applicants)}}</b></h4>
+          </div>
           <table id="datatable-dept" class="table table-striped table-bordered">
             <thead>
               <tr>
+                <th>S/N</th>
                 <th>Department</th>
                 <th>Count</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
+              @php $j = 1; @endphp
               @foreach($bydept as $s => $num)
               <tr>
+                <td>{{$j++}}</td>
                 <td>{{$s}}</td>
                 <td>{{$num}}</td>
                 <td><a href="/admin/applicant/view-by-dept/{{$year}}/{{$type}}/{{base64_encode($s)}}" class="btn btn-primary btn-sm">View</a></td>
@@ -46,7 +49,7 @@
       @endif
       @if($applicants)
       @if($msg)
-      <h3>{{ ucwords($type). " Applicants found in " . $year}}  <span>{{ isset($msg) ? 'in '. $msg . ' (Total ' . $tot . ')' : ''}}</span></h3>
+      <h3>{{ ucwords($type). " Applicants found in " . $year}} <span>{{ isset($msg) ? 'in '. $msg . ' (Total ' . $tot . ')' : ''}}</span></h3>
       @else
       <h3>{{ ucwords($type) . " Applicants found in " . $year }}</h3>
       @endif
@@ -154,30 +157,80 @@
 <script>
   $(document).ready(function() {
     //datatables code
+    $("#datatable-dept").DataTable({
+      responsive: true,
+      dom: "Bfrtip",
+      buttons: [{
+          extend: "copy",
+          className: "btn-sm",
+          exportOptions: {
+            columns: [ 0, 1, 2 ]
+          }
+        },
+        {
+          extend: "csv",
+          className: "btn-sm",
+          title: 'Department Breakdown',
+          exportOptions: {
+            columns: [ 0, 1, 2 ]
+          }
+        },
+        {
+          extend: "excel",
+          className: "btn-sm",
+          title: 'Department Breakdown',
+          exportOptions: {
+            columns: [ 0, 1, 2 ]
+          }
+        },
+        {
+          extend: "pdfHtml5",
+          className: "btn-sm",
+          title: 'Department Breakdown',
+          exportOptions: {
+            columns: [ 0, 1, 2 ]
+          }
+        },
+        {
+          extend: "print",
+          className: "btn-sm",
+          title: 'Department Breakdown',
+          exportOptions: {
+            columns: [ 0, 1, 2 ]
+          }
+        },
+      ],
+      responsive: true
+    });
     var handleDataTableButtons = function() {
       if ($("#datatable-applicants").length) {
-        $("#datatable-applicants, #datatable-dept").DataTable({
+        $("#datatable-applicants").DataTable({
           responsive: true,
           dom: "Bfrtip",
           buttons: [{
               extend: "copy",
-              className: "btn-sm"
+              className: "btn-sm",
+              title: 'Applicant Breakdown',
             },
             {
               extend: "csv",
-              className: "btn-sm"
+              className: "btn-sm",
+              title: 'Applicant Breakdown',
             },
             {
               extend: "excel",
-              className: "btn-sm"
+              className: "btn-sm",
+              title: 'Applicant Breakdown',
             },
             {
               extend: "pdfHtml5",
-              className: "btn-sm"
+              className: "btn-sm",
+              title: 'Applicant Breakdown',
             },
             {
               extend: "print",
-              className: "btn-sm"
+              className: "btn-sm",
+              title: 'Applicant Breakdown',
             },
           ],
           responsive: true

@@ -383,7 +383,7 @@ class HomeController extends Controller
 		$event_latest = Article::where(['type' => 'event'])->published()->latest()->first();
 
 
-		$events = Article::where(['type' => 'event'])->notDeleted()->orderby('id', 'DESC')->take(3)->get();
+		$events = Article::where(['type' => 'event'])->published()->notDeleted()->orderby('id', 'DESC')->take(3)->get();
 
 
 		$announcement = Article::where(['type' => 'announcement'])->published()
