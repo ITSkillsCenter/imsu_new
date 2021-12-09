@@ -379,8 +379,19 @@
                                                         </table>
                                                     </div>
                                                     <br><br><br>
+                                                    @php 
+                                                    if(count($olevel) > 1){
+                                                        if($olevel[2]['exam_type'] !== null){
+                                                            $dy = '30';
+                                                        }else{
+                                                            $dy = 'full';
+                                                        }
+                                                    }else{
+                                                        $dy = 'full'; 
+                                                    } 
+                                                    @endphp
                                                     @foreach($olevel as $single)
-                                                    <div class="gdlr-core-course-column gdlr-core-column-{{count($olevel) > 1 ? '30' : 'full'}}">
+                                                    <div class="gdlr-core-course-column gdlr-core-column-{{$dy}}">
                                                         
                                                         @if($single['exam_type'] !== null)
                                                         <div class="gdlr-core-course-column gdlr-core-column-50">
