@@ -329,7 +329,7 @@ class StudentinfoExportImportController extends Controller
                 $type = $request->type;
                 $year = $request->year;
                 return view('student.pg_applicants', compact('applicants', 'year', 'type'));
-            }else if($request->type == 'de'){
+            }else if($request->type == 'DE'){
                 $bydept = Applicant::where(['applicants.type' => $request->type, 'year' => $request->year])->get()->groupBy('course')->map(function($values) {
                     return $values->count();
                 });
