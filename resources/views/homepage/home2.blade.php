@@ -231,7 +231,7 @@
             <div class="section-title white-title pb-3 mb-xl-4">
                 <h2>Discover IMSU</h2>
                 <p class="mt-xl-3">
-                    An innovative ecosystem dedicated to producing problem solvers.
+                    An innovation ecosystem dedicated to producing problem solvers.
                 </p>
             </div>
             <div class="row justify-content-center ">
