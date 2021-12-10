@@ -34,7 +34,7 @@
                                                     <!-- 1st ITem -->
                                                     <li class="el-item item-0 js-fullheight">
                                                         <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-top-left" style="-webkit-animation-duration: 5s; animation-duration: 5s;">
-                                                            <img style="filter: brightness(80%);" class="ui-image" src="/assets/img/banner/banner_1.JPG" alt="Imo State University, Owerri" uk-cover>
+                                                            <img style="filter: brightness(80%);" class="ui-image" src="/assets/img/banner/banner_1-min.JPG" alt="Imo State University, Owerri" uk-cover>
                                                         </div>
                                                         <div class="uk-position-cover" style="background: -webkit-linear-gradient(45deg, rgba(13, 71, 161, 0.81) 0%, rgba(15, 26, 44, 0.6) 43%) transparent;background: linear-gradient(45deg, rgba(13, 71, 161, 0.81) 0%, rgba(15, 26, 44, 0.6) 43%) transparent;">
                                                         </div>
@@ -53,7 +53,7 @@
                                                     <!-- 2nd Item -->
                                                     <li class="el-item item-1 js-fullheight">
                                                         <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-top-left" style="-webkit-animation-duration: 5s; animation-duration: 5s;">
-                                                            <img style="filter: brightness(80%);" class="ui-image" src="/assets/img/banner/banner_2.JPG" alt="Imo State University" uk-cover>
+                                                            <img style="filter: brightness(80%);" class="ui-image" src="/assets/img/banner/banner_2-min.JPG" alt="Imo State University" uk-cover>
                                                         </div>
                                                         <div class="uk-position-cover" style="background: -webkit-linear-gradient(45deg, rgba(13, 71, 161, 0.71) 0%, rgba(15, 26, 44, 0.6) 43%) transparent;background: linear-gradient(45deg, rgba(13, 71, 161, 0.71) 0%, rgba(15, 26, 44, 0.6) 43%) transparent;">
                                                         </div>
@@ -71,7 +71,7 @@
                                                     <!-- 3rd Item -->
                                                     <li class="el-item item-2 js-fullheight">
                                                         <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-top-left" style="-webkit-animation-duration: 5s; animation-duration: 5s;">
-                                                            <img style="filter: brightness(80%);" class="ui-image" src="/assets/img/banner/banner3.JPG" alt="Imo State University" uk-cover>
+                                                            <img style="filter: brightness(80%);" class="ui-image" src="/assets/img/banner/banner3-min.JPG" alt="Imo State University" uk-cover>
                                                         </div>
                                                         <div class="uk-position-cover" style="background: -webkit-linear-gradient(45deg, rgba(13, 71, 161, 0.71) 0%, rgba(15, 26, 44, 0.6) 43%) transparent;background: linear-gradient(45deg, rgba(13, 71, 161, 0.71) 0%, rgba(15, 26, 44, 0.6) 43%) transparent;">
                                                         </div>
@@ -89,7 +89,7 @@
 
                                                     <li class="el-item item-2 js-fullheight">
                                                         <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-top-left" style="-webkit-animation-duration: 5s; animation-duration: 5s;">
-                                                            <img style="filter: brightness(80%);" class="ui-image" src="/assets/img/banner/banner4.jpg" alt="Imo State University" uk-cover>
+                                                            <img style="filter: brightness(80%);" class="ui-image" src="/assets/img/banner/banner4-min.jpg" alt="Imo State University" uk-cover>
                                                         </div>
                                                         <div class="uk-position-cover" style="background: -webkit-linear-gradient(45deg, rgba(13, 71, 161, 0.71) 0%, rgba(15, 26, 44, 0.6) 43%) transparent;background: linear-gradient(45deg, rgba(13, 71, 161, 0.71) 0%, rgba(15, 26, 44, 0.6) 43%) transparent;">
                                                         </div>
@@ -470,7 +470,7 @@
     <!-- End Events Area -->
 
     <!-- ================== Download & Newsletter =======================  -->
-    <section class="dwnd section">
+    <!-- <section class="dwnd section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -539,9 +539,31 @@
                 </div>
             </div>
         </div>
-    </section>
-    <!-- End Download &.. -->
+    </section> -->
 
+    <section class="newsletter">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 text-center">
+                  <p style="color: rgba(61, 177, 102, 0.76); font-family: Poppins;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 25px;">Subscribe to Newsletter</p>
+               </div>
+               <div class="col-sm-12">
+                  <div class="content">
+                     <div class="input-group">
+                        <input style="border:none; border-bottom: 1px solid #2E4579; border-top: 1px solid #2E4579; border-left: 1px solid #2E4579;" type="email" class="form-control" placeholder="Enter your email">
+                        <span class="input-group-btn">
+                           <button class="btn" type="submit">Subscribe Now</button>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+    <!-- End Download &.. -->
+        <br><br>
     <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery">
 

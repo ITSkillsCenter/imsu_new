@@ -537,7 +537,7 @@
                                     <p>
                                         <span class="gdlr-core-space-shortcode" id="span_1dd7_12"></span>
                                         <br />
-                                        
+
                                         <span class="__cf_email__" data-cfemail="b1d8dfd7def1d8dcc2c49fd4d5c49fdfd6"><a href="mailto:info@imsu.edu.ng"><i class="bx bx-envelope-open"></i> info@imsu.edu.ng</a></span>
                                     </p>
                                     <div class="gdlr-core-divider-item gdlr-core-divider-item-normal gdlr-core-left-align">
@@ -593,11 +593,41 @@
                         </div>
                         <div class="kingster-footer-column kingster-item-pdlr kingster-column-15">
                             <div id="gdlr-core-custom-menu-widget-4" class="widget widget_gdlr-core-custom-menu-widget kingster-widget">
-                                <h3 class="kingster-widget-title">Academics</h3>
+                                <h3 class="kingster-widget-title">Downloads</h3>
                                 <span class="clear"></span>
                                 <div class="menu-academics-container">
                                     <ul id="menu-academics" class="gdlr-core-custom-menu-widget gdlr-core-menu-style-plain">
-                                        <li class="menu-item"><a href="#">PostGraduate</a></li>
+                                        <li class="menu-item">
+                                            <a href="/docs/IMSU_ACADEMIC_CALENDAR.docx" target="_self" download>
+                                                <span class="icofont-ui-file icon" style="color: darkgreen;"></span>
+                                                <span>2020/2021 Academic Calendar</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="/docs/IMSU_Faculties_and_Departments.docx" target="_self" download>
+                                                <span class="icofont-ui-file icon" style="color: darkgreen;"></span>
+                                                <span>List of Faculties and Deparments</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">
+                                                <span class="icofont-ui-file icon" style="color: darkgreen;"></span>
+                                                <span>Student Handbook</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">
+                                                <span class="icofont-ui-file icon" style="color: darkgreen;"></span>
+                                                <span>IMSU Anthem</span>
+                                            </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">
+                                                <span class="icofont-ui-file icon" style="color: darkgreen;"></span>
+                                                <span>2020/2021 Supplemetary Admission List</span>
+                                            </a>
+                                        </li>
+                                        <!-- <li class="menu-item"><a href="#">PostGraduate</a></li>
                                         <li class="menu-item"><a href="#">UnderGraduate</a></li>
                                         <li class="menu-item"><a href="#">Alumni</a></li>
                                         <li class="menu-item">
@@ -606,7 +636,7 @@
                                         <li class="menu-item">
                                             <a href="#">Apply For Admissions</a>
                                         </li>
-                                        <li class="menu-item"><a href="#">Pay My Tuition</a></li>
+                                        <li class="menu-item"><a href="#">Pay My Tuition</a></li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -645,9 +675,9 @@
             </footer>
         </div>
     </div>
-    
 
-    
+
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/assets/vendor/jquery/jquery.min.js"></script>
     <!-- <script>
@@ -675,26 +705,25 @@
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/script.js"></script>
 
-  <script src="/assets/plugins/media/jollyany/assets/js/uikit.min.js@v=2.5.2.js"></script>
-  <script src="/assets/plugins/media/astroid/js/script.js@v=2.5.2.js"></script>
-  <script src="/assets/js/plugins.min.js"></script>
+    <script src="/assets/plugins/media/jollyany/assets/js/uikit.min.js@v=2.5.2.js"></script>
+    <script src="/assets/plugins/media/astroid/js/script.js@v=2.5.2.js"></script>
+    <script src="/assets/js/plugins.min.js"></script>
 
 
-  <script src="/assets/vendor/jquery/ui/effect.min.js"></script>
-  <script type="text/javascript">
-    var gdlr_core_pbf = {
-      admin: "",
-      video: {
-        width: "640",
-        height: "360",
-      },
-      ajax_url:
-        "https:\/\/demo.goodlayers.com\/kingster\/wp-admin\/admin-ajax.php",
-    };
-  </script>
+    <script src="/assets/vendor/jquery/ui/effect.min.js"></script>
+    <script type="text/javascript">
+        var gdlr_core_pbf = {
+            admin: "",
+            video: {
+                width: "640",
+                height: "360",
+            },
+            ajax_url: "https:\/\/demo.goodlayers.com\/kingster\/wp-admin\/admin-ajax.php",
+        };
+    </script>
 
-  <script src="/assets/plugins/goodlayers-core/plugins/combine/script.js"></script>
-  <script src="/assets/plugins/goodlayers-core/include/js/page-builder.js"></script>
+    <script src="/assets/plugins/goodlayers-core/plugins/combine/script.js"></script>
+    <script src="/assets/plugins/goodlayers-core/include/js/page-builder.js"></script>
 
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
 

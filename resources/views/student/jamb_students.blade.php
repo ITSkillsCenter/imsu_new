@@ -28,7 +28,8 @@
               <tr>
                 <th>S/N</th>
                 <th>Department</th>
-                <th>Count</th>
+                <th>Number of Applicants</th>
+                <th>Office use</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -63,12 +64,14 @@
             <tr>
               <th>S/N</th>
               <th>Full Name</th>
-              <th>Application Number</th>
-              <th>Email</th>
-              <th>Phone Number</th>
-              <th>Date of Birth</th>
+              <th>JAMB Reg. Number</th>
+              <!-- <th>Email</th> -->
+              <!-- <th>Phone Number</th> -->
+              <!-- <th>Date of Birth</th> -->
               <th>State of Origin</th>
               <th>LGA</th>
+              <th>Jamb Score</th>
+              <th>Office use</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -81,11 +84,13 @@
               <td>{{$y++}}</td>
               <td>{{$student->first_name == null? $student->full_name: $student->first_name.' '.$student->last_name }}</td>
               <td>{{$student->application_number}}</td>
-              <td>{{$student->email}}</td>
-              <td>{{$student->phone_number}}</td>
-              <td>{{$student->date_of_birth}}</td>
+              <!-- <td>{{$student->email}}</td> -->
+              <!-- <td>{{$student->phone_number}}</td> -->
+              <!-- <td>{{$student->date_of_birth}}</td> -->
               <td>{{$student->state}}</td>
               <td>{{$student->lga}}</td>
+              <td>{{$student->jamb_score}}</td>
+              <td></td>
               <td>
                 <a class="btn btn-primary" href="/admin/view-applicant/{{$student->application_number}}">View</a>
               </td>
@@ -214,26 +219,41 @@
               extend: "copy",
               className: "btn-sm",
               title: 'Applicant Breakdown',
+              exportOptions: {
+                columns: [ 0, 1, 2 , 3, 4, 5, 6]
+              }
             },
             {
               extend: "csv",
               className: "btn-sm",
               title: 'Applicant Breakdown',
+              exportOptions: {
+                columns: [ 0, 1, 2 , 3, 4, 5, 6]
+              }
             },
             {
               extend: "excel",
               className: "btn-sm",
               title: 'Applicant Breakdown',
+              exportOptions: {
+                columns: [ 0, 1, 2 , 3, 4, 5, 6]
+              }
             },
             {
               extend: "pdfHtml5",
               className: "btn-sm",
               title: 'Applicant Breakdown',
+              exportOptions: {
+                columns: [ 0, 1, 2 , 3, 4, 5, 6]
+              }
             },
             {
               extend: "print",
               className: "btn-sm",
               title: 'Applicant Breakdown',
+              exportOptions: {
+                columns: [ 0, 1, 2 , 3, 4, 5, 6]
+              }
             },
           ],
           responsive: true
