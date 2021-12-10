@@ -294,21 +294,17 @@ class HomeController extends Controller
 			// $paid_applicants = ApplicationFee::where(['status' => 'PAID'])
 			// ->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'pms_id', 'status', 'created_at', 'updated_at')
 			// ->get()->keyBy('application_number');
-			$pdget = Applicant::select('applicants.*', 'application_payments.*')->join('application_payments', 'applicants.application_number','application_payments.application_number')
+			$pd = Applicant::select('applicants.*', 'application_payments.*')->join('application_payments', 'applicants.application_number','application_payments.application_number')
                 ->where(['mode_of_admission' => 'Direct Entry', 'application_payments.status' => 'PAID'])
-                ->groupBy('applicants.application_number')->get();
+                ->groupBy('applicants.application_number')->count();
 			
-			$puget = Applicant::select('applicants.*', 'application_payments.*')->join('application_payments', 'applicants.application_number','application_payments.application_number')
+			$pu = Applicant::select('applicants.*', 'application_payments.*')->join('application_payments', 'applicants.application_number','application_payments.application_number')
                 ->where(['mode_of_admission' => 'UTME', 'application_payments.status' => 'PAID'])
-                ->groupBy('applicants.application_number')->get();
+                ->groupBy('applicants.application_number')->count();
 
 			$paid_applicants = ApplicationFee::where(['status' => 'PAID'])
 			->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'pms_id', 'status', 'created_at', 'updated_at')
 			->groupBy('application_number')->get();
-
-			$pd = count($pdget);
-			$pu = count($puget);
-
 
 			// dd($paid_applicants);
 
