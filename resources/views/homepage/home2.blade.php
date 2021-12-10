@@ -89,7 +89,7 @@
 
                                                     <li class="el-item item-3 js-fullheight">
                                                         <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-top-left" style="-webkit-animation-duration: 5s; animation-duration: 5s;">
-                                                            <img style="filter: brightness(80%);" class="ui-image" src="/assets/img/banner/banner4-min.jpg" alt="Imo State University" uk-cover>
+                                                            <img style="filter: brightness(80%);" class="ui-image" src="/assets/img/banner/banner4-min.JPG" alt="Imo State University" uk-cover>
                                                         </div>
                                                         <div class="uk-position-cover" style="background: -webkit-linear-gradient(45deg, rgba(13, 71, 161, 0.71) 0%, rgba(15, 26, 44, 0.6) 43%) transparent;background: linear-gradient(45deg, rgba(13, 71, 161, 0.71) 0%, rgba(15, 26, 44, 0.6) 43%) transparent;">
                                                         </div>
