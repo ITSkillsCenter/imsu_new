@@ -294,22 +294,33 @@ class HomeController extends Controller
 			// $paid_applicants = ApplicationFee::where(['status' => 'PAID'])
 			// ->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'pms_id', 'status', 'created_at', 'updated_at')
 			// ->get()->keyBy('application_number');
+			$pdget = Applicant::select('applicants.*', 'application_payments.*')->join('application_payments', 'applicants.application_number','application_payments.application_number')
+                ->where(['mode_of_admission' => 'Direct Entry', 'application_payments.status' => 'PAID'])
+                ->groupBy('applicants.application_number')->get();
+			
+			$puget = Applicant::select('applicants.*', 'application_payments.*')->join('application_payments', 'applicants.application_number','application_payments.application_number')
+                ->where(['mode_of_admission' => 'UTME', 'application_payments.status' => 'PAID'])
+                ->groupBy('applicants.application_number')->get();
+
 			$paid_applicants = ApplicationFee::where(['status' => 'PAID'])
 			->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'pms_id', 'status', 'created_at', 'updated_at')
 			->groupBy('application_number')->get();
 
-			
+			$pd = count($pdget);
+			$pu = count($puget);
+
+
 			// dd($paid_applicants);
 
-			$pu = 0; $pd = 0;
-			foreach($paid_applicants as $p){
-				$std = Applicant::where(['application_number' => $p->application_number])->first();
-				if($std->mode_of_admission == 'UTME'){
-					$pu++;
-				}elseif($std->mode_of_admission == 'Direct Entry'){
-					$pd++;
-				}
-			}
+			// $pu = 0; $pd = 0;
+			// foreach($paid_applicants as $p){
+			// 	$std = Applicant::where(['application_number' => $p->application_number])->first();
+			// 	if($std->mode_of_admission == 'UTME'){
+			// 		$pu++;
+			// 	}elseif($std->mode_of_admission == 'Direct Entry'){
+			// 		$pd++;
+			// 	}
+			// }
 
 			$paid_pg = PgApplicationFee::where(['status' => 'PAID'])
 			->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'status', 'created_at', 'updated_at')
