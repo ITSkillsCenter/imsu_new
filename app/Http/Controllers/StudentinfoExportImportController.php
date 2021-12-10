@@ -330,7 +330,7 @@ class StudentinfoExportImportController extends Controller
                 $year = $request->year;
                 return view('student.pg_applicants', compact('applicants', 'year', 'type'));
             }else if($request->type == 'DE'){
-                $bydept = Applicant::where(['applicants.type' => $request->type, 'year' => $request->year])->get()->groupBy('course')->map(function($values) {
+                $bydept = Applicant::where(['applicants.mode_of_admission' => 'Direct Entry', 'year' => $request->year])->get()->groupBy('course')->map(function($values) {
                     return $values->count();
                 });
                 // $applicants = Applicant::join('application_payments', 'applicants.application_number','application_payments.application_number')
@@ -344,7 +344,7 @@ class StudentinfoExportImportController extends Controller
                 $year = $request->year;
                 return view('student.jamb_students', compact('applicants', 'year', 'type', 'bydept'));
             }else{
-                $bydept = Applicant::where(['applicants.type' => $request->type, 'year' => $request->year])->get()->groupBy('course')->map(function($values) {
+                $bydept = Applicant::where(['applicants.mode_of_admission' => 'UTME', 'year' => $request->year])->get()->groupBy('course')->map(function($values) {
                     return $values->count();
                 });
                 // $applicants = Applicant::join('application_payments', 'applicants.application_number','application_payments.application_number')
