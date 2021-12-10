@@ -40,6 +40,7 @@
                 <td>{{$j++}}</td>
                 <td>{{$s}}</td>
                 <td>{{$num}}</td>
+                <td></td>
                 <td><a href="/admin/applicant/view-by-dept/{{$year}}/{{$type}}/{{base64_encode($s)}}" class="btn btn-primary btn-sm">View</a></td>
               </tr>
               @endforeach
