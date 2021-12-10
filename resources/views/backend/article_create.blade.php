@@ -103,12 +103,17 @@
                                 
                                 <div class="form-group">
                                     <label for="title">Start Date (For events):</label>
-                                    <input type="text" class="form-control" name="start_date" required>
+                                    <input type="text" class="form-control" name="start_date">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="title">End Date (For events):</label>
-                                    <input type="text" class="form-control" name="end_date" required>
+                                    <input type="text" class="form-control" name="end_date">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">Time (For events):</label>
+                                    <input type="text" placeholder="8am-4pm" class="form-control" name="time">
                                 </div>
 
                                 <div class="form-group">

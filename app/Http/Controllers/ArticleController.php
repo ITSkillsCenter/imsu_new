@@ -235,6 +235,9 @@ class ArticleController extends Controller
             $newArticle->heading = $request->heading;
             $newArticle->content =  $request->content;
             $newArticle->type =  $request->type;
+            $newArticle->start_date =  $request->start_date;
+            $newArticle->end_date =  $request->end_date;
+            $newArticle->time =  $request->time;
             $newArticle->image =  $file;
             $newArticle->category_id =  $request->category_id;
             $newArticle->is_comment_enabled =  (bool) $request->is_comment_enabled;
@@ -301,6 +304,7 @@ class ArticleController extends Controller
             $newArticle->content =  $request->content;
             $newArticle->start_date =  $request->start_date;
             $newArticle->end_date =  $request->end_date;
+            $newArticle->time =  $request->time;
             $newArticle->type =  $request->type;
             $newArticle->category_id =  $request->category_id;
             $newArticle->is_comment_enabled =  (bool) $request->is_comment_enabled;

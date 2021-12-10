@@ -776,6 +776,12 @@ Welcome Area Style
 /* ==========================
 #Events and recent_event
 ==================================== */
+
+.default-btn2{
+  background: #1b2945;
+  padding: 10px;
+  color: white !important;
+}
 .recent_event h2{
   color: var(--light) !important;
   font-size: 24px;
@@ -794,7 +800,8 @@ Welcome Area Style
 }
 .events-content h2 {
   font-size: 40px;
-  margin-bottom: 50px;
+  text-align: center;
+  margin-bottom: 20px;
   color: var(--sec) !important;
 }
 .events-content .events-list {
@@ -805,7 +812,7 @@ Welcome Area Style
 .events-content .events-list li {
   position: relative;
   padding-left: 140px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 .events-content .events-list li:last-child {
   margin-bottom: 0;
@@ -816,10 +823,17 @@ Welcome Area Style
   display: inline-block;
   text-align: center;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 45px;
+  left: 4%;
   -webkit-transition: var(--transition);
   transition: var(--transition);
+}
+
+.read-more{
+  background: #1b2945;
+  color: white !important;
+  padding: 8px;
+
 }
 .events-content .events-list li .events-date span {
   color: var(--white);

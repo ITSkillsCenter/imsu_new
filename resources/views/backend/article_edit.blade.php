@@ -109,12 +109,17 @@
                                 
                                 <div class="form-group">
                                     <label for="title">Start Date (For events):</label>
-                                    <input type="date" class="form-control" value="{{$article->start_date}}" name="start_date" required>
+                                    <input type="date" class="form-control" value="{{$article->start_date}}" name="start_date">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="title">End Date (For events):</label>
-                                    <input type="date" class="form-control" value="{{$article->end_date}}" name="end_date" required>
+                                    <input type="date" class="form-control" value="{{$article->end_date}}" name="end_date">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title">Time (For events):</label>
+                                    <input type="text" placeholder="8am-4pm" class="form-control" value="{{$article->time}}" name="time">
                                 </div>
 
                                 <div class="form-group">

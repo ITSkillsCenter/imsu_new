@@ -231,7 +231,7 @@
             <div class="section-title white-title pb-3 mb-xl-4">
                 <h2>Discover IMSU</h2>
                 <p class="mt-xl-3">
-                    An innovative ecosystem didicated to producing problem solvers.
+                    An innovative ecosystem dedicated to producing problem solvers.
                 </p>
             </div>
             <div class="row justify-content-center ">
@@ -431,32 +431,46 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="events-content">
-                        <span>Events</span>
+                        <!-- <span>Events</span> -->
                         <h2>Upcoming events</h2>
                         @if(count($events) > 0)
 
                         <ul class="events-list">
                             @foreach($events as $event)
-                            <li>
+                            <li class="single-news">
                                 <div class="events-date">
-                                    <span class="mb-2">{{date("M j", strtotime($event->published_at))}}</span>
-                                    <span>{{date("Y", strtotime($event->published_at))}}</span>
-                                </div>
-                                <span>{{$event->category->name}}</span>
+                                    <span class="mb-2">{{date("M j", strtotime($event->start_date))}}</span>
+                                    <span>{{date("Y", strtotime($event->start_date))}}</span>
+                                </div> <br>
+                                <!-- <span>{{$event->category->name}}</span> -->
                                 <h3>
                                     <a href="/article/{{$event->id}}/{{str_slug($event->heading, '-')}}">
                                         {{$event->heading}}
                                     </a>
                                 </h3>
-                                <p class="pt-0 mt-0">
+                                <!-- <p class="pt-0 mt-0">
                                     {{trimString($event->content, 250)}}...
+                                </p> -->
+                                <p class="pt-0 m-0">
+                                    Venue: Imo State University
+                                </p>
+                                <p class="pt-0 mt-0">
+                                    Time: {{$event->time ?? '8am - 4pm'}}
                                 </p>
                                 <a href="/article/{{$event->id}}/{{str_slug($event->heading, '-')}}" class="read-more fnd-rm">
                                     Read more
                                     <i class="icofont-arrow-right"></i>
                                 </a>
+                                <br><br>
                             </li>
                             @endforeach
+                            <li style="text-align: right;">
+                                <a href="/article" class="default-btn2 mt-3">
+                                    Click here to know more
+                                    <i class="icofont-arrow-right"></i>
+                                </a>
+                            </li>
+                            
                         </ul>
                         @else
                         <h6>No upcoming events</h6>
@@ -581,128 +595,128 @@
                     <!-- Item 1 -->
                     <div class="">
                         <div class="gallery-item position-relative">
-                            <a href="/assets/img/gallery/gallery-1.JPG" class="venobox card-img" data-gall="gallery-item" data-title="A handshake with the President - Mohammadu Buhari">
-                                <img src="/assets/img/gallery/gallery-1.JPG" alt="" class="img-fluid" />
+                            <a href="/assets/img/gallery/gallery-1-min.JPG" class="venobox card-img" data-gall="gallery-item" data-title="A handshake with the President - Mohammadu Buhari">
+                                <img src="/assets/img/gallery/gallery-1-min.JPG" alt="" class="img-fluid" />
                             </a>
                         </div>
                     </div>
                     <!-- Item 2 -->
                     <div class="">
                         <div class="gallery-item position-relative">
-                            <a href="/assets/img/gallery/gallery-2.JPG" class="venobox card-img" data-gall="gallery-item">
-                                <img src="/assets/img/gallery/gallery-2.JPG" alt="" class="img-fluid" />
+                            <a href="/assets/img/gallery/gallery-2-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-2-min.JPG" alt="" class="img-fluid" />
                             </a>
                         </div>
                     </div>
                     <!-- Item 3 -->
                     <div class="">
                         <div class="gallery-item position-relative">
-                            <a href="/assets/img/gallery/gallery-3.JPG" class="venobox card-img" data-gall="gallery-item">
-                                <img src="/assets/img/gallery/gallery-3.JPG" alt="" class="img-fluid" />
+                            <a href="/assets/img/gallery/gallery-3-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-3-min.JPG" alt="" class="img-fluid" />
                             </a>
                         </div>
                     </div>
                     <!-- Item 4 -->
                     <div class="">
                         <div class="gallery-item position-relative">
-                            <a href="/assets/img/gallery/gallery-4.JPG" class="venobox card-img" data-gall="gallery-item">
-                                <img src="/assets/img/gallery/gallery-4.JPG" alt="" class="img-fluid" />
+                            <a href="/assets/img/gallery/gallery-4-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-4-min.JPG" alt="" class="img-fluid" />
                             </a>
                         </div>
                     </div>
                     <!-- Item 5 -->
                     <div class="">
                         <div class="gallery-item position-relative">
-                            <a href="/assets/img/gallery/gallery-5.JPG" class="venobox card-img" data-gall="gallery-item">
-                                <img src="/assets/img/gallery/gallery-5.JPG" alt="" class="img-fluid" />
+                            <a href="/assets/img/gallery/gallery-5-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-5-min.JPG" alt="" class="img-fluid" />
                             </a>
                         </div>
                     </div>
                     <!-- Item 6 -->
                     <div class="">
                         <div class="gallery-item position-relative">
-                            <a href="/assets/img/gallery/gallery-6.JPG" class="venobox card-img" data-gall="gallery-item">
-                                <img src="/assets/img/gallery/gallery-6.JPG" alt="" class="img-fluid" />
+                            <a href="/assets/img/gallery/gallery-6-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-6-min.JPG" alt="" class="img-fluid" />
                             </a>
                         </div>
                     </div>
                     <!-- Item 7 -->
                     <div class="">
                         <div class="gallery-item position-relative">
-                            <a href="/assets/img/gallery/gallery-7.JPG" class="venobox card-img" data-gall="gallery-item">
-                                <img src="/assets/img/gallery/gallery-7.JPG" alt="" class="img-fluid" />
+                            <a href="/assets/img/gallery/gallery-7-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-7-min.JPG" alt="" class="img-fluid" />
                             </a>
                         </div>
                     </div>
                     <!-- Item 8 -->
                     <div class="">
                         <div class="gallery-item position-relative">
-                            <a href="/assets/img/gallery/gallery-8.JPG" class="venobox card-img" data-gall="gallery-item">
-                                <img src="/assets/img/gallery/gallery-8.JPG" alt="" class="img-fluid" />
+                            <a href="/assets/img/gallery/gallery-8-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-8-min.JPG" alt="" class="img-fluid" />
                             </a>
                         </div>
                     </div>
                     <!-- Item 9 -->
                     <div class="">
                         <div class="gallery-item position-relative">
-                            <a href="/assets/img/gallery/gallery-9.JPG" class="venobox card-img" data-gall="gallery-item">
-                                <img src="/assets/img/gallery/gallery-9.JPG" alt="" class="img-fluid" />
+                            <a href="/assets/img/gallery/gallery-9-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-9-min.JPG" alt="" class="img-fluid" />
                             </a>
                         </div>
                     </div>
                     <!-- Item 10 -->
                     <div class="">
                         <div class="gallery-item position-relative">
-                            <a href="/assets/img/gallery/gallery-10.JPG" class="venobox card-img" data-gall="gallery-item">
-                                <img src="/assets/img/gallery/gallery-10.JPG" alt="" class="img-fluid" />
+                            <a href="/assets/img/gallery/gallery-10-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-10-min.JPG" alt="" class="img-fluid" />
                             </a>
                         </div>
                     </div>
                     <!-- Item 11 -->
                     <div class="">
                         <div class="gallery-item position-relative">
-                            <a href="/assets/img/gallery/gallery-11.JPG" class="venobox card-img" data-gall="gallery-item">
-                                <img src="/assets/img/gallery/gallery-11.JPG" alt="" class="img-fluid" />
+                            <a href="/assets/img/gallery/gallery-11-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-11-min.JPG" alt="" class="img-fluid" />
                             </a>
                         </div>
                     </div>
                     <!-- Item 12 -->
                     <div class="">
                         <div class="gallery-item position-relative">
-                            <a href="/assets/img/gallery/gallery-12.JPG" class="venobox card-img" data-gall="gallery-item">
-                                <img src="/assets/img/gallery/gallery-12.JPG" alt="" class="img-fluid" />
+                            <a href="/assets/img/gallery/gallery-12-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-12-min.JPG" alt="" class="img-fluid" />
                             </a>
                         </div>
                     </div>
                     <!-- Item 13 -->
                     <div class="">
                         <div class="gallery-item position-relative">
-                            <a href="/assets/img/gallery/gallery-13.JPG" class="venobox card-img" data-gall="gallery-item">
-                                <img src="/assets/img/gallery/gallery-13.JPG" alt="" class="img-fluid" />
+                            <a href="/assets/img/gallery/gallery-13-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-13-min.JPG" alt="" class="img-fluid" />
                             </a>
                         </div>
                     </div>
                     <!-- Item 14 -->
                     <div class="">
                         <div class="gallery-item position-relative">
-                            <a href="/assets/img/gallery/gallery-14.JPG" class="venobox card-img" data-gall="gallery-item">
-                                <img src="/assets/img/gallery/gallery-14.JPG" alt="" class="img-fluid" />
+                            <a href="/assets/img/gallery/gallery-14-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-14-min.JPG" alt="" class="img-fluid" />
                             </a>
                         </div>
                     </div>
                     <!-- Item 15 -->
                     <div class="">
                         <div class="gallery-item position-relative">
-                            <a href="/assets/img/gallery/gallery-15.JPG" class="venobox card-img" data-gall="gallery-item">
-                                <img src="/assets/img/gallery/gallery-15.JPG" alt="" class="img-fluid" />
+                            <a href="/assets/img/gallery/gallery-15-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-15-min.JPG" alt="" class="img-fluid" />
                             </a>
                         </div>
                     </div>
 
                     <div class="">
                         <div class="gallery-item position-relative">
-                            <a href="/assets/img/gallery/gallery-16.jpg" class="venobox card-img" data-gall="gallery-item">
-                                <img src="/assets/img/gallery/gallery-16.jpg" alt="" class="img-fluid" />
+                            <a href="/assets/img/gallery/gallery-16-min.jpg" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-16-min.jpg" alt="" class="img-fluid" />
                             </a>
                         </div>
                     </div>
