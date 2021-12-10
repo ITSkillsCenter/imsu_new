@@ -87,7 +87,7 @@
                                                         </div>
                                                     </li>
 
-                                                    <li class="el-item item-2 js-fullheight">
+                                                    <li class="el-item item-3 js-fullheight">
                                                         <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-top-left" style="-webkit-animation-duration: 5s; animation-duration: 5s;">
                                                             <img style="filter: brightness(80%);" class="ui-image" src="/assets/img/banner/banner4-min.jpg" alt="Imo State University" uk-cover>
                                                         </div>
