@@ -101,7 +101,7 @@
               <div class="x_panel">
                 <div class="x_title">
                 @if($msg == null)
-                  <h4 class="text-primary">Total Applicant that has Paid Admission Fee : {{ count($applicants) }}</h4>
+                  <h4 class="text-primary">Total Applicant that has Paid Admission Fee : {{ count($applicants) }} (PUTME/Direct Entry)</h4>
                 @else
                 <h4 class="text-primary">Search result : {{ count($applicants) }}</h4>
                 @endif

@@ -371,10 +371,19 @@ class StudentinfoExportImportController extends Controller
     }
 
     public function viewjamb_bydept(Request $request, $year, $type, $id){
-        // $applicants = Applicant::where(['type' => $type, 'year' => $year, 'course' => base64_decode($id)])->get();
-        $applicants = Applicant::join('application_payments', 'applicants.application_number','application_payments.application_number')
-        ->where(['type' => $request->type, 'year' => $request->year, 'course' => base64_decode($id), 'application_payments.status' => 'PAID'])
+        if($type == 'jamb'){
+            $applicants = Applicant::join('application_payments', 'applicants.application_number','application_payments.application_number')
+        ->where(['mode_of_admission' => 'UTME', 'year' => $request->year, 'course' => base64_decode($id), 'application_payments.status' => 'PAID'])
         ->groupBy('applicants.application_number')->get();
+        }elseif($type == 'DE'){
+            $applicants = Applicant::join('application_payments', 'applicants.application_number','application_payments.application_number')
+        ->where(['mode_of_admission' => 'Direct Entry', 'year' => $request->year, 'course' => base64_decode($id), 'application_payments.status' => 'PAID'])
+        ->groupBy('applicants.application_number')->get();
+        }
+        // $applicants = Applicant::where(['type' => $type, 'year' => $year, 'course' => base64_decode($id)])->get();
+        // $applicants = Applicant::join('application_payments', 'applicants.application_number','application_payments.application_number')
+        // ->where(['type' => $request->type, 'year' => $request->year, 'course' => base64_decode($id), 'application_payments.status' => 'PAID'])
+        // ->groupBy('applicants.application_number')->get();
         
         $tot = count($applicants);
         $msg = base64_decode($id);
