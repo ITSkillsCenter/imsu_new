@@ -420,7 +420,7 @@
                         </div>
                         <div class="recent_event">
                             <h2>{{$event_latest->heading}}</h2>
-                            <p>{!! trimString($article->content, 250) !!}...</p>
+                            <p>{!! trimString($event_latest->content, 250) !!}...</p>
                             <a href="/article/{{$event_latest->id}}/{{str_slug($event_latest->heading, '-')}}" class="default-btn mt-3">
                                 Click here to know more
                                 <i class="icofont-arrow-right"></i>
