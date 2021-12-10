@@ -341,7 +341,7 @@ class StudentinfoExportImportController extends Controller
                 ->where(['mode_of_admission' => 'Direct Entry', 'year' => $request->year, 'application_payments.status' => 'PAID'])
                 ->groupBy('applicants.application_number')->get();
 
-                // $bydept = $applicants->groupBy('course');
+                $bydept = $applicants->groupBy('course');
 
                 $type = $request->type;
                 $year = $request->year;
@@ -359,7 +359,7 @@ class StudentinfoExportImportController extends Controller
                 ->where(['mode_of_admission' => 'UTME', 'year' => $request->year, 'application_payments.status' => 'PAID'])
                 ->groupBy('applicants.application_number')->get();
 
-                // $bydept = $applicants->groupBy('course');
+                $bydept = $applicants->groupBy('course');
 
                 // $applicants = ApplicationFee::where(['status' => 'PAID'])
                 // ->select('application_number', 'name', 'phone', 'amount', 'reference_id', 'pms_id', 'status', 'created_at', 'updated_at')
