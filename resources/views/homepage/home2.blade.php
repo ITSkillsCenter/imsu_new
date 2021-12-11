@@ -231,7 +231,7 @@
             <div class="section-title white-title pb-3 mb-xl-4">
                 <h2>Discover IMSU</h2>
                 <p class="mt-xl-3">
-                    An innovation ecosystem dedicated to producing problem solvers.
+                    ...an innovation ecosystem dedicated to producing problem solvers.
                 </p>
             </div>
             <div class="row justify-content-center ">
@@ -466,7 +466,7 @@
                             @endforeach
                             <li style="text-align: right;">
                                 <a href="/article" class="default-btn2 mt-3">
-                                    Click here to know more
+                                    View All Events
                                     <i class="icofont-arrow-right"></i>
                                 </a>
                             </li>
@@ -562,7 +562,7 @@
                   <p style="color: rgba(61, 177, 102, 0.76); font-family: Poppins;
                 font-style: normal;
                 font-weight: normal;
-                font-size: 25px;">Subscribe to Newsletter</p>
+                font-size: 25px;">Subscribe to Our Newsletter</p>
                </div>
                <div class="col-sm-12">
                   <div class="content">
