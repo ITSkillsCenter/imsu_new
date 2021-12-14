@@ -247,6 +247,30 @@
                 </li>
                 @endpermission
 
+                @permission('message-read')
+                <li class="nav-item {{ request()->is(['admin/messages', 'admin/messages/create']) ? 'active' : '' }}">
+                    <a data-toggle="collapse" href="#message">
+                        <i class="fas fa-building"></i>
+                        <p>Manage Messages</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="message">
+                        <ul class="nav nav-collapse">
+                            @permission('message-read')
+                            <li><a href="/admin/messages/email">
+                                    <span class="sub-item">Email</span>
+                                </a>
+                            </li>
+                            <li><a href="/admin/messages/sms">
+                                    <span class="sub-item">SMS</span>
+                                </a>
+                            </li>
+                            @endpermission
+                        </ul>
+                    </div>
+                </li>
+                @endpermission
+
 
                 {{-- New modules --}}
 

@@ -34,10 +34,13 @@ class StudentHomeController extends Controller
 		// 	return redirect()->route('student.ict');
 		// }
 		$student_id = Session::get('student')->matric_number;
+		$curr_level = Session::get('student')->level;
 		$current_session = Current_Semester_Running::where('id',Helper::current_semester())->first();
 		$semester = Helper::current_semester_details();
 		$semester = $semester->id == 1 ? '1st' : '2nd';
-		$current_courses = Course_Student::where(['session_id' => Helper::current_semester(), 'student_id' => $student_id, 'semester' => $semester])->count();
+		$current_courses = Course_Student::where(['session_id' => Helper::current_semester(), 'student_id' => $student_id, 'semester' => $semester, 'level' => $curr_level])->count();
+		$credit_unit = Course_Student::Join('courses', 'courses_student.course_id', '=', 'courses.id')
+					->where(['session_id' => Helper::current_semester(), 'student_id' => $student_id, 'courses_student.semester' => $semester, 'courses_student.level' => $curr_level])->sum('courses.unit');
 		$events = Event::with('type')->where('session_id',$current_session->id)->get();
 		$pending_payments = FeeHistory::where(['student_id' => $student_id, 'status' => 'unpaid'])->count();
 		// return $events;
@@ -72,7 +75,7 @@ class StudentHomeController extends Controller
 						->get();
         // 	return $classes;
     		// return view('admin_student.home.home',compact('clearance','events','classes'));
-			return view('admin_student.dashboard',compact('clearance','events','classes','current_session', 'current_courses', 'events', 'pending_payments'));
+			return view('admin_student.dashboard',compact('curr_level','credit_unit','semester','clearance','events','classes','current_session', 'current_courses', 'events', 'pending_payments'));
     	}else{
     		return redirect('student-login')->with('message','You must sign in first');
     	}

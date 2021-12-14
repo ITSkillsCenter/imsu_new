@@ -10,6 +10,7 @@ use App\Department;
 use App\StudentInfo;
 use App\Faculty;
 use App\FeeHistory;
+use App\ManageCourseCreditUnit;
 use App\PgApplicationFee;
 use App\Programme;
 use App\Semester;
@@ -113,6 +114,12 @@ class Helper
     public static function get_faculty($faculty_id){
         $faculty = Faculty::find($faculty_id);
         return $faculty;
+    }
+
+    public static function get_credit_unit($id){
+        $std = StudentInfo::find($id);
+        $credit =  ManageCourseCreditUnit::where('department_id', $std->dept_id)->where('level', $std->level)->first();
+        return $credit;
     }
     
     public static function student_batch($dept){

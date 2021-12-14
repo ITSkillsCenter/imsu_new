@@ -531,7 +531,7 @@ class PaymentController extends Controller
         $cr = PgApplicationFee::create($details);
         // dd($details, $cr);
         if($cr){
-            $std->status = 'paid';
+            // $std->status = 'paid';
             $std->save();
         }
     }

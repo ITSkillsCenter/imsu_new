@@ -40,23 +40,23 @@
         </div>
     </div>
     <div class="col-sm-6 col-md-4">
-        <div class="card card-stats card-info card-round">
+        <a href="/show-selected-reg/{{base64_encode($current_session->id)}}/{{base64_encode($semester)}}/{{base64_encode($curr_level)}}" class="card card-stats card-info card-round">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-5">
+                    <div class="col-3">
                         <div class="icon-big text-center">
                             <i class="flaticon-interface-6"></i>
                         </div>
                     </div>
-                    <div class="col-7 col-stats">
+                    <div class="col-8 col-stats">
                         <div class="numbers">
-                            <p class="card-category">Courses Registered</p>
-                            <h4 class="card-title">{{$current_courses}}</h4>
+                            <p class="card-category">Total Courses Registered : {{$current_courses}}</p>
+                            <h4 class="card-category">Total Credit Unit Registered: {{$credit_unit}}</h4>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     </div>
     <div class="col-sm-6 col-md-4">
         <div class="card card-stats card-success card-round">
@@ -80,16 +80,19 @@
 
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">You are almost there....</div>
-            <div class="card-body">
-                <div>
+            <div class="card-header">Things to do</div>
+            <div class="card-body row">
+                <div class="col-lg-8">
                     <b>1. Pay Your School Fess</b><br>
                     Check the Payment tab for pending payments, and pay your school fees.
-                </div><br>
-                <div>
+                </div>
+                <div><a class="btn btn-sm btn-primary" href="/student-payment">Make Payment</a></div>
+                <br>
+                <div class="col-lg-8">
                     <b>2. Complete Course Registration</b><br>
                    After Paying your school fees, complete your course registration by clicking the Course Registration tab on the sidebar.
-                </div><br>
+                </div>
+                <div><a class="btn btn-sm btn-primary" href="/course-registration">Register Courses</a></div>
                
             </div>
         </div>

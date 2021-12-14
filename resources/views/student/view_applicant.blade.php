@@ -222,7 +222,7 @@
       </div>
     </div>
   </section>
-  <div id="myModal2" class="modal fade">
+    <div id="myModal2" class="modal fade">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
                 <div class="modal-header justify-content-center">

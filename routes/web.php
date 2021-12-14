@@ -349,6 +349,11 @@ Route::group(['prefix' => '/admin', 'middleware' => ['2fa', 'auth']], function (
   Route::get('/transfer-transcript', 'CreditTransferTranscript@show')->name('transfer.transcript');
   Route::post('/transfer-transcript', 'CreditTransferTranscript@new_transcript')->name('transfer.view');
 
+
+  Route::get('/messages/{type}', 'MessagesController@index')->name('message.index');
+  Route::get('/messages/{type}/create', 'MessagesController@create')->name('message.create');
+  Route::post('/messages/{type}/create', 'MessagesController@create')->name('message.create');
+
   /*
   ########## Admit card  Route ###########
   */
@@ -659,10 +664,15 @@ Route::get('/admission-portal', 'HomeController@admission_portal');
 Route::get('/student-portal-home', 'HomeController@student_portal');
 Route::get('/staff-portal-home', 'HomeController@staff_portal');
 Route::get('/alumni-portal-home', 'HomeController@alumni_portal');
+
+
 Route::post('/get_lgas', 'HomeController@get_lgas');
 Route::post('/get_departments', 'HomeController@get_departments');
 Route::post('/get_programmes', 'HomeController@get_programmes');
 Route::post('/get_specializations', 'HomeController@get_specializations');
+Route::post('/get_receivers', 'MessagesController@get_receivers');
+
+
 Route::get('/admission/verify/{email}', 'HomeController@admission_verify');
 Route::get('/verify/{email}', 'HomeController@verify');
 Route::post('/get_department_options', 'HomeController@get_department_options');
@@ -684,6 +694,8 @@ Route::get('/verify-acceptance-fee', 'HomeController@verify_acceptance_fee');
 Route::post('/verify-acceptance-fee', 'HomeController@verify_acceptance_fee');
 Route::get('/exam-pass', 'HomeController@exam_pass');
 Route::get('/home/logout', 'HomeController@logout');
+
+
 Route::get('/privacy-policy', function () {
   return view('homepage.privacy');
 });
