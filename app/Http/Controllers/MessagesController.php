@@ -44,6 +44,8 @@ class MessagesController extends Controller
                     Message_Receiver::create($receivers);
                 }
 
+                // dd($request->selected_receivers, $request->selected_ids);
+
                 foreach ($request->selected_receivers as $receivers) {
                     $rr[] =  [
                         "to" => [
@@ -59,7 +61,25 @@ class MessagesController extends Controller
                 $upd->status = 'sent';
                 $upd->save();
                 return back()->with(['success' => 'Message sent successfuly']);
-            }else{
+            } else {
+
+                // dd(implode(',', $request->selected_receivers));
+                // $message['subject'] = $request->subject;
+                // $message['receiver_type'] = $request->role;
+                // $message['body'] = $request->body;
+                // $message['type'] = $request->type;
+                // $message['subject'] = $request->subject;
+                // $message['faculty_id'] = $request->faculty;
+                // $message['dept_id'] = $request->department;
+
+                // $msg = Message::create($message);
+                // foreach ($request->selected_ids as $selected) {
+                //     $receivers['message_id'] = $msg->id;
+                //     $receivers['receiver_id'] = $selected;
+                //     Message_Receiver::create($receivers);
+                // }
+
+
                 return back()->with(['error' => 'SMS not available']);
             }
         }
@@ -120,7 +140,7 @@ class MessagesController extends Controller
             "content" => [
                 [
                     "type" => "text/html",
-                    "value" =>  'Hello'
+                    "value" =>  $mail_body
                 ]
             ],
 
@@ -148,5 +168,37 @@ class MessagesController extends Controller
         $response = curl_exec($curl);
 
         return $response;
+    }
+
+    public function sendSMS()
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://www.bulksmsnigeria.com/api/v1/sms/create',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => '{
+    "api_token": "ifpmEGpDfCDamjFbaVMYm8eQVySSdKAqVaqZJrJMX2sXjb5x0gzgN2srfSa6",
+    "from": "IMSU",
+    "to": "08060929018,08173557779,08127131208",
+    "body": "Hello Errybody",
+    "dnd": 1
+    
+}',
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        echo $response;
     }
 }

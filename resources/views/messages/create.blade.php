@@ -10,7 +10,7 @@
             <form method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="col-md-8 col-lg-8">
+                    <div class="col-md-7 col-lg-7">
 
                         <div class="card no-margin-bottom">
                             <div class="card-header">
@@ -19,7 +19,7 @@
                             <div class="card-body" id="create-article">
 
                                 <div class="form-group">
-                                    <label for="title">Title:</label>
+                                    <label for="title">{{$type == 'email'? 'Title' : 'From'}}:</label>
                                     <input type="text" class="form-control" name="subject" id="title" required>
                                 </div>
 
@@ -76,16 +76,18 @@
                         </div>
 
                     </div>
-                    <div class="col-lg-4 col-md-4">
+                    <div class="col-lg-5 col-md-5">
 
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">
                                     Receivers
+                                    <button type="button" class="btn btn-primary btn-sm" id="checkall">Select all</button>
+                                    <button type="button" class="btn btn-primary btn-sm" id="uncheckall">Unselect all</button>
                                 </h3>
                             </div>
                             <div class="card-body">
-                                <div class="row" id="receivers" style="max-height: 1000px; overflow-y:scroll">
+                                <div class="row" id="receivers" style="max-height: 1000px; overflow-y:scroll;">
 
                                 </div>
                             </div>
@@ -109,7 +111,23 @@
         height: 500
     });
 
+    $('#checkall').on('click', function() {
+        $('#receivers').children().find('.selected_receivers:input[type="checkbox"]').prop('checked', true);
+        $('#receivers').children().find('.selected_ids:input[type="checkbox"]').prop('checked', true);
+    });
+    $('#uncheckall').on('click', function() {
+        $('#receivers').children().find('.selected_receivers:input[type="checkbox"]').prop('checked', false);
+        $('#receivers').children().find('.selected_ids:input[type="checkbox"]').prop('checked', false);
+    });
 
+    function selectNearest(id){
+        // console.log($('#div'+id).children().find('.selected_ids:input[type="checkbox"]'))
+        if($('#div'+id).children('.selected_receivers').prop("checked")){
+            $('#div'+id).children('.selected_ids').prop('checked', true)
+        }else{
+            $('#div'+id).children('.selected_ids').prop('checked', false)
+        }
+    }
 
     $.ajaxSetup({
         headers: {
@@ -129,7 +147,7 @@
         });
     })
 
-    $('#departments, #faculty_hello, #type').on('blur', function() {
+    $('#departments, #faculty_hello, #type').on('change', function() {
         let faculty_id = $("#faculty_hello").find(":selected").val()
         let dept_id = $("#departments").find(":selected").val()
         let type = $("#type").find(":selected").val()
@@ -143,16 +161,16 @@
             if (selected_type == 'email') {
                 response.body.map((item) => {
                     $('#receivers').append(`
-                        <div class="col-lg-6">
-                            <input type="checkbox" name="selected_receivers[]" value="${item.email || item.Email_Address}" checked>${item.email || item.Email_Address}
-                            <input type="hidden" name="selected_ids[]" value="${item.id}" class="selected_receivers">
+                        <div class="col-lg-6" id="div${item.id}">
+                            <input type="checkbox" name="selected_receivers[]" class="selected_receivers" onClick="selectNearest(${item.id})" value="${item.email || item.Email_Address}" checked>${item.email || item.Email_Address}
+                            <input type="checkbox" name="selected_ids[]"  class="selected_ids" hidden value="${item.id}" checked>
                         </div>
                     `)
                 })
             } else {
                 if (type == 'student') {
                     response.body.map((item) => {
-                        if(item.Student_Mobile_Number !== null){
+                        if(item.Student_Mobile_Number !== null && item.Student_Mobile_Number.length == 11){
                             $('#receivers').append(`
                                 <div class="col-lg-6">
                                     <input type="checkbox" name="selected_receivers[]" value="${item.Student_Mobile_Number}" class="selected_receivers" checked>${item.Student_Mobile_Number}

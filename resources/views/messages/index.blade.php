@@ -42,12 +42,12 @@
                                         <a href="" target="_blank">
                                             <span class="fa fa-eye text-primary"></span>
                                         </a>&nbsp;
-                                        <a href="">
+                                        <!-- <a href="">
                                             <span class="fa fa-edit text-primary"></span>
                                         </a>&nbsp;
                                         <a href="" onclick="return confirm('Are you sure to delete?')">
                                             <span class="fa fa-trash text-danger"></span>
-                                        </a>
+                                        </a> -->
                                     </td>
                                 </tr>
                                 @endforeach

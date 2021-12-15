@@ -1,4 +1,4 @@
-@extends('admin_student.master')
+@extends('admin_student.layout')
 @section('title')
 Student || Course
 @endsection

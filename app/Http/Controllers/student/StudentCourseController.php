@@ -202,6 +202,8 @@ class StudentCourseController extends Controller
         $session = base64_decode($session);
         $level = base64_decode($level);
 
+        // dd($semester, $session, $level);
+
         foreach($levels as $lev){
             $level  = (int) $level;
             if($level >= $lev){
@@ -215,7 +217,7 @@ class StudentCourseController extends Controller
         $elective_courses = Course::where(['dept_id' => $dept_id, 'semester' => $semester, 'level' => $level])->where('type', '!=', 'compulsory')->get();
         $manageCourseCreditUnit = ManageCourseCreditUnit::where('department_id', $dept_id)->where('level', $level)->first();
         $reg_courses = Course_Student::select('courses.*', 'courses_student.id as cid')->join('courses', 'course_id', '=', 'courses.id')
-                    ->where(['session_id' => $session, 'courses_student.semester' => $semester, 'courses_student.level' => $level])->get();
+                    ->where(['session_id' => $session, 'courses_student.semester' => $semester, 'courses_student.level' => $level, 'student_id' => $student->matric_number])->get();
         $reg_arr = [];
         foreach($reg_courses as $single){
             $reg_arr[] = $single->id;

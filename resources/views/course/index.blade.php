@@ -1,4 +1,4 @@
-@extends('layouts.master',['title'=>'All Courses'])
+@extends('admin_student.layout')
 
 
 @section('content')

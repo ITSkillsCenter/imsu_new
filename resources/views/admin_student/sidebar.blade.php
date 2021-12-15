@@ -22,7 +22,7 @@
                                     <span class="link-collapse">My Profile</span>
                                 </a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="#edit">
                                     <span class="link-collapse">Edit Profile</span>
                                 </a>
@@ -31,7 +31,7 @@
                                 <a href="#settings">
                                     <span class="link-collapse">Settings</span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-off"></i> Log Out</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
