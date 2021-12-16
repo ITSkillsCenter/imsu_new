@@ -123,7 +123,7 @@ class MessagesController extends Controller
             $data['body'] = $receivers;
             return $data;
         } else if ($request->type == 'student') {
-            $query = StudentInfo::query();
+            $query = StudentInfo::where('Email_Address', '!=', null)->orWhere('Student_Mobile_Number', '!=', null);
 
             if ($request->faculty_id !== 'all') {
                 $query->where(['faculty_id' => $request->faculty_id]);
