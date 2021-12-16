@@ -72,7 +72,7 @@
                                 <h5 class="sub">Paid By</h5>
                                 @endif
                                 <p>
-                                    {{session()->get('student')['first_name']}} {{session()->get('student')['last_name']}},<br />Matric Number: {{session()->get('student')['matric_number']}}
+                                    {{session()->get('student')['first_name']}} {{session()->get('student')['last_name']}} {{session()->get('student')['middle_name']}},<br />Matric Number: {{session()->get('student')['matric_number']}}
                                 </p>
                             </div>
                         </div>

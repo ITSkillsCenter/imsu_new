@@ -192,7 +192,7 @@ class PaymentController extends Controller
         $inv = FeeHistory::find($invoice_id);
         $fl = FeeList::find($inv->fee_id);
         $details['amount'] = $inv->amount;
-        $details['name'] = $std->first_name . ' ' . $std->last_name;
+        $details['name'] = $std->last_name . ' ' . $std->first_name . ' ' . $std->middle_name;
         $details['email'] = $std->Email_Address;
         $details['matric'] = $std->matric_number;
         $details['phone'] = $std->Student_Mobile_Number;
@@ -216,7 +216,7 @@ class PaymentController extends Controller
         $inv = FeeHistory::find($invoice_id);
         $fl = FeeList::find($inv->fee_id);
         $details['amount'] = $inv->amount;
-        $details['name'] = $std->first_name . ' ' . $std->last_name;
+        $details['name'] = $std->last_name . ' ' . $std->first_name . ' ' . $std->middle_name;
         $details['email'] = $std->Email_Address;
         $details['matric'] = $std->matric_number;
         $details['phone'] = $std->Student_Mobile_Number;
