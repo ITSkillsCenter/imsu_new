@@ -7,7 +7,8 @@
     <meta name="csrf-token" content="{{csrf_token()}}">
 	<title>IMSU - Student Dashboard</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="{{ URL::asset('admin_student/assets/img/icon.ico')}}" type="image/x-icon"/>
+	<link rel="shortcut icon" href="{{URL::asset('homepage/favicon.jpg')}}" type="image/x-icon">
+    <link rel="icon" href="{{URL::asset('homepage/favicon.jpg')}}" type="image/x-icon">
 
 	<!-- Fonts and icons -->
 	<script src="{{ URL::asset('admin_student/assets/js/plugin/webfont/webfont.min.js')}}"></script>
