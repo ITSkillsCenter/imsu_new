@@ -168,7 +168,7 @@
         let type = $("#type").find(":selected").val()
         let level = $("#levels").find(":selected").val()
         let selected_type = $('#selected_type').val();
-        $.post('/get_receivers', {
+        $.post('/get_receivers/{{$type}}', {
             faculty_id,
             dept_id,
             type,

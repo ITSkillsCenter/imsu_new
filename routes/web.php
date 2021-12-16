@@ -671,6 +671,7 @@ Route::post('/get_departments', 'HomeController@get_departments');
 Route::post('/get_programmes', 'HomeController@get_programmes');
 Route::post('/get_specializations', 'HomeController@get_specializations');
 Route::post('/get_receivers', 'MessagesController@get_receivers');
+Route::post('/get_receivers/{the_type}', 'MessagesController@get_receivers');
 
 
 Route::get('/admission/verify/{email}', 'HomeController@admission_verify');

@@ -94,7 +94,7 @@ class MessagesController extends Controller
 
 
 
-    public function get_receivers(Request $request)
+    public function get_receivers(Request $request, $the_type)
     {
         if ($request->type !== 'student') {
             if($request->type == 'all_staffs'){
@@ -123,7 +123,11 @@ class MessagesController extends Controller
             $data['body'] = $receivers;
             return $data;
         } else if ($request->type == 'student') {
-            $query = StudentInfo::where('Email_Address', '!=', null)->orWhere('Student_Mobile_Number', '!=', null);
+            if($the_type == 'email'){
+                $query = StudentInfo::where('Email_Address', '!=', null);
+            }else if($the_type == 'sms'){
+                $query = StudentInfo::where('Student_Mobile_Number', '!=', null);
+            }
 
             if ($request->faculty_id !== 'all') {
                 $query->where(['faculty_id' => $request->faculty_id]);
