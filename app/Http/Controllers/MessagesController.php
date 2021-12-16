@@ -62,8 +62,8 @@ class MessagesController extends Controller
                 $upd->save();
                 return back()->with(['success' => 'Message sent successfuly']);
             } else {
-
-                // dd(implode(',', $request->selected_receivers));
+                // dd($request->all());
+                // $to = implode(',', $request->selected_receivers);
                 // $message['subject'] = $request->subject;
                 // $message['receiver_type'] = $request->role;
                 // $message['body'] = $request->body;
@@ -78,7 +78,10 @@ class MessagesController extends Controller
                 //     $receivers['receiver_id'] = $selected;
                 //     Message_Receiver::create($receivers);
                 // }
+                // dd($to);
+                // $send = $this->sendSMS($to, $message['body'], $message['subject']);
 
+                // dd($send);
 
                 return back()->with(['error' => 'SMS not available']);
             }
@@ -94,28 +97,42 @@ class MessagesController extends Controller
     public function get_receivers(Request $request)
     {
         if ($request->type !== 'student') {
-            $query = User::join('role_user', 'users.id', 'role_user.user_id');
-            if ($request->type !== 'all') {
-                $query->where(['role_user.role_id' => $request->type]);
+            if($request->type == 'all_staffs'){
+                $query = User::join('role_user', 'users.id', 'role_user.user_id');
+                if ($request->faculty_id !== 'all') {
+                    $query->where(['users.faculty_id' => $request->faculty_id]);
+                }
+                if ($request->dept_id !== 'all') {
+                    $query->where(['users.dept_id' => $request->dept_id]);
+                }
+            }else{
+                $query = User::join('role_user', 'users.id', 'role_user.user_id');
+                if ($request->type !== 'all') {
+                    $query->where(['role_user.role_id' => $request->type]);
+                }
+                if ($request->faculty_id !== 'all') {
+                    $query->where(['users.faculty_id' => $request->faculty_id]);
+                }
+                if ($request->dept_id !== 'all') {
+                    $query->where(['users.dept_id' => $request->dept_id]);
+                }
             }
-            if ($request->faculty_id !== 'all') {
-                $query->where(['users.faculty_id' => $request->faculty_id]);
-            }
-            if ($request->dept_id !== 'all') {
-                $query->where(['users.dept_id' => $request->dept_id]);
-            }
+            
 
             $receivers = $query->get()->toArray();
             $data['body'] = $receivers;
             return $data;
         } else if ($request->type == 'student') {
-            $query = StudentInfo::where('Email_Address', '!=', null);
+            $query = StudentInfo::query();
 
             if ($request->faculty_id !== 'all') {
                 $query->where(['faculty_id' => $request->faculty_id]);
             }
             if ($request->dept_id !== 'all') {
                 $query->where(['dept_id' => $request->dept_id]);
+            }
+            if ($request->level !== 'all') {
+                $query->where(['level' => $request->level]);
             }
             $receivers = $query->get()->toArray();
             $data['body'] = $receivers;
@@ -170,7 +187,7 @@ class MessagesController extends Controller
         return $response;
     }
 
-    public function sendSMS()
+    public function sendSMS($receivers, $text, $from)
     {
         $curl = curl_init();
 
@@ -184,21 +201,20 @@ class MessagesController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => '{
-    "api_token": "ifpmEGpDfCDamjFbaVMYm8eQVySSdKAqVaqZJrJMX2sXjb5x0gzgN2srfSa6",
-    "from": "IMSU",
-    "to": "08060929018,08173557779,08127131208",
-    "body": "Hello Errybody",
-    "dnd": 1
-    
-}',
+                "api_token": "ifpmEGpDfCDamjFbaVMYm8eQVySSdKAqVaqZJrJMX2sXjb5x0gzgN2srfSa6",
+                "from": "IMSU",
+                "to": '.$receivers.',
+                "body": '.$text.',
+                "dnd": 1
+                
+            }',
             CURLOPT_HTTPHEADER => array(
                 'Content-Type: application/json'
             ),
         ));
 
         $response = curl_exec($curl);
-
-        curl_close($curl);
-        echo $response;
+        // curl_close($curl);
+        return $response;
     }
 }

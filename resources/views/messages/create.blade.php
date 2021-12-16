@@ -27,6 +27,7 @@
                                     <label for="title">Role:</label>
                                     <select name="role" id="type" class="form-control" required>
                                         <option value="">Select Role</option>
+                                        <option value="all_staffs">All Staffs</option>
                                         @foreach($roles as $role)
                                         <option value="{{$role->id}}">{{$role->display_name}}</option>
                                         @endforeach
@@ -48,6 +49,20 @@
                                     <label for="title">Department:</label>
                                     <select name="department" id="departments" class="form-control">
                                         <option value="all">All</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="level">Level:</label>
+                                    <select name="level" id="levels" class="form-control">
+                                        <option value="all">All</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option>
+                                        <option value="300">300</option>
+                                        <option value="400">400</option>
+                                        <option value="500">500</option>
+                                        <option value="600">600</option>
 
                                     </select>
                                 </div>
@@ -147,15 +162,17 @@
         });
     })
 
-    $('#departments, #faculty_hello, #type').on('change', function() {
+    $('#departments, #faculty_hello, #type, #levels').on('blur', function() {
         let faculty_id = $("#faculty_hello").find(":selected").val()
         let dept_id = $("#departments").find(":selected").val()
         let type = $("#type").find(":selected").val()
+        let level = $("#levels").find(":selected").val()
         let selected_type = $('#selected_type').val();
         $.post('/get_receivers', {
             faculty_id,
             dept_id,
-            type
+            type,
+            level
         }).done(function(response) {
             $('#receivers').html('')
             if (selected_type == 'email') {
