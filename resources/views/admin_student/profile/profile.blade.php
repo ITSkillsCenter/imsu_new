@@ -27,10 +27,10 @@
         <!-- Widget: user widget style 1 -->
         <div class="card card-widget widget-user">
           <!-- Add the bg color to the header using any of the bg-* classes -->
-          <div class="widget-user-header text-white">
+          <div class="widget-user-header">
             <h3 class="widget-user-username">{{strtoupper($student->last_name)}} {{strtoupper($student->first_name)}} {{strtoupper($student->middle_name)}}</h3>
-            <h3 class="widget-user-username">{{strtoupper($student->Registration_Number)}}</h3>
-            <h5 class="widget-user-desc">Department of {{strtoupper($student->Program)}}</h5>
+            <!-- <h3 class="widget-user-username">{{strtoupper($student->Registration_Number)}}</h3> -->
+            <!-- <h5 class="widget-user-desc">Department of {{strtoupper($student->Program)}}</h5> -->
           </div>
           <div class="widget-user-image">
             <img class="img-circle" src="/profile_images/{{$student->Photo}}" heigth="200px" width="200px" alt="User Avatar">
@@ -82,7 +82,7 @@
               <tbody>
                 <tr>
                   <th>Name:</th>
-                  <td> {{$student->first_name}} {{$student->last_name}}</td>
+                  <td> {{$student->last_name}} {{$student->first_name}} {{$student->middle_name}}</td>
                 </tr>
                 <tr>
                   <th>Enrolled Semester:</th>

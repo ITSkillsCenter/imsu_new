@@ -33,9 +33,9 @@ Student||Profile Update
                             
                             <tbody>
                               <tr>
-                                <th>Name: {{$student->first_name}}</th>
+                                <th>Name:</th>
                                 <td>  
-                                    <p type="text" name="Full_Name">{{$student->first_name}} {{$student->last_name}}</p></td>
+                                    <p type="text" name="Full_Name">{{$student->last_name}} {{$student->first_name}} {{$student->middle_name}}</p></td>
                               </tr>
                               <tr>
                                 <th>Religion:</th>
