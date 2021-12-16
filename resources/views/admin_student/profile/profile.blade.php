@@ -1,4 +1,4 @@
-  @extends('admin_student.master')
+  @extends('admin_student.layout')
   @section('title')
   Student||Profile
   @endsection
@@ -28,7 +28,7 @@
         <div class="card card-widget widget-user">
           <!-- Add the bg color to the header using any of the bg-* classes -->
           <div class="widget-user-header text-white">
-            <h3 class="widget-user-username">{{strtoupper($student->Full_Name)}}</h3>
+            <h3 class="widget-user-username">{{strtoupper($student->last_name)}} {{strtoupper($student->first_name)}} {{strtoupper($student->middle_name)}}</h3>
             <h3 class="widget-user-username">{{strtoupper($student->Registration_Number)}}</h3>
             <h5 class="widget-user-desc">Department of {{strtoupper($student->Program)}}</h5>
           </div>
