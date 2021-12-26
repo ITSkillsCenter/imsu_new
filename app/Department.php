@@ -9,7 +9,7 @@ class Department extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
     protected $table='departments';
-    protected $fillable=['name','type','faculty_id','short_name'];
+    protected $fillable=['name','type','faculty_id','short_name', 'years'];
 
     public function faculty()
     {

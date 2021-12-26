@@ -47,6 +47,12 @@
                                         </select>
                                         
                                     </div>
+
+                                    <div class="form-group">
+                                        <label>Number of Years: </label>
+                                        <input class="form-control" name="years" value="{{$department->years}}" required />
+                                    </div>
+
                                     <div class="form-group">
                                         <label>Type: </label>
                                         <select name="type" class="form-control">

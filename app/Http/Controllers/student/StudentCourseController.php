@@ -129,7 +129,7 @@ class StudentCourseController extends Controller
         $borrowed_courses = BorrowedCourse::select('courses.*', 'borrowed_courses.id as bid', 'borrowed_courses.owner_id', 'borrowed_courses.dept_borrow_id' ,'borrowed_courses.status as bstatus')
         ->join('courses', 'courses.id', '=', 'course_id')->where(['dept_borrow_id' => $dept_id, 'courses.level' => $level, 'borrowed_courses.status' => 'accepted'])->get();
         
-        $manageCourseCreditUnit = ManageCourseCreditUnit::where('department_id', $dept_id)->where('level', $level)->first();
+        $manageCourseCreditUnit = ManageCourseCreditUnit::where('department_id', $dept_id)->where('level', $level)->where('semester', $semester)->first();
         $reg_courses = Course_Student::select('courses.*', 'courses_student.id as cid', 'course_status')->join('courses', 'course_id', '=', 'courses.id')
                     ->where(['session_id' => $session, 'courses_student.semester' => $semester, 'courses_student.level' => $level, 'courses_student.student_id' => $student->matric_number])->get();
         $reg_arr = [];
@@ -142,8 +142,10 @@ class StudentCourseController extends Controller
 
                 $previouseStudentCourses = Course_Student::with('course')->where('level', $level)
                                             ->where('department', $dept_id)->get();
-                $manageCourseCreditUnit = ManageCourseCreditUnit::where('department_id', $dept_id)
-                                            ->where('level', $level)->first();
+                // $manageCourseCreditUnit = ManageCourseCreditUnit::where('department_id', $dept_id)
+                //                             ->where('level', $level)->first();
+                $manageCourseCreditUnit = ManageCourseCreditUnit::where('department_id', $dept_id)->where('level', $level)
+                ->where('semester', $semester)->first();
 
                 $totalCreditUnit = 0;
                 $previouselyAddedCreditUnit = 0;
@@ -215,7 +217,7 @@ class StudentCourseController extends Controller
         $courses = Course::where(['dept_id' => $dept_id, 'level' => $level, 'semester' => $semester])->get();
         $compulsory_courses = Course::where(['dept_id' => $dept_id, 'semester' => $semester, 'level' => $level, 'type' => 'compulsory'])->get();
         $elective_courses = Course::where(['dept_id' => $dept_id, 'semester' => $semester, 'level' => $level])->where('type', '!=', 'compulsory')->get();
-        $manageCourseCreditUnit = ManageCourseCreditUnit::where('department_id', $dept_id)->where('level', $level)->first();
+        $manageCourseCreditUnit = ManageCourseCreditUnit::where('department_id', $dept_id)->where('level', $level)->where('semester', $semester)->first();
         $reg_courses = Course_Student::select('courses.*', 'courses_student.id as cid')->join('courses', 'course_id', '=', 'courses.id')
                     ->where(['session_id' => $session, 'courses_student.semester' => $semester, 'courses_student.level' => $level, 'student_id' => $student->matric_number])->get();
         $reg_arr = [];

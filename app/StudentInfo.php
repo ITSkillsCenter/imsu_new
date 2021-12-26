@@ -36,6 +36,7 @@ class StudentInfo extends Model implements Auditable
               'matric_number',
               'student_group',
               'password',
+              'Passing_Batch',
               'temp_password',
               'blood_group', 'country_residence', 'state_of_residence', 'lga_of_residence', 'fathers_name', 'fathers_address', 'fathers_phone',
               'mothers_name', 'mothers_address', 'mothers_phone', 'guardians_name', 'guardians_address', 'guardians_phone', 'guardians_relationship',

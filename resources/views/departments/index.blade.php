@@ -31,7 +31,7 @@
                                             <th>Department ID(db table)</th>
                                             <th>Department Name</th>
                                             <th>Department Short Name</th>
-                                            <th>Department Type</th>
+                                            <th>Number of Years</th>
                                             <th>Department Faculty Name</th>
                                             <th>Action</th>
                                         </tr>
@@ -42,7 +42,7 @@
                                                 <td>{{ $dept->id }}</td>
                                                 <td>{{ $dept->name }}</td>
                                                 <td>{{ $dept->short_name }}</td>
-                                                <td>{{ $dept->type }}</td>
+                                                <td>{{ $dept->years }}</td>
                                                 <td>{{ $dept->faculty->name }}</td>
                                                 <td>
                                                     <div class="btn-group">
@@ -106,6 +106,10 @@
                                                             <option value="{{$f->id}}">{{$f->name}}</option>
                                                             @endforeach
                                                         </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Number of Years: </label>
+                                                        <input class="form-control" name="years" required />
                                                     </div>
                                                     <div class="form-group">
                                                         <label>Type: </label>

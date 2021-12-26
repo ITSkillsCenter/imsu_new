@@ -95,6 +95,22 @@
 
                                     <div class="col-md-8">
                                         <div class="form-group">
+                                            <label class="control-label"> Semester <span class="required">*</span>
+                                            </label>
+                                            <div class="input-group">
+                                                <select name="semester" class="form-control" required>
+                                                    <option value="{{$manageCourseCreditUnit->semester}}">{{$manageCourseCreditUnit->semester}}</option>
+                                                    <option value="1st">1st</option>
+                                                    <option value="2nd">2nd</option>
+                                                </select>
+                                            </div>
+                                            <span class="text-danger">{{ $errors->first('semester') }}</span>
+                                          </div>
+                                      
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <div class="form-group">
                                             <label class="control-label" for="firstname"> Edit Maximum Credit Unit <span class="required">*</span>
                                             </label>
                                             <div class="input-group">

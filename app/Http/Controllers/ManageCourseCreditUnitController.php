@@ -44,6 +44,7 @@ class ManageCourseCreditUnitController extends Controller
                                     ->where('program_id', $request['program_id'])
                                     ->where('department_id', $request['department_id'])
                                     ->where('level', $request['level'])
+									->where('semester', $request['semester'])
                                     ->first();
         if($manageCourseCreditUnit){
             return back()->with('error', 'Record already exist');

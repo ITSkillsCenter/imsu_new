@@ -30,6 +30,7 @@
                                         <th>Department</th>
                                         <th>Program</th>
                                         <th>Level</th>
+                                        <th>Semester</th>
                                         <th>Max Credit Unit</th>
                                         <th>Min Credit Unit</th>
                                         <th>Action</th>
@@ -41,6 +42,7 @@
                                         <td>{{ $courseCreditUnit->department->name }}</td>
                                         <td>{{ $courseCreditUnit->program->name }}</td>
                                         <td>{{ $courseCreditUnit->level }}</td>
+                                        <td>{{ $courseCreditUnit->semester }}</td>
                                         <td>{{ $courseCreditUnit->max_credit_unit }}</td>
                                         <td>{{ $courseCreditUnit->min_credit_unit }}</td>
 

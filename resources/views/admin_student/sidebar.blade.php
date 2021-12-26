@@ -233,6 +233,9 @@
 
                 @php 
                     $ct = Helper::check_payment(Session::get('student_id'));
+                    $sstt = Helper::student_info();
+                    $dept_year = Helper::get_department($sstt->dept_id)->years;
+                    
                 @endphp
                 @if($ct < 1)
                 <li class="nav-item">
@@ -240,7 +243,15 @@
                         <i class="fas fa-book"></i>
                         <p>Generate Exam Pass</p>
                     </a>
-                    
+                </li>
+                @endif
+
+                @if($sstt->level >= ($dept_year * 100))
+                <li class="nav-item">
+                    <a href="/student-clearance">
+                        <i class="fas fa-book"></i>
+                        <p>Clearance</p>
+                    </a>
                 </li>
                 @endif
                 

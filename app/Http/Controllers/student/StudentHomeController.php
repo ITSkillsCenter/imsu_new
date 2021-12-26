@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\student;
 
+use App\AssignFee;
+use App\ClearanceStudent;
 use App\Course_Student;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -100,5 +102,62 @@ class StudentHomeController extends Controller
 		
 		return view('admin_student.profile.edit', compact('student'));
 	}
+
+	public function student_clearance(Request $request){
+		$std_id = Session::get('student_id');
+		$std = StudentInfo::where('registration_number', $std_id)->orWhere('matric_number', $std_id)->first();
+		$clear = ClearanceStudent::where('student_id', $std->matric_number)->first();
+		$clear_step = $clear !== null ? $clear->step : 0;
+		return view('admin_student.clearance.index', compact('clear_step'));
+	}
+
+	public function personal_info(Request $request){
+		$std_id = Session::get('student_id');
+		$std = StudentInfo::where('registration_number', $std_id)->orWhere('matric_number', $std_id)->first();
+		if($request->isMethod('POST')){
+			StudentInfo::where('registration_number', $std_id)->orWhere('matric_number', $std_id)->update($request->except('_token'));
+
+			$clr = ClearanceStudent::updateOrCreate(
+                [
+                    'student_id' => $std->matric_number
+                ],
+                [
+                    'student_id' => $std->matric_number,
+                    'bursary' => 0,
+                    'hod' => 0,
+                    'records' => 0,
+                    'faculty' => 0,
+                    'library' => 0,
+                    'sport' => 0,
+                    'student_affairs' => 0,
+                    'security' => 0,
+                    'medical' => 0,
+                    'alumni' => 0,
+					'step' => 1
+                ]
+            );
+			// dd($std->matric_number);
+
+
+            return redirect('/student-clearance')->with('success', 'Updated successfully');
+		}
+		
+		return view('admin_student.clearance.personal_info', compact('std'));
+	}
+
+	public function financial_info(Request $request){
+		$fee = AssignFee::first();
+		$year1 = explode(',', $fee->year1);
+		$year2 = explode(',', $fee->year2);
+		$year3 = explode(',', $fee->year3);
+		$year4 = explode(',', $fee->year4);
+		$year5 = explode(',', $fee->year5);
+		return view('admin_student.clearance.financial_info', compact('year1', 'year2', 'year3', 'year4', 'year5'));
+	}
+
+	public function general_info(Request $request){
+		return view('admin_student.clearance.general_info');
+	}
+
     
 }

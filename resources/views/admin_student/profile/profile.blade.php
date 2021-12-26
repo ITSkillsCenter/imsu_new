@@ -11,7 +11,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="/student-home">Home</a></li>
             <li class="breadcrumb-item active">Profile Page</li>
           </ol>
         </div>
@@ -28,7 +28,7 @@
         <div class="card card-widget widget-user">
           <!-- Add the bg color to the header using any of the bg-* classes -->
           <div class="widget-user-header">
-            <h3 class="widget-user-username">{{strtoupper($student->last_name)}} {{strtoupper($student->first_name)}} {{strtoupper($student->middle_name)}}</h3>
+            <h3 class="widget-user-username" style="padding: 10px;">{{strtoupper($student->last_name)}} {{strtoupper($student->first_name)}} {{strtoupper($student->middle_name)}}</h3>
             <!-- <h3 class="widget-user-username">{{strtoupper($student->Registration_Number)}}</h3> -->
             <!-- <h5 class="widget-user-desc">Department of {{strtoupper($student->Program)}}</h5> -->
           </div>
@@ -49,9 +49,9 @@
                 <div class="description-block">
                   <h5 class="description-header"></h5>
                   <br>
-                  @if($student->Current_status=='current')
+                  <!-- @if($student->Current_status=='current')
                   <span class="description-text">Level Term: {{strtoupper($student->Current_semester)}}</span>
-                  @endif
+                  @endif -->
                 </div>
                 <!-- /.description-block -->
               </div>
@@ -85,8 +85,12 @@
                   <td> {{$student->last_name}} {{$student->first_name}} {{$student->middle_name}}</td>
                 </tr>
                 <tr>
-                  <th>Enrolled Semester:</th>
-                  <td> {{$student->Enrollment_Semester}}</td>
+                  <th>Faculty:</th>
+                  <td> {{Helper::get_faculty($student->faculty_id)->name}}</td>
+                </tr>
+                <tr>
+                  <th>Department:</th>
+                  <td> {{Helper::get_department($student->dept_id)->name}}</td>
                 </tr>
                 <tr>
                   <th>Religion:</th>

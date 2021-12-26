@@ -439,6 +439,11 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth', 'namespace' => 'Acco
   Route::get('/student-journal/{id}', 'LedgerController@studentJournal')->name('student.journal');
 
 
+  Route::get('/assign-fee-year', 'ReceivableController@assign_fee')->name('account.assign_fee');
+  Route::get('/assign-fee-year/{id}', 'ReceivableController@assign_fee_year')->name('account.assign_fee_year');
+  Route::post('/assign-fee-year/{id}', 'ReceivableController@assign_fee_year')->name('account.assign_fee_year');
+
+
   Route::get('receivable', 'ReceivableController@receivable')->name('account.receivable');
   Route::get('create-invoice', 'ReceivableController@create_invoice')->name('account.create_invoice');
   Route::post('create-invoice', 'ReceivableController@create_invoice');
@@ -484,6 +489,15 @@ Route::group(['namespace' => 'student', 'middleware' => 'student'], function () 
   Route::get('/student-result', 'StudentResultController@result');
   Route::get('/student-course', 'StudentCourseController@course');
   Route::get('/student-course/{id}', 'StudentCourseController@course_fillter');
+
+  //student clearance module
+  Route::get('/student-clearance', 'StudentHomeController@student_clearance');
+  Route::get('/student-clearance/personal-info', 'StudentHomeController@personal_info');
+  Route::post('/student-clearance/personal-info', 'StudentHomeController@personal_info');
+
+  Route::get('/student-clearance/financial-info', 'StudentHomeController@financial_info');
+  Route::get('/student-clearance/general-info', 'StudentHomeController@general_info');
+
 
 
   Route::get('/generate-exam-pass', 'StudentCourseController@select_exam_pass');

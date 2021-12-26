@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Accounting;
 
 use App\ApplicationFee;
+use App\AssignFee;
 use App\Fee;
 use App\FeeDetail;
 use Carbon\Carbon;
@@ -645,5 +646,67 @@ class ReceivableController extends Controller
         }
 
         
+    }
+
+    public function assign_fee(Request $request){
+        $assign = AssignFee::all();
+        return view('accounting.receivable.assign_fee', compact('assign'));
+    }
+
+    public function assign_fee_year(Request $request, $id){
+        $assign = AssignFee::first();
+        $feelists = FeeList::all();
+
+        if($assign !== null){
+            switch ($id) {
+                case 1:
+                    $the_list = explode(',', $assign->year1);
+                    break;
+                case 2:
+                    $the_list = explode(',', $assign->year2);
+                    break;
+                case 3:
+                    $the_list = explode(',', $assign->year3);
+                    break;
+                case 4:
+                    $the_list = explode(',', $assign->year4);
+                    break;
+                case 5:
+                    $the_list = explode(',', $assign->year5);
+                    break;
+                
+                default:
+                   
+                    break;
+            }
+        }
+
+        if($request->isMethod('POST')){
+            switch ($id) {
+                case 1:
+                    $assign->year1 = implode(',', $request->list);
+                    break;
+                case 2:
+                    $assign->year2 = implode(',', $request->list);
+                    break;
+                case 3:
+                    $assign->year3 = implode(',', $request->list);
+                    break;
+                case 4:
+                    $assign->year4 = implode(',', $request->list);
+                    break;
+                case 5:
+                    $assign->year5 = implode(',', $request->list);
+                    break;
+                
+                default:
+                   
+                    break;
+            }
+            $assign->save();
+            return back()->with('success', 'Saved successfully');
+        }
+        
+        return view('accounting.receivable.assign_fee_year', compact('assign', 'feelists', 'id', 'the_list'));
     }
 }

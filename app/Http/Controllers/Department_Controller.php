@@ -16,7 +16,8 @@ class Department_Controller extends Controller
     public function index()
     {
         $departments = Department::with('faculty')->get();
-        return view('departments.index',compact('departments'));
+        $faculties = Faculty::all();
+        return view('departments.index',compact('departments', 'faculties'));
     }
 
     /**
@@ -41,17 +42,19 @@ class Department_Controller extends Controller
             'name'=>'required',
             'short_name'=>'required',
             'type'=>'required',
-            'faculty_id'=>'required'
+            'faculty_id'=>'required',
+            'years'=>'required'
         ]);
         $department = new Department([
             'name'=>$request->name,
             'short_name'=>$request->short_name,
             'type'=>$request->type,
-            'faculty_id'=>$request->faculty_id
+            'faculty_id'=>$request->faculty_id,
+            'years'=>$request->years
         ]);
         $department->save();
-        toastr()->success('Department add successful','Success');
-        return redirect()->back();
+        // toastr()->success('Department added successfully','Success');
+        return back()->with('success', 'Department added successfully');
     }
 
     /**
@@ -92,12 +95,14 @@ class Department_Controller extends Controller
             'name'=>'required',
             'short_name'=>'required',
             'type'=>'required',
-            'faculty_id'=>'required'
+            'faculty_id'=>'required',
+            'years'=>'required'
         ]);
         $department->name = $request->name;
         $department->short_name = $request->short_name;
         $department->type = $request->type;
         $department->faculty_id = $request->faculty_id;
+        $department->years = $request->years;
 
         $department->save();
         // toastr()->success('Department updated successfully','Success');
@@ -114,8 +119,9 @@ class Department_Controller extends Controller
     {
         $department = Department::find($id);
         $department->delete();
-        toastr()->error('Department deleted successfully','Error');
-        return redirect()->back();
+        return back()->with('success', 'Department deleted successfully');
+        // toastr()->error('Department deleted successfully','Error');
+        // return redirect()->back();
     }
 
 

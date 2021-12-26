@@ -444,7 +444,7 @@ class PgController extends Controller
 
         return view('homepage.pg_uploads', compact('std'));
     }
-
+    //
     public function application_form(Request $request){
         $applicant = Session::get('pgapplicant');
         if($applicant == null){

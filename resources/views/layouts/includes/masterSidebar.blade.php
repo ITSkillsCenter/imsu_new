@@ -381,8 +381,7 @@
 
                 {{-- Faculty Module --}}
                 @permission('faculty_module-read')
-                <li {{-- class="nav-item {{ request()->is(['user','admin/role','admin/permission']) ? 'active' : '' }}"> --}}
-                    class="nav-item {{ request()->is(['admin/faculty', 'admin/faculty/create']) ? 'active' : '' }}">
+                <li class="nav-item {{ request()->is(['admin/departments','admin/faculty', 'admin/program']) ? 'active' : '' }}">
                     <a data-toggle="collapse" href="#faculty">
                         <i class="fas fa-building"></i>
                         <p>Manage Faculties</p>
@@ -594,6 +593,10 @@
                                             <a href="{{ route('account.create_invoice') }}"><span class="sub-item">Create Invoice</span></a>
                                         </li>
 
+                                        <li>
+                                            <a href="{{ route('account.assign_fee') }}"><span class="sub-item">Assign Fee by Year</span></a>
+                                        </li>
+
                                     </ul>
                                 </div>
                             </li>
@@ -608,7 +611,7 @@
 
                 {{-- Settings --}}
                 @permission('settings_module-read')
-                <li class="nav-item {{ request()->is(['admin/departments', 'admin/event-types', 'admin/all-activities', 'admin/current-semester-running', 'admin/settings']) ? 'active' : '' }}">
+                <li class="nav-item {{ request()->is(['admin/event-types', 'admin/all-activities', 'admin/current-semester-running', 'admin/settings']) ? 'active' : '' }}">
                     <a data-toggle="collapse" href="#setting">
                         <i class="fas fa-cog"></i>
                         <p>Setting</p>

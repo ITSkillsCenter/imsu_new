@@ -14,6 +14,7 @@ class ManageCourseCreditUnit extends Model implements Auditable
         'faculty_id',
         'program_id',
         'level',
+        'semester',
         'max_credit_unit',
         'min_credit_unit'
     ];

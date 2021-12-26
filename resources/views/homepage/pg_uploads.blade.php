@@ -71,13 +71,13 @@ $subjects = [
 
                                             </div>
 
-                                            <!-- <div class="gdlr-core-accordion-item-tab clearfix gdlr-core-active">
+                                            <div class="gdlr-core-accordion-item-tab clearfix gdlr-core-active">
                                                 <div class="gdlr-core-accordion-item-icon gdlr-core-js gdlr-core-skin-icon "></div>
                                                 <div class="gdlr-core-accordion-item-content-wrapper">
                                                     <h4 class="gdlr-core-accordion-item-title gdlr-core-js  gdlr-core-skin-e-background gdlr-core-skin-e-content">UPLOADS</h4>
                                                     <div class="gdlr-core-accordion-item-content">
 
-                                                        <div class="gdlr-core-course-column gdlr-core-column-20">
+                                                        <!-- <div class="gdlr-core-course-column gdlr-core-column-20">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
                                                                 <label for="">O'level result </label>
                                                                 <input type="file" required class="my_input" placeholder="Attach Certificate" name="olevelres" value="" />
@@ -138,7 +138,7 @@ $subjects = [
                                                                 <label for="">Indigene certificate </label>
                                                                 <input type="file" required class="my_input" placeholder="Attach Certificate" name="indig" value="" />
                                                             </div>
-                                                        </div>
+                                                        </div> -->
 
                                                         <div class="gdlr-core-course-column gdlr-core-column-20">
                                                             <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id">
@@ -149,7 +149,7 @@ $subjects = [
 
                                                     </div>
                                                 </div>
-                                            </div> -->
+                                            </div>
 
                                             <br><br>
                                             <h5>DECLARATION:</h5>

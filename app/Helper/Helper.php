@@ -10,6 +10,7 @@ use App\Department;
 use App\StudentInfo;
 use App\Faculty;
 use App\FeeHistory;
+use App\FeeList;
 use App\ManageCourseCreditUnit;
 use App\PgApplicationFee;
 use App\Programme;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Session;
 class Helper
 {
     public static function get_student($mat){
-        $std = StudentInfo::where(['matric_number' => $mat])->first();
+        $std = StudentInfo::where(['matric_number' => $mat])->orWhere('registration_number', $mat)->first();
         return $std;
     }
     public static function get_course($cid){
@@ -78,7 +79,7 @@ class Helper
 
     public static function student_info(){
         $id = Session::get('student_id');
-        $student_info = StudentInfo::where('registration_number', $id)->first();
+        $student_info = StudentInfo::where('registration_number', $id)->orWhere('matric_number', $id)->first();
         return $student_info;
     }
 
@@ -118,7 +119,10 @@ class Helper
 
     public static function get_credit_unit($id){
         $std = StudentInfo::find($id);
-        $credit =  ManageCourseCreditUnit::where('department_id', $std->dept_id)->where('level', $std->level)->first();
+        $sem = Semester::where('status','active')->first();
+        $semester = $sem->id == 1 ? '1st' : '2nd';
+        // $credit =  ManageCourseCreditUnit::where('department_id', $std->dept_id)->where('level', $std->level)->first();
+        $credit = ManageCourseCreditUnit::where('department_id', $std->dept_id)->where('level', $std->level)->where('semester', $semester)->first();
         return $credit;
     }
     
@@ -147,6 +151,20 @@ class Helper
         curl_close($ch);
         return $response;
     }
+
+    public static function get_fee($id){
+        $fee = FeeList::find($id);
+        return $fee;
+    }
+
+    public static function student_paid_fee_check($id){
+        $sid = Session::get('student_id');
+        $std = StudentInfo::where('registration_number', $sid)->orWhere('matric_number', $sid)->first();
+        $fee = FeeHistory::where(['student_id' => $std->id, 'status' => 'PAID', 'fee_id' => $id])->first();
+        return $fee !== null ? $fee->status : 'Unpaid';
+    }
+
+
     
     public static function server_maintenance(){
         $clientIP = Request::getClientIp(true);
@@ -154,4 +172,5 @@ class Helper
             return true;
         }
     }
+
 }
