@@ -16,6 +16,8 @@
                                 Jamb Reg No: 
                                 @endif
                                 <br>{{ session()->get('verified_applicant')->application_number }}
+                                <br>{{ session()->get('verified_applicant')->first_name  . ' ' . session()->get('verified_applicant')->last_name}}
+
                             </span>
                             <span class="caret"></span>
                         </span>

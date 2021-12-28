@@ -8,7 +8,6 @@
     .kingster-body p,
     .kingster-body label {
         line-height: 1px !important;
-        margin-bottom: 20px !important;
     }
 
     .stylo {
@@ -137,178 +136,136 @@
 
                                             <div class="gdlr-core-accordion-item-icon gdlr-core-js gdlr-core-skin-icon "></div>
                                             <div class="gdlr-core-course-form clearfix element-to-print" id="preview_exam_pass" style="padding: 20px; border: 1px solid black;">
-                                                <div class="gdlr-core-course-column gdlr-core-column-50" style="width: 100%; display: flex; justify-content:space-around">
-                                                    <img class="gdlr-core-course-column gdlr-core-column-20" style="margin-bottom: 20px;" src="/homepage/images/logo.png" alt="">
+                                                <div class="col-lg-12" style="width: 100%; display: flex; justify-content:space-around">
+                                                    <img style="margin-bottom: 20px;" src="/homepage/images/logo.png" alt="">
                                                     <!-- <img class="gdlr-core-course-column gdlr-core-column-20" style="margin-bottom: 20px; height:100px" src="/uploads/postgraduate/{{$std->passport}}" alt=""> -->
                                                 </div>
-                                                <div>
-                                                    <h5 style="text-align: center;">SCHOOL OF POST-GRADUATE STUDIES</h5>
-                                                    <p style="text-align: center; font-weight:bold; margin-bottom: 0px;">POSTGRADUATE APPLICATION SUMMARY FORM</p>
-                                                    <P style="text-align: center; font-weight:bold; margin-bottom: 0px;">{{Helper::get_current_semester()}}ACADEMIC SESSION</P>
+                                                <div class="row"> 
+                                                    <h5 class="col-lg-12 text-center">SCHOOL OF POST-GRADUATE STUDIES</h5>
+                                                    <p class="col-lg-12 text-center">POSTGRADUATE APPLICATION SUMMARY FORM</p>
+                                                    <P class="col-lg-12 text-center">{{Helper::get_current_semester()}}ACADEMIC SESSION</P>
                                                     <!-- <p style="text-align: center; font-weight:bold; margin-bottom: 0px;">Application For Admission Acknowledgement Form</p> -->
                                                 </div>
 
-                                                <div class="gdlr-core-pbf-column gdlr-core-column-full">
-                                                    <h5 class="gdlr-core-course-column gdlr-core-column-full" style="border-bottom: 3px solid black; text-align:center">Basic Information</h5>
+                                                <div class="row">
+                                                    <h5 class="col-lg-12" style="border-bottom: 3px solid black; text-align:center">Basic Information</h5>
                                                     <br>
-                                                    <div class="gdlr-core-course-column gdlr-core-column-40">
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id stylo">
-                                                            <label for="">Full Name: </label>
-                                                            <p>{{ucwords($std->first_name . ' ' . $std->last_name)}}</p>
+                                                    <div class="col-lg-8">
+                                                        <div class="row">
+                                                            <div class="col-lg-6"><label for="">Full Name: </label></div>
+                                                            <div class="col-lg-6">{{ucwords($std->first_name . ' ' . $std->last_name)}}</div>
+                                                            
+                                                            
                                                         </div>
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id stylo">
-                                                            <label for="">Application Number: </label>
-                                                            <p>{{$std->application_number}}</p>
+                                                        <div class="row">
+                                                           <div class="col-lg-6"><label for="">Application Number: </label></div> 
+                                                           <div class="col-lg-6">{{$std->application_number}}</div> </p>
                                                         </div>
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id stylo">
-                                                            <label for="">Title: </label>
-                                                            <p>{{ucwords($std->title)}}</p>
+                                                        <div class="row">
+                                                            <div class="col-lg-6"><label for="">Title: </label></div>
+                                                            <div class="col-lg-6">{{ucwords($std->title)}}</div>
                                                         </div>
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id stylo">
-                                                            <label for="">Email Address: </label>
-                                                            <p>{{$std->email}}</p>
+                                                        <div class="row">
+                                                            <div class="col-lg-6"><label for="">Email Address: </label></div>
+                                                            <div class="col-lg-6">{{$std->email}}</div>
                                                         </div>
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id stylo">
-                                                            <label for="">Phone Number: </label>
-                                                            <p>{{$std->phone}}</p>
+                                                        <div class="row">
+                                                            <div class="col-lg-6"><label for="">Phone Number: </label></div>
+                                                            <div class="col-lg-6">{{$std->phone}}</div>
                                                         </div>
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id stylo">
-                                                            <label for="">Date of Birth: </label>
-                                                            <p>{{$std->dob}}</p>
-                                                        </div>
-
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id stylo">
-                                                            <label for="">Gender: </label>
-                                                            <p>{{$std->gender}}</p>
+                                                        <div class="row">
+                                                            <div class="col-lg-6"><label for="">Date of Birth: </label></div>
+                                                            <div class="col-lg-6">{{$std->dob}}</div>
                                                         </div>
 
-
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id stylo">
-                                                            <label for="">Country of Origin: </label>
-                                                            <p>{{ucwords($std->country_of_origin)}}</p>
-                                                        </div>
-
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id stylo">
-                                                            <label for="">State of Origin: </label>
-                                                            <p>{{ucwords($std->state_of_origin)}}</p>
-                                                        </div>
-
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id stylo">
-                                                            <label for="">LGA of Origin: </label>
-                                                            <p>{{ucwords($std->lga_of_origin)}}</p>
-                                                        </div>
-
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id stylo">
-                                                            <label for="">Home Town: </label>
-                                                            <p>{{ucwords($std->town_of_origin)}}</p>
-                                                        </div>
-
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id stylo">
-                                                            <label for="">Country of Residence: </label>
-                                                            <p>{{ucwords($std->state_of_residence)}}</p>
-                                                        </div>
-
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id stylo">
-                                                            <label for="">State of Residence: </label>
-                                                            <p>{{ucwords($std->state_of_residence)}}</p>
-                                                        </div>
-
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id stylo">
-                                                            <label for="">LGA of Residence: </label>
-                                                            <p>{{ucwords($std->lga_of_residence)}}</p>
+                                                        <div class="row">
+                                                            <div class="col-lg-6"><label for="">Gender: </label></div>
+                                                            <div class="col-lg-6">{{$std->gender}}</div>
                                                         </div>
 
 
+                                                        <div class="row">
+                                                            <div class="col-lg-6"><label for="">Country of Origin: </label></div>
+                                                            <div class="col-lg-6">{{ucwords($std->country_of_origin)}}</div>
+                                                        </div>
 
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id stylo">
-                                                            <label for="">Town of residence: </label>
-                                                            <p>{{ucwords($std->town_of_residence)}}</p>
+                                                        <div class="row">
+                                                            <div class="col-lg-6"><label for="">State of Origin: </label></div>
+                                                            <div class="col-lg-6">{{ucwords($std->state_of_origin)}}</div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-6"><label for="">LGA of Origin: </label></div>
+                                                            <div class="col-lg-6">{{ucwords($std->lga_of_origin)}}</div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-6"><label for="">Home Town: </label></div>
+                                                            <div class="col-lg-6">{{ucwords($std->town_of_origin)}}</div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-6"><label for="">Country of Residence: </label></div>
+                                                            <div class="col-lg-6">{{ucwords($std->state_of_residence)}}</div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-6"><label for="">State of Residence: </label></div>
+                                                            <div class="col-lg-6">{{ucwords($std->state_of_residence)}}</div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-6"><label for="">LGA of Residence: </label></div>
+                                                            <div class="col-lg-6">{{ucwords($std->lga_of_residence)}}</div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-6"><label for="">Town of residence: </label></div>
+                                                            <div class="col-lg-6">{{ucwords($std->town_of_residence)}}</div>
                                                         </div>
 
 
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-course-id stylo">
-                                                            <label for="">Address of residence</label>
-                                                            <p>{{$std->location_of_residence}}</p>
+                                                        <div class="row">
+                                                            <div class="col-lg-6"><label for="">Address of residence</label></div>
+                                                            <div class="col-lg-6">{{$std->location_of_residence}}</div>
                                                         </div>
 
                                                     </div>
 
 
-                                                    <div class="gdlr-core-course-column gdlr-core-column-20" style="min-height: 47vh; display: flex; align-items: center;">
+                                                    <div class="col-lg-4" style="min-height: 47vh; display: flex; align-items: center;">
                                                         <img class="gdlr-core-course-column" src="/uploads/postgraduate/{{$std->passport}}" alt="">
                                                     </div>
 
+                                                    <h5 class="col-lg-12" style="border-bottom: 3px solid black; text-align:center"></h5>
+                                                    <br>
+                                                    
+                                                    <h5 class="col-lg-12 mb-5 text-center">PROGRAMME DETAILS <br> &nbsp;</h5>
+                                                    <div class="col-lg-6">
+                                                        
+                                                            <p style="margin-bottom: 30px;"><b>Faculty:</b> {{ucwords(str_replace('Faculty Of', '',Helper::get_faculty($std->faculty_id)->name))}}</p>
 
+                                                        
+                                                            <p style="margin-bottom: 30px;"><b>Qualification:</b> {{ucwords($std->qualification)}}</p>
 
-                                                    <h5 class="gdlr-core-course-column gdlr-core-column-full" style="border-bottom: 3px solid black; text-align:center">&nbsp;</h5>
-
-                                                    <h5 class="gdlr-core-course-column gdlr-core-column-full text-center mt-5">PROGRAMME DETAILS</h5>
-
-                                                    <div class="gdlr-core-course-column gdlr-core-column-30">
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
-                                                            <label for=""> </label>
-                                                            <p><b>Faculty:</b> {{ucwords(Helper::get_faculty($std->faculty_id)->name)}}</p>
-                                                        </div>
-
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
-                                                            <label for=""> </label>
-                                                            <p><b>Qualification:</b> {{ucwords($std->qualification)}}</p>
-                                                        </div>
-
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
-                                                            <label for=""> </label>
-                                                            <p><b>Programme:</b> {{ucwords(Helper::get_programme($std->programme_id)->name)}}</p>
-                                                        </div>
+                                                        
+                                                            <p style="margin-bottom: 30px;"><b>Programme:</b> {{ucwords(Helper::get_programme($std->programme_id)->name)}}</p>
 
                                                     </div>
 
-                                                    <div class="gdlr-core-course-column gdlr-core-column-30">
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
-                                                            <label for=""> </label>
-                                                            <p><b>Department:</b> {{ucwords(Helper::get_department($std->dept_id)->name)}}</p>
-                                                        </div>
+                                                    <div class="col-lg-6">
+                                                        
+                                                            <p style="margin-bottom: 30px;"><b>Department:</b> {{ucwords(Helper::get_department($std->dept_id)->name)}}</p>
 
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
-                                                            <label for=""> </label>
-                                                            <p><b>Specialization:</b> {{ucwords(Helper::get_specialization($std->specialization_id)->name) ?? ' '}}</p>
-                                                        </div>
+                                                        
+                                                            <p style="margin-bottom: 30px;"><b>Specialization:</b> {{ucwords(Helper::get_specialization($std->specialization_id)->name) ?? ' '}}</p>
 
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
-                                                            <label for=""></label>
-                                                            <p><b>Study Type: </b>{{ucwords($std->study_type)}}</p>
-                                                        </div>
+                                                        
+                                                            <p style="margin-bottom: 30px;"><b>Study Type: </b>{{ucwords($std->study_type)}}</p>
 
                                                     </div>
 
-                                                    <!-- <div class="gdlr-core-course-column gdlr-core-column-10">
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
-                                                            <label for="">Qualification: </label>
-                                                            <p>{{ucwords($std->qualification)}}</p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="gdlr-core-course-column gdlr-core-column-20">
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
-                                                            <label for="">Programme: </label>
-                                                            <p>{{ucwords(Helper::get_programme($std->programme_id)->name)}}</p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="gdlr-core-course-column gdlr-core-column-20">
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
-                                                            <label for="">Specialization: </label>
-                                                            <p>{{ucwords(Helper::get_specialization($std->specialization_id)->name) ?? ' '}}</p>
-                                                        </div>
-                                                    </div>
-
-
-
-                                                    <div class="gdlr-core-course-column gdlr-core-column-full">
-                                                        <div class="gdlr-core-course-search-field gdlr-core-course-field-department">
-                                                            <label for="">Study Type: </label>
-                                                            <p>{{ucwords($std->study_type)}}</p>
-                                                        </div>
-                                                    </div> -->
+                                                   
 
                                                     @php
                                                     $prev = json_decode($std->previous_education, true);
@@ -341,7 +298,6 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
-
                                                     <div class="gdlr-core-course-column gdlr-core-column-full">
                                                         <table>
                                                             <thead>
