@@ -21,7 +21,10 @@ class ClearanceStudent extends Model implements Auditable
         'medical',
         'alumni',
         'student_id',
-        'step'
+        'step',
+        'answers',
+        'rejected_reason',
+        'accepted_reason'
     ];
 
 }

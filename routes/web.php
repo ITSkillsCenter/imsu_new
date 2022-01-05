@@ -496,7 +496,9 @@ Route::group(['namespace' => 'student', 'middleware' => 'student'], function () 
   Route::post('/student-clearance/personal-info', 'StudentHomeController@personal_info');
 
   Route::get('/student-clearance/financial-info', 'StudentHomeController@financial_info');
+  Route::post('/student-clearance/financial-info', 'StudentHomeController@financial_info');
   Route::get('/student-clearance/general-info', 'StudentHomeController@general_info');
+  Route::post('/student-clearance/general-info', 'StudentHomeController@general_info');
 
 
 

@@ -157,10 +157,14 @@ class Helper
         return $fee;
     }
 
-    public static function student_paid_fee_check($id){
+    public static function student_paid_fee_check($id, $session_id = null){
         $sid = Session::get('student_id');
         $std = StudentInfo::where('registration_number', $sid)->orWhere('matric_number', $sid)->first();
-        $fee = FeeHistory::where(['student_id' => $std->id, 'status' => 'PAID', 'fee_id' => $id])->first();
+        if($session_id == null){
+            $fee = FeeHistory::where(['student_id' => $std->id, 'status' => 'PAID', 'fee_id' => $id])->first();
+        }else{
+            $fee = FeeHistory::where(['student_id' => $std->id, 'status' => 'PAID', 'fee_id' => $id, 'session_id' => $session_id])->first();
+        }
         return $fee !== null ? $fee->status : 'Unpaid';
     }
 

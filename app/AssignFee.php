@@ -15,6 +15,7 @@ class AssignFee extends Model implements Auditable
         'year3',
         'year4',
         'year5',
+        'general'
     ];
 
 }

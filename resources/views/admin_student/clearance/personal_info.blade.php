@@ -10,7 +10,7 @@ Student || Clearance
     </div>
     <div class="card col-lg-12">
         <div class="card-header">
-            <div class="card-title">Pesonal Information</div>
+            <div class="card-title">Personal Information</div>
         </div>
         <div class="card-body">
             <form method="post">

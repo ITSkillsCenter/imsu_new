@@ -8,72 +8,64 @@ Student || Clearance
     <div class="col-lg-12">
         @include('homepage.flash_message')
     </div>
-    <div class="col-lg-4">
+    @for($i=1; $i<=$dept_years; $i++) <div class="col-lg-4">
         <div class="card">
             <div class="card-header">
-                Year 1
+                Year {{$i}}
             </div>
             <div class="card-body">
-                @foreach($year1 as $yr)
-                    <p>{{Helper::get_fee($yr)->fee_name}} ---------------- {{Helper::student_paid_fee_check($yr)}}</p>
-                @endforeach
-
+                <table class="table table-bordered">
+                    <thead>
+                        <th>Fee Name</th>
+                        <th>Status</th>
+                    </thead>
+                    <tbody>
+                        @foreach($years[$i-1] as $yr)
+                        <tr>
+                            <td>{{Helper::get_fee($yr)->fee_name}}</td>
+                            <td>{{Helper::student_paid_fee_check($yr, $others_sessions[$i-1]->id)}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="card">
-            <div class="card-header">
-                Year 2
-            </div>
-            <div class="card-body">
-                @foreach($year2 as $yr)
-                    <p>{{Helper::get_fee($yr)->fee_name}} ---------------- {{Helper::student_paid_fee_check($yr)}}</p>
-                @endforeach
+</div>
+@endfor
 
-            </div>
+<div class="col-lg-4">
+    <div class="card">
+        <div class="card-header">
+            General Fee
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <th>Fee Name</th>
+                    <th>Status</th>
+                </thead>
+                <tbody>
+                    @foreach($general_fee as $yr)
+                    <tr>
+                        <td>{{Helper::get_fee($yr)->fee_name}}</td>
+                        <td>{{Helper::student_paid_fee_check($yr)}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
-    <div class="col-lg-4">
-        <div class="card">
-            <div class="card-header">
-                Year 3
-            </div>
-            <div class="card-body">
-                @foreach($year3 as $yr)
-                    <p>{{Helper::get_fee($yr)->fee_name}} --------------- {{Helper::student_paid_fee_check($yr)}}</p>
-                @endforeach
+</div>
 
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="card">
-            <div class="card-header">
-                Year 4
-            </div>
-            <div class="card-body">
-                @foreach($year4 as $yr)
-                    <p>{{Helper::get_fee($yr)->fee_name}} --------------- {{Helper::student_paid_fee_check($yr)}}</p>
-                @endforeach
+<div class="row col-lg-12">
+    <form method="post" class="col-lg-6">
+        @csrf
+        <button type="submit" class="btn btn-success">Confirm</button>
+        <a href="/student-clearance" class="btn btn-danger">Return</a>
+    </form>
+</div>
 
-            </div>
-        </div>
-    </div>
 
-    <div class="col-lg-4">
-        <div class="card">
-            <div class="card-header">
-                Year 5
-            </div>
-            <div class="card-body">
-                @foreach($year5 as $yr)
-                    <p>{{Helper::get_fee($yr)->fee_name}} ---------------- {{Helper::student_paid_fee_check($yr)}}</p>
-                @endforeach
-
-            </div>
-        </div>
-    </div>
 </div>
 
 @endsection

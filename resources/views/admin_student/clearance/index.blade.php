@@ -17,9 +17,9 @@ Student || Clearance
         </a>
     </div>
     <div class="col-lg-4">
-        <a href="/student-clearance/financial-info" class="card">
+        <a href=" {{$clear_step == 0 ? '#' : '/student-clearance/financial-info'}}" class="card">
             <div class="card-body text-center" style="color: {{$clear_step < 2 ? 'black' : '#3db170'}}">
-                <i class="fas fa-money-check-alt fa-3x"></i> <br><br>
+                <i class="fas {{$clear_step == 0? 'fa-lock' : 'fa-money-check-alt'}} fa-3x"></i> <br><br>
                 Financial Information
             </div>
         </a>
@@ -27,7 +27,7 @@ Student || Clearance
     <div class="col-lg-4">
         <a href="/student-clearance/general-info" class="card">
             <div class="card-body text-center" style="color: {{$clear_step < 3 ? 'black' : '#3db170'}}">
-                <i class="fas fa-book fa-3x"></i> <br><br>
+                <i class="fas {{$clear_step == 0? 'fa-lock' : 'fa-book'}} fa-3x"></i> <br><br>
                 GENERAL CLEARANCE
             </div>
         </a>

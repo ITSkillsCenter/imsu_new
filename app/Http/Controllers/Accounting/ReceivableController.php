@@ -674,7 +674,10 @@ class ReceivableController extends Controller
                 case 5:
                     $the_list = explode(',', $assign->year5);
                     break;
-                
+                case 'general':
+                    $the_list = explode(',', $assign->general);
+                    break;
+            
                 default:
                    
                     break;
@@ -697,6 +700,9 @@ class ReceivableController extends Controller
                     break;
                 case 5:
                     $assign->year5 = implode(',', $request->list);
+                    break;
+                case 'general':
+                    $assign->general = implode(',', $request->list);
                     break;
                 
                 default:

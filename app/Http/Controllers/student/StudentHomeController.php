@@ -116,26 +116,84 @@ class StudentHomeController extends Controller
 		$std = StudentInfo::where('registration_number', $std_id)->orWhere('matric_number', $std_id)->first();
 		if($request->isMethod('POST')){
 			StudentInfo::where('registration_number', $std_id)->orWhere('matric_number', $std_id)->update($request->except('_token'));
+			$rejected_reason = [
+				'bursary' => null,
+				'hod' => null,
+				'records' => null,
+				'faculty' => null,
+				'library' => null,
+				'sport' => null,
+				'student_affairs' => null,
+				'security' => null,
+				'medical' => null,
+				'alumni' => null,
+			];
 
-			$clr = ClearanceStudent::updateOrCreate(
-                [
-                    'student_id' => $std->matric_number
-                ],
-                [
-                    'student_id' => $std->matric_number,
-                    'bursary' => 0,
-                    'hod' => 0,
-                    'records' => 0,
-                    'faculty' => 0,
-                    'library' => 0,
-                    'sport' => 0,
-                    'student_affairs' => 0,
-                    'security' => 0,
-                    'medical' => 0,
-                    'alumni' => 0,
-					'step' => 1
-                ]
-            );
+			$accepted_reason = [
+				'bursary' => null,
+				'hod' => null,
+				'records' => null,
+				'faculty' => null,
+				'library' => null,
+				'sport' => null,
+				'student_affairs' => null,
+				'security' => null,
+				'medical' => null,
+				'alumni' => null,
+			];
+
+			$answers= [
+				'faculty' => [
+					'status' => null,
+					'reason' => null,
+				],
+				'library' =>  [
+					'status' => null,
+					'reason' => null,
+				],
+				'sport' =>  [
+					'status' => null,
+					'reason' => null,
+				],
+				'sport2' =>  [
+					'status' => null,
+					'reason' => null,
+				],
+				'student_affairs' =>  [
+					'status' => null,
+					'reason' => null,
+				],
+				'security' => [
+					'status' => null,
+					'reason' => null,
+				],
+				'medical' => [
+					'status' => null,
+					'reason' => null,
+				],
+				'alumni' => [
+					'status' => null,
+					'reason' => null,
+					'session' => null,
+				],
+			];
+
+			$search = ClearanceStudent::where('student_id', $std->matric_number)->first();
+			if($search == null){
+				$clr = ClearanceStudent::updateOrCreate(
+					[
+						'student_id' => $std->matric_number
+					],
+					[
+						'student_id' => $std->matric_number,
+						'step' => 1,
+						'accepted_reason' => json_encode($accepted_reason),
+						'rejected_reason' => json_encode($rejected_reason),
+						'answers' => json_encode($answers),
+					]
+				);
+			}
+			
 			// dd($std->matric_number);
 
 
@@ -146,17 +204,62 @@ class StudentHomeController extends Controller
 	}
 
 	public function financial_info(Request $request){
+		$std_id = Session::get('student_id');
+		$std = StudentInfo::where('registration_number', $std_id)->orWhere('matric_number', $std_id)->first();
+		if($request->isMethod('POST')){
+			$clr = ClearanceStudent::updateOrCreate(
+                [
+                    'student_id' => $std->matric_number
+                ],
+                [
+					'bursary' => 1,
+					'step' => 2,
+                ]
+            );
+
+			return redirect('/student-clearance')->with('success', 'Financial information confirmed, Report has been sent to the bursary department for verification');
+		}
+		
+		$dept_years = Helper::get_department($std->dept_id)->years;
+		$check_on_sess_table = Current_Semester_Running::where(['title' => $std->Batch])->first();
+		$max_session = $check_on_sess_table->id + $dept_years -1;
+		$others_sessions = Current_Semester_Running::whereBetween('id', [$check_on_sess_table->id, $max_session])->get();
+		// dd($others_sessions);
 		$fee = AssignFee::first();
 		$year1 = explode(',', $fee->year1);
 		$year2 = explode(',', $fee->year2);
 		$year3 = explode(',', $fee->year3);
 		$year4 = explode(',', $fee->year4);
 		$year5 = explode(',', $fee->year5);
-		return view('admin_student.clearance.financial_info', compact('year1', 'year2', 'year3', 'year4', 'year5'));
+		$general_fee = explode(',', $fee->general);
+
+		$years = [$year1, $year2, $year3, $year4, $year5];
+		return view('admin_student.clearance.financial_info', compact('years','dept_years','others_sessions', 'general_fee'));
 	}
 
 	public function general_info(Request $request){
-		return view('admin_student.clearance.general_info');
+		$std_id = Session::get('student_id');
+		$std = StudentInfo::where('registration_number', $std_id)->orWhere('matric_number', $std_id)->first();
+		if($request->isMethod('post')){
+			$answers = $request->except('_token');
+			$clr = ClearanceStudent::updateOrCreate(
+				[
+					'student_id' => $std->matric_number
+				],
+				[
+					'student_id' => $std->matric_number,
+					'step' => 3,
+					'answers' => json_encode($answers),
+				]
+			);
+			return redirect('/student-clearance')->with('success', 'General information updated successfully and has been sent to the appropriate bodies for approval');
+
+		}
+		
+		$general = ClearanceStudent::where('student_id', $std->matric_number)->first();
+		$answers = json_decode($general->answers, true);
+		// dd($answers);
+		return view('admin_student.clearance.general_info', compact('general', 'answers'));
 	}
 
     

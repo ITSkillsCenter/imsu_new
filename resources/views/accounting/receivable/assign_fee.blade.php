@@ -51,6 +51,15 @@
                 </div>
             </a>
         </div>
+
+        <div class="col-lg-4">
+            <a href="{{ route('account.assign_fee_year', 'general') }}" class="card">
+                <div class="card-body text-center">
+                    <i class="fas fa-book fa-3x"></i> <br><br>
+                    General Fee
+                </div>
+            </a>
+        </div>
     </div>
 </div>
 
