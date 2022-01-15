@@ -310,6 +310,14 @@ class StudentInfoController extends Controller
         return view('filter.view_scholarship',compact('scholarship', 'id'));
     }
 
+    public function approve_receipt(Request $request, $id){
+        $fr = FeeHistory::find($id);
+        $fr->status = 'PAID';
+        $fr->reason = 'Bursar Approved';
+        $fr->save();
+        return back()->with('success', 'Approved successfully');
+    }
+
 
     public function approve_acceptance(Request $request, $student_id = null){
         

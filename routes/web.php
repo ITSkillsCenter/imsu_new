@@ -161,6 +161,7 @@ Route::group(['prefix' => '/admin', 'middleware' => ['2fa', 'auth']], function (
   Route::get('/approve_acceptance/{student_id}', 'StudentInfoController@approve_acceptance');
   Route::get('/approve_acceptance', 'StudentInfoController@approve_acceptance');
   Route::post('/approve_acceptance', 'StudentInfoController@approve_acceptance');
+  Route::get('/approve_receipt/{id}', 'StudentInfoController@approve_receipt');
   Route::post('/reject_acceptance', 'StudentInfoController@reject_acceptance');
 
   /* ################# Registration  Section ##################*/

@@ -100,7 +100,7 @@
                     </form>
                 </div>
             </div>
-
+            @include('homepage.flash_message')
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">Payment History: {{$title}}</div>
@@ -121,6 +121,7 @@
                                             <th>Amount</th>
                                             <th>Status</th>
                                             <th>Reference</th>
+                                            <th>Receipt</th>
                                             <th>Created At</th>
                                             <th>Updated At</th>
                                             <!-- <th>Actions</th> -->
@@ -136,6 +137,15 @@
                                             <td>{{$fl->amount}}</td>
                                             <td>{{$fl->pstatus}}</td>
                                             <td>{{$fl->reference_id}}</td>
+                                            <td>
+                                                
+                                                @if($fl->receipt !== null)
+                                                <a target="_blank" class="btn btn-primary btn-sm" href="/uploads/images/receipts/{{$fl->receipt}}">View Receipt</a>
+                                                @if(strtolower($fl->pstatus) !== 'paid')
+                                                <a class="btn btn-info btn-sm" href="/admin/approve_receipt/{{$fl->rid}}">Approve</a>
+                                                @endif
+                                                @endif
+                                            </td>
                                             <td>{{date_format(date_create($fl->fcreated), 'd/m/Y')}}</td>
                                             <td>{{date_format(date_create($fl->fupdated), 'd/m/Y')}}</td>
                                             <!-- <td>
