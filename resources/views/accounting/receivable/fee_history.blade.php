@@ -160,7 +160,7 @@
                                     </tbody>
                                 </table>
                             </div>
-
+                            {{ $all_fees->onEachSide(5)->links() }}
                         </div>
                     </div>
                 </div>
