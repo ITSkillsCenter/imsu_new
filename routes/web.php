@@ -461,6 +461,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth', 'namespace' => 'Acco
   Route::post('fee-history', 'ReceivableController@fee_history')->name('all.fee_history');
   Route::post('update_payment_details', 'ReceivableController@update_payment_details');
   Route::get('receivable-all', 'ReceivableController@receivable_all')->name('all.receivable');
+  Route::get('all-receivable', 'ReceivableController@receivable_all2')->name('all.receivable2');
   Route::get('verify-receivable', 'ReceivableController@verify_receivable')->name('verify.receivable');
   Route::get('receivable/{id}', 'ReceivableController@show')->name('receivable.show');
   Route::get('receivable/department/{department}', 'ReceivableController@receivable_dept')->name('receivable.dept');

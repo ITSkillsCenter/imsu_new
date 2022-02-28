@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\State;
 use Illuminate\Contracts\Session\Session;
+use GuzzleHttp\Client;
+use Http\Client\HttpClient;
 
 class ReceivableController extends Controller
 {
@@ -407,6 +409,15 @@ class ReceivableController extends Controller
         // dd($sessions, $departments, $fee_list);
 
         return view('accounting.receivable.studentList', compact('departments', 'fee_list', 'sessions', 'school_fees', 'acceptance_fees'));
+    }
+
+    public function receivable_all2()
+    {
+        $client = new Client();
+        // dd(file_get_contents('https://imorms.ng/api/v1/payment/summary/27?fromDate=01-02-2022&toDate=31-02-2022'));
+        $res = $client->get('https://imorms.ng/api/v1/payment/summary/27?fromDate=01-02-2022&toDate=31-02-2022');
+        $data = json_decode($res->getBody()->getContents());
+        return view('accounting.receivable.receivableList', compact('data'));
     }
 
     public function verify_receivable()

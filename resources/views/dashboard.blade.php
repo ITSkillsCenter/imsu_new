@@ -414,10 +414,14 @@
                         <div>
                             <h5><b>Total Revenue Realized</b></h5>
                             <!-- <p class="small">This includes Acceptance fee, school fees, all revenue heads and those paid outside the portal, yet to be confirmed</p> -->
-                            <a href="/admin/receivable-all" class="text-muted btn btn-sm btn-info" style="color: white !important">View Details</a>
+                            <!-- <a href="/admin/receivable-all" class="text-muted btn btn-sm btn-info" style="color: white !important">View Details</a> -->
+                            <a href="/admin/all-receivable" class="text-muted btn btn-sm btn-info" style="color: white !important">View Details</a>
 
                         </div>
-                        <h3 class="text-info fw-bold">&#x20A6;{{ number_format($revenue + $acceptance_total, 2, '.', ',') }}</h3>
+                        <h3 class="text-info fw-bold">&#x20A6; 
+                            <!-- <span id="tot_rev">{{ number_format($revenue + $acceptance_total, 2, '.', ',') }}</span> -->
+                            <span id="tot_rev">---------------------</span>
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -619,6 +623,24 @@
         var d = new Date();
         document.getElementById("clock").innerHTML = d.toLocaleTimeString();
     }
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    function call(){
+        $.get('https://imorms.ng/api/v1/payment/summary/27?fromDate=01-02-2022&toDate=31-02-2022').done(function(data) {
+            data = JSON.parse(data)
+            let total = data.total_amount
+            // alert(total)
+            $('#tot_rev').html(new Intl.NumberFormat().format(total))
+        })
+    }
+
+    call()
+
 </script>
 
 @endsection
