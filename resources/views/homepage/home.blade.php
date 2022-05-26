@@ -1150,15 +1150,15 @@
 <div id="overlay"></div>
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
 <script>
-   $(document).ready(function() {
-      $('#centralModal').css('display', 'block');
-      $('#overlay').css('display', 'block');
-   });
+   // $(document).ready(function() {
+   //    $('#centralModal').css('display', 'block');
+   //    $('#overlay').css('display', 'block');
+   // });
 
-   $('#closeit').click(function() {
-      $('#centralModal').css('display', 'none');
-      $('#overlay').css('display', 'none');
-   });
+   // $('#closeit').click(function() {
+   //    $('#centralModal').css('display', 'none');
+   //    $('#overlay').css('display', 'none');
+   // });
 </script>
 
 
