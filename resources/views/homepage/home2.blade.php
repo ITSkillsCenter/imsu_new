@@ -2,22 +2,18 @@
 @section('content')
 <style>
     #overlay {
-        position: fixed;
-        display: none;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 2;
-        cursor: pointer;
-    }
-
-    #more {
-        display: none;
-    }
+      position: fixed;
+      display: none;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+      cursor: pointer;
+   }
 </style>
 
 <main id="main">
@@ -214,60 +210,14 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="wlc-content ml-">
-                        <!-- <span>Welcome to</span> -->
-                        <h2>PROFESSOR UCHEFULA UGONNA CHUKWUMAEZE, SAN</h2>
+                        <span>Welcome to</span>
+                        <h2>Imo State University</h2>
                         <p>It is with great pleasure that I welcome you to Imo State University (IMSU). <br>
-
-
-                            Professor Uchefula Ugonna Chukwumaeze, Ichie Osinachukwu of Amucha- Ebeise, from
-                            Umuokpoko, Amucha-Ebesie, Njaba LGA of Imo State is a Ph.D holder in Law. Having made a 2nd
-                            class Upper Division in both Abia State University, Uturu, Abia State; and Nigerian Law School,
-                            Lagos, he was invited by Abia State University in 1995 to start a career as a lecturer. He rose
-                            through the ranks to become an Associate Professor in 2009 and a full Professor of Public Law in
-                            2012. He is a knight of St Christopher in the Anglican Communion. <br>
-
-                            Prof Chukwumaeze has received more than 30 certificates of Honour by various bodies and
-                            communities in appreciation of his services to humanity. He is a well respected legal practitioner
-                            of a very high distinction. He was one of the 24 (twenty four) legal practitioners engaged in 2017
-                            to overhaul the entire laws relating to the legal profession and draft a new law for the future of
-                            the legal profession- Legal Profession Regulation Review Committee of Nigerian Bar Association.
-                            In 2019, he was conferred with the prestigious title of the Senior Advocate of Nigeria- the first
-                            and only academic senior advocate from Imo State. He was a member of the Committee that
-                            drafted the Administration of Criminal Justice Bill, Imo State, 2020 and a member of the Review
-                            Committee on Allocation of Lands in Imo State 2007 till 2019. He is currently the Editor in Chief
-                            of Nigerian Bar Association Journal. <span id="dots" style="color:#6b6b6b">...</span>
-                            <span id="more">
-                                He was Head of Department, Jurisprudence, Public and International Law, Abia State University,
-                                Uturu; Head of Department, Public Law; Imo State University, Owerri; Dean, Faculty of Law, Imo
-                                State University, Owerri; Dean School of Post Graduate Studies, Imo State University; Adjunct
-                                Lecturer, Imo State University, Owerri, 1998; Adjunct Senior Lecturer, Faculty of Law, Imo State
-                                University, Owerri, Imo State, 2004; Adjunct Reader, Faculty of Law, Imo State University, Owerri,
-                                2011; Reader, 2012 and professor in 2012. On 1* of March 2022, he was appointed the Acting
-                                Vice Chancellor, Imo State University, Owerri by His Excellency, Distinguished Senator Hope
-                                Uzodinma. <br>
-
-                                He has also served as senior lecturer (Sabbatical), at the Ebonyi State University Abakaliki from;
-                                Adjunct Professor of Law, Abia State University, Uturu. He has been an External Examiner to many
-                                universities both within and outside Nigeria which includes: Rivers State University, Port
-                                Harcourt; Ebonyi State University, Abakaliki; Nnamdi Azikiwe University, Awka; Chukwuemeka
-                                Odumegwu Ojukwu University, Igbariam, Anambra State; Enugu State University of Science &
-                                Technology (ESUT) Enugu and University of The Gambia, Banjul. He has also been an External
-                                Accessor to many intuitions both within and outside Nigeria: Federal Polytechnic Nekede, Owerri,
-                                2008 — 2013; Faculty of Law, University of Uyo, Akwa Ibom State; Abia State University, Uturu,
-                                Rivers State University, Port Harcourt; David Clark University, Kiagbodo, Delta State; Baze
-                                University, Abuja and University of Rwanda, Kigali. He was a consultant for the United Nations
-                                and facilitated the introduction of Human Rights as a `Common Core` for all undergraduate
-                                programs of Leikipia University, Kenya. <br>
-
-                                He has been a member of Senate of Imo State University since 2012 and has served in and chaired
-                                numerous committees. He is married to Barrister (Lady) Ojiugo C Chukwumaeze and the marriage
-                                is blessed with four children.
-                            </span>
-                        </p>
-                        <button onclick="myFunction()" id="myBtn" class="default-btn">
+                            IMSU was established in 1981 through law No. 4 passed by the Imo State House of Assembly. Established with the vision of pursuing the advancement of learning and academic excellence, the university has been unrelenting in the pursuit of its mission of becoming a citadel of learning, a community with the trademark of excellence in teaching, research and service to humanity, a catalyst as well as an agent for development..</p>
+                        <a href="https://imsu.edu.ng/article/42/vc" class="default-btn">
                             Find out more
                             <i class="icofont-arrow-right"></i>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -446,7 +396,7 @@
     <!-- End UPdates -->
 
     <!-- ============== Events Area =================-->
-
+    
     <section class="events-area events-area-style-two py-4">
         <div class="container">
             <div class="row align-items-center">
@@ -520,7 +470,7 @@
                                     <i class="icofont-arrow-right"></i>
                                 </a>
                             </li>
-
+                            
                         </ul>
                         @else
                         <h6>No upcoming events</h6>
@@ -530,7 +480,7 @@
             </div>
         </div>
     </section>
-
+   
     <!-- End Events Area -->
 
     <!-- ================== Download & Newsletter =======================  -->
@@ -606,175 +556,175 @@
     </section> -->
 
     <section class="newsletter">
-        <div class="container">
+         <div class="container">
             <div class="row">
-                <div class="col-md-12 text-center">
-                    <p style="color: rgba(61, 177, 102, 0.76); font-family: Poppins;
+               <div class="col-md-12 text-center">
+                  <p style="color: rgba(61, 177, 102, 0.76); font-family: Poppins;
                 font-style: normal;
                 font-weight: normal;
                 font-size: 25px;">Subscribe to Our Newsletter</p>
-                </div>
-                <div class="col-sm-12">
-                    <div class="content">
-                        <div class="input-group">
-                            <input style="border:none; border-bottom: 1px solid #2E4579; border-top: 1px solid #2E4579; border-left: 1px solid #2E4579;" type="email" class="form-control" placeholder="Enter your email">
-                            <span class="input-group-btn">
-                                <button class="btn" type="submit">Subscribe Now</button>
-                            </span>
-                        </div>
-                    </div>
-                </div>
+               </div>
+               <div class="col-sm-12">
+                  <div class="content">
+                     <div class="input-group">
+                        <input style="border:none; border-bottom: 1px solid #2E4579; border-top: 1px solid #2E4579; border-left: 1px solid #2E4579;" type="email" class="form-control" placeholder="Enter your email">
+                        <span class="input-group-btn">
+                           <button class="btn" type="submit">Subscribe Now</button>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+    <!-- End Download &.. -->
+        <br><br>
+    <!-- ======= Gallery Section ======= -->
+    <section id="gallery" class="gallery">
+
+        <div class="container">
+            <div class="section-title title">
+                <h2>Gallery</h2>
+                <p>Some photos from Our School</p>
             </div>
         </div>
-        <!-- End Download &.. -->
-        <br><br>
-        <!-- ======= Gallery Section ======= -->
-        <section id="gallery" class="gallery">
 
-            <div class="container">
-                <div class="section-title title">
-                    <h2>Gallery</h2>
-                    <p>Some photos from Our School</p>
-                </div>
-            </div>
+        <div class="container-fluid px-0 mx-0">
 
-            <div class="container-fluid px-0 mx-0">
+            <div class="row no-gutters px-0 mx-0">
+                <div class="owl-carousel gallery-carousel mt-4 px-0">
+                    <!-- Item 1 -->
+                    <div class="">
+                        <div class="gallery-item position-relative">
+                            <a href="/assets/img/gallery/gallery-1-min.JPG" class="venobox card-img" data-gall="gallery-item" data-title="A handshake with the President - Mohammadu Buhari">
+                                <img src="/assets/img/gallery/gallery-1-min.JPG" alt="" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="">
+                        <div class="gallery-item position-relative">
+                            <a href="/assets/img/gallery/gallery-2-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-2-min.JPG" alt="" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="">
+                        <div class="gallery-item position-relative">
+                            <a href="/assets/img/gallery/gallery-3-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-3-min.JPG" alt="" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="">
+                        <div class="gallery-item position-relative">
+                            <a href="/assets/img/gallery/gallery-4-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-4-min.JPG" alt="" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="">
+                        <div class="gallery-item position-relative">
+                            <a href="/assets/img/gallery/gallery-5-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-5-min.JPG" alt="" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Item 6 -->
+                    <div class="">
+                        <div class="gallery-item position-relative">
+                            <a href="/assets/img/gallery/gallery-6-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-6-min.JPG" alt="" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Item 7 -->
+                    <div class="">
+                        <div class="gallery-item position-relative">
+                            <a href="/assets/img/gallery/gallery-7-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-7-min.JPG" alt="" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Item 8 -->
+                    <div class="">
+                        <div class="gallery-item position-relative">
+                            <a href="/assets/img/gallery/gallery-8-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-8-min.JPG" alt="" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Item 9 -->
+                    <div class="">
+                        <div class="gallery-item position-relative">
+                            <a href="/assets/img/gallery/gallery-9-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-9-min.JPG" alt="" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Item 10 -->
+                    <div class="">
+                        <div class="gallery-item position-relative">
+                            <a href="/assets/img/gallery/gallery-10-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-10-min.JPG" alt="" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Item 11 -->
+                    <div class="">
+                        <div class="gallery-item position-relative">
+                            <a href="/assets/img/gallery/gallery-11-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-11-min.JPG" alt="" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Item 12 -->
+                    <div class="">
+                        <div class="gallery-item position-relative">
+                            <a href="/assets/img/gallery/gallery-12-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-12-min.JPG" alt="" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Item 13 -->
+                    <div class="">
+                        <div class="gallery-item position-relative">
+                            <a href="/assets/img/gallery/gallery-13-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-13-min.JPG" alt="" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Item 14 -->
+                    <div class="">
+                        <div class="gallery-item position-relative">
+                            <a href="/assets/img/gallery/gallery-14-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-14-min.JPG" alt="" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Item 15 -->
+                    <div class="">
+                        <div class="gallery-item position-relative">
+                            <a href="/assets/img/gallery/gallery-15-min.JPG" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-15-min.JPG" alt="" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div>
 
-                <div class="row no-gutters px-0 mx-0">
-                    <div class="owl-carousel gallery-carousel mt-4 px-0">
-                        <!-- Item 1 -->
-                        <div class="">
-                            <div class="gallery-item position-relative">
-                                <a href="/assets/img/gallery/gallery-1-min.JPG" class="venobox card-img" data-gall="gallery-item" data-title="A handshake with the President - Mohammadu Buhari">
-                                    <img src="/assets/img/gallery/gallery-1-min.JPG" alt="" class="img-fluid" />
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Item 2 -->
-                        <div class="">
-                            <div class="gallery-item position-relative">
-                                <a href="/assets/img/gallery/gallery-2-min.JPG" class="venobox card-img" data-gall="gallery-item">
-                                    <img src="/assets/img/gallery/gallery-2-min.JPG" alt="" class="img-fluid" />
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Item 3 -->
-                        <div class="">
-                            <div class="gallery-item position-relative">
-                                <a href="/assets/img/gallery/gallery-3-min.JPG" class="venobox card-img" data-gall="gallery-item">
-                                    <img src="/assets/img/gallery/gallery-3-min.JPG" alt="" class="img-fluid" />
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Item 4 -->
-                        <div class="">
-                            <div class="gallery-item position-relative">
-                                <a href="/assets/img/gallery/gallery-4-min.JPG" class="venobox card-img" data-gall="gallery-item">
-                                    <img src="/assets/img/gallery/gallery-4-min.JPG" alt="" class="img-fluid" />
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Item 5 -->
-                        <div class="">
-                            <div class="gallery-item position-relative">
-                                <a href="/assets/img/gallery/gallery-5-min.JPG" class="venobox card-img" data-gall="gallery-item">
-                                    <img src="/assets/img/gallery/gallery-5-min.JPG" alt="" class="img-fluid" />
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Item 6 -->
-                        <div class="">
-                            <div class="gallery-item position-relative">
-                                <a href="/assets/img/gallery/gallery-6-min.JPG" class="venobox card-img" data-gall="gallery-item">
-                                    <img src="/assets/img/gallery/gallery-6-min.JPG" alt="" class="img-fluid" />
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Item 7 -->
-                        <div class="">
-                            <div class="gallery-item position-relative">
-                                <a href="/assets/img/gallery/gallery-7-min.JPG" class="venobox card-img" data-gall="gallery-item">
-                                    <img src="/assets/img/gallery/gallery-7-min.JPG" alt="" class="img-fluid" />
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Item 8 -->
-                        <div class="">
-                            <div class="gallery-item position-relative">
-                                <a href="/assets/img/gallery/gallery-8-min.JPG" class="venobox card-img" data-gall="gallery-item">
-                                    <img src="/assets/img/gallery/gallery-8-min.JPG" alt="" class="img-fluid" />
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Item 9 -->
-                        <div class="">
-                            <div class="gallery-item position-relative">
-                                <a href="/assets/img/gallery/gallery-9-min.JPG" class="venobox card-img" data-gall="gallery-item">
-                                    <img src="/assets/img/gallery/gallery-9-min.JPG" alt="" class="img-fluid" />
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Item 10 -->
-                        <div class="">
-                            <div class="gallery-item position-relative">
-                                <a href="/assets/img/gallery/gallery-10-min.JPG" class="venobox card-img" data-gall="gallery-item">
-                                    <img src="/assets/img/gallery/gallery-10-min.JPG" alt="" class="img-fluid" />
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Item 11 -->
-                        <div class="">
-                            <div class="gallery-item position-relative">
-                                <a href="/assets/img/gallery/gallery-11-min.JPG" class="venobox card-img" data-gall="gallery-item">
-                                    <img src="/assets/img/gallery/gallery-11-min.JPG" alt="" class="img-fluid" />
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Item 12 -->
-                        <div class="">
-                            <div class="gallery-item position-relative">
-                                <a href="/assets/img/gallery/gallery-12-min.JPG" class="venobox card-img" data-gall="gallery-item">
-                                    <img src="/assets/img/gallery/gallery-12-min.JPG" alt="" class="img-fluid" />
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Item 13 -->
-                        <div class="">
-                            <div class="gallery-item position-relative">
-                                <a href="/assets/img/gallery/gallery-13-min.JPG" class="venobox card-img" data-gall="gallery-item">
-                                    <img src="/assets/img/gallery/gallery-13-min.JPG" alt="" class="img-fluid" />
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Item 14 -->
-                        <div class="">
-                            <div class="gallery-item position-relative">
-                                <a href="/assets/img/gallery/gallery-14-min.JPG" class="venobox card-img" data-gall="gallery-item">
-                                    <img src="/assets/img/gallery/gallery-14-min.JPG" alt="" class="img-fluid" />
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Item 15 -->
-                        <div class="">
-                            <div class="gallery-item position-relative">
-                                <a href="/assets/img/gallery/gallery-15-min.JPG" class="venobox card-img" data-gall="gallery-item">
-                                    <img src="/assets/img/gallery/gallery-15-min.JPG" alt="" class="img-fluid" />
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="">
-                            <div class="gallery-item position-relative">
-                                <a href="/assets/img/gallery/gallery-16-min.jpg" class="venobox card-img" data-gall="gallery-item">
-                                    <img src="/assets/img/gallery/gallery-16-min.jpg" alt="" class="img-fluid" />
-                                </a>
-                            </div>
+                    <div class="">
+                        <div class="gallery-item position-relative">
+                            <a href="/assets/img/gallery/gallery-16-min.jpg" class="venobox card-img" data-gall="gallery-item">
+                                <img src="/assets/img/gallery/gallery-16-min.jpg" alt="" class="img-fluid" />
+                            </a>
                         </div>
                     </div>
                 </div>
-
             </div>
-        </section><!-- End Gallery Section -->
+
+        </div>
+    </section><!-- End Gallery Section -->
 
 
 </main>
@@ -807,24 +757,6 @@
 <div id="overlay"></div>
 
 <script>
-    function myFunction() {
-        var dots = document.getElementById("dots");
-        var moreText = document.getElementById("more");
-        var btnText = document.getElementById("myBtn");
-
-        if (dots.style.display === "none") {
-            dots.style.display = "inline";
-            btnText.innerHTML = "Read more";
-            moreText.style.display = "none";
-        } else {
-            dots.style.display = "none";
-            btnText.innerHTML = "Read less";
-            moreText.style.display = "inline";
-            moreText.style.color = "#6b6b6b";
-            moreText.style.fontWeight = "normal";
-            moreText.style.fontSize = "16px";
-        }
-    }
     // $(document).ready(function() {
     //     $('#centralModal').css('display', 'block');
     //     $('#overlay').css('display', 'block');
