@@ -214,7 +214,7 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="wlc-content ml-">
-                        <span>Welcome to</span>
+                        <!-- <span>Welcome to</span> -->
                         <h2>PROFESSOR UCHEFULA UGONNA CHUKWUMAEZE, SAN</h2>
                         <p>It is with great pleasure that I welcome you to Imo State University (IMSU). <br>
 
